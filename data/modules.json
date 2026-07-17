@@ -1427,10 +1427,10 @@
             {
               "id": "ecl-tb",
               "n": 5,
-              "x": 93,
-              "y": 66,
-              "w": 7,
-              "h": 12,
+              "x": 92.7,
+              "y": 65.3,
+              "w": 6.5,
+              "h": 10,
               "type": "control",
               "label": "Éclairage tableau de bord",
               "role": "Asservi au cran de pompe."
@@ -1441,7 +1441,7 @@
               "x": 14,
               "y": 77,
               "w": 12,
-              "h": 9,
+              "h": 7.5,
               "type": "control",
               "label": "Montée/descente dévidoir gauche",
               "role": "Relevage pneumatique."
@@ -1462,8 +1462,8 @@
               "n": 8,
               "x": 54,
               "y": 78,
-              "w": 12,
-              "h": 9,
+              "w": 13,
+              "h": 10,
               "type": "control",
               "label": "Arrêt d’urgence",
               "role": "À éviter : préférer baisse de régime puis stop moteur."
@@ -1485,7 +1485,7 @@
               "x": 14,
               "y": 91,
               "w": 12,
-              "h": 9,
+              "h": 7.5,
               "type": "control",
               "label": "Montée/descente dévidoir droit",
               "role": "Relevage pneumatique."

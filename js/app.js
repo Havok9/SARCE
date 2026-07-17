@@ -364,8 +364,6 @@ const App = (() => {
     if (!mod) return renderHome();
     const d = domain(mod.domain);
     setBreadcrumb([{ label: 'Accueil', href: '#/' }, { label: d.title, href: '#/domaine/' + d.id }, { label: mod.title }]);
-    const p = Progress.get(id).mastery || 0;
-    const pcolor = Progress.masteryColor(p);
     const hasQuiz = quizOf(id).length > 0;
     const views = mod.views || (mod.schema ? [{ schema: mod.schema, elements: mod.elements || [] }] : []);
     const hasSchema = views.some(v => Schema.has(v.schema) && (v.elements || []).length > 0);
@@ -376,12 +374,6 @@ const App = (() => {
         <div class="mod-domain"><span class="nav-dot" style="background:${d.color}"></span>${esc(d.title)}</div>
         <h1 class="mod-title">${esc(mod.title)}</h1>
         <div class="mod-tagline">${esc(mod.tag || '')}</div>
-        <div class="mod-tags">${(mod.tags || []).map(t => `<span class="tag">#${esc(t)}</span>`).join('')}</div>
-        ${isFull(mod) ? `<div class="mod-progress-line">
-          <div class="pbar"><div style="width:${p}%; background:${pcolor}"></div></div>
-          <span class="pbar-pct" style="color:${pcolor}">${p > 0 ? p + '%' : '—'}</span>
-          <span style="font-size:11px; color:var(--mut-2);">${Progress.reviewLabel(id)}</span>
-        </div>` : ''}
       </div>
 
       ${isFull(mod) ? `<div class="mod-actions">
@@ -408,6 +400,10 @@ const App = (() => {
             return `<a class="link-pill" href="#/module/${l}"><span class="lp-dot" style="background:${ld.color}"></span>${esc(lm.title)}</a>`; }).join('')}
         </div>
         <div class="graph-wrap mini-graph" style="margin-top:12px;" id="mini-graph"></div>
+      </div>` : ''}
+
+      ${(mod.tags || []).length ? `<div class="mod-tags mod-tags-footer" aria-label="Mots-clés du module">
+        ${mod.tags.map(t => `<span class="tag">#${esc(t)}</span>`).join('')}
       </div>` : ''}`;
 
     renderModuleBody(mod);
@@ -468,24 +464,47 @@ const App = (() => {
   /* ============================================================
      SCHÉMA INTERACTIF : fiche / à blanc / guidé
      ============================================================ */
-  function mountSchema(mod, mode, viewIdx = 0){
+  function mountSchema(mod, mode, viewIdx = null){
     const zone = $('#mod-interactive');
     zone.innerHTML = '';
     /* plusieurs vues possibles (ex. FPT GIMAEX : tableau arrière + écran cabine) */
     const views = mod.views || [{ schema: mod.schema, label: null, elements: mod.elements || [] }];
+    if (viewIdx == null){
+      const preferred = views.findIndex(candidate => candidate.schema === 'gimaex-tableau');
+      viewIdx = preferred >= 0 ? preferred : 0;
+    }
     const view = views[viewIdx] || views[0];
     const els = view.elements || [];
     const scenarios = view.scenarios || mod.scenarios;
     const isEx = mode === 'drill' || mode === 'ident';
     const isGimaexRear = view.schema === 'gimaex-tableau';
     const isFreeTest = mode === 'test';
+    const viewName = (v, i) => {
+      if (v.schema === 'gimaex-cabine') return 'Écran cabine';
+      return String(v.label || 'Vue ' + (i + 1)).replace(/\s*\(p\.\s*\d+\)\s*$/i, '');
+    };
+    const toolbar = document.createElement('div');
+    toolbar.className = 'schema-toolbar';
+    if (views.length > 1 || (isGimaexRear && !isEx)) zone.appendChild(toolbar);
 
     if (views.length > 1){
       const tabs = document.createElement('div');
-      tabs.className = 'scenario-bar';
-      tabs.innerHTML = views.map((v, i) =>
-        `<button class="scenario-btn ${i === viewIdx ? 'active':''}" data-v="${i}"><span class="dot"></span>${esc(v.label || 'Vue ' + (i + 1))}</button>`).join('');
-      zone.appendChild(tabs);
+      tabs.className = 'schema-view-tabs';
+      tabs.setAttribute('role', 'tablist');
+      tabs.setAttribute('aria-label', 'Vues du module');
+      const orderedViewIndexes = views.some(candidate => candidate.schema === 'gimaex-tableau')
+        ? [
+            views.findIndex(candidate => candidate.schema === 'gimaex-tableau'),
+            views.findIndex(candidate => candidate.schema === 'gimaex-ecran'),
+            views.findIndex(candidate => candidate.schema === 'gimaex-cabine'),
+            ...views.map((_, index) => index)
+          ].filter((index, position, all) => index >= 0 && all.indexOf(index) === position)
+        : views.map((_, index) => index);
+      tabs.innerHTML = orderedViewIndexes.map(i => {
+        const v = views[i];
+        return `<button class="schema-view-tab ${i === viewIdx ? 'active':''}" type="button" role="tab" aria-selected="${i === viewIdx}" data-v="${i}">${esc(viewName(v, i))}</button>`;
+      }).join('');
+      toolbar.appendChild(tabs);
       tabs.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => {
         const nextIdx = +b.dataset.v;
         const nextView = views[nextIdx] || views[0];
@@ -499,16 +518,18 @@ const App = (() => {
     /* Le pupitre arrière sépare clairement repérage, manipulation et test libre. */
     if (isGimaexRear && !isEx){
       const modeBar = document.createElement('div');
-      modeBar.className = 'scenario-bar gx-mode-bar';
-      modeBar.innerHTML = '<span class="gx-mode-label">Mode du pupitre</span>' +
+      modeBar.className = 'schema-mode-switch gx-mode-bar';
+      modeBar.setAttribute('role', 'group');
+      modeBar.setAttribute('aria-label', 'Mode du pupitre');
+      modeBar.innerHTML = '<span class="gx-mode-label"><span aria-hidden="true">⌁</span> Mode du pupitre</span>' +
         [
           ['fiche', 'Repérage'],
           ['operate', 'Fonctionnement'],
           ['test', 'Test libre']
         ].map(([key, label]) =>
-          `<button class="scenario-btn ${mode === key ? 'active' : ''}" data-mode="${key}"><span class="dot"></span>${label}</button>`
+          `<button class="schema-mode-btn ${mode === key ? 'active' : ''}" type="button" aria-pressed="${mode === key}" data-mode="${key}"><span class="dot"></span>${label}</button>`
         ).join('');
-      zone.appendChild(modeBar);
+      toolbar.appendChild(modeBar);
       modeBar.querySelectorAll('[data-mode]').forEach(button =>
         button.addEventListener('click', () => mountSchema(mod, button.dataset.mode, viewIdx)));
     }
@@ -521,11 +542,12 @@ const App = (() => {
     let scenarioBar = null;
     if (scenarios && !isEx){
       scenarioBar = document.createElement('div');
-      scenarioBar.className = 'scenario-bar';
-      scenarioBar.innerHTML = '<span style="font-size:11px;color:var(--mut-2);text-transform:uppercase;letter-spacing:.5px;">Scénario</span>' +
-        Object.entries(scenarios).map(([k, s]) =>
-          `<button class="scenario-btn ${k === scenario ? 'active':''}" data-s="${k}"><span class="dot"></span>${esc(s.label)}</button>`).join('');
-      zone.appendChild(scenarioBar);
+      scenarioBar.className = 'schema-bottom-panel schema-scenario-panel';
+      scenarioBar.innerHTML = '<div class="schema-bottom-head"><span><b>Scénarios rapides</b><small>Appliquez une configuration complète au schéma.</small></span><span class="schema-live-badge">PRÊT</span></div>' +
+        '<div class="schema-panel-actions">' +
+          Object.entries(scenarios).map(([k, s]) =>
+            `<button class="scenario-btn ${k === scenario ? 'active':''}" type="button" aria-pressed="${k === scenario}" data-s="${k}"><span class="dot"></span>${esc(s.label)}</button>`).join('') +
+        '</div>';
     }
 
     /* panneau guidé */
@@ -551,6 +573,7 @@ const App = (() => {
       }
     });
     if (scenario) handle.setScenario(scenario);
+    if (scenarioBar) zone.appendChild(scenarioBar);
 
     /* détail d'élément (mode fiche) */
     const detail = document.createElement('div');
@@ -592,7 +615,11 @@ const App = (() => {
     if (scenarioBar){
       scenarioBar.querySelectorAll('.scenario-btn').forEach(b => b.addEventListener('click', () => {
         scenario = b.dataset.s;
-        scenarioBar.querySelectorAll('.scenario-btn').forEach(x => x.classList.toggle('active', x === b));
+        scenarioBar.querySelectorAll('.scenario-btn').forEach(x => {
+          const active = x === b;
+          x.classList.toggle('active', active);
+          x.setAttribute('aria-pressed', String(active));
+        });
         handle.setScenario(scenario);
         detail.innerHTML = ''; handle.setSelected(null);
         chips.querySelectorAll('.element-chip').forEach(c => c.classList.remove('sel'));

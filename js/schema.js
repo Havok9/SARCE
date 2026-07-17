@@ -453,6 +453,7 @@ const Schema = (() => {
       <path d="M143 504 L159 487 H585 L601 504Z" fill="#32383c"/>
       <rect x="158" y="75" width="428" height="414" rx="8" fill="url(#gx-screen)" stroke="#020303" stroke-width="4"/>
     </g>
+    <text x="370" y="70" text-anchor="middle" fill="#d7b91f" font-family="Chakra Petch, sans-serif" font-size="24" font-weight="700" letter-spacing="3">GIMAEX</text>
     <g class="gx-screen-copy" filter="url(#gx-screen-glow)">
       <rect x="171" y="89" width="402" height="34" rx="4" fill="#0a151d" stroke="#3c5969"/>
       <text x="184" y="111" fill="#d7e4e9" font-size="13" font-weight="700">GIMAEX FT 12.1</text>
@@ -533,8 +534,8 @@ const Schema = (() => {
       <text x="104" y="718" text-anchor="middle" class="gx-label"><tspan x="104">DÉVIDOIR G</tspan><tspan x="104" dy="10">MONTÉE · DESC.</tspan></text>
       <g id="gx-dev-g" filter="url(#gx-control-shadow)" style="transform-origin:104px 770px;transform-box:view-box;">
         <rect x="66" y="746" width="76" height="48" rx="12" fill="#15191b" stroke="#050606" stroke-width="4"/>
-        <path d="M80 774 Q104 742 128 774 L118 798 H90Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
-        <path d="M104 754 V786" stroke="#403100" stroke-width="5" stroke-linecap="round"/>
+        <path d="M73 779 C76 753 95 746 116 756 C132 764 141 778 132 790 C125 799 113 795 105 789 C94 801 72 796 73 779Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
+        <circle cx="126" cy="785" r="7" fill="#c9a51b" stroke="#6e5000" stroke-width="2"/>
       </g>
 
       <rect x="218" y="714" width="96" height="27" rx="3" class="gx-plate"/>
@@ -558,9 +559,9 @@ const Schema = (() => {
       <rect x="552" y="714" width="94" height="27" rx="3" class="gx-plate"/>
       <text x="599" y="726" text-anchor="middle" class="gx-label"><tspan x="599">ENROULEMENT</tspan><tspan x="599" dy="10">LDT</tspan></text>
       <g filter="url(#gx-control-shadow)">
-        <rect x="568" y="752" width="62" height="56" rx="9" fill="#080a0b" stroke="#262d31" stroke-width="4"/>
-        <rect x="578" y="760" width="42" height="38" rx="7" fill="url(#gx-black-knob)"/>
-        <path d="M586 773 H612" stroke="#d4dadd" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="599" cy="780" r="28" fill="url(#gx-metal)" stroke="#050606" stroke-width="4"/>
+        <circle cx="599" cy="780" r="20" fill="url(#gx-black-knob)"/>
+        <ellipse cx="592" cy="772" rx="6" ry="4" fill="#fff" opacity=".14"/>
         <circle id="gx-ldt-state" cx="628" cy="750" r="7" fill="#201913" stroke="#070808" stroke-width="2"/>
       </g>
     </g>
@@ -571,8 +572,8 @@ const Schema = (() => {
       <text x="104" y="858" text-anchor="middle" class="gx-label"><tspan x="104">DÉVIDOIR D</tspan><tspan x="104" dy="10">MONTÉE · DESC.</tspan></text>
       <g id="gx-dev-d" filter="url(#gx-control-shadow)" style="transform-origin:104px 910px;transform-box:view-box;">
         <rect x="66" y="886" width="76" height="48" rx="12" fill="#15191b" stroke="#050606" stroke-width="4"/>
-        <path d="M80 914 Q104 882 128 914 L118 938 H90Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
-        <path d="M104 894 V926" stroke="#403100" stroke-width="5" stroke-linecap="round"/>
+        <path d="M73 919 C76 893 95 886 116 896 C132 904 141 918 132 930 C125 939 113 935 105 929 C94 941 72 936 73 919Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
+        <circle cx="126" cy="925" r="7" fill="#c9a51b" stroke="#6e5000" stroke-width="2"/>
       </g>
 
       <rect x="223" y="850" width="86" height="24" rx="3" class="gx-plate"/>
@@ -594,10 +595,10 @@ const Schema = (() => {
       <rect x="535" y="839" width="100" height="35" rx="3" class="gx-plate"/>
       <text x="585" y="851" text-anchor="middle" class="gx-label" font-size="8"><tspan x="585">ISOLEMENT D'AIR</tspan><tspan x="585" dy="9">VANNES PNEUM.</tspan><tspan x="585" dy="9">AUTO · MANUEL</tspan></text>
       <g filter="url(#gx-control-shadow)">
-        <circle cx="585" cy="900" r="35" fill="url(#gx-metal)" stroke="#050606" stroke-width="4"/>
+        <ellipse cx="585" cy="900" rx="38" ry="31" fill="#111617" stroke="#050606" stroke-width="4"/>
         <g id="gx-iso-lever" style="transform-origin:585px 900px;transform-box:view-box;">
-          <path d="M585 900 L614 882" stroke="#111416" stroke-width="14" stroke-linecap="round"/>
-          <path d="M610 884 L620 878" stroke="#c8cfd2" stroke-width="6" stroke-linecap="round"/>
+          <path d="M553 908 C557 883 577 876 598 885 C614 892 625 905 617 917 C611 927 598 924 590 918 C578 929 555 925 553 908Z" fill="#1c7c42" stroke="#0b3f22" stroke-width="3"/>
+          <circle cx="611" cy="913" r="7" fill="#b8c0bd" stroke="#59615e" stroke-width="2"/>
         </g>
       </g>
     </g>
@@ -1863,17 +1864,29 @@ const Schema = (() => {
      --------------------------------------------------------- */
   const INTERACT = {};
   function schControls(stage){
-    const b = document.createElement('div'); b.className = 'sch-controls';
-    /* dans le flux normal, AVANT le schéma, pour ne pas masquer le dessin */
-    if (stage.parentElement) stage.parentElement.insertBefore(b, stage);
-    else stage.appendChild(b);
+    const panel = document.createElement('section');
+    panel.className = 'schema-bottom-panel schema-interaction-panel';
+    panel.innerHTML =
+      '<div class="schema-bottom-head"><span><b>Mode interactif</b><small>Manipulez les commandes et observez la réaction du système.</small></span><span class="schema-live-badge">ACTIF</span></div>' +
+      '<div class="schema-panel-tabs"><span class="active">Commandes</span><span>États système</span></div>';
+    const b = document.createElement('div');
+    b.className = 'sch-controls schema-panel-actions';
+    panel.appendChild(b);
+    /* Les commandes restent dans le flux, immédiatement au-dessus du schéma. */
+    if (stage.parentElement) stage.parentElement.insertBefore(panel, stage);
+    else stage.appendChild(panel);
     return b;
   }
   function schChip(bar, label, on, fn){
     const c = document.createElement('button');
+    c.type = 'button';
     c.className = 'scenario-btn' + (on ? ' active' : '');
     c.innerHTML = '<span class="dot"></span>' + label;
-    c.addEventListener('click', () => fn(c));
+    c.setAttribute('aria-pressed', String(!!on));
+    c.addEventListener('click', event => {
+      fn(c, event);
+      c.setAttribute('aria-pressed', String(c.classList.contains('active')));
+    });
     bar.appendChild(c); return c;
   }
   function schMsg(stage){
@@ -2046,7 +2059,7 @@ const Schema = (() => {
     const say = schMsg(stage);
     const bar = schControls(stage);
     bar.classList.add('gx-cabin-panel');
-    bar.innerHTML = '<div class="gx-condition-head"><span><b>CONDITIONS CABINE</b><small>Le pupitre arrière est disponible lorsque les trois conditions sont réunies.</small></span><span class="gx-system-state">EN ATTENTE</span></div>';
+    bar.innerHTML = '<div class="gx-condition-head"><span><b>CONDITIONS CABINE</b><small>Moteur, neutre, frein de parc et PDM conditionnent les fonctions pompe et mouvements.</small></span><span class="gx-system-state">EN ATTENTE</span></div>';
 
     const conditionRow = document.createElement('div');
     conditionRow.className = 'gx-condition-row';
@@ -2058,6 +2071,7 @@ const Schema = (() => {
     const pressureText = svg('gx-pressure');
     const systemState = bar.querySelector('.gx-system-state');
     const state = {
+      engineRunning: true,
       neutral: false,
       parkingBrake: false,
       pto: false,
@@ -2075,12 +2089,28 @@ const Schema = (() => {
     };
     let ptoHold = null;
 
+    const bEngine = schChip(conditionRow, 'Moteur en marche', true, () => {
+      if (state.emergency){
+        say('Réarmez d’abord l’arrêt d’urgence avant de redémarrer le moteur.', 'var(--red-hi)');
+        return;
+      }
+      cancelPtoHold(false);
+      state.engineRunning = !state.engineRunning;
+      if (!state.engineRunning) disengagePto('Moteur arrêté : PDM désengagée et mouvements stoppés.');
+      else {
+        state.rpm = 800;
+        update();
+        say('Moteur redémarré au régime de ralenti.', 'var(--ok)');
+      }
+    });
     const bNeutral = schChip(conditionRow, 'Boîte au neutre', false, () => {
+      cancelPtoHold(false);
       state.neutral = !state.neutral;
       if (!state.neutral && state.pto) disengagePto('PDM désengagée : la boîte n’est plus au neutre.');
       else update();
     });
     const bBrake = schChip(conditionRow, 'Frein de parc serré', false, () => {
+      cancelPtoHold(false);
       state.parkingBrake = !state.parkingBrake;
       if (!state.parkingBrake && state.pto) disengagePto('PDM désengagée : le frein de parc a été desserré.');
       else update();
@@ -2088,11 +2118,12 @@ const Schema = (() => {
     const bPto = schChip(conditionRow, 'PDM — maintenir pour engager', false, () => {});
 
     function cabinReady(){
-      return state.neutral && state.parkingBrake && state.pto && !state.emergency;
+      return state.engineRunning && state.neutral && state.parkingBrake && state.pto && !state.emergency;
     }
 
     function missingConditions(){
       const missing = [];
+      if (!state.engineRunning) missing.push('moteur en marche');
       if (!state.neutral) missing.push('boîte au neutre');
       if (!state.parkingBrake) missing.push('frein de parc');
       if (!state.pto) missing.push('PDM engagée');
@@ -2118,10 +2149,12 @@ const Schema = (() => {
       lamp.style.filter = on ? 'drop-shadow(0 0 9px ' + color + ')' : '';
     }
 
-    function setPressed(id, on){
+    function setPressed(id, on, tone){
       const control = hit(id);
       if (!control) return;
-      control.classList.toggle('control-active', on);
+      control.classList.toggle('control-active', on && !tone);
+      control.classList.toggle('warning-active', on && tone === 'warning');
+      control.classList.toggle('danger-active', on && tone === 'danger');
       control.setAttribute('aria-pressed', String(!!on));
     }
 
@@ -2131,6 +2164,8 @@ const Schema = (() => {
 
     function update(){
       const ready = cabinReady();
+      bEngine.classList.toggle('active', state.engineRunning);
+      bEngine.classList.toggle('control-active', state.engineRunning);
       bNeutral.classList.toggle('active', state.neutral);
       bNeutral.classList.toggle('control-active', state.neutral);
       bBrake.classList.toggle('active', state.parkingBrake);
@@ -2138,6 +2173,8 @@ const Schema = (() => {
       bPto.classList.toggle('active', state.pto);
       bPto.classList.toggle('control-active', state.pto);
       bPto.innerHTML = '<span class="dot"></span>' + (state.pto ? 'PDM engagée — appuyer pour couper' : 'PDM — maintenir pour engager');
+      [bEngine, bNeutral, bBrake, bPto].forEach(button =>
+        button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
 
       if (systemState){
         systemState.textContent = state.emergency ? 'ARRÊT URGENCE' : ready ? 'PRÊT' : 'EN ATTENTE';
@@ -2148,6 +2185,8 @@ const Schema = (() => {
       if (rpmText){
         rpmText.textContent = state.emergency
           ? 'ARRÊT D’URGENCE — MOTEUR COUPÉ'
+          : !state.engineRunning
+            ? 'MOTEUR À L’ARRÊT · PDM non engagée'
           : state.pto
             ? state.rpm + ' tr/min · PDM engagée'
             : state.rpm + ' tr/min · PDM non engagée';
@@ -2184,21 +2223,22 @@ const Schema = (() => {
       }
 
       setPressed('ecl-pompe', state.pumpLight);
-      setPressed('repli', state.repliAlarm);
+      setPressed('repli', state.repliAlarm, 'warning');
       setPressed('ecl-tb', state.panelLight);
       setPressed('dev-g', state.leftReel !== 0);
       setPressed('regul', state.regulation);
-      setPressed('au', state.emergency);
+      setPressed('au', state.emergency, 'danger');
       setPressed('ldt', state.ldt);
       setPressed('dev-d', state.rightReel !== 0);
-      setPressed('iso-air', !state.airAutomatic);
+      setPressed('iso-air', !state.airAutomatic, 'warning');
       stage.classList.toggle('gx-emergency', state.emergency);
     }
 
     function disengagePto(message){
       state.pto = false;
       state.regulation = false;
-      state.rpm = 800;
+      state.rpm = state.engineRunning ? 800 : 0;
+      state.panelLight = false;
       state.ldt = false;
       state.leftReel = 0;
       state.rightReel = 0;
@@ -2208,6 +2248,7 @@ const Schema = (() => {
 
     function startPtoHold(event){
       if (event && event.type === 'keydown' && event.repeat) return;
+      if (event && event.type === 'pointerdown' && (event.isPrimary === false || event.button !== 0)) return;
       if (state.emergency){
         say('Impossible d’engager la PDM : arrêt d’urgence enclenché.', 'var(--red-hi)');
         return;
@@ -2216,31 +2257,42 @@ const Schema = (() => {
         disengagePto('PDM désengagée. Le pupitre revient au régime de ralenti.');
         return;
       }
-      if (!state.neutral || !state.parkingBrake){
-        say('Refus PDM : placez la boîte au neutre et serrez le frein de parc.', 'var(--red-hi)');
+      if (!state.engineRunning || !state.neutral || !state.parkingBrake){
+        say('Refus PDM : moteur en marche, boîte au neutre et frein de parc serré sont obligatoires.', 'var(--red-hi)');
         return;
+      }
+      if (event?.pointerId != null && bPto.setPointerCapture){
+        try { bPto.setPointerCapture(event.pointerId); } catch (_) {}
       }
       say('Maintenez la commande PDM…', 'var(--cyan)');
       clearTimeout(ptoHold);
       ptoHold = setTimeout(() => {
+        ptoHold = null;
+        if (!state.engineRunning || !state.neutral || !state.parkingBrake || state.emergency){
+          say('Engagement PDM annulé : une condition de sécurité a changé.', 'var(--red-hi)');
+          update();
+          return;
+        }
         state.pto = true;
         state.rpm = 800;
         update();
         say('PDM engagée : état système prêt, commandes arrière disponibles.', 'var(--ok)');
-        ptoHold = null;
       }, 800);
     }
 
-    function cancelPtoHold(){
+    function cancelPtoHold(announce = true){
       if (ptoHold){
         clearTimeout(ptoHold);
         ptoHold = null;
-        say('Appui trop court : maintenez la commande PDM pendant 0,8 s.', 'var(--orange)');
+        if (announce) say('Appui trop court : maintenez la commande PDM pendant 0,8 s.', 'var(--orange)');
       }
     }
 
     bPto.addEventListener('pointerdown', startPtoHold);
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(name => bPto.addEventListener(name, cancelPtoHold));
+    bPto.addEventListener('lostpointercapture', cancelPtoHold);
+    bPto.addEventListener('blur', () => cancelPtoHold(false));
+    bPto.addEventListener('contextmenu', event => event.preventDefault());
     bPto.addEventListener('keydown', event => {
       if (event.key === ' ' || event.key === 'Enter'){
         event.preventDefault();
@@ -2310,6 +2362,7 @@ const Schema = (() => {
 
     const ldt = hit('ldt');
     function startLdt(event){
+      if (event && event.type === 'pointerdown' && (event.isPrimary === false || event.button !== 0)) return;
       if (!requireReady()) return;
       if (!state.airAutomatic){
         say('Enroulement impossible : alimentation pneumatique isolée.', 'var(--red-hi)');
@@ -2339,6 +2392,8 @@ const Schema = (() => {
     ldt?.addEventListener('keyup', event => {
       if (event.key === ' ' || event.key === 'Enter') stopLdt();
     });
+    ldt?.addEventListener('blur', stopLdt);
+    ldt?.addEventListener('contextmenu', event => event.preventDefault());
 
     hit('iso-air')?.addEventListener('click', () => {
       state.airAutomatic = !state.airAutomatic;
@@ -2356,15 +2411,17 @@ const Schema = (() => {
       ptoHold = null;
       if (state.emergency){
         state.emergency = false;
-        state.rpm = 800;
+        state.rpm = 0;
         update();
-        say('Arrêt d’urgence réarmé. La PDM reste désengagée : rétablissez les conditions cabine.', 'var(--orange)');
+        say('Arrêt d’urgence réarmé. Le moteur reste arrêté : redémarrez-le avant de réengager la PDM.', 'var(--orange)');
         return;
       }
       state.emergency = true;
+      state.engineRunning = false;
       state.pto = false;
       state.regulation = false;
       state.rpm = 0;
+      state.panelLight = false;
       state.ldt = false;
       state.leftReel = 0;
       state.rightReel = 0;
@@ -2654,6 +2711,7 @@ const Schema = (() => {
     stage.className = ['schema-stage', def.className || '', opts.mode ? 'schema-mode-' + opts.mode : '']
       .filter(Boolean).join(' ');
     stage.dataset.mode = opts.mode || 'fiche';
+    stage.dataset.schemaId = schemaId;
     stage.style.aspectRatio = def.aspect;
     stage.innerHTML = def.svg;
     container.appendChild(stage);
@@ -2678,7 +2736,7 @@ const Schema = (() => {
       }
       b.dataset.id = el.id;
       if (el.type) b.dataset.type = el.type;
-      b.title = el.label;
+      if (!['drill', 'ident', 'test'].includes(opts.mode)) b.title = el.label;
       b.setAttribute('aria-label', el.n + ' — ' + el.label);
       b.addEventListener('click', () => opts.onSelect && opts.onSelect(el.id));
       stage.appendChild(b);
