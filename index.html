@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formation Pompier — SDIS 33</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<!-- ============ ÉCRAN DE CONNEXION (profils locaux + PIN) ============ -->
+<div id="login-screen" class="login-screen" hidden>
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="logo-badge">SP</div>
+      <div>
+        <div class="login-title">FORMATION POMPIER</div>
+        <div class="login-sub">RÉVISION TECHNIQUE</div>
+      </div>
+    </div>
+    <div class="hazard-stripe"></div>
+    <div class="login-label">Profils enregistrés</div>
+    <div id="profile-chips" class="profile-chips"></div>
+    <div class="login-form">
+      <div id="login-mode-title" class="login-form-title">Connexion</div>
+      <label class="field-label" for="login-name">NOM</label>
+      <input id="login-name" type="text" placeholder="ex. Julien" autocomplete="off">
+      <label class="field-label" for="login-pin">CODE PIN (4 chiffres)</label>
+      <input id="login-pin" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
+      <div id="login-error" class="login-error" hidden></div>
+      <button id="login-submit" class="btn btn-red btn-block">Se connecter</button>
+      <button id="login-toggle" class="btn-ghost btn-block">Créer un nouveau profil</button>
+    </div>
+    <div class="login-foot">Progression stockée sur cet appareil.<br>Contenu issu des cours et GDO/GTO — SDIS 33.</div>
+  </div>
+</div>
+
+<!-- ============ APPLICATION ============ -->
+<div id="app" class="app" hidden>
+
+  <!-- Sidebar : arbre de navigation -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-head">
+      <div class="logo-badge logo-sm">SP</div>
+      <div class="sidebar-brand">FORMATION<br><span>POMPIER · SDIS 33</span></div>
+    </div>
+    <div class="sidebar-search">
+      <input id="search-input" type="search" placeholder="Rechercher…  (Ctrl+K)" autocomplete="off">
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <nav id="nav-tree" class="nav-tree"></nav>
+    <div class="sidebar-foot">
+      <button id="btn-logout" class="btn-ghost"><span id="foot-user"></span> · Déconnexion</button>
+    </div>
+  </aside>
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+
+  <!-- Zone principale -->
+  <div class="main">
+    <header class="topbar">
+      <button id="btn-menu" class="btn-icon" aria-label="Menu">☰</button>
+      <div id="breadcrumb" class="breadcrumb"></div>
+      <div class="topbar-right">
+        <div class="pomo" id="pomo" title="Pomodoro 25 min — cliquez pour démarrer/pause">
+          <button id="pomo-toggle" class="pomo-time">25:00</button>
+          <div id="pomo-dots" class="pomo-dots"></div>
+        </div>
+        <button id="btn-focus" class="btn-icon-sm" title="Mode focus">◎</button>
+        <button id="btn-session" class="btn btn-orange btn-sm">◆ Continuer la session</button>
+      </div>
+    </header>
+    <main id="view" class="view"></main>
+  </div>
+</div>
+
+<!-- Moteur (l'ordre compte : données → progression → composants → app) -->
+<script src="data/ari-data.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/schema.js"></script>
+<script src="js/ari.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4671 @@
+{
+  "domains": [
+    {
+      "id": "engins",
+      "title": "Matériel · Engin-pompe",
+      "color": "#3aa8c9",
+      "icon": "⚙",
+      "tag": "Incendie › Matériel › Engin-pompe — le FPT SR 4 000 GIMAEX du SDIS 33 : nomenclature, circuit d'eau, chaîne cinématique, pompe, mousse, tableaux de commande."
+    },
+    {
+      "id": "incendie",
+      "title": "Incendie",
+      "color": "#e74c3c",
+      "icon": "▲",
+      "tag": "Système feu, phénomènes thermiques, extinction, ventilation, sauvetages, ARI, LSPCC, échelles — la lutte contre l'incendie."
+    },
+    {
+      "id": "ops",
+      "title": "Guides opérationnels",
+      "color": "#e67e22",
+      "icon": "⇶",
+      "tag": "Procédures et guides opérationnels SDIS 33 : radio, FLI, NOVI, risque électrique, nautique, opérations multiples."
+    },
+    {
+      "id": "rch",
+      "title": "Risques RCH / RAD",
+      "color": "#9b59b6",
+      "icon": "☣",
+      "tag": "Risques chimiques, radiologiques et infectieux."
+    },
+    {
+      "id": "orsec",
+      "title": "ORSEC & gestion de crise",
+      "color": "#d4ac2b",
+      "icon": "⚑",
+      "tag": "Dispositions ORSEC, chaîne de commandement, évacuations massives, TMD-TMR."
+    },
+    {
+      "id": "ssuap",
+      "title": "SSUAP",
+      "color": "#27ae60",
+      "icon": "✚",
+      "tag": "Secours et soins d'urgence aux personnes."
+    }
+  ],
+  "modules": [
+    {
+      "id": "fpt-vue",
+      "domain": "engins",
+      "icon": "▣",
+      "schema": "fpt-profil",
+      "title": "Vue d’ensemble & nomenclature",
+      "tag": "Reconnaître le FPT SR 4 000 GIMAEX et ses grands ensembles. Cliquez sur le véhicule pour ouvrir chaque module.",
+      "tags": [
+        "FPT",
+        "GIMAEX",
+        "nomenclature"
+      ],
+      "links": [
+        "circuit-eau",
+        "chaine",
+        "pompe",
+        "mousse",
+        "tableaux",
+        "mat-echelles"
+      ],
+      "keypoints": [
+        {
+          "t": "Type de véhicule",
+          "d": "Fourgon Pompe Tonne – Secours Routier (FPT SR 4 000), environnement routier / urbain. SDIS 33."
+        },
+        {
+          "t": "Châssis",
+          "d": "RENAULT TRUCKS D15 P4x2 FPT 280 E6 — empattement 3 800 mm. Boîte OPTITRONIC 6AS 1000."
+        },
+        {
+          "t": "Dimensions & poids",
+          "d": "PTAC 16 000 kg · longueur 7 794 mm · largeur 2 550 mm · hauteur 3 178,5 mm en charge (+50 mm à vide)."
+        },
+        {
+          "t": "Cuves",
+          "d": "Eau : 3 800 L · mouillant : 200 L — polyéthylène haute densité."
+        },
+        {
+          "t": "Pompe",
+          "d": "WATEROUS modèle S 200 G, amorçage automatique à pistons (dès que la pression de refoulement < 0,5 bar). Régime optimal d’amorçage ≈ 1 000 tr/min."
+        },
+        {
+          "t": "Prise de mouvement",
+          "d": "NL/10B — 270 Nm — rapport 2,03."
+        },
+        {
+          "t": "Plage d’utilisation",
+          "d": "−5 °C à +30 °C jusqu’à 90 % d’humidité · pente maxi 14° · dévers statique maxi 32°."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Structure et cuves (p. 7)",
+          "color": "#3aa8c9",
+          "facts": [
+            {
+              "t": "Cuve monobloc PEHD",
+              "d": "Forme parallélépipédique, 3 800 L. Volume séparé par une cloison transversale servant de BRISE-LAMES (2 compartiments)."
+            },
+            {
+              "t": "Trou d’homme",
+              "d": "En partie supérieure : permet la visite de la cuve."
+            },
+            {
+              "t": "Cuve mouillant",
+              "d": "200 L en PEHD, alimentée par le système de dosage CTD."
+            }
+          ]
+        },
+        {
+          "title": "Compartiments et organes (p. 8-10) — emplacement & fonction",
+          "color": "#3aa8c9",
+          "facts": [
+            {
+              "t": "Compartiment pompe",
+              "d": "À l’arrière : pompe WATEROUS, collecteurs, vannes — détails au module Circuit d’eau."
+            },
+            {
+              "t": "Dévidoir PS",
+              "d": "Enroulement électrique, 40 m de tuyau semi-rigide + lance 150 L/min. Manivelle de secours en cas de panne."
+            },
+            {
+              "t": "Dévidoirs mobiles",
+              "d": "2 sur le pare-chocs arrière, relevage pneumatique (norme EN1846-3), bras repliables."
+            },
+            {
+              "t": "Régulation",
+              "d": "Régulation électronique de pression proportionnelle — détails au module Pompe & régulation."
+            },
+            {
+              "t": "Production de mousse",
+              "d": "Système CAMÉLÉON 24L (CTD) — détails au module Production de mousse."
+            },
+            {
+              "t": "Mât d’éclairage",
+              "d": "TEKLITE TF340 NT/3, 4,95 m déployé, 4 projecteurs LED 55 W — détails au module Mât & porte-échelles."
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "cabine",
+          "n": 1,
+          "x": 82,
+          "y": 52,
+          "label": "Cabine",
+          "role": "Poste de conduite : tableau cabine, coupe-batteries, commande PDM, 2 tons. → module Tableaux de commande."
+        },
+        {
+          "id": "cuve",
+          "n": 2,
+          "x": 57,
+          "y": 42,
+          "label": "Cuve à eau 3 800 L",
+          "role": "PEHD monobloc, cloison brise-lames, trou d’homme en partie supérieure."
+        },
+        {
+          "id": "mouillant",
+          "n": 3,
+          "x": 44,
+          "y": 36,
+          "label": "Cuve mouillant 200 L",
+          "role": "Réserve d’additif du système CTD. → module Production de mousse."
+        },
+        {
+          "id": "cpompe",
+          "n": 4,
+          "x": 16,
+          "y": 58,
+          "label": "Compartiment pompe",
+          "role": "Pompe WATEROUS S 200 G, vannes, collecteurs. → modules Circuit d’eau et Pompe."
+        },
+        {
+          "id": "devps",
+          "n": 5,
+          "x": 24,
+          "y": 40,
+          "label": "Dévidoir PS",
+          "role": "40 m semi-rigide + lance 150 L/min, enroulement électrique."
+        },
+        {
+          "id": "devmob",
+          "n": 6,
+          "x": 7,
+          "y": 77,
+          "label": "Dévidoirs mobiles",
+          "role": "2 dévidoirs sur pare-chocs arrière, relevage pneumatique."
+        },
+        {
+          "id": "pe",
+          "n": 7,
+          "x": 38,
+          "y": 14,
+          "label": "Porte-échelles basculant",
+          "role": "Semi-automatique, en partie gauche. → module Mât & porte-échelles."
+        },
+        {
+          "id": "mat",
+          "n": 8,
+          "x": 62,
+          "y": 12,
+          "label": "Mât d’éclairage",
+          "role": "TEKLITE 4,95 m, 4 projecteurs LED 55 W, à l’avant de la structure."
+        },
+        {
+          "id": "chassis",
+          "n": 9,
+          "x": 70,
+          "y": 78,
+          "label": "Châssis Renault D15",
+          "role": "Longerons + traverses. → module Chaîne cinématique."
+        }
+      ]
+    },
+    {
+      "id": "circuit-eau",
+      "domain": "engins",
+      "icon": "≋",
+      "title": "Circuit d’eau : alimentation & aspiration",
+      "tag": "Suivre le trajet de l’eau : niveau simple (environnement de la pompe) et niveau détaillé (28 repères du schéma hydraulique GIMAEX p. 9).",
+      "tags": [
+        "vannes",
+        "aspiration",
+        "refoulement",
+        "purges"
+      ],
+      "links": [
+        "fpt-vue",
+        "pompe",
+        "mousse",
+        "hydro",
+        "tableaux"
+      ],
+      "views": [
+        {
+          "label": "Niveau simple",
+          "schema": "env",
+          "elements": [
+            {
+              "id": "devid",
+              "n": 1,
+              "x": 16,
+              "y": 23.3,
+              "label": "Dévidoir tournant",
+              "role": "Enroule le tuyau semi-rigide alimenté par le refoulement de la pompe."
+            },
+            {
+              "id": "ldt",
+              "n": 2,
+              "x": 9,
+              "y": 37.8,
+              "label": "LDT",
+              "role": "Lance du dévidoir tournant, pour une attaque rapide."
+            },
+            {
+              "id": "tonne",
+              "n": 3,
+              "x": 52,
+              "y": 27.8,
+              "label": "Tonne (cuve 3 800 L)",
+              "role": "Réserve embarquée. Alimente la pompe en attaque directe."
+            },
+            {
+              "id": "iso",
+              "n": 4,
+              "x": 47,
+              "y": 55.6,
+              "label": "Vanne d’isolation pompe-tonne (rep 1)",
+              "role": "MOTORISÉE sur le GIMAEX : s’ouvre automatiquement à l’enclenchement de la PDM (si les aspirations extérieures sont fermées), se ferme à l’ouverture d’une aspiration extérieure ou au désenclenchement de la PDM."
+            },
+            {
+              "id": "pompe",
+              "n": 5,
+              "x": 79,
+              "y": 76.7,
+              "label": "Pompe WATEROUS S 200 G",
+              "role": "Crée et maintient la pression définie par le conducteur."
+            },
+            {
+              "id": "coll",
+              "n": 6,
+              "x": 70,
+              "y": 67.8,
+              "label": "Collecteur de refoulement",
+              "role": "Répartit l’eau sous pression vers les refoulements."
+            },
+            {
+              "id": "refoul",
+              "n": 7,
+              "x": 44,
+              "y": 84.4,
+              "label": "Refoulements",
+              "role": "DN 100, DN 65, Eau/Mousse DN 40 et DN 65."
+            },
+            {
+              "id": "alim",
+              "n": 8,
+              "x": 62,
+              "y": 92.8,
+              "label": "Vanne d’aspiration extérieure (rep 2)",
+              "role": "Son ouverture déclenche la FERMETURE de la vanne aspiration cuve (rep 1) — couplée à un clapet anti-retour pour éviter le remplissage de la cuve par la tuyauterie cuve/pompe."
+            },
+            {
+              "id": "retour",
+              "n": 9,
+              "x": 90,
+              "y": 62.2,
+              "label": "Retour cuve / sauterelle (rep 8)",
+              "role": "Remplissage de la cuve par la pompe : limiter à 5 bar, ralentir à 90 % et attendre l’écoulement par la surverse. Ouvrir légèrement en attente pour éviter l’échauffement."
+            }
+          ],
+          "scenarios": {
+            "cuve": {
+              "label": "Sur citerne",
+              "open": [
+                "iso",
+                "pompe",
+                "tonne",
+                "coll",
+                "refoul"
+              ],
+              "closed": [
+                "alim",
+                "retour"
+              ]
+            },
+            "aspi": {
+              "label": "Source sans pression",
+              "open": [
+                "alim",
+                "pompe",
+                "coll",
+                "refoul"
+              ],
+              "closed": [
+                "iso",
+                "retour"
+              ]
+            },
+            "hydrant": {
+              "label": "Source sous pression",
+              "open": [
+                "alim",
+                "pompe",
+                "coll",
+                "refoul"
+              ],
+              "partial": [
+                "retour"
+              ],
+              "closed": [
+                "iso"
+              ]
+            }
+          }
+        },
+        {
+          "label": "Niveau détaillé (28 repères)",
+          "schema": "gimaex-hydro",
+          "elements": [
+            {
+              "id": "e1",
+              "n": 1,
+              "x": 50,
+              "y": 38,
+              "label": "Vanne motorisée aspiration cuve",
+              "role": "S’ouvre à l’enclenchement de la PDM (si rep 2 fermées), se ferme à l’ouverture de rep 2 ou au désenclenchement. Dépannage manuel possible (interrupteur mode manuel + 1/4 de tour)."
+            },
+            {
+              "id": "e2",
+              "n": 2,
+              "x": 18,
+              "y": 62,
+              "label": "Vanne aspiration extérieure",
+              "role": "À ouvrir pour toute source externe (sous pression ou aspiration). Son ouverture ferme la vanne rep 1."
+            },
+            {
+              "id": "e3",
+              "n": 3,
+              "x": 38,
+              "y": 52,
+              "label": "Vanne amorçage pompe",
+              "role": "Circuit de l’amorceur à pistons — amorçage automatique dès que la pression de refoulement < 0,5 bar."
+            },
+            {
+              "id": "e4",
+              "n": 4,
+              "x": 38,
+              "y": 65,
+              "label": "Pompe",
+              "role": "WATEROUS S 200 G, entraînée par la PDM."
+            },
+            {
+              "id": "e5",
+              "n": 5,
+              "x": 38,
+              "y": 82,
+              "label": "Vanne de vidange pompe",
+              "role": "Purge du corps de pompe (mise hors service / gel, p. 27)."
+            },
+            {
+              "id": "e6",
+              "n": 6,
+              "x": 63,
+              "y": 36,
+              "label": "Vanne de vidange cuve eau",
+              "role": "Vidange complète de la cuve en cas de stockage prolongé par temps très négatif."
+            },
+            {
+              "id": "e7",
+              "n": 7,
+              "x": 75,
+              "y": 50,
+              "label": "Vanne remplissage cuve par l’extérieur",
+              "role": "Remplissage de la cuve depuis un hydrant sans passer par la pompe."
+            },
+            {
+              "id": "e8",
+              "n": 8,
+              "x": 55,
+              "y": 48,
+              "label": "Vanne remplissage cuve par la pompe (sauterelle)",
+              "role": "Retour cuve : limiter à 5 bar, surveiller le niveau, ralentir à 90 %."
+            },
+            {
+              "id": "e9",
+              "n": 9,
+              "x": 78,
+              "y": 65,
+              "label": "Vanne refoulement DN 100",
+              "role": "Départ gros débit."
+            },
+            {
+              "id": "e10",
+              "n": 10,
+              "x": 84,
+              "y": 65,
+              "label": "Vanne refoulement DN 65",
+              "role": "Départ standard."
+            },
+            {
+              "id": "e11",
+              "n": 11,
+              "x": 90,
+              "y": 65,
+              "label": "Vanne refoulement Eau/Mousse DN 40",
+              "role": "Départ eau ou solution moussante."
+            },
+            {
+              "id": "e12",
+              "n": 12,
+              "x": 96,
+              "y": 65,
+              "label": "Refoulement Eau/Mousse DN 65",
+              "role": "Départ eau ou solution moussante."
+            },
+            {
+              "id": "e13",
+              "n": 13,
+              "x": 84,
+              "y": 78,
+              "label": "Vanne Eau/Mousse dévidoir PS",
+              "role": "Alimente le dévidoir de premier secours (purge : ouvrir lance + rep 13 + purge rep 28)."
+            },
+            {
+              "id": "e14",
+              "n": 14,
+              "x": 50,
+              "y": 30,
+              "label": "Clapet anti-retour cuve eau",
+              "role": "Empêche le remplissage de la cuve par la tuyauterie cuve/pompe en alimentation extérieure."
+            },
+            {
+              "id": "e15",
+              "n": 15,
+              "x": 24,
+              "y": 22,
+              "label": "Vanne aspiration additif",
+              "role": "Prélèvement du mouillant vers la pompe de dosage."
+            },
+            {
+              "id": "e16",
+              "n": 16,
+              "x": 30,
+              "y": 22,
+              "label": "Vanne d’isolement cuve additif",
+              "role": "À laisser OUVERTE en utilisation normale."
+            },
+            {
+              "id": "e17",
+              "n": 17,
+              "x": 24,
+              "y": 34,
+              "label": "Vanne vidange additif",
+              "role": "Vidange de la cuve de mouillant."
+            },
+            {
+              "id": "e18",
+              "n": 18,
+              "x": 30,
+              "y": 34,
+              "label": "Vanne rinçage pompe additif",
+              "role": "Rinçage du circuit de dosage après usage."
+            },
+            {
+              "id": "e19",
+              "n": 19,
+              "x": 10,
+              "y": 28,
+              "label": "Aspiration extérieure GFR",
+              "role": "Raccord pare-chocs pour bidon externe (canne plongeuse)."
+            },
+            {
+              "id": "e20",
+              "n": 20,
+              "x": 17,
+              "y": 22,
+              "label": "Vanne de purge + filtre alimentation additif",
+              "role": "Purge et filtration de la ligne additif."
+            },
+            {
+              "id": "e21",
+              "n": 21,
+              "x": 17,
+              "y": 34,
+              "label": "Vanne amorçage pompe additif",
+              "role": "Amorçage de la pompe de dosage CTD."
+            },
+            {
+              "id": "e22",
+              "n": 22,
+              "x": 66,
+              "y": 65,
+              "label": "Débitmètre eau",
+              "role": "Mesure le débit d’eau des refoulements mousse (affiché sur l’écran)."
+            },
+            {
+              "id": "e23",
+              "n": 23,
+              "x": 72,
+              "y": 65,
+              "label": "Injecteur additif",
+              "role": "Point d’injection du mouillant dans l’eau (dosage CTD)."
+            },
+            {
+              "id": "e24",
+              "n": 24,
+              "x": 52,
+              "y": 22,
+              "label": "Clapet anti-retour additif",
+              "role": "Empêche l’eau de remonter dans le circuit additif."
+            },
+            {
+              "id": "e25",
+              "n": 25,
+              "x": 38,
+              "y": 22,
+              "label": "Vanne remplissage cuve additif",
+              "role": "Remplissage de la cuve de mouillant par la pompe CTD."
+            },
+            {
+              "id": "e26",
+              "n": 26,
+              "x": 44,
+              "y": 78,
+              "label": "Clapet thermique",
+              "role": "Valve de sécurité s’ouvrant au-delà de 50 °C : refoule l’eau vers le sol pour protéger la pompe."
+            },
+            {
+              "id": "e27",
+              "n": 27,
+              "x": 52,
+              "y": 82,
+              "label": "Purge pneumatique CTD",
+              "role": "Purge du circuit de dosage."
+            },
+            {
+              "id": "e28",
+              "n": 28,
+              "x": 60,
+              "y": 82,
+              "label": "Purge pneumatique",
+              "role": "Purge du dévidoir PS et des tuyauteries (rep 28)."
+            }
+          ]
+        }
+      ],
+      "keypoints": [
+        {
+          "t": "Mise en service (p. 17)",
+          "d": "Établir si nécessaire une ligne d’alimentation et/ou de refoulement · fermer les vannes de refoulement rep 8 à 13 · enclencher la PDM."
+        },
+        {
+          "t": "Sur citerne",
+          "d": "Vannes d’aspiration extérieures FERMÉES → enclencher la PDM : la vanne aspiration cuve (rep 1) s’ouvre automatiquement."
+        },
+        {
+          "t": "Source sous pression",
+          "d": "Alimentation branchée sur le nez de pompe → ouvrir la vanne rep 2 (rep 1 se ferme) → enclencher la PDM."
+        },
+        {
+          "t": "Source sans pression (aspiration)",
+          "d": "Ligne d’aspiration branchée → ouvrir rep 2 → PDM. Si pression < 0,5 bar, l’amorceur à pistons se met en action AUTOMATIQUEMENT. Régime ≈ 1 000 tr/min ; dès 0,5 bar atteint, baisser le régime puis ouvrir les refoulements."
+        },
+        {
+          "t": "Bascule cuve ⇄ extérieur",
+          "d": "Il est IMPÉRATIF de couper la régulation de pression lors de la bascule."
+        },
+        {
+          "t": "Arrêt de la pompe",
+          "d": "Baisser le régime → désenclencher la PDM (fermeture automatique de rep 1) → fermer aspirations et refoulements."
+        },
+        {
+          "t": "Pompe sans refoulement ouvert",
+          "d": "Échauffement : voyant rouge à 54 °C (gris à 35 °C), valve thermique à 50 °C. En attente, ouvrir légèrement le retour cuve (rep 8). Régulation impossible tant que le voyant est rouge."
+        },
+        {
+          "t": "Amorçage défectueux",
+          "d": "Ne pas prolonger au-delà d’1 minute : anomalie sur le circuit (étanchéité, crépine, purges ouvertes…)."
+        },
+        {
+          "t": "Purges par temps froid (p. 27)",
+          "d": "Dévidoir PS : lance + rep 13 + purge rep 28. Pompe/tuyauteries : refoulements 9-12 + purge pompe rep 5 + aspirations rep 2, puis cran de pompe 15 s pour vider l’amorceur. Vannes à 45° pour remisage."
+        },
+        {
+          "t": "Vidange de la cuve",
+          "d": "Purger pompe/tuyauteries → ouvrir vidange cuve rep 6 → fermer rep 2 → cran de pompe 15 s → tout refermer."
+        }
+      ]
+    },
+    {
+      "id": "chaine",
+      "domain": "engins",
+      "icon": "⛓",
+      "schema": "chaine-fpt",
+      "title": "Chaîne cinématique",
+      "tag": "Du moteur aux roues et vers la pompe — vue de dessus du châssis d’un FPT urbain (cours SDIS 33 p. 3).",
+      "tags": [
+        "moteur",
+        "PDM",
+        "transmission",
+        "châssis"
+      ],
+      "links": [
+        "fpt-vue",
+        "pompe",
+        "annexes",
+        "circuit-eau"
+      ],
+      "keypoints": [
+        {
+          "t": "Définition",
+          "d": "La chaîne cinématique est l’ensemble des organes du véhicule permettant son mouvement : moteur, embrayage, boîte de vitesses, transmission et roues."
+        },
+        {
+          "t": "Cheminement propulsion",
+          "d": "Moteur → embrayage → boîte de vitesses → arbre de transmission → pont arrière → demi-arbres → roues."
+        },
+        {
+          "t": "Bifurcation pompe",
+          "d": "Prise de mouvement → arbre de transmission de pompe → pompe centrifuge."
+        },
+        {
+          "t": "PDM du GIMAEX",
+          "d": "NL/10B, 270 Nm, rapport 2,03. Enclenchement : NEUTRE + frein de parc, appui long. Son enclenchement ouvre la vanne aspiration cuve."
+        }
+      ],
+      "sections": [
+        {
+          "title": "A · Châssis",
+          "color": "#8a94b8",
+          "facts": [
+            {
+              "t": "Définition",
+              "d": "Ossature du véhicule recevant les organes mécaniques, la cabine et l’équipement incendie. Composé de LONGERONS et de TRAVERSES assemblés par soudure, boulonnage ou rivetage."
+            },
+            {
+              "t": "Interdiction absolue",
+              "d": "Il est formellement interdit de souder ou de percer un châssis (affaiblissement, déformation)."
+            },
+            {
+              "t": "Châssis rigide — celui du FPT",
+              "d": "N’autorise aucune déformation : débattement limité, seules les suspensions gardent les roues au contact en terrain accidenté. Le FPT étudié utilise un châssis rigide."
+            },
+            {
+              "t": "Châssis articulé",
+              "d": "Deux demi-châssis reliés par une articulation (±15° de déplacement angulaire)."
+            },
+            {
+              "t": "Châssis souple",
+              "d": "Se déforme pour faciliter le contact roues/sol lors des franchissements."
+            }
+          ]
+        },
+        {
+          "title": "B · Moteur (+ turbo-compresseur)",
+          "color": "#c0392b",
+          "facts": [
+            {
+              "t": "Fonction",
+              "d": "Transforme l’énergie thermique issue de la combustion en énergie mécanique."
+            },
+            {
+              "t": "Vocabulaire",
+              "d": "Piston, bielle, vilebrequin, soupapes, collecteurs d’admission et d’échappement, chambre de combustion."
+            },
+            {
+              "t": "Couple moteur",
+              "d": "Capacité à accélérer ; couple maximum à un régime précis. Un couple élevé à bas régime permet de décoller un véhicule arrêté en forte pente."
+            },
+            {
+              "t": "Cycle 4 temps (Beau de Rochas)",
+              "d": "1 ADMISSION (piston descend, soupape adm. ouverte) · 2 COMPRESSION (soupapes fermées) · 3 COMBUSTION/DÉTENTE (injection de gazole dans l’air comprimé → combustion instantanée, le piston est repoussé) · 4 ÉCHAPPEMENT. 4 courses de piston = 2 tours de vilebrequin."
+            },
+            {
+              "t": "Lubrification",
+              "d": "L’huile du carter est aspirée par la pompe à huile, filtrée, puis propulsée vers arbre à cames, soupapes, pistons, bielles, vilebrequin et turbo. Elle limite l’usure et refroidit."
+            },
+            {
+              "t": "Turbo-compresseur (sous-partie)",
+              "d": "Turbine dans les gaz d’échappement reliée à un compresseur à l’admission (+ échangeur). Précautions : jamais d’arrêt moteur après un coup d’accélérateur, laisser tourner au ralenti, pas d’accélération brutale à froid, filtres à air et à huile en bon état."
+            }
+          ]
+        },
+        {
+          "title": "C · Embrayage · D · Boîte de vitesses",
+          "color": "#3aa8c9",
+          "facts": [
+            {
+              "t": "Embrayage",
+              "d": "Entre moteur et boîte : transmet ou interrompt le mouvement du moteur vers la boîte de vitesses."
+            },
+            {
+              "t": "Boîte de vitesses",
+              "d": "Modifie le rapport entre régime moteur et vitesse du véhicule. Sur le GIMAEX : OPTITRONIC 6AS 1000 robotisée. La prise de mouvement y est accouplée."
+            }
+          ]
+        },
+        {
+          "title": "E · Prise de mouvement · F · Arbres",
+          "color": "#e67e22",
+          "facts": [
+            {
+              "t": "PDM",
+              "d": "Dérive la puissance du moteur vers la pompe. Conditions : point mort (NEUTRE) + frein de parc, appui LONG jusqu’à éclairage du bouton. Conséquence : ouverture automatique de la vanne aspiration cuve."
+            },
+            {
+              "t": "Arbres de transmission",
+              "d": "Transmettent le mouvement : un arbre vers le pont arrière, un arbre vers la pompe. Équipés de CARDANS (variations angulaires) et de COULISSEMENT (variations de longueur)."
+            }
+          ]
+        },
+        {
+          "title": "G · Pont arrière & différentiel",
+          "color": "#9b59b6",
+          "facts": [
+            {
+              "t": "Rôle du pont",
+              "d": "Supporter la charge · renvoyer le mouvement à 90° (couple conique, avec réduction) · permettre le mouvement relatif des roues (différentiel) · liaison par les demi-arbres."
+            },
+            {
+              "t": "Description",
+              "d": "Nez de pont (couronne + pignon d’attaque) + deux « trompettes » où tournent les demi-arbres. Pont droit ou pont portique (garde au sol accrue, réducteurs de roues). Le pont banjo est le plus courant sur poids lourds."
+            },
+            {
+              "t": "Différentiel — nécessité",
+              "d": "En virage la roue extérieure parcourt plus de distance : le différentiel (pignon → couronne → satellites → planétaires) laisse les roues tourner à des vitesses différentes."
+            },
+            {
+              "t": "Défaut du différentiel",
+              "d": "« Fainéant » : si une roue patine, elle reçoit TOUTE la puissance et l’autre n’est plus entraînée."
+            },
+            {
+              "t": "Blocage de différentiel",
+              "d": "Neutralise le différentiel (crabot mécanique, électrique ou pneumatique). À enclencher À L’ARRÊT ou à très faible vitesse, JAMAIS en patinage, trajectoire droite, retirer dès le franchissement. Voyant allumé = verrouillé."
+            }
+          ]
+        },
+        {
+          "title": "H · Boîte de transfert — encadré comparatif",
+          "color": "#62628a",
+          "facts": [
+            {
+              "t": "FPT urbain 4x2",
+              "d": "PAS de boîte de transfert : un seul pont moteur (arrière), transmission directe BV → pont."
+            },
+            {
+              "t": "CCF 4x4",
+              "d": "Boîte de transfert (boîte auxiliaire) : transmet le mouvement à plusieurs ponts, démultiplie (réduction PV/GV), renvoie vers treuil ou pompe. Passage en réduction : véhicule à l’arrêt, débrayé, pont avant déjà craboté."
+            },
+            {
+              "t": "Ordre d’enclenchement (4x4)",
+              "d": "1 · enclenchement du pont avant · 2 · passage GV → PV à l’arrêt · 3 · blocage des différentiels."
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "chassis",
+          "n": 0,
+          "x": 50,
+          "y": 12,
+          "label": "Châssis (longerons + traverses)",
+          "role": "Ossature : interdiction de souder ou percer. Le FPT utilise un châssis RIGIDE."
+        },
+        {
+          "id": "moteur",
+          "n": 1,
+          "x": 13,
+          "y": 50,
+          "label": "Moteur",
+          "role": "Transforme l’énergie thermique en énergie mécanique. Cycle 4 temps, turbo-compresseur, lubrification."
+        },
+        {
+          "id": "embrayage",
+          "n": 2,
+          "x": 24.5,
+          "y": 50,
+          "label": "Embrayage",
+          "role": "Transmet ou interrompt le mouvement entre moteur et boîte."
+        },
+        {
+          "id": "bv",
+          "n": 3,
+          "x": 33,
+          "y": 50,
+          "label": "Boîte de vitesses",
+          "role": "Adapte le rapport régime/vitesse. OPTITRONIC 6AS 1000 sur le GIMAEX."
+        },
+        {
+          "id": "pdm",
+          "n": 4,
+          "x": 41,
+          "y": 34,
+          "label": "Prise de mouvement",
+          "role": "NL/10B — 270 Nm — rapport 2,03. NEUTRE + frein de parc + appui long. Ouvre la vanne aspiration cuve."
+        },
+        {
+          "id": "arbre-pont",
+          "n": 5,
+          "x": 55,
+          "y": 57,
+          "label": "Arbre de transmission (pont)",
+          "role": "Cardans + coulissement : transmet le mouvement de la boîte au pont arrière."
+        },
+        {
+          "id": "pont",
+          "n": 6,
+          "x": 72,
+          "y": 57,
+          "label": "Pont arrière + différentiel",
+          "role": "Renvoi à 90°, réduction, différentiel, demi-arbres. Blocage de différentiel à l’arrêt uniquement."
+        },
+        {
+          "id": "demi",
+          "n": 7,
+          "x": 72,
+          "y": 32,
+          "label": "½ arbres de roues",
+          "role": "Relient le différentiel aux roues motrices, dans les « trompettes » du pont."
+        },
+        {
+          "id": "arbre-pompe",
+          "n": 8,
+          "x": 62,
+          "y": 34,
+          "label": "Arbre de transmission (pompe)",
+          "role": "De la PDM vers la pompe centrifuge."
+        },
+        {
+          "id": "pompe",
+          "n": 9,
+          "x": 88,
+          "y": 34,
+          "label": "Pompe centrifuge",
+          "role": "WATEROUS S 200 G, à l’arrière du véhicule. → module Pompe & régulation."
+        }
+      ]
+    },
+    {
+      "id": "pompe",
+      "domain": "engins",
+      "icon": "⚙",
+      "title": "Pompe centrifuge & régulation",
+      "tag": "Fonctionnement de la pompe (turbine animée), amorçage automatique à pistons et simulateur de régulation de pression GIMAEX.",
+      "tags": [
+        "pompe",
+        "turbine",
+        "amorçage",
+        "régulation",
+        "cavitation"
+      ],
+      "links": [
+        "circuit-eau",
+        "chaine",
+        "tableaux",
+        "hydro",
+        "mousse"
+      ],
+      "views": [
+        {
+          "label": "Coupe de fonctionnement",
+          "schema": "analyse",
+          "elements": [
+            {
+              "id": "raccord",
+              "n": 1,
+              "x": 8,
+              "y": 51.6,
+              "label": "½ raccord filtre",
+              "role": "Entrée d’aspiration du corps de pompe, avec filtre."
+            },
+            {
+              "id": "roue",
+              "n": 2,
+              "x": 50,
+              "y": 51.6,
+              "label": "Roue à aubes (turbine)",
+              "role": "L’eau entre AU CENTRE, est accélérée par force centrifuge et projetée vers l’extérieur : la roue crée la vitesse."
+            },
+            {
+              "id": "diff",
+              "n": 3,
+              "x": 62,
+              "y": 35.5,
+              "label": "Diffuseurs",
+              "role": "Transforment la vitesse en pression."
+            },
+            {
+              "id": "coll",
+              "n": 4,
+              "x": 68,
+              "y": 51.6,
+              "label": "Collecteur",
+              "role": "Dirige l’eau vers le refoulement. Pompe multicellulaire : étages roue+diffuseurs+collecteur intermédiaire en série."
+            },
+            {
+              "id": "axe",
+              "n": 5,
+              "x": 50,
+              "y": 78,
+              "label": "Axe de la pompe",
+              "role": "Entraîné par la PDM via l’arbre de transmission."
+            }
+          ]
+        },
+        {
+          "label": "Amorçage",
+          "schema": "amorcage",
+          "elements": [
+            {
+              "id": "tonne",
+              "n": 1,
+              "x": 15,
+              "y": 55,
+              "label": "Cuve",
+              "role": "En alimentation cuve, pas d’amorçage nécessaire : l’eau arrive en charge."
+            },
+            {
+              "id": "pompe",
+              "n": 2,
+              "x": 40,
+              "y": 69,
+              "label": "Pompe",
+              "role": "L’amorceur y crée le vide pour faire monter l’eau (aspiration)."
+            },
+            {
+              "id": "clapet",
+              "n": 3,
+              "x": 50,
+              "y": 55,
+              "label": "Clapet d’amorçage",
+              "role": "Se ferme au contact de l’eau : fin d’amorçage."
+            },
+            {
+              "id": "depr",
+              "n": 4,
+              "x": 39,
+              "y": 45,
+              "label": "Tuyau de dépression",
+              "role": "Relie l’amorceur au corps de pompe."
+            },
+            {
+              "id": "amorceur",
+              "n": 5,
+              "x": 62,
+              "y": 57,
+              "label": "Amorceur à pistons (GIMAEX)",
+              "role": "Accouplé par embrayage électromagnétique : AUTOMATIQUE dès que la pression de refoulement < 0,5 bar. Régime optimal ≈ 1 000 tr/min. Ne pas prolonger au-delà d’1 minute."
+            },
+            {
+              "id": "bac",
+              "n": 6,
+              "x": 80,
+              "y": 22,
+              "label": "Hauteur d’aspiration",
+              "role": "Théorique 10,33 m (Torricelli, 1013 mb) — pratique 7,50 m (pertes, température, étanchéité)."
+            }
+          ]
+        },
+        {
+          "label": "Régulation (simulateur)",
+          "schema": "regulation",
+          "elements": []
+        }
+      ],
+      "keypoints": [
+        {
+          "t": "Définition",
+          "d": "Les pompes centrifuges créent et maintiennent une pression définie par le conducteur dans les établissements. Indice de pompe : capacité maximale en aspiration à 6 m (ex. 3000/15). Corps en bronze inoxydable."
+        },
+        {
+          "t": "Trajet de l’eau",
+          "d": "½ raccord filtre → roue à aubes (vitesse) → diffuseurs (pression) → collecteur → refoulements."
+        },
+        {
+          "t": "Cavitation",
+          "d": "Débit de refoulement > débit d’alimentation. Signes : bruit de billes dans le corps de pompe, chute de pression. Réactions : rendre compte, fermer le retour cuve, jouer sur les refoulements, faire réduire le débit des LDV, ralentir le moteur."
+        },
+        {
+          "t": "Échauffement",
+          "d": "Pompe sans débit = échauffement. Voyant rouge à 54 °C (redevient gris à 35 °C), valve thermique à 50 °C refoulant au sol. En attente : ouvrir légèrement le retour cuve."
+        },
+        {
+          "t": "Précautions d’emploi",
+          "d": "Rincer à l’eau propre après eaux chargées · vidanger par temps froid · retour cuve partiel si porte-lances pas à vue · graissage régulier · jamais à sec · jamais refoulements fermés longtemps."
+        },
+        {
+          "t": "Régulation — principe",
+          "d": "Système proportionnel : compare la pression réelle à la consigne et agit sur l’alimentation du moteur. Boîtier calculateur + interrupteur + commandes de consigne + capteur de pression. Affichage sur l’écran arrière."
+        },
+        {
+          "t": "Régulation — usage",
+          "d": "Bouton REGULATION (voyant vert, clignote jusqu’à la pression demandée). Consigne d’attente 3 bar, ±1 bar par impulsion +/-. Amorçage de préférence en mode MANUEL. Bascule cuve/extérieur : COUPER la régulation."
+        }
+      ]
+    },
+    {
+      "id": "mousse",
+      "domain": "engins",
+      "icon": "◍",
+      "schema": "mousse-ctd",
+      "title": "Production de mousse",
+      "tag": "Notions générales (COD 1) + système de dosage CAMÉLÉON 24L CTD du GIMAEX, avec simulateur de dosage.",
+      "tags": [
+        "mousse",
+        "émulseur",
+        "foisonnement",
+        "CTD"
+      ],
+      "links": [
+        "circuit-eau",
+        "pompe",
+        "tableaux"
+      ],
+      "keypoints": [
+        {
+          "t": "Principe (COD 1)",
+          "d": "Eau + émulseur = SOLUTION MOUSSANTE ; solution + air = MOUSSE. Actions : refroidissement, étouffement, isolement, écran. Pour feux d’hydrocarbures, de liquides inflammables, de solvants polaires."
+        },
+        {
+          "t": "Émulseurs",
+          "d": "Diminuent la tension superficielle de l’eau pour favoriser la formation de mousse. Base protéinique ou synthétique."
+        },
+        {
+          "t": "Taux de concentration",
+          "d": "Quantité d’émulseur mélangée à l’eau. CTD (Christian Tabouret Diffuseur) : dosage automatique de 0,2 à 1 %."
+        },
+        {
+          "t": "Taux de foisonnement",
+          "d": "Volume de mousse ÷ solution moussante fournie. Plus il y a d’air, plus le foisonnement est élevé et plus les bulles sont grosses."
+        },
+        {
+          "t": "Bas foisonnement (< 20)",
+          "d": "Lance / lance-canon, longue portée, feux à fort rayonnement en extérieur, peu sensible aux conditions atmosphériques."
+        },
+        {
+          "t": "Moyen foisonnement (20 à 200)",
+          "d": "Lance / générateur, portée < 10 m : feux de VL, poubelles, préventif sur écoulement, consolide une extinction au bas foisonnement."
+        },
+        {
+          "t": "Haut foisonnement (> 200)",
+          "d": "Générateur-ventilateur déversé en sortie d’appareil : espaces clos, entrepôts. Très sensible aux conditions atmosphériques."
+        },
+        {
+          "t": "Lance à mousse",
+          "d": "Fermer la vanne RETOUR TONNE (sinon la solution moussante retourne dans la cuve)."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Équipement spécifique GIMAEX — CAMÉLÉON 24L CTD",
+          "color": "#3aa8c9",
+          "facts": [
+            {
+              "t": "Composition",
+              "d": "Pompe de dosage sur le pare-chocs · pupitre intégré à l’écran arrière · boîtier de puissance dans le coffre arrière droit. Cuve mouillant 200 L. Branché direct batteries."
+            },
+            {
+              "t": "Mise en œuvre",
+              "d": "Sous tension dès l’enclenchement de la PDM. Sélection du dosage par les touches sous les logos (type de feu) : la vanne du produit s’ouvre automatiquement. La vanne d’isolement cuve additif (rep 16) reste OUVERTE en utilisation normale."
+            },
+            {
+              "t": "Affichages (écran p. 15)",
+              "d": "Débit d’eau des refoulements mousse (rep 38) · pourcentage de dosage réel (39) · pression d’injection (40) · messages du système (41)."
+            },
+            {
+              "t": "Source externe",
+              "d": "Raccorder le bidon au raccord GFR (rep 19) sur le pare-chocs → bouton EXT → sélectionner la concentration. La pompe de dosage s’amorce automatiquement."
+            },
+            {
+              "t": "Arrêt & rinçage",
+              "d": "STOP → phase de rinçage automatique de 30 secondes. Attention : au début des phases de remplissage/dosage, le système amorce en projetant du produit au sol."
+            },
+            {
+              "t": "Remplissage de la cuve additif",
+              "d": "Canne plongeuse sur rep 19 → bouton outils → sélectionner la cuve : arrêt automatique quand elle est pleine. Rinçage de la canne : touche dédiée (eau de la cuve par gravité)."
+            },
+            {
+              "t": "Mode manuel",
+              "d": "Une fois le mode manuel (vanne motorisée) activé, le système de dosage n’est plus opérationnel."
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "cuveadd",
+          "n": 1,
+          "x": 22,
+          "y": 24,
+          "label": "Cuve mouillant 200 L",
+          "role": "Réserve d’additif PEHD. Vanne d’isolement (rep 16) ouverte en utilisation normale."
+        },
+        {
+          "id": "pdose",
+          "n": 2,
+          "x": 22,
+          "y": 66,
+          "label": "Pompe de dosage (pare-chocs)",
+          "role": "Prélève l’additif et l’injecte sous pression. S’amorce automatiquement."
+        },
+        {
+          "id": "gfr",
+          "n": 3,
+          "x": 8,
+          "y": 80,
+          "label": "Raccord GFR (rep 19)",
+          "role": "Aspiration extérieure : bidon + canne plongeuse, bouton EXT."
+        },
+        {
+          "id": "injecteur",
+          "n": 4,
+          "x": 52,
+          "y": 58,
+          "label": "Injecteur additif (rep 23)",
+          "role": "Point d’injection dans le collecteur de refoulement mousse."
+        },
+        {
+          "id": "debitmetre",
+          "n": 5,
+          "x": 42,
+          "y": 58,
+          "label": "Débitmètre eau (rep 22)",
+          "role": "Mesure le débit d’eau servant au calcul du dosage."
+        },
+        {
+          "id": "refmousse",
+          "n": 6,
+          "x": 82,
+          "y": 58,
+          "label": "Refoulements Eau/Mousse",
+          "role": "DN 40, DN 65 et dévidoir PS : reçoivent la solution moussante."
+        },
+        {
+          "id": "pupitre",
+          "n": 7,
+          "x": 60,
+          "y": 14,
+          "label": "Pupitre (écran arrière)",
+          "role": "Touches de dosage sous les logos, EXT, STOP, outils. %, débit et pression d’injection affichés."
+        }
+      ]
+    },
+    {
+      "id": "tableaux",
+      "domain": "engins",
+      "icon": "▤",
+      "title": "Tableaux de commande",
+      "tag": "Les 4 panneaux réels du GIMAEX, reproduits et manipulables : poste de conduite, tableau arrière, écran principal, coffre arrière gauche.",
+      "tags": [
+        "GIMAEX",
+        "écran",
+        "commandes",
+        "PMT"
+      ],
+      "links": [
+        "fpt-vue",
+        "pompe",
+        "mousse",
+        "mat-echelles",
+        "circuit-eau"
+      ],
+      "views": [
+        {
+          "label": "Poste de conduite (p. 13)",
+          "schema": "gimaex-cabine",
+          "elements": [
+            {
+              "id": "av-son",
+              "n": 1,
+              "x": 9,
+              "y": 19,
+              "label": "Avertisseur sonore",
+              "role": "Commande et voyant : avertisseur + gyrophare + feux de pénétration."
+            },
+            {
+              "id": "gyro",
+              "n": 2,
+              "x": 9,
+              "y": 34,
+              "label": "Gyrophares et feux à éclat",
+              "role": "Commande et voyant (gyrophare + feux pénétration)."
+            },
+            {
+              "id": "pene",
+              "n": 3,
+              "x": 9,
+              "y": 63,
+              "label": "Arrêt feux de pénétration",
+              "role": "Commande et voyant."
+            },
+            {
+              "id": "cam",
+              "n": 4,
+              "x": 9,
+              "y": 79,
+              "label": "Caméra de vision arrière",
+              "role": "Activation manuelle."
+            },
+            {
+              "id": "proj-av",
+              "n": 5,
+              "x": 91,
+              "y": 19,
+              "label": "Projecteur avant",
+              "role": "Commande du projecteur de recherche motorisé."
+            },
+            {
+              "id": "proj-ar",
+              "n": 6,
+              "x": 91,
+              "y": 34,
+              "label": "Projecteur arrière",
+              "role": "Commande."
+            },
+            {
+              "id": "zone",
+              "n": 7,
+              "x": 91,
+              "y": 63,
+              "label": "Éclairage de zone",
+              "role": "Feux LED de la zone de travail."
+            },
+            {
+              "id": "hp",
+              "n": 8,
+              "x": 91,
+              "y": 79,
+              "label": "Haut-parleur radio",
+              "role": "HP extérieur 12 W à l’arrière."
+            },
+            {
+              "id": "eau",
+              "n": 9,
+              "x": 50,
+              "y": 44,
+              "label": "Jauge cuve eau",
+              "role": "Niveau de la cuve 3 800 L."
+            },
+            {
+              "id": "mouil",
+              "n": 10,
+              "x": 50,
+              "y": 62,
+              "label": "Jauge cuve mouillant",
+              "role": "Niveau de la cuve 200 L."
+            },
+            {
+              "id": "tension",
+              "n": 11,
+              "x": 70,
+              "y": 13,
+              "label": "Tension batteries",
+              "role": "2 × 12 V en série (24 V)."
+            },
+            {
+              "id": "alerte",
+              "n": 12,
+              "x": 35,
+              "y": 26,
+              "label": "Alerte équipement",
+              "role": "Voyant et indication d’alerte."
+            },
+            {
+              "id": "pmt-t",
+              "n": 13,
+              "x": 35,
+              "y": 55,
+              "label": "Témoin PDM pompe",
+              "role": "État de la prise de mouvement."
+            },
+            {
+              "id": "au-mot",
+              "n": 14,
+              "x": 62,
+              "y": 22,
+              "label": "Voyant arrêt d’urgence",
+              "role": "État de l’arrêt d’urgence."
+            },
+            {
+              "id": "balis",
+              "n": 15,
+              "x": 47,
+              "y": 24,
+              "label": "Feux de balisage arrière",
+              "role": "Rampe de 8 feux à LED."
+            },
+            {
+              "id": "hora",
+              "n": 16,
+              "x": 50,
+              "y": 86,
+              "label": "Horamètre pompe",
+              "role": "Heures de fonctionnement."
+            },
+            {
+              "id": "mat-v",
+              "n": 17,
+              "x": 62,
+              "y": 75,
+              "label": "Position mât",
+              "role": "Voyant d’état."
+            },
+            {
+              "id": "echel",
+              "n": 18,
+              "x": 68,
+              "y": 64,
+              "label": "Position porte-échelles",
+              "role": "Voyant d’état."
+            },
+            {
+              "id": "devid",
+              "n": 19,
+              "x": 66,
+              "y": 36,
+              "label": "Position dévidoirs",
+              "role": "Voyant d’état des supports."
+            },
+            {
+              "id": "coffre",
+              "n": 20,
+              "x": 60,
+              "y": 16,
+              "label": "Témoin coffre ouvert",
+              "role": "+ témoin de porte ouverte, coupe-batteries, commande PDM (appui long), 2 tons, flash+buzzer asservi au frein de parc."
+            }
+          ]
+        },
+        {
+          "label": "Tableau arrière (p. 14)",
+          "schema": "gimaex-tableau",
+          "elements": [
+            {
+              "id": "ecran",
+              "n": 1,
+              "x": 50,
+              "y": 33,
+              "label": "Écran principal",
+              "role": "GIMAEX FT 12,1″ : voir la vue « Écran principal »."
+            },
+            {
+              "id": "capteur",
+              "n": 2,
+              "x": 31,
+              "y": 40,
+              "label": "Capteur de luminosité",
+              "role": "Bascule automatique mode jour / nuit."
+            },
+            {
+              "id": "ecl-pompe",
+              "n": 3,
+              "x": 31,
+              "y": 66.7,
+              "label": "Éclairage zone pompe",
+              "role": "Interrupteur (feux de position allumés)."
+            },
+            {
+              "id": "repli",
+              "n": 4,
+              "x": 43,
+              "y": 66.7,
+              "label": "Alarme repli",
+              "role": "Commande de l’alarme sonore de repli."
+            },
+            {
+              "id": "ecl-tb",
+              "n": 5,
+              "x": 67,
+              "y": 60,
+              "label": "Éclairage tableau de bord",
+              "role": "Asservi au cran de pompe."
+            },
+            {
+              "id": "dev-g",
+              "n": 6,
+              "x": 31,
+              "y": 76.7,
+              "label": "Montée/descente dévidoir gauche",
+              "role": "Relevage pneumatique."
+            },
+            {
+              "id": "regul",
+              "n": 7,
+              "x": 43,
+              "y": 76.7,
+              "label": "Mise en route régulation",
+              "role": "Voyant vert, clignote jusqu’à la pression demandée. Consigne d’attente 3 bar."
+            },
+            {
+              "id": "au",
+              "n": 8,
+              "x": 55,
+              "y": 76.7,
+              "label": "Arrêt d’urgence",
+              "role": "À éviter : préférer baisse de régime puis stop moteur."
+            },
+            {
+              "id": "ldt",
+              "n": 9,
+              "x": 67,
+              "y": 76.7,
+              "label": "Enroulement LDT",
+              "role": "Enlever le frein avant rembobinage."
+            },
+            {
+              "id": "dev-d",
+              "n": 10,
+              "x": 29,
+              "y": 87.8,
+              "label": "Montée/descente dévidoir droit",
+              "role": "Relevage pneumatique."
+            },
+            {
+              "id": "reg-moins",
+              "n": 11,
+              "x": 42,
+              "y": 87.8,
+              "label": "Régime moteur −",
+              "role": "Mode manuel : baisse le régime. Mode régulation : consigne −1 bar."
+            },
+            {
+              "id": "reg-plus",
+              "n": 12,
+              "x": 54,
+              "y": 87.8,
+              "label": "Régime moteur +",
+              "role": "Mode manuel : accélère. Mode régulation : consigne +1 bar."
+            },
+            {
+              "id": "iso-air",
+              "n": 13,
+              "x": 66,
+              "y": 87.8,
+              "label": "Isolement d’air vannes pneumatiques",
+              "role": "Mode manuel / automatique de la vanne motorisée (dépannage)."
+            }
+          ]
+        },
+        {
+          "label": "Écran principal (p. 15)",
+          "schema": "gimaex-ecran",
+          "elements": [
+            {
+              "id": "niveaux",
+              "n": 15,
+              "x": 17,
+              "y": 38,
+              "label": "Niveaux à diodes (15-16)",
+              "role": "Cuve eau et cuve mouillant."
+            },
+            {
+              "id": "mano",
+              "n": 21,
+              "x": 50,
+              "y": 30,
+              "label": "Manomètre refoulement (21)",
+              "role": "Pression de refoulement pompe."
+            },
+            {
+              "id": "manovac",
+              "n": 22,
+              "x": 50,
+              "y": 56,
+              "label": "Manovacuomètre alimentation (22)",
+              "role": "Pression / dépression à l’aspiration."
+            },
+            {
+              "id": "temp",
+              "n": 17,
+              "x": 41,
+              "y": 43,
+              "label": "Température eau pompe (17)",
+              "role": "Rouge à 54 °C — régulation bloquée tant que rouge."
+            },
+            {
+              "id": "regind",
+              "n": 18,
+              "x": 50,
+              "y": 43,
+              "label": "Indicateur régulation (18-19-20)",
+              "role": "État, consigne et message de phase de régulation."
+            },
+            {
+              "id": "regime",
+              "n": 24,
+              "x": 79,
+              "y": 30,
+              "label": "Régime moteur (24)",
+              "role": "tr/min."
+            },
+            {
+              "id": "hora2",
+              "n": 25,
+              "x": 79,
+              "y": 43,
+              "label": "Horamètre · temp. moteur · carburant (25-27)",
+              "role": "Heures pompe, température d’eau moteur, niveau réservoir."
+            },
+            {
+              "id": "alerte2",
+              "n": 23,
+              "x": 66,
+              "y": 26,
+              "label": "Alerte moteur/châssis (23)",
+              "role": "Si allumé en utilisation : ARRÊTER immédiatement le moteur."
+            },
+            {
+              "id": "frein",
+              "n": 28,
+              "x": 66,
+              "y": 52,
+              "label": "Frein de parc (28) · point mort (29) · PDM (30)",
+              "role": "Conditions d’enclenchement de la PDM visibles ici."
+            },
+            {
+              "id": "voyants",
+              "n": 31,
+              "x": 16,
+              "y": 70,
+              "label": "Voyants état (31-36)",
+              "role": "Arrêt d’urgence, rideaux/marchepieds, dévidoirs, porte-échelles, mât, haut-parleur."
+            },
+            {
+              "id": "ctd",
+              "n": 38,
+              "x": 44,
+              "y": 70,
+              "label": "Bandeau dosage CTD (38-41)",
+              "role": "Débit refoulements mousse, % réel, pression d’injection, messages du système."
+            },
+            {
+              "id": "diag",
+              "n": 37,
+              "x": 9,
+              "y": 82,
+              "label": "Diagnostic (37)",
+              "role": "Touche gauche : état des capteurs CHÂSSIS / CAN / ÉQUIPEMENT pour la recherche de panne."
+            },
+            {
+              "id": "touches",
+              "n": 42,
+              "x": 60,
+              "y": 88,
+              "label": "Touches dosages (42-44)",
+              "role": "Accès remplissages/journal, dosages par type de feu, dosage par l’extérieur (EXT)."
+            }
+          ]
+        },
+        {
+          "label": "Coffre arrière gauche (p. 16)",
+          "schema": "gimaex-coffre",
+          "elements": [
+            {
+              "id": "pe-desc",
+              "n": 1,
+              "x": 30,
+              "y": 70,
+              "label": "Commande porte-échelles",
+              "role": "Montée / descente du porte-échelles basculant."
+            },
+            {
+              "id": "mat-voy",
+              "n": 2,
+              "x": 64,
+              "y": 30,
+              "label": "Voyant mât déployé",
+              "role": "Rouge tant que le mât n’est pas rangé — extinction = bon rangement."
+            },
+            {
+              "id": "mat-cmd",
+              "n": 3,
+              "x": 64,
+              "y": 55,
+              "label": "Commande montée/descente mât",
+              "role": "Conditions : moteur en fonctionnement + pression d’air servitudes."
+            },
+            {
+              "id": "mat-ecl",
+              "n": 4,
+              "x": 64,
+              "y": 78,
+              "label": "Commande éclairage mât",
+              "role": "4 projecteurs LED 55 W. Couper AVANT la descente puis patienter 2 minutes."
+            }
+          ]
+        }
+      ],
+      "keypoints": [
+        {
+          "t": "Enclenchement PMT",
+          "d": "NEUTRE + frein de parc, appui LONG jusqu’à éclairage du bouton. Asservissements : arrêt d’urgence et éclairage tableau au cran de pompe ; flash + buzzer au frein de parc."
+        },
+        {
+          "t": "Surveillance en utilisation (p. 26)",
+          "d": "Régime moteur · témoin d’alerte moteur · pression de refoulement · pression d’aspiration · température pompe · niveau d’eau (sauf aspiration extérieure)."
+        },
+        {
+          "t": "Mauvaises manipulations",
+          "d": "Jamais de pompe à sec · jamais refoulements fermés (échauffement) · amorçage > 1 min = anomalie · éviter l’arrêt brusque du moteur (1 min au ralenti)."
+        },
+        {
+          "t": "Rembobinage dévidoirs",
+          "d": "ENLEVER LE FREIN avant rembobinage (LDT et stockage)."
+        }
+      ]
+    },
+    {
+      "id": "hydro",
+      "domain": "engins",
+      "icon": "∿",
+      "schema": "hydro",
+      "title": "Notions d’hydraulique",
+      "tag": "Débit, pression, pertes de charge, dénivellation — reliés aux situations réelles de l’engin-pompe.",
+      "tags": [
+        "pertes de charge",
+        "pression",
+        "débit",
+        "cavitation"
+      ],
+      "links": [
+        "circuit-eau",
+        "pompe"
+      ],
+      "elements": [
+        {
+          "id": "pr",
+          "n": 1,
+          "x": 14,
+          "y": 58,
+          "label": "Pr — pression de refoulement",
+          "role": "Pression à fournir par la pompe : Pr = Po + J45 + J70 + J110 + Z. Déterminer la lance la plus défavorisée."
+        },
+        {
+          "id": "po",
+          "n": 2,
+          "x": 29,
+          "y": 58,
+          "label": "Po — pression à l’orifice",
+          "role": "Pression nécessaire à la lance la plus défavorisée."
+        },
+        {
+          "id": "j45",
+          "n": 3,
+          "x": 43,
+          "y": 58,
+          "label": "J45",
+          "role": "Pertes de charge Ø45 : 250 L/min → 0,3 b / 20 m · 500 L/min → 1,2 b / 20 m."
+        },
+        {
+          "id": "j70",
+          "n": 4,
+          "x": 57,
+          "y": 58,
+          "label": "J70",
+          "role": "Pertes de charge Ø70 : 500 L/min → 0,11 b / 20 m (0,55 b / 100 m)."
+        },
+        {
+          "id": "j110",
+          "n": 5,
+          "x": 71,
+          "y": 58,
+          "label": "J110",
+          "role": "Pertes de charge Ø110 : 1000 L/min → 0,5 b / 20 m (2,2 b / 100 m)."
+        },
+        {
+          "id": "z",
+          "n": 6,
+          "x": 85,
+          "y": 58,
+          "label": "Z — dénivellation",
+          "role": "±1 bar par 10 m. Ex. échelle dressée à 25 m : +2,5 bar. Positive si la lance est au-dessus de l’engin."
+        }
+      ],
+      "keypoints": [
+        {
+          "t": "Débit (Q)",
+          "d": "Quantité d’eau écoulée par unité de temps : L/s, L/min, m³/h."
+        },
+        {
+          "t": "Pression (P)",
+          "d": "Force par unité de surface, en bars (1 bar = 1 kg/cm²). STATIQUE : eau au repos · DYNAMIQUE : eau en mouvement."
+        },
+        {
+          "t": "Les 5 lois des pertes de charge",
+          "d": "1 proportionnelles au CARRÉ du débit (débit ×2 = pertes ×4) · 2 proportionnelles à la longueur · 3 fonction de la rugosité (PIL/toile) · 4 inversement proportionnelles au diamètre · 5 indépendantes de la pression."
+        },
+        {
+          "t": "Dénivellation",
+          "d": "1 bar par 10 m, positive si la lance est au-dessus de l’engin (ajouter), négative en dessous (retirer)."
+        },
+        {
+          "t": "Situation : établissement long",
+          "d": "100 m de Ø45 à 250 L/min = 1,5 bar de pertes — à ajouter à la pression de lance."
+        },
+        {
+          "t": "Situation : alimentation insuffisante",
+          "d": "Pression demandée > capacité d’alimentation → CAVITATION : bruit de billes, tuyau d’alimentation qui s’écrase. Fermer le retour cuve, réduire les débits, rendre compte."
+        },
+        {
+          "t": "Situation : plusieurs lances",
+          "d": "Les débits s’additionnent → les pertes de charge explosent (loi du carré). Calculer sur la lance la plus défavorisée."
+        },
+        {
+          "t": "Réaction à la lance",
+          "d": "Plus la pression et le débit sont élevés, plus la réaction au porte-lance est forte — adapter la pression aux porteurs."
+        }
+      ]
+    },
+    {
+      "id": "mat-echelles",
+      "domain": "engins",
+      "icon": "☰",
+      "schema": "mat-pe",
+      "title": "Mât d’éclairage & porte-échelles",
+      "tag": "TEKLITE 4,95 m et porte-échelles basculant : procédures séquentielles à étapes validées (p. 11, 16, 23, 24).",
+      "tags": [
+        "mât",
+        "porte-échelles",
+        "procédure"
+      ],
+      "links": [
+        "fpt-vue",
+        "tableaux"
+      ],
+      "keypoints": [
+        {
+          "t": "Mât — présentation",
+          "d": "Mât télescopique TEKLITE TF340 NT/3, hauteur déployée 4,95 m, 4 projecteurs LED 55 W pré-réglables, à l’avant de la structure. Commandes au coffre arrière gauche."
+        },
+        {
+          "t": "Mât — conditions de montée",
+          "d": "Moteur du véhicule EN FONCTIONNEMENT et pression d’air dans les bouteilles de servitude châssis."
+        },
+        {
+          "t": "Mât — descente",
+          "d": "COUPER l’éclairage des projecteurs puis PATIENTER 2 MINUTES avant la descente. Le bon rangement est indiqué par l’extinction du voyant rouge."
+        },
+        {
+          "t": "Mât — purge hebdomadaire",
+          "d": "Une fois par semaine : depuis la position haute, appuyer sur la vanne de purge (coffre avant droit) jusqu’à la position basse (voyant éteint)."
+        },
+        {
+          "t": "Porte-échelles — présentation",
+          "d": "Basculant semi-automatique en partie gauche : monter/descendre les échelles depuis le sol sans accéder à la plateforme. Commande au coffre arrière gauche."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Procédure — descendre le porte-échelles (p. 24)",
+          "color": "#e67e22",
+          "facts": [
+            {
+              "t": "1 · Déverrouiller",
+              "d": "Prendre le bras (rep 1), le placer sur le verrou (rep 2), pivoter vers l’extérieur (côté gauche) SANS FORCER."
+            },
+            {
+              "t": "2 · Sortir",
+              "d": "Tirer le bras pour sortir complètement le porte-échelles."
+            },
+            {
+              "t": "3 · Descendre",
+              "d": "Actionner la commande de descente dans le compartiment arrière gauche (rep 3)."
+            },
+            {
+              "t": "4 · Libérer l’échelle",
+              "d": "Au sol : appuyer sur la pièce mobile centrale (rep 4), soulever le rond et le faire pivoter."
+            }
+          ]
+        },
+        {
+          "title": "Procédure — ranger le porte-échelles",
+          "color": "#27ae60",
+          "facts": [
+            {
+              "t": "1 · Replacer l’échelle",
+              "d": "Bien engager dans le blocage avant, pivoter le rond au-dessus du barreau, le baisser au contact de l’empreinte."
+            },
+            {
+              "t": "2 · Monter",
+              "d": "Actionner la commande de montée (rep 3)."
+            },
+            {
+              "t": "3 · Pousser en butée",
+              "d": "À l’horizontale, pousser sur le bras jusqu’à la butée du berceau."
+            },
+            {
+              "t": "4 · Vérifier le verrou",
+              "d": "Tirer sur le bras (sans le pivoter à gauche) : le verrou supérieur doit être engagé."
+            },
+            {
+              "t": "5 · Ranger le bras",
+              "d": "Dans son support."
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "mat",
+          "n": 1,
+          "x": 25,
+          "y": 25,
+          "label": "Mât TEKLITE (4,95 m)",
+          "role": "4 projecteurs LED 55 W en tête. Montée : moteur tournant + pression d’air."
+        },
+        {
+          "id": "projos",
+          "n": 2,
+          "x": 25,
+          "y": 10,
+          "label": "Projecteurs LED",
+          "role": "Couper l’éclairage avant la descente, patienter 2 minutes."
+        },
+        {
+          "id": "voyant",
+          "n": 3,
+          "x": 44,
+          "y": 60,
+          "label": "Voyant rouge de rangement",
+          "role": "Éteint = mât bien rangé."
+        },
+        {
+          "id": "berceau",
+          "n": 4,
+          "x": 72,
+          "y": 26,
+          "label": "Berceau porte-échelles",
+          "role": "Reçoit les échelles ; blocage avant + blocage arrière (rond pivotant, rep 4)."
+        },
+        {
+          "id": "bras",
+          "n": 5,
+          "x": 84,
+          "y": 55,
+          "label": "Bras de manœuvre (rep 1)",
+          "role": "Se place sur le verrou (rep 2) et pivote à gauche sans forcer pour déverrouiller."
+        },
+        {
+          "id": "cmd",
+          "n": 6,
+          "x": 62,
+          "y": 78,
+          "label": "Commande coffre AR gauche (rep 3)",
+          "role": "Montée / descente du porte-échelles — voir vue Coffre du module Tableaux."
+        }
+      ]
+    },
+    {
+      "id": "annexes",
+      "domain": "engins",
+      "icon": "⁘",
+      "title": "Équipements & connaissances annexes",
+      "tag": "Pneumatiques, ralentisseurs, maintenance, diagnostic, dépannages — sans surcharger le schéma principal.",
+      "tags": [
+        "pneumatiques",
+        "ralentisseurs",
+        "maintenance"
+      ],
+      "links": [
+        "chaine",
+        "tableaux",
+        "circuit-eau"
+      ],
+      "keypoints": [
+        {
+          "t": "Turbo-compresseur",
+          "d": "Traité comme sous-partie du MOTEUR → module Chaîne cinématique, section B."
+        },
+        {
+          "t": "Ponts, réducteurs, différentiel",
+          "d": "→ module Chaîne cinématique, section G. Précautions : connaître la « boule de pont », vérifier déformations et fuites d’huile (fuite réducteur = véhicule indisponible + GTL avisé), bruits anormaux."
+        },
+        {
+          "t": "Boîte de transfert",
+          "d": "→ encadré comparatif FPT 4x2 / CCF 4x4 du module Chaîne cinématique."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Pneumatiques",
+          "color": "#3aa8c9",
+          "facts": [
+            {
+              "t": "Vérifications",
+              "d": "Pression (à froid), usure et témoins, flancs (coupures, hernies), corps étrangers, serrage des écrous de roues."
+            },
+            {
+              "t": "En intervention",
+              "d": "Adapter la conduite à la charge du FPT (16 t) : distances de freinage accrues, ripage en virage."
+            }
+          ]
+        },
+        {
+          "title": "Ralentisseurs",
+          "color": "#e67e22",
+          "facts": [
+            {
+              "t": "Rôle",
+              "d": "Freinage d’endurance sans échauffer les freins de service (descentes longues) : ralentisseur électromagnétique ou frein moteur sur échappement."
+            },
+            {
+              "t": "Usage",
+              "d": "À utiliser par crans, chaussée adhérente — prudence sur sol glissant (risque de blocage des roues motrices)."
+            }
+          ]
+        },
+        {
+          "title": "Maintenance & dépannages GIMAEX",
+          "color": "#8a94b8",
+          "facts": [
+            {
+              "t": "Diagnostic écran (p. 26)",
+              "d": "Touche gauche de l’écran arrière → mode diagnostic : état des capteurs en 3 zones CHÂSSIS / CAN / ÉQUIPEMENT."
+            },
+            {
+              "t": "Dépannage vanne motorisée (p. 25)",
+              "d": "Interrupteur noir du tableau arrière en « mode manuel » → pivoter la vanne d’un quart de tour à la poignée. Le dosage CTD n’est alors plus opérationnel. Remettre en automatique après usage."
+            },
+            {
+              "t": "Dépannage dévidoirs (p. 22)",
+              "d": "Voyant relevage + buzzer = risque de descente du support. Manque d’air : accélérer et attendre la pression, ou vérifier le verrouillage de la commande de montée. Dépannage manuel : à deux, soulever jusqu’au crochet de sécurité, rentrer à petite vitesse."
+            },
+            {
+              "t": "Mise hors service / vidange (p. 27)",
+              "d": "→ procédures détaillées au module Circuit d’eau (purges dévidoir, pompe, cuve)."
+            },
+            {
+              "t": "Sécurité",
+              "d": "Toutes opérations véhicule à l’arrêt, frein de parc serré. Ne jamais rester sous le porte-échelles. Personne dans le champ de manœuvre des dévidoirs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accessoires",
+      "domain": "engins",
+      "icon": "▦",
+      "title": "Accessoires",
+      "tag": "Structure modulaire : chaque accessoire ajouté aura sa fiche complète (photo, emplacement, fonction, mise en œuvre, révision).",
+      "tags": [
+        "accessoires"
+      ],
+      "links": [
+        "fpt-vue"
+      ],
+      "status": "squelette",
+      "source": "Fiches accessoires à fournir (elles seront ajoutées progressivement) : nom, photographie, emplacement dans le véhicule, fonction, caractéristiques, mise en œuvre, précautions, entretien."
+    },
+    {
+      "id": "systeme-feu",
+      "domain": "incendie",
+      "icon": "△",
+      "title": "Le système feu",
+      "tag": "Les 7 zones du système feu, échanges de matière et d'énergie, conséquences opérationnelles.",
+      "tags": [
+        "système feu",
+        "tétraèdre",
+        "convection",
+        "rayonnement"
+      ],
+      "links": [
+        "phenomenes",
+        "ventilation",
+        "extinction"
+      ],
+      "keypoints": [
+        {
+          "t": "Les 7 zones du système feu",
+          "d": "Monde extérieur · zone gazeuse basse · zone gazeuse haute · source de gaz combustible · flamme · paroi basse · paroi haute."
+        },
+        {
+          "t": "La matière échangée",
+          "d": "Principalement : l'oxygène de l'air, les gaz de pyrolyse et les fumées (produits de combustion)."
+        },
+        {
+          "t": "L'énergie échangée",
+          "d": "Principalement la chaleur. Les deux modes d'échange les plus influents sont le rayonnement et la convection — la conduction est négligeable au sein du système."
+        },
+        {
+          "t": "Conséquence opérationnelle",
+          "d": "Le système feu est complexe : agir sur une zone entraîne des conséquences sur toutes les autres. Action bien réalisée → le système ralentit voire s'effondre ; mal réalisée → il accélère."
+        },
+        {
+          "t": "Fermer la porte d'un volume ouvert",
+          "d": "J'isole le monde extérieur, je supprime l'apport d'air et je stoppe le courant de convection : le feu s'étouffe, l'énergie diminue."
+        },
+        {
+          "t": "Ouvrir la porte d'un volume fermé",
+          "d": "J'alimente le foyer en air, le courant de convection s'active : le feu se développe, emballement thermique possible."
+        },
+        {
+          "t": "Impulsion dans le ciel gazeux",
+          "d": "L'eau se vaporise, inerte et refroidit le ciel gazeux : le rayonnement diminue, les gaz combustibles sont remplacés par de la vapeur d'eau, le système s'affaiblit."
+        },
+        {
+          "t": "Phénomènes & tétraèdre",
+          "d": "Backdraft → comburant (apport d'air sur feu sous-ventilé). Flashover → combustible (pyrolyse qui s'auto-enflamme à forte température). FGI → énergie d'activation (plafond de fumées + source d'ignition). Les radicaux libres entretiennent la combustion."
+        }
+      ],
+      "schema": "systeme-feu",
+      "elements": [
+        {
+          "id": "ext",
+          "n": 1,
+          "x": 6,
+          "y": 66,
+          "label": "Monde extérieur",
+          "role": "Fournit l'air (comburant) et reçoit fumées et chaleur. Fermer la porte = isoler le monde extérieur : le feu s'étouffe."
+        },
+        {
+          "id": "zgb",
+          "n": 2,
+          "x": 33,
+          "y": 66,
+          "label": "Zone gazeuse basse",
+          "role": "Air plus frais aspiré vers le foyer par le courant de convection (entrant en partie basse)."
+        },
+        {
+          "id": "zgh",
+          "n": 3,
+          "x": 45,
+          "y": 26,
+          "label": "Zone gazeuse haute",
+          "role": "Fumées chaudes : gaz combustibles, toxiques, opaques, rayonnants. Inflammables — cible des impulsions d'eau."
+        },
+        {
+          "id": "src",
+          "n": 4,
+          "x": 62,
+          "y": 83,
+          "label": "Source de gaz combustible",
+          "role": "Matériau en pyrolyse : sa production de gaz dépend de sa température."
+        },
+        {
+          "id": "fla",
+          "n": 5,
+          "x": 67,
+          "y": 58,
+          "label": "Flamme",
+          "role": "Siège de la combustion : échange matière et énergie avec toutes les zones (rayonnement + convection)."
+        },
+        {
+          "id": "pb",
+          "n": 6,
+          "x": 88,
+          "y": 76,
+          "label": "Paroi basse",
+          "role": "Reçoit peu d'énergie ; la conduction reste négligeable dans le système feu."
+        },
+        {
+          "id": "ph",
+          "n": 7,
+          "x": 60,
+          "y": 11,
+          "label": "Paroi haute",
+          "role": "Chauffée par les fumées et le rayonnement, elle réémet de l'énergie vers le volume."
+        }
+      ]
+    },
+    {
+      "id": "phenomenes",
+      "domain": "incendie",
+      "icon": "◮",
+      "title": "Développement du feu & phénomènes thermiques",
+      "tag": "Phases du feu, feux limités par le combustible ou la ventilation, flashover, backdraft, FGI.",
+      "tags": [
+        "flashover",
+        "backdraft",
+        "FGI",
+        "phases du feu"
+      ],
+      "links": [
+        "systeme-feu",
+        "ventilation",
+        "extinction",
+        "milieu-vicie"
+      ],
+      "keypoints": [
+        {
+          "t": "Feu naissant",
+          "d": "Dégagement de chaleur modéré, fumées peu abondantes. Le feu est « limité par le combustible » (gaz de pyrolyse en quantité limitée)."
+        },
+        {
+          "t": "Feu en croissance : 2 régimes",
+          "d": "Feu correctement ventilé = limité par le combustible (FLC), développement maximum. Feu sous-ventilé = limité par la ventilation (FLV) : quasi auto-extinction si confinement maintenu, ou reprise violente si le confinement est rompu."
+        },
+        {
+          "t": "Feu pleinement développé",
+          "d": "Inflammation de l'ensemble des combustibles de la pièce, conséquence immédiate d'un embrasement généralisé. En structure meublée, le feu pleinement développé est systématiquement limité par la ventilation."
+        },
+        {
+          "t": "Feu en régression",
+          "d": "Fin de combustion des matériaux, puissance en diminution — mais les risques liés aux fumées restent présents."
+        },
+        {
+          "t": "Dangers des fumées",
+          "d": "Inflammabilité/explosivité · toxicité/corrosivité · particules · opacité · rayonnement · envahissement · chaleur."
+        },
+        {
+          "t": "Flashover (embrasement généralisé éclair)",
+          "d": "Passage brutal d'un feu localisé à l'embrasement généralisé d'un volume VENTILÉ. Conditions : gaz combustibles suffisants + niveau d'énergie atteint + veine d'apport d'air maintenue. Aboutit toujours à un feu pleinement développé."
+        },
+        {
+          "t": "Backdraft (explosion de fumées)",
+          "d": "Feu SOUS-VENTILÉ depuis un certain temps : un apport d'air soudain (fenêtre brisée, porte ouverte) réactive une flamme et peut faire exploser les fumées accumulées. Facteur déclencheur : l'apport de COMBURANT."
+        },
+        {
+          "t": "FGI (inflammation de gaz d'incendie)",
+          "d": "Accumulation de gaz imbrûlés/pyrolyse qui s'enflamme au contact d'une source de chaleur. Déclencheur : l'ÉNERGIE D'ACTIVATION — possible même avec des fumées froides. Sans onde de pression : flash fire ; avec onde de pression : smoke explosion."
+        }
+      ],
+      "schema": "phenomenes",
+      "elements": [
+        {
+          "id": "naissant",
+          "n": 1,
+          "x": 18,
+          "y": 80,
+          "label": "Feu naissant",
+          "role": "Chaleur modérée, fumées peu abondantes — limité par le combustible."
+        },
+        {
+          "id": "croissance",
+          "n": 2,
+          "x": 30,
+          "y": 62,
+          "label": "Croissance (FLC)",
+          "role": "Feu correctement ventilé, limité par le combustible : développement maximum."
+        },
+        {
+          "id": "flashover",
+          "n": 3,
+          "x": 40,
+          "y": 44,
+          "label": "Flashover",
+          "role": "Embrasement généralisé éclair d'un volume VENTILÉ : gaz suffisants + énergie atteinte + veine d'air maintenue."
+        },
+        {
+          "id": "developpe",
+          "n": 4,
+          "x": 54,
+          "y": 32,
+          "label": "Feu pleinement développé",
+          "role": "Tous les combustibles de la pièce brûlent. En structure meublée : systématiquement limité par la ventilation."
+        },
+        {
+          "id": "regression",
+          "n": 5,
+          "x": 82,
+          "y": 62,
+          "label": "Régression",
+          "role": "Puissance en diminution — mais les dangers des fumées restent présents."
+        },
+        {
+          "id": "flv",
+          "n": 6,
+          "x": 52,
+          "y": 72,
+          "label": "Feu sous-ventilé (FLV)",
+          "role": "Quasi auto-extinction si le confinement est maintenu… reprise violente s'il est rompu."
+        },
+        {
+          "id": "backdraft",
+          "n": 7,
+          "x": 70,
+          "y": 55,
+          "label": "Backdraft",
+          "role": "Apport d'air soudain sur un feu sous-ventilé : explosion des fumées accumulées. Déclencheur = COMBURANT."
+        }
+      ]
+    },
+    {
+      "id": "extinction",
+      "domain": "incendie",
+      "icon": "≋",
+      "title": "Établissements & techniques d'extinction",
+      "tag": "Les 4 principes de maîtrise du feu, les établissements et les binômes.",
+      "tags": [
+        "extinction",
+        "établissements",
+        "lances",
+        "BAT"
+      ],
+      "links": [
+        "hydro",
+        "circuit-eau",
+        "phenomenes",
+        "ventilation",
+        "systeme-feu"
+      ],
+      "keypoints": [
+        {
+          "t": "Principe 1 — contrôler l'arrivée d'air",
+          "d": "Restreindre l'alimentation en air du feu (antiventilation, gestion des ouvrants) est un moyen très efficace de maîtrise, en attendant les moyens d'extinction."
+        },
+        {
+          "t": "Principe 2 — agir sur les fumées",
+          "d": "Les évacuer (survie, progression, anti-propagation) · abaisser leur température (l'eau vaporisée absorbe l'énergie, réduit le rayonnement) · les inerter à la vapeur d'eau."
+        },
+        {
+          "t": "Principe 3 — agir sur le combustible",
+          "d": "La production de gaz de pyrolyse dépend de la température du combustible : limiter le combustible disponible ou le refroidir (application directe d'eau)."
+        },
+        {
+          "t": "Principe 4 — interrompre la réaction en chaîne",
+          "d": "Casser les radicaux libres : extincteurs à poudre (feux électriques notamment), installations fixes à gaz."
+        },
+        {
+          "t": "Missions des binômes",
+          "d": "Les binômes d'attaque (BAT) établissent la ou les lignes d'attaque. Le chef d'agrès précise les fonctions et consignes pendant le trajet (ordres préparatoires)."
+        },
+        {
+          "t": "Ordres de grandeur",
+          "d": "Environ 2 minutes pour établir 100 m avec un dévidoir automobile (tuyaux de 110). Citerne souple : ~20 minutes de montage, zone dédiée."
+        },
+        {
+          "t": "Norias",
+          "d": "Pour garantir la pérennité de l'eau aux lances, laisser l'engin alimentant en place et le remplir par norias."
+        }
+      ],
+      "schema": "extinction",
+      "elements": [
+        {
+          "id": "hydrant",
+          "n": 1,
+          "x": 8,
+          "y": 79,
+          "label": "Hydrant (PI)",
+          "role": "Prise d'eau désignée par le chef d'agrès. Pression ≥ 1 bar."
+        },
+        {
+          "id": "engin",
+          "n": 2,
+          "x": 30,
+          "y": 78,
+          "label": "Engin-pompe",
+          "role": "Alimenté, il reste en place — la pérennité de l'eau est garantie par norias si besoin."
+        },
+        {
+          "id": "l70",
+          "n": 3,
+          "x": 47,
+          "y": 81,
+          "label": "Ligne de 70",
+          "role": "~2 minutes pour établir 100 m avec un dévidoir automobile (tuyaux de 110)."
+        },
+        {
+          "id": "division",
+          "n": 4,
+          "x": 58,
+          "y": 81,
+          "label": "Division",
+          "role": "Répartit l'eau vers les lignes d'attaque."
+        },
+        {
+          "id": "bat",
+          "n": 5,
+          "x": 74,
+          "y": 62,
+          "label": "Binôme d'attaque (BAT)",
+          "role": "Établit la ligne d'attaque. Fonctions et consignes précisées par le chef d'agrès pendant le trajet."
+        },
+        {
+          "id": "batiment",
+          "n": 6,
+          "x": 90,
+          "y": 45,
+          "label": "Bâtiment sinistré",
+          "role": "4 principes de maîtrise : contrôler l'air, agir sur les fumées, agir sur le combustible, casser la réaction en chaîne."
+        }
+      ]
+    },
+    {
+      "id": "ventilation",
+      "domain": "incendie",
+      "icon": "≈",
+      "title": "Ventilation opérationnelle",
+      "tag": "Agir sur les flux gazeux : protéger, désenfumer, attaquer.",
+      "tags": [
+        "ventilation",
+        "VPP",
+        "désenfumage",
+        "antiventilation"
+      ],
+      "links": [
+        "systeme-feu",
+        "phenomenes",
+        "parc",
+        "extinction"
+      ],
+      "keypoints": [
+        {
+          "t": "Définition",
+          "d": "Agir sur l'écoulement des flux gazeux et thermiques, par ouverture/fermeture des ouvrants existants ou créés, avec au besoin des moyens mécaniques (ventilateurs)."
+        },
+        {
+          "t": "Entrant / sortant / veine d'air",
+          "d": "Entrant : ouvrant qui fait entrer l'air. Sortant : dispositif qui fait sortir les fumées. Les différences de pression créent la veine d'air."
+        },
+        {
+          "t": "Moteurs du déplacement des gaz",
+          "d": "Les différences de pression (ex. le vent) et les mouvements convectifs : gaz chauds légers qui s'élèvent (sortent en partie haute), gaz froids aspirés en partie basse — principe du tirage de cheminée."
+        },
+        {
+          "t": "3 objectifs",
+          "d": "PROTÉGER (empêcher les fumées d'entrer dans un volume) · DÉSENFUMER (évacuer les fumées d'un local non touché par le feu) · ATTAQUER (agir sur les fumées et le foyer, canaliser)."
+        },
+        {
+          "t": "Ventiler pour protéger",
+          "d": "3 actions : recloisonnement du feu · mise en dépression du local en feu · mise en surpression d'un volume sain."
+        },
+        {
+          "t": "Ventiler pour attaquer",
+          "d": "Ventilation d'attaque (améliore visibilité et sécurité du binôme) et antiventilation (priver le feu de comburant — tactique offensive très agressive combinée à l'attaque hydraulique)."
+        },
+        {
+          "t": "Posture SDIS 33 — désenfumage",
+          "d": "« Ventiler pour désenfumer » : uniquement sur intervention commandée a minima par un chef de groupe formé, ou lorsque le feu est éteint."
+        },
+        {
+          "t": "Efficacité",
+          "d": "La vitesse des fumées au sortant est un bon indicateur de l'efficacité de l'action."
+        }
+      ],
+      "schema": "ventilation",
+      "elements": [
+        {
+          "id": "vpp",
+          "n": 1,
+          "x": 14,
+          "y": 75,
+          "label": "VPP (ventilateur)",
+          "role": "Moyen mécanique : crée une surpression à l'entrant. Positionné pour que le cône d'air couvre l'ouvrant."
+        },
+        {
+          "id": "entrant",
+          "n": 2,
+          "x": 26,
+          "y": 63,
+          "label": "Entrant",
+          "role": "Ouvrant par lequel l'air pénètre dans le volume."
+        },
+        {
+          "id": "veine",
+          "n": 3,
+          "x": 45,
+          "y": 75,
+          "label": "Veine d'air",
+          "role": "Créée par les différences de pression entre entrant et sortant."
+        },
+        {
+          "id": "feu",
+          "n": 4,
+          "x": 76,
+          "y": 78,
+          "label": "Local en feu",
+          "role": "Le foyer alimente les mouvements convectifs : gaz chauds en haut, air frais aspiré en bas (tirage de cheminée)."
+        },
+        {
+          "id": "fumees",
+          "n": 5,
+          "x": 70,
+          "y": 29,
+          "label": "Fumées",
+          "role": "À évacuer (survie, progression), refroidir ou inerter. Leur vitesse au sortant mesure l'efficacité de l'action."
+        },
+        {
+          "id": "sortant",
+          "n": 6,
+          "x": 91,
+          "y": 29,
+          "label": "Sortant",
+          "role": "Dispositif par lequel les fumées sont évacuées."
+        }
+      ]
+    },
+    {
+      "id": "sauvetage",
+      "domain": "incendie",
+      "icon": "✛",
+      "title": "Sauvetage & mise en sécurité",
+      "tag": "Définitions, priorités et techniques : dégagements, confinement, évacuation.",
+      "tags": [
+        "sauvetage",
+        "mise en sécurité",
+        "confinement",
+        "évacuation"
+      ],
+      "links": [
+        "lspcc",
+        "echelles",
+        "milieu-vicie",
+        "feux-foret"
+      ],
+      "keypoints": [
+        {
+          "t": "Sauvetage",
+          "d": "Action visant à soustraire une personne qui ne peut s'y soustraire d'elle-même à un danger imminent. Par les communications existantes en priorité ; sinon par l'extérieur (MEA, échelles à coulisse, à crochets, LSPCC)."
+        },
+        {
+          "t": "Mise en sécurité",
+          "d": "Protéger une personne d'une menace plus ou moins différée : déplacement commandé et accompagné vers une zone sûre. Si la victime est valide, le sauveteur accompagne, aide et conseille."
+        },
+        {
+          "t": "Confinement",
+          "d": "Laisser les personnes là où elles se trouvent, à l'abri des effets du danger (jusqu'à l'étanchéité du local dans le cas le plus défavorable)."
+        },
+        {
+          "t": "Évacuation",
+          "d": "Ordonner préventivement de se déplacer hors de la zone de danger. Le COS peut préférer le confinement si le trajet d'évacuation expose trop le public."
+        },
+        {
+          "t": "Feux de forêt",
+          "d": "Le confinement doit demeurer la règle pour les structures en dur ; l'évacuation limitée et accompagnée reste l'exception."
+        },
+        {
+          "t": "Voies d'action",
+          "d": "Prioritairement par les communications existantes ; en cas d'impraticabilité ou de mises en sécurité multiples, privilégier les moyens élévateurs aériens."
+        }
+      ],
+      "schema": "sauvetage",
+      "elements": [
+        {
+          "id": "comm",
+          "n": 1,
+          "x": 43,
+          "y": 82,
+          "label": "Communications existantes",
+          "role": "Voie PRIORITAIRE pour tout sauvetage : escaliers et circulations du bâtiment."
+        },
+        {
+          "id": "echelle",
+          "n": 2,
+          "x": 26,
+          "y": 67,
+          "label": "Échelle à coulisse",
+          "role": "Sauvetage par l'extérieur quand les communications sont impraticables."
+        },
+        {
+          "id": "lspcc",
+          "n": 3,
+          "x": 64,
+          "y": 52,
+          "label": "LSPCC",
+          "role": "Sauvetage par l'extérieur : descente de la victime en triangle d'évacuation, frein de charge en point fixe."
+        },
+        {
+          "id": "victime",
+          "n": 4,
+          "x": 50,
+          "y": 25,
+          "label": "Victime",
+          "role": "Danger imminent + incapacité de fuir seule = SAUVETAGE. Menace différée = mise en sécurité."
+        },
+        {
+          "id": "confin",
+          "n": 5,
+          "x": 50,
+          "y": 52,
+          "label": "Confinement",
+          "role": "Laisser les personnes à l'abri sur place — préféré si le trajet d'évacuation expose trop."
+        },
+        {
+          "id": "zone",
+          "n": 6,
+          "x": 85,
+          "y": 77,
+          "label": "Zone de regroupement",
+          "role": "Point sûr vers lequel l'évacuation ou la mise en sécurité est dirigée, accompagnée et commandée."
+        }
+      ]
+    },
+    {
+      "id": "milieu-vicie",
+      "domain": "incendie",
+      "icon": "◍",
+      "title": "Engagement en milieu vicié",
+      "tag": "Règles d'engagement sous ARI : binômes, contrôleur, binôme de sécurité.",
+      "tags": [
+        "ARI",
+        "binôme",
+        "contrôleur",
+        "reconnaissance"
+      ],
+      "links": [
+        "arico",
+        "sauvetage",
+        "parc",
+        "phenomenes"
+      ],
+      "keypoints": [
+        {
+          "t": "Port de l'ARI selon l'oxygène",
+          "d": "O₂ < 21 % : ARI capelé (sur le dos), pièce faciale en attente. O₂ < 19 % : ARI capelé + coiffé + encliqueté."
+        },
+        {
+          "t": "Contrôle croisé",
+          "d": "Obligatoire une fois l'habillage terminé. En vis-à-vis, sous la responsabilité du binôme : vérification tenue, ARI, masque-SAD. La balise de détresse doit être armée avant engagement."
+        },
+        {
+          "t": "Enregistrement",
+          "d": "Avant chaque engagement, en zone contrôlée, auprès du chef d'agrès ou du contrôleur (tableau de gestion des reconnaissances — TGR). Interdit de désarmer sa balise pendant la reconnaissance."
+        },
+        {
+          "t": "Le contrôleur",
+          "d": "Gère UN seul point de pénétration. Maximum 10 porteurs supervisés (4 binômes + le binôme de sécurité). Garde toujours un binôme de sécurité équipé à proximité, écoute permanente, rend compte au COS."
+        },
+        {
+          "t": "Le binôme de sécurité",
+          "d": "Sous la seule autorité du contrôleur, même équipement que les binômes engagés. En ATTENTE : masque coiffé, SAD non encliquetée, bouteille ouverte. Engagé dès difficulté (radio, signal sonore, balise). Son engagement impose de désigner un remplaçant au plus tôt."
+        },
+        {
+          "t": "Si le binôme est en difficulté",
+          "d": "Si un des deux sapeurs-pompiers ne peut plus accomplir la mission, le binôme se replie impérativement."
+        },
+        {
+          "t": "Temps d'engagement",
+          "d": "Limité à 45 minutes (reconnaissance en air respirable) ; engagement sans préavis du binôme de sécurité si le temps prévu est dépassé ou si un détecteur d'immobilité se déclenche."
+        },
+        {
+          "t": "Sauvetage immédiat",
+          "d": "Un sauvetage peut justifier l'envoi immédiat d'un binôme sans contrôleur ni binôme de sécurité — mais l'information au chef d'agrès et l'enregistrement restent primordiaux."
+        }
+      ],
+      "schema": "milieu-vicie",
+      "elements": [
+        {
+          "id": "engin",
+          "n": 1,
+          "x": 14,
+          "y": 77,
+          "label": "Engin / chef d'agrès",
+          "role": "Enregistrement de chaque engagement en zone contrôlée, auprès du chef d'agrès ou du contrôleur."
+        },
+        {
+          "id": "zone",
+          "n": 2,
+          "x": 28,
+          "y": 20,
+          "label": "Limite de zone contrôlée",
+          "role": "Au-delà : port de l'ARI selon l'atmosphère (O₂ < 21 % capelé, < 19 % coiffé + encliqueté)."
+        },
+        {
+          "id": "tgr",
+          "n": 3,
+          "x": 37,
+          "y": 41,
+          "label": "TGR",
+          "role": "Tableau de gestion des reconnaissances : identités, pressions, heures d'entrée, temps limite 45 min."
+        },
+        {
+          "id": "controleur",
+          "n": 4,
+          "x": 42,
+          "y": 53,
+          "label": "Contrôleur",
+          "role": "Gère UN point de pénétration, max 10 porteurs (4 binômes + sécurité). Écoute permanente, rend compte au COS."
+        },
+        {
+          "id": "secu",
+          "n": 5,
+          "x": 42,
+          "y": 73,
+          "label": "Binôme de sécurité",
+          "role": "Sous la seule autorité du contrôleur. Attente : masque coiffé, SAD non encliquetée, bouteille ouverte."
+        },
+        {
+          "id": "penetration",
+          "n": 6,
+          "x": 52,
+          "y": 53,
+          "label": "Point de pénétration",
+          "role": "Unique, tenu par le contrôleur, avec un moyen hydraulique et le binôme de sécurité à proximité."
+        },
+        {
+          "id": "ligne",
+          "n": 7,
+          "x": 61,
+          "y": 46,
+          "label": "Ligne guide",
+          "role": "50 m, olives de repère : 13 vers le feu, « sur son 31 » pour sortir. Max 40 m dans le feu sur tuyau."
+        },
+        {
+          "id": "binome",
+          "n": 8,
+          "x": 73,
+          "y": 41,
+          "label": "Binôme engagé",
+          "role": "Indissociable : si l'un ne peut plus accomplir la mission, le binôme se replie impérativement."
+        }
+      ]
+    },
+    {
+      "id": "arico",
+      "domain": "incendie",
+      "icon": "◎",
+      "title": "ARI — appareil respiratoire isolant",
+      "tag": "Circuit ouvert : bouteille, dossard, SAD, pièce faciale, matériels périphériques, calculs d'autonomie.",
+      "tags": [
+        "ARI",
+        "autonomie",
+        "SAD",
+        "ligne guide"
+      ],
+      "links": [
+        "milieu-vicie",
+        "lspcc"
+      ],
+      "keypoints": [
+        {
+          "t": "La bouteille",
+          "d": "7 L d'eau, 300 bars (fond plat + sabot) ou 200 bars (fond rond). Jaune pour la visibilité. Pression mini avant engagement : nominale − 10 % (270 b pour une 300 b, 180 b pour une 200 b)."
+        },
+        {
+          "t": "Sifflet de fin de charge",
+          "d": "Se déclenche quand la pression passe sous 50 bars ± 5 bars (circuit HP, sans détendeur)."
+        },
+        {
+          "t": "Détendeur HP → MP",
+          "d": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars vers la SAD et la prise auxiliaire."
+        },
+        {
+          "t": "SAD (soupape à la demande)",
+          "d": "Abaisse à une pression légèrement supérieure à 1 bar : légère surpression dans le masque qui empêche les fumées d'entrer. By-pass : 300 L/min minimum en cas d'effort violent. Bouton rouge : stop débit au retrait du masque."
+        },
+        {
+          "t": "Bodyguard / balise de détresse",
+          "d": "21 secondes d'immobilité → pré-alarme ; +8 secondes → alarme « homme mort » (29 s au total). Alarme sonore et lumineuse à l'ouverture de la bouteille."
+        },
+        {
+          "t": "Cagoule d'évacuation",
+          "d": "Branchée sur la prise auxiliaire (flexible MP), débit continu de 40 L/min. Son utilisation impose un retour immédiat : deux personnes consomment la même bouteille."
+        },
+        {
+          "t": "Liaison personnelle",
+          "d": "6 m au total, Ø 4 mm : version courte 1,25 m ou longue 6 m. Le chef et l'équipier ne doivent JAMAIS être tous deux en liaison longue (12 m = trop long)."
+        },
+        {
+          "t": "Ligne guide",
+          "d": "50 m, Ø 6 à 8 mm, repères de progression (olives) : 13 « olives » vers le feu, « être sur son 31 » pour sortir. Ligne guide sur tuyau : max 40 m dans le feu (2 tuyaux de 45)."
+        },
+        {
+          "t": "Calcul d'autonomie",
+          "d": "Capacité (L) = P × V ÷ Z. Ex. 7 L à 300 b : (300×7)/1,1 ≈ 1909 L. À 100 L/min (lutte incendie) : ≈ 19 minutes."
+        },
+        {
+          "t": "Espace mort & réinspiration",
+          "d": "Une partie du CO₂ expiré est réinhalée → hyperventilation réflexe → surconsommation d'air."
+        }
+      ],
+      "schema": "arico",
+      "elements": [
+        {
+          "id": "robinet",
+          "n": 1,
+          "x": 53,
+          "y": 21,
+          "label": "Robinet de bouteille",
+          "role": "Ouverture complète avant engagement ; déclenche l'auto-test de la balise."
+        },
+        {
+          "id": "bouteille",
+          "n": 2,
+          "x": 52,
+          "y": 50,
+          "label": "Bouteille",
+          "role": "7 L, 300 bars (fond plat) ou 200 bars (fond rond), jaune. Mini avant engagement : nominale − 10 %."
+        },
+        {
+          "id": "dossard",
+          "n": 3,
+          "x": 45,
+          "y": 50,
+          "label": "Dossard",
+          "role": "Support dorsal : plaque, bretelles et ceinture."
+        },
+        {
+          "id": "bodyguard",
+          "n": 4,
+          "x": 39,
+          "y": 50,
+          "label": "Bodyguard (balise)",
+          "role": "21 s d'immobilité → pré-alarme ; +8 s → alarme « homme mort ». À armer avant engagement."
+        },
+        {
+          "id": "mano",
+          "n": 5,
+          "x": 35,
+          "y": 66,
+          "label": "Manomètre + sifflet",
+          "role": "Circuit HP sans détendeur. Sifflet de fin de charge : 50 bars ± 5."
+        },
+        {
+          "id": "detendeur",
+          "n": 6,
+          "x": 52,
+          "y": 79,
+          "label": "Détendeur HP → MP",
+          "role": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars."
+        },
+        {
+          "id": "sad",
+          "n": 7,
+          "x": 73,
+          "y": 49,
+          "label": "SAD",
+          "role": "Surpression légère (> 1 bar) dans le masque : les fumées ne peuvent pas entrer. By-pass ≥ 300 L/min."
+        },
+        {
+          "id": "masque",
+          "n": 8,
+          "x": 82,
+          "y": 42,
+          "label": "Pièce faciale",
+          "role": "Masque complet. Bouton rouge de la SAD : stop débit au retrait du masque."
+        }
+      ]
+    },
+    {
+      "id": "lspcc",
+      "domain": "incendie",
+      "icon": "∞",
+      "title": "LSPCC — lot de sauvetage",
+      "tag": "Lot de sauvetage et de protection contre les chutes : composants, règles, réforme.",
+      "tags": [
+        "LSPCC",
+        "corde",
+        "harnais",
+        "amarrage"
+      ],
+      "links": [
+        "sauvetage",
+        "echelles",
+        "milieu-vicie"
+      ],
+      "keypoints": [
+        {
+          "t": "6 possibilités d'utilisation",
+          "d": "Sauvetage/mise en sécurité par l'extérieur · reconnaissance d'appartement · sauvetage dans les puits, fosses ou excavations · abordage et sécurisation d'une victime en péril · déplacement d'une victime inconsciente ou invalide · évolution avec risque de chute."
+        },
+        {
+          "t": "Localisation",
+          "d": "Deux lots dans le FPTGP, un dans le VTU. Sac jaune citron = lot engin, bleu = lot échelle."
+        },
+        {
+          "t": "La corde",
+          "d": "Semi-statique, 30 m (lot engin), Ø 12-13 mm, rupture > 3 tonnes, allongement ≤ 4 %. Nœud de huit double à chaque extrémité."
+        },
+        {
+          "t": "La commande (cordelette de servitude)",
+          "d": "30 m, Ø 7 mm, résistance NULLE. Écarte la victime de la façade, monte/descend du matériel, peut estimer une hauteur."
+        },
+        {
+          "t": "Pièces métalliques",
+          "d": "Frein de charge : 2 t, EXCLUSIVEMENT en point fixe. Mousquetons : 2 t grand axe / 750 kg petit axe — travail uniquement dans le grand axe, vis fermée sans forcer, jamais en appui sur un angle. Poulie : 2 t, divise le poids par deux (mouflage)."
+        },
+        {
+          "t": "Textiles",
+          "d": "Harnais cuissard (victime ou sauveteur, connecteur demi-lune irremplaçable) · triangle d'évacuation (mousqueton automatique ou anti-panique, attaches symétriques deux mêmes couleurs sous les aisselles) · 3 anneaux cousus de 80 cm + 3 de 150 cm."
+        },
+        {
+          "t": "6 règles de sécurité avant engagement",
+          "d": "1. Toujours doubler les amarrages. 2. Frein de charge toujours sur point fixe. 3. Connecteurs vissés à fond, sens de la gravité, moins ¼ de tour. 4. Nœuds de huit doubles aux extrémités. 5. Le sauveteur progresse toujours en dessous du point fixe. 6. Protections de corde sur les rebords saillants."
+        },
+        {
+          "t": "Réforme immédiate",
+          "d": "Après l'amortissement d'une chute (quelle que soit la hauteur), exposition/souillure corrosive, brûlure, coupure laissant voir l'âme, réduction de diamètre ou hernie. Lavage possible : eau douce ≤ 30 °C sans détergent, séchage à plat à l'ombre."
+        }
+      ],
+      "schema": "lspcc",
+      "elements": [
+        {
+          "id": "sac",
+          "n": 1,
+          "x": 21,
+          "y": 57,
+          "label": "Sac (jaune citron)",
+          "role": "Lot engin. Bleu = lot échelle. Deux lots au FPTGP, un au VTU."
+        },
+        {
+          "id": "corde",
+          "n": 2,
+          "x": 44,
+          "y": 56,
+          "label": "Corde",
+          "role": "Semi-statique, 30 m, Ø 12-13 mm, rupture > 3 t, allongement ≤ 4 %. Nœud de huit double à chaque extrémité."
+        },
+        {
+          "id": "commande",
+          "n": 3,
+          "x": 31,
+          "y": 86,
+          "label": "Commande",
+          "role": "Cordelette de 30 m, Ø 7 mm, résistance NULLE : écarte la victime de la façade, monte du matériel."
+        },
+        {
+          "id": "frein",
+          "n": 4,
+          "x": 59,
+          "y": 32,
+          "label": "Frein de charge",
+          "role": "2 t — EXCLUSIVEMENT en point fixe (règle n°2)."
+        },
+        {
+          "id": "mousquetons",
+          "n": 5,
+          "x": 60,
+          "y": 55,
+          "label": "Mousquetons",
+          "role": "2 t grand axe / 750 kg petit axe. Travail dans le grand axe, vis fermée sans forcer, jamais sur un angle."
+        },
+        {
+          "id": "poulie",
+          "n": 6,
+          "x": 59,
+          "y": 75,
+          "label": "Poulie",
+          "role": "2 t — divise le poids par deux (mouflage)."
+        },
+        {
+          "id": "harnais",
+          "n": 7,
+          "x": 79,
+          "y": 36,
+          "label": "Harnais cuissard",
+          "role": "Victime ou sauveteur. Connecteur demi-lune irremplaçable."
+        },
+        {
+          "id": "triangle",
+          "n": 8,
+          "x": 80,
+          "y": 70,
+          "label": "Triangle d'évacuation",
+          "role": "Attaches symétriques deux mêmes couleurs sous les aisselles, mousqueton automatique ou anti-panique."
+        },
+        {
+          "id": "anneaux",
+          "n": 9,
+          "x": 92,
+          "y": 51,
+          "label": "Anneaux cousus",
+          "role": "3 × 80 cm + 3 × 150 cm : amarrages (toujours doublés — règle n°1)."
+        }
+      ]
+    },
+    {
+      "id": "echelles",
+      "domain": "incendie",
+      "icon": "☰",
+      "title": "Échelles à mains",
+      "tag": "Échelle à crochets et échelles à coulisse deux plans : caractéristiques, piétage, itinéraire de secours.",
+      "tags": [
+        "échelles",
+        "piétage",
+        "sauvetage"
+      ],
+      "links": [
+        "sauvetage",
+        "lspcc"
+      ],
+      "keypoints": [
+        {
+          "t": "Échelle à crochets",
+          "d": "4,25 m, 8 kg. Progression en façade d'étage en étage quand les communications sont impraticables ou que les autres échelles sont à leurs limites. S'utilise en binôme mais se manipule seul, suspendue par ses crochets ou en appui sur les pointes. 1 SP (2 exceptionnellement en sauvetage). À tester avant engagement."
+        },
+        {
+          "t": "Échelle 2 plans grand modèle",
+          "d": "Déployée 9 m, repliée 5 m, 33 kg, largeur mini 30 cm. Atteint le 1er et le 2e étage."
+        },
+        {
+          "t": "Échelle 2 plans petit modèle",
+          "d": "Déployée 5,6 m, repliée 3,6 m, 20 kg."
+        },
+        {
+          "t": "Précautions",
+          "d": "Une personne par plan (sauf sauvetage) · pieds sur plan horizontal stable · parachutes correctement positionnés · mains sur les montants au déploiement."
+        },
+        {
+          "t": "Piétage",
+          "d": "Pied de l'échelle éloigné du mur d'environ 1/3 de la longueur développée. Repères : un pas par étage, test du coude, bras tendus."
+        },
+        {
+          "t": "Itinéraire de secours",
+          "d": "Échelle retournée grand plan vers le bas, piétage augmenté (haut juste sous le rebord), amarrée ou calée : 4 grands pas depuis la façade pour le 1er étage, 5 pour le 2e."
+        },
+        {
+          "t": "Trait",
+          "d": "Lors de sauvetages multiples, ne pas attacher le trait — le placer judicieusement pour ne pas gêner."
+        }
+      ],
+      "schema": "echelles",
+      "elements": [
+        {
+          "id": "planinf",
+          "n": 1,
+          "x": 41,
+          "y": 75,
+          "label": "Plan inférieur",
+          "role": "Échelle 2 plans : grand modèle 9 m déployée / 5 m repliée / 33 kg. Une personne par plan (sauf sauvetage)."
+        },
+        {
+          "id": "plansup",
+          "n": 2,
+          "x": 58,
+          "y": 45,
+          "label": "Plan supérieur",
+          "role": "Coulisse le long du plan inférieur. Mains sur les montants au déploiement."
+        },
+        {
+          "id": "parachutes",
+          "n": 3,
+          "x": 46,
+          "y": 66,
+          "label": "Parachutes",
+          "role": "Verrouillent le plan supérieur : à vérifier correctement positionnés avant de monter."
+        },
+        {
+          "id": "pietage",
+          "n": 4,
+          "x": 51,
+          "y": 95,
+          "label": "Piétage",
+          "role": "Pied éloigné du mur d'≈ 1/3 de la longueur développée. Repères : un pas par étage, test du coude, bras tendus."
+        },
+        {
+          "id": "crochets",
+          "n": 5,
+          "x": 84,
+          "y": 30,
+          "label": "Échelle à crochets",
+          "role": "4,25 m, 8 kg. D'étage en étage, suspendue par ses crochets. Se manipule seul, s'utilise en binôme. À tester avant."
+        }
+      ]
+    },
+    {
+      "id": "parc",
+      "domain": "incendie",
+      "icon": "▦",
+      "title": "Feux de parc de stationnement",
+      "tag": "Conduite opérationnelle SDIS 33 : dispositions constructives, tactiques, ventilation.",
+      "tags": [
+        "parking",
+        "PSC",
+        "compartimentage",
+        "véhicule électrique"
+      ],
+      "links": [
+        "ventilation",
+        "milieu-vicie",
+        "phenomenes"
+      ],
+      "keypoints": [
+        {
+          "t": "Compartimentage",
+          "d": "Volume recoupé en compartiments < 3000 m² (6000 m² si extinction automatique à eau) par parois coupe-feu et portes à fermeture automatique."
+        },
+        {
+          "t": "Escaliers",
+          "d": "40 m maximum entre 2 escaliers (25 m en cas de cul-de-sac). SAS si l'escalier ne débouche pas directement sur l'extérieur."
+        },
+        {
+          "t": "Coffret extérieur de ventilation",
+          "d": "Commandes marche/arrêt des moteurs de désenfumage en entrée de rampe : Petite Vitesse (PV) et Grande Vitesse (GV). La PV doit SYSTÉMATIQUEMENT être enclenchée avant la GV."
+        },
+        {
+          "t": "Ne jamais arrêter un moyen déclenché !",
+          "d": "La coupure électrique générale doit rester exceptionnelle pour ne pas arrêter le désenfumage mécanique."
+        },
+        {
+          "t": "Points d'ancrage & colonne sèche",
+          "d": "Dispositifs d'amarrage numérotés pour la ligne guide, entre 0,5 et 0,8 m de hauteur. Raccord de colonne sèche à 100 m maxi de la BI."
+        },
+        {
+          "t": "Risques caractéristiques",
+          "d": "Effet de four important, propagations rapides des fumées, feu multi-niveaux, véhicules à énergies alternatives, fort potentiel calorifique, fragilisation de structure — phénomènes thermiques très limités."
+        },
+        {
+          "t": "3 grands principes",
+          "d": "1. Localisation rapide du sinistre. 2. Attaque massive du foyer. 3. Sécurité du personnel (itinéraire de repli balisé, binôme sécurité + contrôleur, moyen hydraulique au point de pénétration)."
+        },
+        {
+          "t": "Véhicule électrique",
+          "d": "Signes d'emballement (flammes vives, projections incandescentes, croissance exponentielle) → REPLI IMMÉDIAT et attitude défensive."
+        },
+        {
+          "t": "Reconnaissance",
+          "d": "Plan d'intervention, couper l'alimentation des bornes de recharge (IRVE), ramener l'ascenseur au niveau de référence, privilégier l'engagement par les cages d'escaliers, ligne guide + caméra thermique."
+        }
+      ],
+      "schema": "parc",
+      "elements": [
+        {
+          "id": "coffret",
+          "n": 1,
+          "x": 8,
+          "y": 19,
+          "label": "Coffret PV / GV",
+          "role": "Commandes du désenfumage mécanique en entrée de rampe. PV SYSTÉMATIQUEMENT avant GV. Ne jamais arrêter un moyen déclenché."
+        },
+        {
+          "id": "rampe",
+          "n": 2,
+          "x": 21,
+          "y": 41,
+          "label": "Rampe",
+          "role": "Accès véhicules — l'engagement des binômes se fait de préférence par les cages d'escaliers."
+        },
+        {
+          "id": "portecf",
+          "n": 3,
+          "x": 72,
+          "y": 54,
+          "label": "Porte coupe-feu",
+          "role": "Recoupe les compartiments (< 3000 m², 6000 m² si extinction automatique). Fermeture automatique."
+        },
+        {
+          "id": "ancrage",
+          "n": 4,
+          "x": 54,
+          "y": 46,
+          "label": "Points d'ancrage",
+          "role": "Dispositifs numérotés pour la ligne guide, entre 0,5 et 0,8 m de hauteur."
+        },
+        {
+          "id": "colonne",
+          "n": 5,
+          "x": 80,
+          "y": 17,
+          "label": "Colonne sèche",
+          "role": "Raccord d'alimentation à 100 m maxi de la BI."
+        },
+        {
+          "id": "escalier",
+          "n": 6,
+          "x": 88,
+          "y": 60,
+          "label": "Escalier",
+          "role": "40 m maxi entre 2 escaliers (25 m en cul-de-sac). SAS s'il ne débouche pas directement dehors."
+        }
+      ]
+    },
+    {
+      "id": "feux-foret",
+      "domain": "incendie",
+      "icon": "♒",
+      "title": "Feux de forêt — sécurité & autoprotection",
+      "tag": "Autoprotection des CCF, autodéfense des unités, rôle du conducteur.",
+      "tags": [
+        "FDF",
+        "CCF",
+        "autoprotection",
+        "GIFF"
+      ],
+      "links": [
+        "sauvetage",
+        "circuit-eau"
+      ],
+      "keypoints": [
+        {
+          "t": "Autoprotection du CCF",
+          "d": "Aménagements de sécurité intégrés : protection thermique (films, rideaux d'eau) + système d'air respirable d'une autonomie minimale de 10 minutes pour 4 personnes (30 L/min par personne)."
+        },
+        {
+          "t": "CA et CU",
+          "d": "Capacité d'autoprotection (CA) : réserve d'eau dédiée à la protection thermique du véhicule. Capacité utile (CU) : réserve dédiée à l'extinction, qui EXCLUT la part d'autoprotection."
+        },
+        {
+          "t": "Mise en œuvre (personnel menacé)",
+          "d": "Le chef d'agrès : fait fermer les vannes d'aspiration/refoulement si nécessaire, regroupe le personnel DANS le CCF, fait mettre en œuvre l'autoprotection et l'air respirable, alerte l'échelon supérieur."
+        },
+        {
+          "t": "Autodéfense",
+          "d": "Positionnement des véhicules + autoprotection + éventuels moyens hydrauliques. Active (avec lances/canon) ou passive (sans). Si le feu surprend le GIFF : « serrer » les véhicules en autodéfense passive."
+        },
+        {
+          "t": "Le conducteur",
+          "d": "Veille la radio, la permanence de l'eau, assure la protection du CCF au moyen de la LDT ou du dispositif d'autoprotection. En urgence : enclenche l'autoprotection, reste à l'arrière, percute et coiffe son ARI."
+        },
+        {
+          "t": "Repli",
+          "d": "Si la ligne d'appui est inefficace : déplacement en MARCHE AVANT du groupe pour laisser passer le front de feu. Confinement = règle pour les structures en dur."
+        },
+        {
+          "t": "Après pompage en eaux naturelles",
+          "d": "Rincer et vérifier qu'aucun sédiment n'obstrue les orifices de pompe ou les buses d'autoprotection."
+        }
+      ],
+      "schema": "feux-foret",
+      "elements": [
+        {
+          "id": "cabine",
+          "n": 1,
+          "x": 20,
+          "y": 62,
+          "label": "Cabine (air respirable)",
+          "role": "Personnel regroupé DANS le CCF : air respirable ≥ 10 min pour 4 personnes (30 L/min chacun)."
+        },
+        {
+          "id": "buses",
+          "n": 2,
+          "x": 34,
+          "y": 38,
+          "label": "Buses d'autoprotection",
+          "role": "Rideaux d'eau + films de protection thermique. Après eaux naturelles : vérifier qu'aucun sédiment ne les obstrue."
+        },
+        {
+          "id": "cu",
+          "n": 3,
+          "x": 37,
+          "y": 63,
+          "label": "CU — capacité utile",
+          "role": "Réserve dédiée à l'extinction : elle EXCLUT la part d'autoprotection."
+        },
+        {
+          "id": "ca",
+          "n": 4,
+          "x": 51,
+          "y": 63,
+          "label": "CA — capacité d'autoprotection",
+          "role": "Réserve d'eau dédiée à la protection thermique du véhicule."
+        },
+        {
+          "id": "ldt",
+          "n": 5,
+          "x": 59,
+          "y": 65,
+          "label": "LDT",
+          "role": "Le conducteur protège le CCF avec la LDT ou le dispositif d'autoprotection ; il veille radio et permanence de l'eau."
+        },
+        {
+          "id": "front",
+          "n": 6,
+          "x": 86,
+          "y": 70,
+          "label": "Front de feu",
+          "role": "Si la ligne d'appui est inefficace : repli du groupe en MARCHE AVANT. Structures en dur : confinement = règle."
+        }
+      ]
+    },
+    {
+      "id": "radio",
+      "domain": "ops",
+      "icon": "⌁",
+      "title": "Procédure radio",
+      "tag": "Guide des procédures radio SDIS 33 (GPR 2023) : messages types, discipline réseau, prise de commandement.",
+      "tags": [
+        "radio",
+        "transmissions",
+        "ANTARES",
+        "messages"
+      ],
+      "links": [
+        "ops-multiples",
+        "novi"
+      ],
+      "source": "guide procedure radio 2023 v7",
+      "keypoints": [
+        {
+          "t": "Messages obligatoires (opérations courantes)",
+          "d": "Départ en intervention (Status 1) · arrivée à l'adresse indiquée (Status 2) · message d'ambiance · message urgent · compte(s)-rendu(s) · retour disponible (Status 7) · rentrée."
+        },
+        {
+          "t": "Message d'ambiance",
+          "d": "Précédé d'une demande de parole (Status 3). Passé par le chef d'agrès pendant le transit ou à l'arrivée. Synthétique : il conditionne l'engagement d'éventuels renforts. Sur opération courante, il peut être confondu avec le compte-rendu (facultatif)."
+        },
+        {
+          "t": "Corps du texte : SVFPD",
+          "d": "Je Suis, je Vois, je Fais, (je Prévois), je Demande — ordre de lecture à respecter pour accélérer la saisie au CTA-CODIS. Préciser le nombre TOTAL de moyens nécessaires sur les lieux."
+        },
+        {
+          "t": "Périodicité des comptes-rendus",
+          "d": "Un message toutes les 20 minutes au début de l'opération ; l'espacement suivant dépend de la cinétique mais ne doit jamais dépasser une heure."
+        },
+        {
+          "t": "Prise de commandement",
+          "d": "Le COS prend l'appellation « COS + nom de la commune » après demande de parole (Status 3). Cette appellation est IMPÉRATIVE en présence des moyens aériens nationaux. Chaque COS précise la communication tactique à utiliser."
+        },
+        {
+          "t": "Évacuation d'urgence",
+          "d": "Le COS transmet « ÉVACUATION – ÉVACUATION – ÉVACUATION » (3 fois minimum) sur les canaux tactiques et fait activer tous les deux-tons des engins sur les lieux."
+        },
+        {
+          "t": "Déclenchement NOVI",
+          "d": "« En présence d'un grand nombre de victimes, je demande le déclenchement des moyens du plan NOVI » — en précisant si besoin les modules attendus (PRV, renfort PRV, PMA)."
+        },
+        {
+          "t": "Exercices",
+          "d": "Tout message d'exercice est encadré par « POUR EXERCICE » (répété), pour éviter toute confusion avec une opération réelle."
+        }
+      ],
+      "schema": "radio",
+      "elements": [
+        {
+          "id": "engin",
+          "n": 1,
+          "x": 16,
+          "y": 73,
+          "label": "Engin sur les lieux",
+          "role": "Signale départ (Status 1), arrivée (Status 2), retour disponible (Status 7) et rentrée. Le chef d'agrès passe l'ambiance et les comptes-rendus."
+        },
+        {
+          "id": "sinistre",
+          "n": 2,
+          "x": 33,
+          "y": 75,
+          "label": "Le sinistre",
+          "role": "Objet des messages : je Suis, je Vois, je Fais, (je Prévois), je Demande — avec le nombre TOTAL de moyens nécessaires."
+        },
+        {
+          "id": "relais",
+          "n": 3,
+          "x": 50,
+          "y": 32,
+          "label": "Réseau ANTARES",
+          "role": "Réseau numérique national. Discipline radio : demande de parole (Status 3), termes de procédure OBNSIC, pas de bavardage."
+        },
+        {
+          "id": "codis",
+          "n": 4,
+          "x": 87,
+          "y": 55,
+          "label": "CTA-CODIS 33",
+          "role": "Reçoit les status et messages, engage les renforts, informe autorités et services. Comptes-rendus : toutes les 20 min puis 1 h maximum."
+        },
+        {
+          "id": "ambiance",
+          "n": 5,
+          "x": 76,
+          "y": 11,
+          "label": "Messages d'ambiance et comptes-rendus",
+          "role": "Ambiance : passée par le chef d'agrès pendant le transit ou à l'arrivée (facultative sur opération courante). Comptes-rendus au format SVFPD."
+        },
+        {
+          "id": "status",
+          "n": 6,
+          "x": 20,
+          "y": 12,
+          "label": "Les status",
+          "role": "Boutons de données ANTARES : 1 départ, 2 sur les lieux, 3 demande de parole, 7 retour disponible — ils évitent des messages voix."
+        }
+      ]
+    },
+    {
+      "id": "fli",
+      "domain": "ops",
+      "icon": "◉",
+      "title": "Feux de liquides inflammables",
+      "tag": "Feux de liquides inflammables SDIS 33 : caractéristiques des LI, scénarios majeurs, niveaux de réponse LIF.",
+      "tags": [
+        "FLI",
+        "mousse",
+        "émulseur",
+        "boil-over",
+        "LIF"
+      ],
+      "links": [
+        "extinction",
+        "rch-pol"
+      ],
+      "source": "guide_operationnel_fli_sdis33_v3 + plaquette FLI",
+      "keypoints": [
+        {
+          "t": "Caractériser un liquide inflammable",
+          "d": "Point Éclair (PE) : température à partir de laquelle le liquide émet assez de vapeurs pour s'enflammer en présence d'une flamme. Température d'auto-inflammation (TAI) : inflammation spontanée. Température d'ébullition (TEb)."
+        },
+        {
+          "t": "4 scénarios majeurs",
+          "d": "Feu de nappe · explosion de réservoir (ciel gazeux ou pressurisation) · BOIL-OVER (boule de feu + projection de produit enflammé) · U.V.C.E. (explosion d'un nuage de vapeurs non confiné)."
+        },
+        {
+          "t": "Boil-over",
+          "d": "Moussage brutal d'un réservoir en feu : l'onde de chaleur atteint un fond d'eau qui se vaporise → débordement + boule de feu (~150 kW/m², moins d'une minute). Phénomène RETARDÉ : le délai dépend de la hauteur de liquide. Classique (effet piston) ou en couche mince."
+        },
+        {
+          "t": "LIF 1 — phase réflexe",
+          "d": "Protection sur accident de citerne/wagon de LI (TMD), contenir une fuite, ou nappe < 800 m². Dans TOUS les cas : considérer un risque potentiel d'EXPLOSION et établir un périmètre de sécurité de 100 m."
+        },
+        {
+          "t": "LIF 1 renforcé",
+          "d": "LIF 1 + renfort (autonomie eau/émulseur augmentée) pour une attaque « coup de poing » rapide et de courte durée."
+        },
+        {
+          "t": "LIF 2 — phase réfléchie",
+          "d": "Feux de stockage en dépôt. Capacité : 4000 à 6000 L/min de solution moussante à 60-70 m d'une nappe < 800 m². 5 groupes : commandement, alimentation, attaque, émulseur, protection."
+        },
+        {
+          "t": "LIF 2 renforcé",
+          "d": "Capacité maximale : 8000 à 12 000 L/min, 4 lances-canons, surfaces > 1200 m². 2 secteurs ALIM/ATTAQUE (fonctionnels ou géographiques). Niveau 3 de commandement (PC de site)."
+        },
+        {
+          "t": "Alimentation",
+          "d": "Pour une extinction en 40 minutes, la réserve d'eau doit être a minima de 300 m³ — anticiper sa mise en œuvre le plus tôt possible."
+        }
+      ],
+      "schema": "fli",
+      "elements": [
+        {
+          "id": "bac",
+          "n": 1,
+          "x": 76,
+          "y": 55,
+          "label": "Bac de liquide inflammable",
+          "role": "Réservoir atmosphérique. Scénarios : feu de nappe, explosion (ciel gazeux/pressurisation), boil-over, UVCE."
+        },
+        {
+          "id": "flamme",
+          "n": 2,
+          "x": 78,
+          "y": 25,
+          "label": "Feu de bac",
+          "role": "Le rayonnement chauffe le produit : risque de boil-over (moussage brutal + boule de feu ~150 kW/m²) — phénomène RETARDÉ."
+        },
+        {
+          "id": "cuvette",
+          "n": 3,
+          "x": 60,
+          "y": 86,
+          "label": "Cuvette de rétention",
+          "role": "Contient les épandages. Un feu de sous-cuvette peut faire exploser les bacs voisins (effet domino)."
+        },
+        {
+          "id": "mousse",
+          "n": 4,
+          "x": 69,
+          "y": 85,
+          "label": "Tapis de mousse",
+          "role": "La solution moussante (eau + émulseur) isole le combustible de l'air et arrête l'évaporation. Taux d'application selon le LI."
+        },
+        {
+          "id": "ceem",
+          "n": 5,
+          "x": 20,
+          "y": 77,
+          "label": "CEEM (engin mousse)",
+          "role": "Cellule émulseur : alimente les lances-canons. LIF 2 : 4000-6000 L/min de solution moussante à 60-70 m."
+        },
+        {
+          "id": "lc",
+          "n": 6,
+          "x": 36,
+          "y": 68,
+          "label": "Lance-canon",
+          "role": "LC 3000/4000 : projette la mousse sur la nappe en visant la paroi pour un tapis progressif (« top mousse » du COS)."
+        },
+        {
+          "id": "perimetre",
+          "n": 7,
+          "x": 29,
+          "y": 48,
+          "label": "Périmètre de sécurité",
+          "role": "100 m dans tous les cas — risque potentiel d'explosion (LIF 1, phase réflexe)."
+        }
+      ]
+    },
+    {
+      "id": "ops-multiples",
+      "domain": "ops",
+      "icon": "⁂",
+      "title": "Opérations multiples — intempéries",
+      "tag": "Doctrine intempéries SDIS 33 : répondre à un afflux massif de demandes lors d'événements climatiques.",
+      "tags": [
+        "intempéries",
+        "tempête",
+        "inondation",
+        "opérations diverses"
+      ],
+      "links": [
+        "radio",
+        "chaine-commandement"
+      ],
+      "source": "guide_ops_operations_multiples_2022",
+      "keypoints": [
+        {
+          "t": "Objet de la doctrine",
+          "d": "Structurer la réponse du SDIS face à un événement climatique (tempête, inondation, orage, neige/verglas/grand froid) engendrant une situation de crise et un afflux massif de demandes de secours pour la protection des biens."
+        },
+        {
+          "t": "Anticipation",
+          "d": "Préparation du dispositif opérationnel sur vigilance météo : ordre préparatoire de mobilisation, effectifs à atteindre par groupement territorial, mobilisation du CTA-CODIS et de la chaîne de commandement graduées selon le risque."
+        },
+        {
+          "t": "Gestion délocalisée",
+          "d": "Les opérations diverses (DIV) sont triées et traitées de façon délocalisée : salle de crise CODIS ou salle d'activités multiples, PC de groupement (PCG) et PC avancé (PCA) au plus près du terrain."
+        },
+        {
+          "t": "Unités adaptées",
+          "d": "Équipe d'Intervention Légère (EIL) pour les opérations simples et nombreuses ; Équipe d'Appui (EA) pour les chantiers plus lourds. Chaque équipe suit sa fiche de tâches."
+        },
+        {
+          "t": "Priorisation",
+          "d": "Les demandes sont hiérarchisées : les secours à personnes et les situations dangereuses passent avant la protection des biens. Contre-appels pour requalifier les demandes en attente."
+        },
+        {
+          "t": "Mode dégradé",
+          "d": "Si les transmissions ou le SGO sont saturés : fiches de déclaration départ/rentrée d'équipe, messages de point de situation PCA → CIS → PC groupement → CODIS, synthèse départementale."
+        },
+        {
+          "t": "Sécurité & retour à la normale",
+          "d": "Règles de sécurité spécifiques (arbres, réseaux électriques, eau). Recueil du renseignement continu, message de levée du dispositif totale ou partielle."
+        }
+      ],
+      "schema": "ops-multiples",
+      "elements": [
+        {
+          "id": "codis",
+          "n": 1,
+          "x": 50,
+          "y": 17,
+          "label": "CODIS — salle de crise",
+          "role": "Active la salle de crise ou d'activités multiples : tri des appels, priorisation (personnes avant les biens), contre-appels."
+        },
+        {
+          "id": "pcg",
+          "n": 2,
+          "x": 26,
+          "y": 47,
+          "label": "PC de groupement (PCG)",
+          "role": "Conduit les opérations diverses de son groupement, en gestion délocalisée."
+        },
+        {
+          "id": "pca",
+          "n": 3,
+          "x": 74,
+          "y": 47,
+          "label": "PC avancé (PCA)",
+          "role": "Au plus près du terrain : engage et suit les équipes sur un secteur sinistré."
+        },
+        {
+          "id": "eil",
+          "n": 4,
+          "x": 16,
+          "y": 76,
+          "label": "EIL — équipe d'intervention légère",
+          "role": "Traite les opérations simples et nombreuses (bâchage, tronçonnage léger, épuisement)."
+        },
+        {
+          "id": "ea",
+          "n": 5,
+          "x": 36,
+          "y": 76,
+          "label": "EA — équipe d'appui",
+          "role": "Chantiers plus lourds nécessitant matériel et effectif renforcés."
+        },
+        {
+          "id": "meteo",
+          "n": 6,
+          "x": 11,
+          "y": 13,
+          "label": "Événement climatique",
+          "role": "Tempête, inondation, orage, neige/verglas : la vigilance météo déclenche l'ordre préparatoire de mobilisation."
+        }
+      ]
+    },
+    {
+      "id": "risque-electrique",
+      "domain": "ops",
+      "icon": "⚡",
+      "title": "Risque électrique",
+      "tag": "Guide risque électrique SDIS 33 : domaines de tension, DLV, extinction, consignation, photovoltaïque.",
+      "tags": [
+        "électricité",
+        "DLV",
+        "consignation",
+        "photovoltaïque"
+      ],
+      "links": [
+        "parc",
+        "extinction"
+      ],
+      "source": "guide_ops_risque_electrique_2018_v4 + guides photovoltaïques 2025",
+      "keypoints": [
+        {
+          "t": "Domaine d'intervention des SP",
+          "d": "Seules les interventions sur la BASSE TENSION (< 1000 V alternatif / < 1500 V continu) sont possibles en sécurité, avec le matériel électro-secours (gants diélectriques…)."
+        },
+        {
+          "t": "DLV — distance limite de voisinage",
+          "d": "Risque d'arc à l'approche d'un conducteur nu sous tension : 1 m en BT · 3 m en HTA (< 50 000 V) · 5 m en HTB (> 50 000 V). Interdiction d'entrer dans un transformateur contenant des conducteurs nus sous tension."
+        },
+        {
+          "t": "Extinction près d'une ligne HT",
+          "d": "Projection d'eau directe sur l'installation FORMELLEMENT INTERDITE. Jet diffusé : respecter la DLV (3 m HTA / 5 m HTB). Jet d'attaque (droit) indispensable : distances DOUBLÉES — 6 m HTA / 10 m HTB."
+        },
+        {
+          "t": "Consignation",
+          "d": "Seule la consignation (mise hors tension + mise à la terre, formalisée par échange de télécopies CODIS ↔ dispatching RTE, délai ≥ 1 h) permet d'intervenir dans la DLV. La simple mise hors tension ne suffit pas (ré-alimentation, induction)."
+        },
+        {
+          "t": "Tension de pas",
+          "d": "Un conducteur tombé au sol disperse le courant : gradient de potentiel dangereux en marchant à proximité — s'éloigner à petits pas ou pieds joints."
+        },
+        {
+          "t": "Photovoltaïque",
+          "d": "Entre panneaux et onduleur : courant continu BT mais d'intensité MORTELLE, circuit impossible à couper de jour. Porte-lance à 5 m minimum des panneaux, ne jamais marcher dessus. Victime au contact : la dégager avec les gants diélectriques."
+        },
+        {
+          "t": "Véhicules électriques / hybrides",
+          "d": "Batterie de traction 200 à 600 V continu (Li-ion…) + batterie de servitude classique. Repérage : trappe de recharge, absence d'échappement. Utiliser les fiches d'aide à la décision (FAD)."
+        }
+      ],
+      "schema": "risque-electrique",
+      "elements": [
+        {
+          "id": "pylone",
+          "n": 1,
+          "x": 23,
+          "y": 35,
+          "label": "Ligne haute tension",
+          "role": "HTA < 50 kV / HTB > 50 kV. Projection d'eau directe formellement interdite."
+        },
+        {
+          "id": "cable",
+          "n": 2,
+          "x": 69,
+          "y": 60,
+          "label": "Conducteur tombé au sol",
+          "role": "Considéré sous tension jusqu'à consignation. Risque d'arc sans contact (DLV)."
+        },
+        {
+          "id": "tension-pas",
+          "n": 3,
+          "x": 74,
+          "y": 88,
+          "label": "Tension de pas",
+          "role": "Le courant se disperse dans le sol : s'éloigner à petits pas ou pieds joints."
+        },
+        {
+          "id": "pl",
+          "n": 4,
+          "x": 44,
+          "y": 82,
+          "label": "Porte-lance",
+          "role": "Jet diffusé : respecter la DLV (3 m HTA / 5 m HTB). Jet droit indispensable : distances doublées (6 m / 10 m)."
+        },
+        {
+          "id": "dlv",
+          "n": 5,
+          "x": 83,
+          "y": 94,
+          "label": "DLV",
+          "role": "Distance limite de voisinage : 1 m BT · 3 m HTA · 5 m HTB. Seule la consignation permet d'intervenir en deçà."
+        }
+      ]
+    },
+    {
+      "id": "novi",
+      "domain": "ops",
+      "icon": "✚",
+      "title": "NOVI — nombreuses victimes",
+      "tag": "ORSEC NOVI SDIS 33 : chaîne des secours PRV → PMA, norias, commandement, SINUS.",
+      "tags": [
+        "NOVI",
+        "PRV",
+        "PMA",
+        "DSM",
+        "SINUS"
+      ],
+      "links": [
+        "gdto-ssuap",
+        "chaine-commandement",
+        "radio"
+      ],
+      "source": "novi_sdis33_v4_04-2024",
+      "keypoints": [
+        {
+          "t": "Le dispositif ORSEC NOVI",
+          "d": "Disposition générale ORSEC (art. R.741-8 CSI) pour les événements à nombreuses victimes. Il ne se déclenche pas sur ordre : il se DÉPLOIE PROGRESSIVEMENT selon l'ampleur ; le Préfet active le niveau approprié."
+        },
+        {
+          "t": "La chaîne des secours",
+          "d": "Chantier (ramassage) → petite noria → PRV → PMA → grande noria d'évacuation → hôpitaux. Objectif : préserver les structures hospitalières de l'engorgement."
+        },
+        {
+          "t": "PRV — point de rassemblement des victimes",
+          "d": "Créé temporairement par les premiers intervenants : soustraire les victimes aux effets du sinistre et à la vue de la scène, dénombrer et catégoriser. Le COS et le médecin chef PRV (1er DSM) en déterminent l'opportunité et l'emplacement."
+        },
+        {
+          "t": "PMA — poste médical avancé",
+          "d": "Implanté au plus près du sinistre mais à l'abri de tout risque évolutif. Espaces tri, soins UA/UR, évacuation. CAI et dépôt mortuaire isolés du PMA mais à proximité."
+        },
+        {
+          "t": "Déclenchement des modules",
+          "d": "Au-delà de 5 VSAV engagés, le module « PRV » est déclenché pour toute demande de vecteur supplémentaire. Modules « renfort PRV » et « PMA » sur décision du CDSD. Le SDIS dispose de 3 modules PRV."
+        },
+        {
+          "t": "DSM — directeur des secours médicaux",
+          "d": "Désigné à l'activation par le Préfet parmi les médecins du SAMU, le médecin-chef du SDIS ou leurs adjoints. Le 1er médecin chef PRV assure la fonction de 1er DSM."
+        },
+        {
+          "t": "CAI — centre d'accueil des impliqués",
+          "d": "Pour les personnes indemnes physiquement : structure en dur (gymnase, salle des fêtes…), isolée du chantier. Les impliqués peuvent être déclarés urgences médico-psychologiques (UMP)."
+        },
+        {
+          "t": "SINUS",
+          "d": "Suivi numérique des victimes : bracelet + secrétariats en entrée/sortie de chaque PRV et PMA. Mise en œuvre précoce au PRV sur décision du 1er COS."
+        }
+      ],
+      "schema": "novi",
+      "elements": [
+        {
+          "id": "chantier",
+          "n": 1,
+          "x": 11,
+          "y": 50,
+          "label": "Chantier",
+          "role": "Zone du sinistre : sauvetages, ramassage (dégagement, relevage, premiers gestes)."
+        },
+        {
+          "id": "pnoria",
+          "n": 2,
+          "x": 24.5,
+          "y": 44,
+          "label": "Petite noria",
+          "role": "Brancardage du chantier vers le PRV/PMA, sans immobiliser les secouristes."
+        },
+        {
+          "id": "prv",
+          "n": 3,
+          "x": 39,
+          "y": 50,
+          "label": "PRV",
+          "role": "Point de rassemblement des victimes : à l'abri des effets et de la vue de la scène. Dénombrement + catégorisation. Créé par les premiers intervenants."
+        },
+        {
+          "id": "pma",
+          "n": 4,
+          "x": 65,
+          "y": 50,
+          "label": "PMA",
+          "role": "Poste médical avancé : tri médical, soins UA/UR, évacuation. Au plus près mais à l'abri du risque évolutif."
+        },
+        {
+          "id": "gnoria",
+          "n": 5,
+          "x": 79.5,
+          "y": 44,
+          "label": "Grande noria",
+          "role": "Évacuation régulée du PMA vers les hôpitaux (préserver les structures de l'engorgement)."
+        },
+        {
+          "id": "hopital",
+          "n": 6,
+          "x": 91,
+          "y": 50,
+          "label": "Hôpitaux",
+          "role": "Destination des évacuations, régulées par le SAMU avec suivi SINUS."
+        },
+        {
+          "id": "cai",
+          "n": 7,
+          "x": 45.5,
+          "y": 83,
+          "label": "CAI",
+          "role": "Centre d'accueil des impliqués (indemnes physiquement), en structure en dur isolée du chantier."
+        },
+        {
+          "id": "depot",
+          "n": 8,
+          "x": 69.5,
+          "y": 83,
+          "label": "Dépôt mortuaire",
+          "role": "Sous la responsabilité du COPJ : accueil temporaire des décédés, isolé mais proche du PMA."
+        }
+      ]
+    },
+    {
+      "id": "nautique",
+      "domain": "ops",
+      "icon": "≋",
+      "title": "Interventions nautiques",
+      "tag": "Doctrine nautique SDIS 33 : missions SAV/SAL, engagement, sécurité.",
+      "tags": [
+        "nautique",
+        "SAV",
+        "SAL",
+        "VHF"
+      ],
+      "links": [
+        "sauvetage"
+      ],
+      "source": "nautique_sdis33_2020",
+      "keypoints": [
+        {
+          "t": "Cadre des missions",
+          "d": "Eaux intérieures : mission PROPRE des sapeurs-pompiers. Secteur maritime : mission PARTAGÉE — le SDIS peut intervenir en première intention (traitement immédiat sans contact préalable des autres services, dans le respect des dispositifs négociés)."
+        },
+        {
+          "t": "Missions SAV (sauveteurs aquatiques)",
+          "d": "Personne à l'eau, envasée ou noyée · bateau à la dérive avec personne à bord · embarcation chavirée ou avec voie d'eau · mise en sécurité d'embarcation · sécurité des personnels en intervention · sauvetage d'animaux."
+        },
+        {
+          "t": "Missions SAL (scaphandriers)",
+          "d": "Sauvetage et assistance · prompts secours en milieu hyperbare · reconnaissances subaquatiques · sécurité des interventions en site aquatique."
+        },
+        {
+          "t": "Hors mission SDIS",
+          "d": "La recherche et la récupération de biens (hors réquisition) ne relèvent pas du SDIS."
+        },
+        {
+          "t": "Environnements spécifiques",
+          "d": "Procédures dédiées : estuaire de la Gironde, inondation / fort courant, dispositif d'assistance aux avions bombardiers d'eau sur plan d'eau."
+        },
+        {
+          "t": "Transmissions",
+          "d": "Veille radio VHF marine en complément d'ANTARES ; ordre particulier des transmissions (OPT) nautique."
+        },
+        {
+          "t": "Accident de plongée",
+          "d": "Fiche réflexe dédiée : O₂ 15 L/min, hydratation, recueil des paramètres de plongée, alerte du caisson hyperbare via la régulation."
+        }
+      ],
+      "schema": "nautique",
+      "elements": [
+        {
+          "id": "embarcation",
+          "n": 1,
+          "x": 56,
+          "y": 46,
+          "label": "Embarcation SAV",
+          "role": "Sauveteurs aquatiques : personne à l'eau, embarcation chavirée, mise en sécurité, sauvetage d'animaux."
+        },
+        {
+          "id": "victime",
+          "n": 2,
+          "x": 85,
+          "y": 52,
+          "label": "Personne à l'eau",
+          "role": "Mission partagée en maritime (première intention possible), mission propre en eaux intérieures."
+        },
+        {
+          "id": "bouee",
+          "n": 3,
+          "x": 77,
+          "y": 53,
+          "label": "Moyen de sauvetage",
+          "role": "Bouée, perche… le contact direct avec la victime est le dernier recours."
+        },
+        {
+          "id": "sal",
+          "n": 4,
+          "x": 33,
+          "y": 79,
+          "label": "Plongeur SAL",
+          "role": "Scaphandrier : sauvetage, prompts secours hyperbares, reconnaissances subaquatiques."
+        },
+        {
+          "id": "ligne",
+          "n": 5,
+          "x": 26,
+          "y": 60,
+          "label": "Ligne de vie",
+          "role": "Sécurise le plongeur ; communication par tractions codées ou filaire."
+        },
+        {
+          "id": "vhf",
+          "n": 6,
+          "x": 56,
+          "y": 38,
+          "label": "Radio VHF",
+          "role": "Veille VHF marine en complément d'ANTARES (OPT nautique)."
+        }
+      ]
+    },
+    {
+      "id": "rch-pol",
+      "domain": "rch",
+      "icon": "☣",
+      "title": "Risque chimique & pollution",
+      "tag": "Guide RCH/POL SDIS 33 : niveaux de réponse, CMIC, missions des équipes.",
+      "tags": [
+        "RCH",
+        "CMIC",
+        "reconnaissance",
+        "décontamination"
+      ],
+      "links": [
+        "tmd",
+        "risques-infectieux",
+        "fli"
+      ],
+      "source": "guide ops_risque rch_pol_version 2 + rt_procedures_2025",
+      "keypoints": [
+        {
+          "t": "3 niveaux de réponse",
+          "d": "1. Équipe de RECONNAISSANCE RCH (groupement) : 1 chef d'équipe RCH2/GOC1 + 2 équipiers RCH1 minimum. 2. Équipe d'INTERVENTION (départementale, appui CIS Bruges). 3. CMIC = reco + intervention, commandées par l'officier CMIC/CMIR."
+        },
+        {
+          "t": "OP CMIC / CMIR",
+          "d": "Officier de permanence de niveau RCH3, en astreinte départementale. Il commande la CMIC, renseigne et conseille le COS sur tout élément chimique ou radiologique."
+        },
+        {
+          "t": "Missions de l'équipe d'intervention",
+          "d": "Confirmation des risques · confirmation du périmètre de sécurité · contrôle de contamination des personnes et intervenants exposés · décontamination. Mise en œuvre du sas de contrôle ou du portique mobile."
+        },
+        {
+          "t": "Engagement",
+          "d": "Par le CTA/CODIS selon les modalités à l'appel, à la demande du COS en concertation avec l'OP CMIC/CMIR, en phase de secours a priori, ou après accord du CDSD."
+        },
+        {
+          "t": "Carence",
+          "d": "Équipe de reconnaissance exceptionnellement à 2 agents dont au moins 1 RCH2 ; l'OP CMIC/CMIR décide des moyens compensatoires avec le COS et le CTA-CODIS."
+        },
+        {
+          "t": "Colis / pli suspect",
+          "d": "Levée de doute par la CNC ; à défaut, l'équipe d'intervention CMIC isole le pli ou le colis (sinon récupération par les forces de l'ordre). Transport par société spécialisée."
+        }
+      ],
+      "schema": "rch-pol",
+      "elements": [
+        {
+          "id": "fut",
+          "n": 1,
+          "x": 30,
+          "y": 52,
+          "label": "Source du risque",
+          "role": "Fuite ou épandage de produit chimique : identifier sans s'exposer (codes, FDS, exploitant)."
+        },
+        {
+          "id": "nuage",
+          "n": 2,
+          "x": 33,
+          "y": 26,
+          "label": "Nuage toxique",
+          "role": "Se placer VENT DANS LE DOS ; le nuage guide le zonage et les mesures."
+        },
+        {
+          "id": "zone-excl",
+          "n": 3,
+          "x": 55,
+          "y": 74,
+          "label": "Zone d'exclusion",
+          "role": "Accès en tenue adaptée uniquement. Périmètre confirmé par l'équipe d'intervention."
+        },
+        {
+          "id": "reco",
+          "n": 4,
+          "x": 49.5,
+          "y": 49,
+          "label": "Équipe de reconnaissance",
+          "role": "1 chef RCH2/GOC1 + 2 équipiers RCH1 (niveau groupement) : première levée de doute, mesures."
+        },
+        {
+          "id": "sas",
+          "n": 5,
+          "x": 70,
+          "y": 50,
+          "label": "Sas de contrôle",
+          "role": "Passage obligatoire en sortie de zone : contrôle de contamination, décontamination."
+        },
+        {
+          "id": "pc",
+          "n": 6,
+          "x": 90,
+          "y": 47,
+          "label": "PC — COS + OP CMIC/CMIR",
+          "role": "L'officier RCH3 commande la CMIC et conseille le COS. En zone de soutien."
+        },
+        {
+          "id": "vent",
+          "n": 7,
+          "x": 13,
+          "y": 16,
+          "label": "Vent",
+          "role": "Paramètre clé : approche et PC au vent, zonage sous le vent élargi."
+        }
+      ]
+    },
+    {
+      "id": "rad",
+      "domain": "rch",
+      "icon": "☢",
+      "title": "Risque radiologique",
+      "tag": "Guide risque radiologique SDIS 33 : urgence radiologique, contamination vs irradiation, contrôles.",
+      "tags": [
+        "RAD",
+        "radioactivité",
+        "contamination",
+        "irradiation"
+      ],
+      "links": [
+        "rch-pol",
+        "tmd"
+      ],
+      "source": "risque_rad_guide_ops_v2_2023 + guide gestion sources radioactives",
+      "keypoints": [
+        {
+          "t": "Situation d'urgence radiologique",
+          "d": "Découle d'un accident impliquant des substances radioactives, d'un acte de malveillance, ou d'une contamination de l'environnement détectée par le réseau de mesures ou portée à la connaissance de l'autorité."
+        },
+        {
+          "t": "Irradiation ≠ contamination",
+          "d": "Irradiation : exposition à distance à un rayonnement — cesse en s'éloignant (temps, distance, écran). Contamination : dépôt ou incorporation de substances radioactives — la victime devient elle-même vectrice."
+        },
+        {
+          "t": "Objectifs d'intervention",
+          "d": "Protéger les personnes, arrêter ou réduire la contamination des personnes et des biens, contrôler les intervenants exposés."
+        },
+        {
+          "t": "Missions de l'équipe d'intervention",
+          "d": "Confirmation des risques et du périmètre de sécurité · contrôle de contamination · décontamination · cartographie de la contamination radioactive s'il y a lieu."
+        },
+        {
+          "t": "Contrôles",
+          "d": "Sas de contrôle de la radioactivité en sortie de zone ; portique mobile de contrôle de la contamination sur ordre de l'officier CMIC/CMIR."
+        },
+        {
+          "t": "Sources radioactives",
+          "d": "La gestion des sources trouvées ou orphelines suit un guide dédié : ne pas manipuler, périmètre, détection, remontée vers l'ASN."
+        }
+      ],
+      "schema": "rad",
+      "elements": [
+        {
+          "id": "source",
+          "n": 1,
+          "x": 32,
+          "y": 56,
+          "label": "Source radioactive",
+          "role": "Ne pas manipuler. Irradiation : cesse en s'éloignant. Contamination : la substance se dépose ou s'incorpore."
+        },
+        {
+          "id": "rayons",
+          "n": 2,
+          "x": 44,
+          "y": 52,
+          "label": "Rayonnement",
+          "role": "Protection : TEMPS (limiter), DISTANCE (s'éloigner), ÉCRAN (s'abriter)."
+        },
+        {
+          "id": "perimetre",
+          "n": 3,
+          "x": 32,
+          "y": 20,
+          "label": "Périmètre de sécurité",
+          "role": "Établi par réflexe puis confirmé par mesures de l'équipe spécialisée."
+        },
+        {
+          "id": "detecteur",
+          "n": 4,
+          "x": 55,
+          "y": 51,
+          "label": "Intervenant + détecteur",
+          "role": "Dosimétrie et détection en continu ; enregistrement des doses reçues."
+        },
+        {
+          "id": "sas",
+          "n": 5,
+          "x": 72,
+          "y": 49,
+          "label": "Sas de contrôle radioactivité",
+          "role": "Contrôle de contamination des personnes et intervenants exposés en sortie de zone."
+        },
+        {
+          "id": "portique",
+          "n": 6,
+          "x": 90,
+          "y": 50,
+          "label": "Portique mobile",
+          "role": "Contrôle de masse de la contamination, sur ordre de l'officier CMIC/CMIR."
+        }
+      ]
+    },
+    {
+      "id": "risques-infectieux",
+      "domain": "rch",
+      "icon": "✱",
+      "title": "Risques infectieux",
+      "tag": "Guide risques infectieux SDIS 33 : hygiène, EPI, kits R.I., protocoles de désinfection.",
+      "tags": [
+        "infectieux",
+        "FFP2",
+        "hygiène",
+        "désinfection",
+        "DASRIA"
+      ],
+      "links": [
+        "rch-pol",
+        "gdto-ssuap"
+      ],
+      "source": "risques_infectieux_guide_ops_v1",
+      "keypoints": [
+        {
+          "t": "Voie manuportée",
+          "d": "Principal mode de transmission des maladies infectieuses → hygiène des mains systématique : lavage au savon doux, ou friction hydro-alcoolique (FHA) quand le lavage est impossible."
+        },
+        {
+          "t": "Kit R.I. de base (tout VSAV)",
+          "d": "4 masques FFP2 (secouristes, usage unique) · 1 masque chirurgical (victime) · 4 paires de lunettes réutilisables · blouses. Kit renforcé : gants à manchettes longues, charlottes…"
+        },
+        {
+          "t": "Règle des masques",
+          "d": "Masque chirurgical à la VICTIME. Si elle est dans l'incapacité de le porter (ex. masque O₂) : port du FFP2 OBLIGATOIRE pour les intervenants."
+        },
+        {
+          "t": "Port du FFP2",
+          "d": "Efficacité accrue visage rasé. Maximum 3 heures consécutives (saturation du filtre). Retrait : par les élastiques, en apnée, yeux fermés. Jamais de masque en attente sur le cou."
+        },
+        {
+          "t": "Gants d'examen",
+          "d": "1 paire – 1 geste – 1 patient. Souillés ou contexte infectieux → filière DASRIA ; nettoyage-désinfection → DAOM."
+        },
+        {
+          "t": "Protocoles de désinfection",
+          "d": "SIMPLE : après tout transport sanitaire. RENFORCÉ : risque infectieux particulier ou avis d'un officier santé SSSM (fiche de traçabilité datée et signée par le chef d'agrès OBLIGATOIRE). HEBDOMADAIRE : chaque semaine."
+        },
+        {
+          "t": "Hygiène individuelle",
+          "d": "Tenues d'intervention lavées à 60 °C, séparément du linge familial. Douche quotidienne minimum."
+        },
+        {
+          "t": "AES / AEV",
+          "d": "Accident d'exposition au sang ou virale : procédure dédiée — lavage/désinfection immédiate, avis médical urgent, déclaration."
+        }
+      ],
+      "schema": "risques-infectieux",
+      "elements": [
+        {
+          "id": "ffp2",
+          "n": 1,
+          "x": 38,
+          "y": 17,
+          "label": "Masque FFP2",
+          "role": "Obligatoire si la victime ne peut pas porter de masque. Max 3 h consécutives ; retrait par les élastiques, en apnée."
+        },
+        {
+          "id": "lunettes",
+          "n": 2,
+          "x": 38,
+          "y": 11,
+          "label": "Lunettes de protection",
+          "role": "Réutilisables (4 paires au kit R.I.) : protègent des projections ; nettoyage par trempage."
+        },
+        {
+          "id": "blouse",
+          "n": 3,
+          "x": 38,
+          "y": 47,
+          "label": "Blouse de protection",
+          "role": "Usage unique, éliminée en DASRIA après exposition."
+        },
+        {
+          "id": "gants",
+          "n": 4,
+          "x": 48,
+          "y": 56,
+          "label": "Gants d'examen",
+          "role": "1 paire – 1 geste – 1 patient. Contexte infectieux → DASRIA."
+        },
+        {
+          "id": "masque-chir",
+          "n": 5,
+          "x": 77,
+          "y": 52,
+          "label": "Masque chirurgical (victime)",
+          "role": "Se place sur la VICTIME pour limiter l'émission de gouttelettes."
+        },
+        {
+          "id": "barriere",
+          "n": 6,
+          "x": 60,
+          "y": 50,
+          "label": "Rupture de la transmission",
+          "role": "La voie manuportée est le principal mode de transmission : EPI + hygiène des mains la neutralisent."
+        },
+        {
+          "id": "sha",
+          "n": 7,
+          "x": 15,
+          "y": 76,
+          "label": "Friction hydro-alcoolique",
+          "role": "Quand le lavage au savon doux est impossible : FHA sur mains visuellement propres."
+        }
+      ]
+    },
+    {
+      "id": "chaine-commandement",
+      "domain": "orsec",
+      "icon": "♜",
+      "title": "Chaîne de commandement ORSEC",
+      "tag": "Dispositions générales ORSEC 33 : DOS, COS, structures de commandement et de coordination.",
+      "tags": [
+        "ORSEC",
+        "COS",
+        "DOS",
+        "PCO",
+        "COD"
+      ],
+      "links": [
+        "ops-multiples",
+        "evacuation-massive",
+        "novi"
+      ],
+      "source": "dispositions générales ORSEC chaîne de commandement 2021 + Exercice du commandement COD1",
+      "keypoints": [
+        {
+          "t": "DO / DOS",
+          "d": "Le directeur des opérations (Préfet, ou maire sur sa commune) DIRIGE : il fixe les objectifs et priorités, assure la coordination générale et la communication de crise."
+        },
+        {
+          "t": "COS",
+          "d": "Le commandant des opérations de secours, sous l'autorité du DO, met en œuvre TOUS les moyens publics et privés mobilisés pour les secours. Il peut être assisté de conseillers techniques placés sous son autorité."
+        },
+        {
+          "t": "Commandants « menant / concourant »",
+          "d": "Selon la nature de la crise, le COS et le COPG (commandant des opérations de police et de gendarmerie) sont tour à tour menant ou concourant."
+        },
+        {
+          "t": "COL",
+          "d": "Pour les pollutions (notamment maritimes), quand la phase de secours s'achève, la notion de COS disparaît au profit du commandant des opérations de LUTTE."
+        },
+        {
+          "t": "COD",
+          "d": "Centre opérationnel départemental : structure de coordination de la préfecture, activée par le Préfet. Le SDIS y délègue un officier."
+        },
+        {
+          "t": "PCO",
+          "d": "Poste de commandement opérationnel : implanté au plus près de l'intervention en zone non dangereuse — emplacement proposé au DOS par le COS. Coordination locale, demandes de moyens au COD, communication presse sous la direction du DOS."
+        },
+        {
+          "t": "Exploitants",
+          "d": "Sur les grands sites, l'exploitant fournit un agent terrain identifiable (chasuble) à disposition du COS et un représentant en structure de commandement."
+        }
+      ],
+      "schema": "chaine-commandement",
+      "elements": [
+        {
+          "id": "dos",
+          "n": 1,
+          "x": 50,
+          "y": 15,
+          "label": "DOS",
+          "role": "Préfet (ou maire) : DIRIGE les opérations — objectifs, priorités, coordination générale, communication."
+        },
+        {
+          "id": "cos",
+          "n": 2,
+          "x": 34,
+          "y": 52,
+          "label": "COS",
+          "role": "Commande la mise en œuvre de tous les moyens de secours, sous l'autorité du DO. Assisté de conseillers techniques."
+        },
+        {
+          "id": "copg",
+          "n": 3,
+          "x": 66,
+          "y": 52,
+          "label": "COPG",
+          "role": "Commandant des opérations de police et gendarmerie : menant ou concourant selon la crise."
+        },
+        {
+          "id": "cod",
+          "n": 4,
+          "x": 13,
+          "y": 45,
+          "label": "COD",
+          "role": "Centre opérationnel départemental (préfecture) : coordination, le SDIS y délègue un officier."
+        },
+        {
+          "id": "pco",
+          "n": 5,
+          "x": 34,
+          "y": 89,
+          "label": "PCO",
+          "role": "Poste de commandement opérationnel, au plus près en zone non dangereuse — emplacement proposé au DOS par le COS."
+        },
+        {
+          "id": "moyens",
+          "n": 6,
+          "x": 65,
+          "y": 87,
+          "label": "Moyens de terrain",
+          "role": "Groupes et colonnes engagés, sectorisés par le COS (GOC)."
+        }
+      ]
+    },
+    {
+      "id": "evacuation-massive",
+      "domain": "orsec",
+      "icon": "⇉",
+      "title": "Évacuation massive",
+      "tag": "ORSEC évacuation massive Gironde : décision, conduite, centres d'accueil (CARe).",
+      "tags": [
+        "évacuation",
+        "ORSEC",
+        "CARe"
+      ],
+      "links": [
+        "chaine-commandement",
+        "sauvetage"
+      ],
+      "source": "orsec evacuation massive v5",
+      "keypoints": [
+        {
+          "t": "Une décision difficile",
+          "d": "L'évacuation massive est décidée par le Préfet (DOS). Décision complexe — incertitude de début de crise, enjeux multiples — pouvant être prise à toute heure, avec dimension nationale possible (COGIC) selon l'ampleur."
+        },
+        {
+          "t": "Formalisation",
+          "d": "Arrêté préfectoral d'évacuation : périmètre, délais, circuits, points de rassemblement, laissez-passer pour le retour, exécution d'office à défaut."
+        },
+        {
+          "t": "CARe — centres d'accueil et de regroupement",
+          "d": "Lieux d'accueil des évacués (gymnases, salles des fêtes…) référencés dans l'ORSEC « Soutien des populations ». Règle de dimensionnement : 4 m² par personne hébergée."
+        },
+        {
+          "t": "Rôle des communes",
+          "d": "Identifier les structures d'accueil et leurs capacités, mettre à disposition les infrastructures, signaler les groupes de mineurs en zone d'évacuation — via le plan communal de sauvegarde (PCS)."
+        },
+        {
+          "t": "Missions des sapeurs-pompiers",
+          "d": "Participer à la diffusion de l'alerte · faciliter l'évacuation · activer et ravitailler les CARe en appui logistique · assister et soutenir les populations déplacées."
+        },
+        {
+          "t": "Populations vulnérables",
+          "d": "Prise en compte spécifique (établissements de santé, EHPAD, personnes isolées) ; la solidarité peut désengorger les CARe."
+        }
+      ],
+      "schema": "evacuation-massive",
+      "elements": [
+        {
+          "id": "zone",
+          "n": 1,
+          "x": 24,
+          "y": 48,
+          "label": "Zone à évacuer",
+          "role": "Périmètre défini par arrêté préfectoral (délais, circuits, exécution d'office, laissez-passer pour le retour)."
+        },
+        {
+          "id": "danger",
+          "n": 2,
+          "x": 22,
+          "y": 81,
+          "label": "Le danger",
+          "role": "Inondation, feu de forêt, risque technologique… la cinétique conditionne la décision d'évacuer ou de confiner."
+        },
+        {
+          "id": "circuits",
+          "n": 3,
+          "x": 54,
+          "y": 36,
+          "label": "Circuits d'évacuation",
+          "role": "Itinéraires balisés et sécurisés ; les SP facilitent l'évacuation et diffusent l'alerte."
+        },
+        {
+          "id": "population",
+          "n": 4,
+          "x": 49,
+          "y": 60,
+          "label": "Population",
+          "role": "Prise en compte spécifique des vulnérables (EHPAD, santé, personnes isolées, mineurs)."
+        },
+        {
+          "id": "care",
+          "n": 5,
+          "x": 82,
+          "y": 35,
+          "label": "CARe",
+          "role": "Centre d'accueil et de regroupement : 4 m²/personne, référencé dans l'ORSEC Soutien des populations. Les SP l'activent et le ravitaillent."
+        },
+        {
+          "id": "bus",
+          "n": 6,
+          "x": 79,
+          "y": 64,
+          "label": "Moyens de transport",
+          "role": "Bus et vecteurs mobilisés pour les personnes sans moyen propre."
+        },
+        {
+          "id": "arrete",
+          "n": 7,
+          "x": 11,
+          "y": 16,
+          "label": "Arrêté préfectoral",
+          "role": "La décision d'évacuation massive appartient au Préfet (DOS) — dimension nationale possible (COGIC)."
+        }
+      ]
+    },
+    {
+      "id": "tmd",
+      "domain": "orsec",
+      "icon": "⬢",
+      "title": "TMD — transport de matières dangereuses",
+      "tag": "ORSEC TMD-TMR 2023 : identifier une matière dangereuse, codes danger et ONU, TRANSAID.",
+      "tags": [
+        "TMD",
+        "code danger",
+        "plaque orange"
+      ],
+      "links": [
+        "rch-pol",
+        "rad"
+      ],
+      "source": "dispositions spécifiques orsec tmd-tmr 2023",
+      "keypoints": [
+        {
+          "t": "Signalisation des transports",
+          "d": "Panneaux rectangulaires orange rétro-réfléchissants (40 × 30 cm) à l'avant et à l'arrière du véhicule, et/ou panneaux codés : CODE DANGER en haut, CODE MATIÈRE (ONU) en bas."
+        },
+        {
+          "t": "Le code danger",
+          "d": "1er chiffre = danger principal (2 gaz, 3 liquide inflammable, 6 toxique, 8 corrosif…). 2e/3e chiffres = dangers secondaires. Chiffre doublé (33, 66…) = intensification du danger. « X » devant = réagit dangereusement avec l'eau."
+        },
+        {
+          "t": "Le code ONU",
+          "d": "Numéro à 4 chiffres dans la partie basse : identification de la matière selon la nomenclature ONU (ex. 1230 = méthanol, avec code danger 336 : liquide très inflammable et toxique)."
+        },
+        {
+          "t": "Plaques-étiquettes",
+          "d": "Losanges de classe de danger (explosif, gaz, liquide inflammable, comburant, toxique, radioactif, corrosif…) apposés sur les citernes et conteneurs."
+        },
+        {
+          "t": "TRANSAID",
+          "d": "Protocole d'assistance : recherche des entreprises volontaires et compétentes par matière (nom ou code ONU), par code danger ou par département, pour appuyer les secours."
+        },
+        {
+          "t": "Conduite réflexe",
+          "d": "Approche par le vent dans le dos, périmètre de sécurité, identification à la jumelle (codes, plaques, documents de bord), engagement minimal avant l'avis spécialisé RCH."
+        }
+      ],
+      "schema": "tmd",
+      "elements": [
+        {
+          "id": "citerne",
+          "n": 1,
+          "x": 54,
+          "y": 60,
+          "label": "Citerne TMD",
+          "role": "Transport de matières dangereuses : identifier à DISTANCE (jumelles, documents de bord)."
+        },
+        {
+          "id": "panneau",
+          "n": 2,
+          "x": 89.5,
+          "y": 58,
+          "label": "Panneau orange",
+          "role": "En haut : CODE DANGER (336 = liquide très inflammable + toxique). En bas : CODE ONU (1230 = méthanol)."
+        },
+        {
+          "id": "losange",
+          "n": 3,
+          "x": 54,
+          "y": 32,
+          "label": "Plaque-étiquette",
+          "role": "Losange de classe de danger (ici classe 3 : liquide inflammable), sur citernes et conteneurs."
+        },
+        {
+          "id": "code-danger",
+          "n": 4,
+          "x": 89.5,
+          "y": 50,
+          "label": "Code danger",
+          "role": "1er chiffre = danger principal ; doublé = intensification ; « X » = réagit dangereusement avec l'eau."
+        },
+        {
+          "id": "code-onu",
+          "n": 5,
+          "x": 89.5,
+          "y": 66,
+          "label": "Code ONU",
+          "role": "Numéro à 4 chiffres identifiant la matière selon la nomenclature ONU (→ TRANSAID)."
+        },
+        {
+          "id": "vent",
+          "n": 6,
+          "x": 11,
+          "y": 17,
+          "label": "Approche",
+          "role": "Vent dans le dos, périmètre de sécurité, engagement minimal avant l'avis RCH."
+        }
+      ]
+    },
+    {
+      "id": "gdto-ssuap",
+      "domain": "ssuap",
+      "icon": "✚",
+      "title": "SSUAP — gestes & techniques",
+      "tag": "GDTO SSUAP octobre 2025 : les 4 phases du bilan, XABCDE, gestes essentiels.",
+      "tags": [
+        "SSUAP",
+        "bilan",
+        "XABCDE",
+        "ACR"
+      ],
+      "links": [
+        "novi",
+        "risques-infectieux"
+      ],
+      "source": "GDTO_SSUAP_version_octobre_2025",
+      "keypoints": [
+        {
+          "t": "Les 4 phases du bilan",
+          "d": "1. CIRCONSTANCIEL : contexte, risques, sécurité. 2. PRIMAIRE : identifier et traiter les détresses vitales évidentes. 3. SECONDAIRE : examen approfondi, paramètres. 4. SURVEILLANCE : évaluer, agir, contrôler, réévaluer."
+        },
+        {
+          "t": "Bilan primaire : XABCDE",
+          "d": "X — eXsanguination (hémorragie externe grave) · A — Airway (voies aériennes + stabilisation du rachis) · B — Breathing (respiration) · C — Circulation · D — Disability (neurologique) · E — Exposure (exposition/environnement)."
+        },
+        {
+          "t": "ACR adulte",
+          "d": "Alerter + renfort médicalisé. Débuter sans délai 30 compressions / 2 insufflations sous O₂. DSA dès que possible et suivre ses consignes. Canule oro-pharyngée, aspiration sans retarder la RCP."
+        },
+        {
+          "t": "Accouchement",
+          "d": "Installer la mère sur le CÔTÉ GAUCHE (jamais sur le dos), établir le score de Malinas, bilan primaire et secondaire. Transport sur brancard allongée sur le côté si autorisé."
+        },
+        {
+          "t": "Refus de soins",
+          "d": "Nul ne peut être soigné sans consentement. Cocher « refus de soin » au bilan circonstanciel, renseigner obligatoirement l'identité (« X » si refus de la donner) et les précisions d'intervention."
+        },
+        {
+          "t": "Violences supposées",
+          "d": "Poser des questions simples et explicites. Cocher « violences familiales ou sexuelles supposées », demander les forces de l'ordre en précisant la raison, NE JAMAIS quitter la victime."
+        },
+        {
+          "t": "Conditions de vie dégradées",
+          "d": "Logement dangereux pour la santé/sécurité : cocher la case dédiée, demander un représentant de l'autorité communale et un chef de groupe."
+        }
+      ],
+      "schema": "gdto-ssuap",
+      "elements": [
+        {
+          "id": "x",
+          "n": 1,
+          "x": 13,
+          "y": 18,
+          "label": "X — eXsanguination",
+          "role": "Hémorragie externe grave : compression, garrot. À traiter EN PREMIER."
+        },
+        {
+          "id": "a",
+          "n": 2,
+          "x": 28,
+          "y": 15,
+          "label": "A — Airway",
+          "role": "Liberté des voies aériennes AVEC stabilisation du rachis cervical."
+        },
+        {
+          "id": "b",
+          "n": 3,
+          "x": 43,
+          "y": 13,
+          "label": "B — Breathing",
+          "role": "Respiration : fréquence, amplitude, SpO₂, O₂ si besoin."
+        },
+        {
+          "id": "c",
+          "n": 4,
+          "x": 58,
+          "y": 15,
+          "label": "C — Circulation",
+          "role": "Pouls, pâleur, temps de recoloration ; recherche d'hémorragies internes."
+        },
+        {
+          "id": "d",
+          "n": 5,
+          "x": 73,
+          "y": 18,
+          "label": "D — Disability",
+          "role": "État neurologique : conscience (AVPU/Glasgow), pupilles, motricité."
+        },
+        {
+          "id": "e",
+          "n": 6,
+          "x": 87,
+          "y": 23,
+          "label": "E — Exposure",
+          "role": "Exposition/environnement : déshabiller si nécessaire, protéger du froid."
+        },
+        {
+          "id": "garrot",
+          "n": 7,
+          "x": 59,
+          "y": 64,
+          "label": "Garrot",
+          "role": "Pose horodatée sur hémorragie non contrôlable par compression."
+        },
+        {
+          "id": "secouriste",
+          "n": 8,
+          "x": 36,
+          "y": 38,
+          "label": "Secouriste",
+          "role": "Évaluer, agir, contrôler, réévaluer — les 4 phases du bilan s'imbriquent."
+        }
+      ]
+    },
+    {
+      "id": "valeurs-seuils",
+      "domain": "rch",
+      "icon": "±",
+      "title": "Valeurs seuils de toxicité",
+      "tag": "Choisir la bonne valeur seuil en situation d'urgence : AEGL, ERPG, IDLH, PAC, VSTAF — et échelle NFPA 704.",
+      "tags": [
+        "toxicité",
+        "seuils",
+        "NFPA 704",
+        "RCH"
+      ],
+      "links": [
+        "rch-pol",
+        "tmd",
+        "rad"
+      ],
+      "source": "valeurs_seuils.pdf",
+      "keypoints": [
+        {
+          "t": "3 niveaux d'effets",
+          "d": "Chaque famille de seuils décline : effets RÉVERSIBLES, effets IRRÉVERSIBLES, 1ers effets LÉTAUX. Le seuil choisi doit être appliqué aux trois niveaux."
+        },
+        {
+          "t": "AEGL",
+          "d": "Acute Exposure Guideline Levels (AEGL-1/2/3) : conçus pour les situations d'urgence, population générale INCLUANT les individus sensibles (facteurs de protection importants)."
+        },
+        {
+          "t": "ERPG",
+          "d": "Emergency Response Planning Guidelines (ERPG-1/2/3) : situations d'urgence mais une SEULE durée d'exposition (1 h), travailleurs en priorité."
+        },
+        {
+          "t": "IDLH",
+          "d": "Immediately Dangerous to Life or Health (NIOSH) : doit permettre à un travailleur de s'échapper sans risque — une seule durée : 30 minutes."
+        },
+        {
+          "t": "TEEL-PAC et VSTAF",
+          "d": "PAC-1/2/3 : compilation AEGL + ERPG + TEEL (1 h). VSTAF (SER/SEI/SPEL) : valeurs réglementaires françaises pour les installations classées — NON conçues pour l'urgence, à manier avec précaution."
+        },
+        {
+          "t": "NFPA 704",
+          "d": "Losange à 4 cases : santé (bleu), inflammabilité (rouge), instabilité (jaune), notées 0 (inerte) à 4 (danger extrême) + risques spécifiques : W (réagit avec l'eau), OX (oxydant), SA (gaz asphyxiant simple), COR, BIO, CRYO."
+        },
+        {
+          "t": "Repères d'inflammabilité",
+          "d": "Niveau 4 : point d'éclair < 23 °C et vaporisation rapide (propane). Niveau 3 : PE < 23 °C (essence). Niveau 2 : PE entre 38 et 93 °C (gazole)."
+        }
+      ],
+      "schema": "valeurs-seuils",
+      "elements": [
+        {
+          "id": "sante",
+          "n": 1,
+          "x": 21,
+          "y": 48,
+          "label": "Santé (bleu)",
+          "role": "0 = non toxique … 4 = décès possible après exposition très courte (ex. HCN)."
+        },
+        {
+          "id": "inflam",
+          "n": 2,
+          "x": 33,
+          "y": 29,
+          "label": "Inflammabilité (rouge)",
+          "role": "4 : PE < 23 °C, vaporisation rapide (propane). 2 : PE 38-93 °C (gazole)."
+        },
+        {
+          "id": "instab",
+          "n": 3,
+          "x": 45,
+          "y": 48,
+          "label": "Instabilité (jaune)",
+          "role": "0 = inerte … 4 = détone à température ambiante (nitroglycérine)."
+        },
+        {
+          "id": "spec",
+          "n": 4,
+          "x": 33,
+          "y": 70,
+          "label": "Risques spécifiques",
+          "role": "W̶ réagit avec l'eau · OX oxydant · SA gaz asphyxiant simple · COR · BIO · CRYO."
+        },
+        {
+          "id": "aegl",
+          "n": 5,
+          "x": 71,
+          "y": 24,
+          "label": "AEGL",
+          "role": "Situations d'urgence, population générale INCLUANT les sensibles — référence à privilégier."
+        },
+        {
+          "id": "erpg",
+          "n": 6,
+          "x": 87,
+          "y": 24,
+          "label": "ERPG",
+          "role": "Urgence, une seule durée (1 h), travailleurs en priorité."
+        },
+        {
+          "id": "idlh",
+          "n": 7,
+          "x": 71,
+          "y": 39,
+          "label": "IDLH",
+          "role": "Échappatoire d'un travailleur : une seule durée, 30 minutes (NIOSH)."
+        },
+        {
+          "id": "pac",
+          "n": 8,
+          "x": 87,
+          "y": 39,
+          "label": "TEEL-PAC",
+          "role": "Compilation AEGL + ERPG + TEEL (1 h) quand les autres n'existent pas."
+        },
+        {
+          "id": "vstaf",
+          "n": 9,
+          "x": 71,
+          "y": 53,
+          "label": "VSTAF",
+          "role": "SER/SEI/SPEL : valeurs réglementaires françaises NON conçues pour l'urgence — précaution."
+        },
+        {
+          "id": "effets",
+          "n": 10,
+          "x": 79.5,
+          "y": 77,
+          "label": "Les 3 niveaux d'effets",
+          "role": "Réversibles / irréversibles / 1ers létaux : le seuil choisi s'applique aux trois."
+        }
+      ]
+    }
+  ]
+}

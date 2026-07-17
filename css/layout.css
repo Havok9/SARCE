@@ -1,0 +1,130 @@
+/* ============================================================
+   layout.css — grille générale, sidebar, topbar, fil d'Ariane
+   ============================================================ */
+
+.app{ display:flex; min-height:100vh; }
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  position:fixed; inset:0 auto 0 0; z-index:40;
+  width:var(--sidebar-w);
+  background:var(--bg-deep);
+  border-right:1px solid var(--line);
+  display:flex; flex-direction:column;
+  transform:translateX(0);
+  transition:transform .22s ease;
+}
+.sidebar-head{
+  display:flex; align-items:center; gap:10px;
+  padding:16px 16px 12px;
+}
+.sidebar-brand{
+  font-family:var(--disp); font-weight:700; font-size:14px; letter-spacing:1.5px; line-height:1.25;
+}
+.sidebar-brand span{ font-family:var(--mono); font-weight:400; font-size:9.5px; color:var(--mut-2); letter-spacing:1px; }
+
+.sidebar-search{ position:relative; padding:4px 14px 10px; }
+.sidebar-search input{ font-size:13px; padding:8px 11px; }
+
+.search-results{
+  position:absolute; left:14px; right:14px; top:calc(100% - 4px); z-index:50;
+  background:var(--panel-2); border:1px solid var(--line); border-radius:10px;
+  max-height:300px; overflow-y:auto;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);
+}
+.search-result{
+  display:block; width:100%; text-align:left;
+  padding:9px 12px; font-size:13px;
+  border-bottom:1px solid var(--line);
+}
+.search-result:last-child{ border-bottom:none; }
+.search-result:hover{ background:var(--panel-3); }
+.search-result .sr-domain{ font-family:var(--mono); font-size:10px; color:var(--mut-2); display:block; }
+
+/* Arbre de navigation */
+.nav-tree{ flex:1; overflow-y:auto; padding:2px 8px 12px; }
+.nav-domain{ margin-top:10px; }
+.nav-domain-head{
+  display:flex; align-items:center; gap:8px; width:100%;
+  padding:7px 8px; border-radius:8px;
+  font-family:var(--disp); font-weight:600; font-size:12.5px;
+  letter-spacing:.8px; text-transform:uppercase; color:var(--mut);
+}
+.nav-domain-head:hover{ background:var(--panel); color:var(--txt); }
+.nav-dot{ width:8px; height:8px; border-radius:2px; flex-shrink:0; }
+.nav-caret{ margin-left:auto; font-size:10px; color:var(--mut-2); transition:transform .15s; }
+.nav-domain.open .nav-caret{ transform:rotate(90deg); }
+.nav-items{ display:none; padding-left:10px; }
+.nav-domain.open .nav-items{ display:block; }
+.nav-item{
+  display:flex; align-items:center; gap:8px; width:100%; text-align:left;
+  padding:6px 9px; border-radius:7px; margin:1px 0;
+  font-size:13.5px; color:var(--mut);
+  border-left:2px solid transparent;
+}
+.nav-item:hover{ background:var(--panel); color:var(--txt); }
+.nav-item.active{ background:var(--panel-2); color:var(--txt); border-left-color:var(--orange); }
+.nav-item .nav-pct{ margin-left:auto; font-family:var(--mono); font-size:10.5px; color:var(--mut-2); }
+.nav-item.skeleton{ opacity:.55; }
+
+.sidebar-foot{
+  border-top:1px solid var(--line);
+  padding:10px 14px;
+  font-size:12px;
+}
+
+/* Backdrop mobile */
+.sidebar-backdrop{
+  position:fixed; inset:0; z-index:35;
+  background:rgba(10,10,20,.6);
+}
+
+/* ---------- Zone principale ---------- */
+.main{
+  flex:1; margin-left:var(--sidebar-w);
+  display:flex; flex-direction:column; min-width:0;
+}
+
+.topbar{
+  position:sticky; top:0; z-index:30;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 44px;
+  max-width:1280px; width:100%; margin:0 auto;
+  background:linear-gradient(180deg, var(--bg) 75%, rgba(26,26,46,0));
+  backdrop-filter:blur(6px);
+}
+.btn-icon{
+  display:none;
+  width:36px; height:36px; border-radius:8px;
+  background:var(--panel); border:1px solid var(--line);
+  font-size:16px; align-items:center; justify-content:center;
+}
+
+/* Fil d'Ariane */
+.breadcrumb{
+  display:flex; align-items:center; gap:7px; flex-wrap:wrap;
+  font-size:12.5px; color:var(--mut-2); min-width:0;
+}
+.breadcrumb a{ color:var(--mut); }
+.breadcrumb a:hover{ color:var(--orange); text-decoration:none; }
+.breadcrumb .bc-sep{ color:var(--mut-2); }
+.breadcrumb .bc-cur{ color:var(--txt); font-weight:600; }
+
+.topbar-right{ margin-left:auto; display:flex; gap:8px; }
+
+.view{
+  flex:1; padding:10px 44px 90px;
+  max-width:1280px; width:100%;
+  margin:0 auto;              /* centre le contenu au lieu de l'écraser à gauche */
+  animation:fadeUp .3s ease;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px){
+  .sidebar{ transform:translateX(-100%); box-shadow:none; }
+  .sidebar.open{ transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,.6); }
+  .main{ margin-left:0; }
+  .btn-icon{ display:flex; }
+  .view{ padding:6px 16px 80px; }
+  .topbar{ padding:12px 16px; }
+}

@@ -1,0 +1,3975 @@
+{
+  "systeme-feu": [
+    {
+      "q": "Combien de zones composent le système feu ?",
+      "choices": [
+        "7",
+        "4",
+        "5",
+        "3"
+      ],
+      "answer": 0,
+      "explain": "Monde extérieur, zone gazeuse basse, zone gazeuse haute, source de gaz combustible, flamme, paroi basse, paroi haute."
+    },
+    {
+      "q": "Quelle matière s'échange principalement dans le système feu ?",
+      "choices": [
+        "Oxygène, gaz de pyrolyse et fumées",
+        "Eau et poussières",
+        "Azote seul",
+        "CO₂ seul"
+      ],
+      "answer": 0,
+      "explain": "L'oxygène de l'air, les gaz de pyrolyse et les produits de combustion (fumées)."
+    },
+    {
+      "q": "Modes d'échange d'énergie les plus influents dans le système feu ?",
+      "choices": [
+        "Rayonnement et convection",
+        "Conduction et convection",
+        "Conduction seule",
+        "Rayonnement seul"
+      ],
+      "answer": 0,
+      "explain": "La conduction est négligeable au sein du système feu."
+    },
+    {
+      "q": "Agir sur une zone du système feu…",
+      "choices": [
+        "A des conséquences sur toutes les autres",
+        "N'affecte que cette zone",
+        "Est sans effet",
+        "Éteint toujours le feu"
+      ],
+      "answer": 0,
+      "explain": "Le système est complexe : bien agir le ralentit, mal agir l'accélère."
+    },
+    {
+      "q": "Fermer la porte d'un volume en feu ouvert…",
+      "choices": [
+        "Stoppe la convection et étouffe le feu",
+        "Accélère le feu",
+        "Provoque un flashover immédiat",
+        "Est interdit"
+      ],
+      "answer": 0,
+      "explain": "On isole le monde extérieur et on supprime l'apport d'air."
+    },
+    {
+      "q": "Ouvrir la porte d'un volume en feu fermé…",
+      "choices": [
+        "Alimente le foyer en air et peut l'emballer",
+        "Éteint le feu",
+        "Refroidit les fumées",
+        "Sans effet"
+      ],
+      "answer": 0,
+      "explain": "Le courant de convection s'active : développement, emballement possible."
+    },
+    {
+      "q": "Effet d'une impulsion d'eau dans le ciel gazeux ?",
+      "choices": [
+        "Vaporisation : refroidit et inerte les fumées",
+        "Augmente le rayonnement",
+        "Alimente le feu",
+        "Crée un backdraft"
+      ],
+      "answer": 0,
+      "explain": "La vapeur remplace les gaz combustibles, le rayonnement diminue, le système s'affaiblit."
+    },
+    {
+      "q": "Le backdraft est lié à quelle face du tétraèdre ?",
+      "choices": [
+        "Le comburant",
+        "Le combustible",
+        "L'énergie d'activation",
+        "Les radicaux libres"
+      ],
+      "answer": 0,
+      "explain": "Apport d'air soudain sur un feu sous-ventilé."
+    },
+    {
+      "q": "Le flashover est lié à…",
+      "choices": [
+        "Le combustible (gaz de pyrolyse)",
+        "Le comburant",
+        "La conduction",
+        "L'humidité"
+      ],
+      "answer": 0,
+      "explain": "La pyrolyse généralisée s'auto-enflamme quand l'énergie est suffisante."
+    },
+    {
+      "q": "Qu'est-ce qui entretient la réaction de combustion ?",
+      "choices": [
+        "Les radicaux libres",
+        "L'azote",
+        "La vapeur d'eau",
+        "Le CO₂"
+      ],
+      "answer": 0,
+      "explain": "D'où l'efficacité des poudres qui les cassent (réaction en chaîne)."
+    }
+  ],
+  "phenomenes": [
+    {
+      "q": "Un feu naissant est limité par…",
+      "choices": [
+        "Le combustible",
+        "La ventilation",
+        "L'eau",
+        "Le vent"
+      ],
+      "answer": 0,
+      "explain": "Les gaz de pyrolyse sont en quantité limitée : dégagement de chaleur modéré."
+    },
+    {
+      "q": "Un feu sous-ventilé confiné évolue vers…",
+      "choices": [
+        "Une quasi auto-extinction",
+        "Un flashover certain",
+        "Un feu pleinement développé",
+        "Une extinction définitive"
+      ],
+      "answer": 0,
+      "explain": "Tant que le confinement est maintenu — reprise violente possible s'il est rompu."
+    },
+    {
+      "q": "En structure meublée, un feu pleinement développé est…",
+      "choices": [
+        "Systématiquement limité par la ventilation",
+        "Limité par le combustible",
+        "Impossible",
+        "Toujours éteint par l'eau"
+      ],
+      "answer": 0,
+      "explain": "Le potentiel combustible dépasse largement l'air disponible."
+    },
+    {
+      "q": "Le flashover concerne un volume…",
+      "choices": [
+        "Ventilé",
+        "Hermétique",
+        "Vide",
+        "Inondé"
+      ],
+      "answer": 0,
+      "explain": "Passage brutal d'un feu localisé à l'embrasement généralisé d'un volume ventilé."
+    },
+    {
+      "q": "Le flashover aboutit toujours à…",
+      "choices": [
+        "Un feu pleinement développé",
+        "Une extinction",
+        "Un backdraft",
+        "Une implosion"
+      ],
+      "answer": 0,
+      "explain": "Inflammation de l'ensemble des combustibles de la pièce."
+    },
+    {
+      "q": "Facteur déclencheur du backdraft ?",
+      "choices": [
+        "L'apport de comburant (air)",
+        "L'apport de combustible",
+        "Le refroidissement",
+        "L'humidité"
+      ],
+      "answer": 0,
+      "explain": "Fenêtre brisée, porte ouverte sur un feu sous-ventilé : explosion de fumées possible."
+    },
+    {
+      "q": "Facteur déclencheur du FGI ?",
+      "choices": [
+        "L'énergie d'activation",
+        "Le comburant",
+        "Le combustible",
+        "Le vent"
+      ],
+      "answer": 0,
+      "explain": "Des gaz imbrûlés s'enflamment au contact d'une source de chaleur — possible même fumées froides."
+    },
+    {
+      "q": "FGI avec onde de pression = ?",
+      "choices": [
+        "Smoke explosion",
+        "Flash fire",
+        "Backdraft",
+        "Flashover"
+      ],
+      "answer": 0,
+      "explain": "Sans onde de pression : flash fire ; avec : smoke explosion."
+    },
+    {
+      "q": "Parmi les dangers des fumées :",
+      "choices": [
+        "Inflammabilité, toxicité, opacité",
+        "Uniquement la chaleur",
+        "Uniquement l'opacité",
+        "Aucun une fois refroidies"
+      ],
+      "answer": 0,
+      "explain": "7 dangers : inflammabilité/explosivité, toxicité/corrosivité, particules, opacité, rayonnement, envahissement, chaleur."
+    },
+    {
+      "q": "En phase de régression…",
+      "choices": [
+        "Les risques liés aux fumées restent présents",
+        "Tout danger a disparu",
+        "Le flashover est imminent",
+        "On peut retirer l'ARI"
+      ],
+      "answer": 0,
+      "explain": "La puissance diminue mais les fumées restent dangereuses."
+    }
+  ],
+  "extinction": [
+    {
+      "q": "Restreindre l'alimentation en air du feu, c'est le principe…",
+      "choices": [
+        "De l'antiventilation",
+        "Du désenfumage",
+        "De la noria",
+        "Du mouflage"
+      ],
+      "answer": 0,
+      "explain": "Contrôler l'arrivée d'air est un moyen très efficace de maîtrise en attendant les moyens d'extinction."
+    },
+    {
+      "q": "Pourquoi abaisser la température des fumées ?",
+      "choices": [
+        "L'eau vaporisée absorbe l'énergie et réduit le rayonnement",
+        "Pour les rendre visibles",
+        "Pour les alourdir seulement",
+        "C'est inutile"
+      ],
+      "answer": 0,
+      "explain": "La vaporisation absorbe une grande quantité d'énergie et inerte le volume."
+    },
+    {
+      "q": "La production de gaz de pyrolyse dépend de…",
+      "choices": [
+        "La température du combustible",
+        "La couleur des flammes",
+        "L'humidité de l'air",
+        "La pression atmosphérique"
+      ],
+      "answer": 0,
+      "explain": "D'où l'efficacité du refroidissement direct du combustible."
+    },
+    {
+      "q": "Comment interrompre la réaction en chaîne ?",
+      "choices": [
+        "Casser les radicaux libres (poudres, gaz inhibiteurs)",
+        "Ajouter de l'oxygène",
+        "Chauffer les fumées",
+        "Ventiler en grand"
+      ],
+      "answer": 0,
+      "explain": "Extincteurs à poudre et installations fixes à gaz agissent sur les radicaux libres."
+    },
+    {
+      "q": "Qui établit les lignes d'attaque ?",
+      "choices": [
+        "Les binômes d'attaque (BAT)",
+        "Le conducteur seul",
+        "Le COS",
+        "Le contrôleur ARI"
+      ],
+      "answer": 0,
+      "explain": "Le chef d'agrès précise fonctions et consignes pendant le trajet."
+    },
+    {
+      "q": "Temps moyen pour établir 100 m avec un dévidoir automobile ?",
+      "choices": [
+        "Environ 2 minutes",
+        "10 minutes",
+        "30 secondes",
+        "20 minutes"
+      ],
+      "answer": 0,
+      "explain": "Tuyaux de 110 sur dévidoir automobile : ~2 min pour 100 m."
+    },
+    {
+      "q": "Temps de montage d'une citerne souple ?",
+      "choices": [
+        "Environ 20 minutes",
+        "2 minutes",
+        "1 heure",
+        "5 minutes"
+      ],
+      "answer": 0,
+      "explain": "Prévoir aussi une zone dédiée."
+    },
+    {
+      "q": "Pour garantir la pérennité de l'eau aux lances…",
+      "choices": [
+        "Laisser l'engin alimentant en place et le remplir par norias",
+        "Déplacer l'engin à chaque remplissage",
+        "Réduire le débit des lances",
+        "Utiliser la LDT"
+      ],
+      "answer": 0,
+      "explain": "L'engin qui alimente ne bouge pas : les norias l'approvisionnent."
+    },
+    {
+      "q": "Les 4 principes de maîtrise du feu :",
+      "choices": [
+        "Air, fumées, combustible, réaction en chaîne",
+        "Eau, mousse, poudre, gaz",
+        "Attaque, repli, sauvetage, déblai",
+        "Convection, conduction, rayonnement, pyrolyse"
+      ],
+      "answer": 0,
+      "explain": "Contrôler l'arrivée d'air · agir sur les fumées · agir sur le combustible · interrompre la réaction en chaîne."
+    },
+    {
+      "q": "Évacuer les fumées permet notamment…",
+      "choices": [
+        "Survie des victimes, progression, anti-propagation",
+        "D'alimenter le feu volontairement",
+        "De réduire le débit des lances",
+        "D'éviter les norias"
+      ],
+      "answer": 0,
+      "explain": "Les fumées tuent, aveuglent et propagent le feu."
+    }
+  ],
+  "ventilation": [
+    {
+      "q": "Définition de la ventilation opérationnelle ?",
+      "choices": [
+        "Agir sur l'écoulement des flux gazeux et thermiques",
+        "Refroidir le moteur de l'engin",
+        "Aérer après extinction uniquement",
+        "Mesurer la toxicité"
+      ],
+      "answer": 0,
+      "explain": "Par ouverture/fermeture d'ouvrants existants ou créés, avec au besoin des ventilateurs."
+    },
+    {
+      "q": "Qu'est-ce qu'un « entrant » ?",
+      "choices": [
+        "Un ouvrant qui fait entrer l'air",
+        "Un binôme qui pénètre",
+        "Une lance en attaque",
+        "Le sens du vent"
+      ],
+      "answer": 0,
+      "explain": "Le sortant fait sortir les fumées ; les différences de pression créent la veine d'air."
+    },
+    {
+      "q": "Qu'est-ce qui déplace naturellement les gaz ?",
+      "choices": [
+        "Différences de pression et mouvements convectifs",
+        "La gravité seule",
+        "Le rayonnement",
+        "L'humidité"
+      ],
+      "answer": 0,
+      "explain": "Gaz chauds légers en partie haute, gaz froids aspirés en partie basse — tirage de cheminée."
+    },
+    {
+      "q": "Les 3 objectifs de la ventilation ?",
+      "choices": [
+        "Protéger, désenfumer, attaquer",
+        "Refroidir, éclairer, sécher",
+        "Isoler, confiner, évacuer",
+        "Aspirer, souffler, filtrer"
+      ],
+      "answer": 0,
+      "explain": "PROTÉGER un volume, DÉSENFUMER un local non touché, ATTAQUER (agir sur fumées et foyer)."
+    },
+    {
+      "q": "« Ventiler pour protéger » comprend…",
+      "choices": [
+        "Recloisonnement, dépression du local en feu, surpression d'un volume sain",
+        "Uniquement la VPP",
+        "L'ouverture de toutes les fenêtres",
+        "L'arrosage des façades"
+      ],
+      "answer": 0,
+      "explain": "3 actions pour empêcher les fumées d'atteindre un volume."
+    },
+    {
+      "q": "L'antiventilation consiste à…",
+      "choices": [
+        "Priver le feu de comburant",
+        "Souffler plus fort",
+        "Créer un sortant",
+        "Casser les vitres"
+      ],
+      "answer": 0,
+      "explain": "Tactique offensive très agressive, combinée à l'attaque hydraulique."
+    },
+    {
+      "q": "Posture SDIS 33 : « ventiler pour désenfumer » se fait…",
+      "choices": [
+        "Sur intervention commandée a minima par un chef de groupe formé, ou feu éteint",
+        "Librement par tout équipier",
+        "Uniquement de nuit",
+        "Jamais"
+      ],
+      "answer": 0,
+      "explain": "Posture opérationnelle départementale spécifique."
+    },
+    {
+      "q": "Bon indicateur de l'efficacité de la ventilation ?",
+      "choices": [
+        "La vitesse des fumées au sortant",
+        "La couleur des flammes",
+        "Le bruit du ventilateur",
+        "La température de l'engin"
+      ],
+      "answer": 0,
+      "explain": "Un sortant rapide = veine d'air efficace."
+    },
+    {
+      "q": "La ventilation d'attaque améliore…",
+      "choices": [
+        "Visibilité et sécurité du binôme",
+        "Le débit des lances",
+        "La pression de l'hydrant",
+        "L'autonomie de l'ARI"
+      ],
+      "answer": 0,
+      "explain": "Elle dégage les fumées devant le binôme d'attaque."
+    },
+    {
+      "q": "Ouvrir un sortant sans maîtriser l'entrant risque de…",
+      "choices": [
+        "Accélérer le feu (apport d'air non contrôlé)",
+        "Éteindre le feu",
+        "Créer du gel",
+        "Rien"
+      ],
+      "answer": 0,
+      "explain": "Toute action de ventilation modifie le système feu : elle se coordonne avec l'attaque."
+    }
+  ],
+  "sauvetage": [
+    {
+      "q": "Définition du sauvetage ?",
+      "choices": [
+        "Soustraire une personne à un danger imminent qu'elle ne peut fuir seule",
+        "Déplacer préventivement une personne",
+        "Confiner une personne",
+        "Évacuer un quartier"
+      ],
+      "answer": 0,
+      "explain": "Danger imminent + incapacité de s'y soustraire d'elle-même."
+    },
+    {
+      "q": "Définition de la mise en sécurité ?",
+      "choices": [
+        "Protéger d'une menace plus ou moins différée",
+        "Extraire d'un danger imminent",
+        "Interdire l'accès à une zone",
+        "Éteindre le feu"
+      ],
+      "answer": 0,
+      "explain": "Déplacement commandé et accompagné vers une zone sûre."
+    },
+    {
+      "q": "Voie prioritaire pour un sauvetage ?",
+      "choices": [
+        "Les communications existantes",
+        "La fenêtre",
+        "Le toit",
+        "Le LSPCC"
+      ],
+      "answer": 0,
+      "explain": "Sinon par l'extérieur : MEA, échelles à coulisse, à crochets, LSPCC."
+    },
+    {
+      "q": "Le confinement consiste à…",
+      "choices": [
+        "Laisser les personnes sur place à l'abri des effets du danger",
+        "Les faire sortir en courant",
+        "Les regrouper dehors",
+        "Les enfermer à clé"
+      ],
+      "answer": 0,
+      "explain": "Jusqu'à l'étanchéité du local dans le cas le plus défavorable."
+    },
+    {
+      "q": "L'évacuation est…",
+      "choices": [
+        "Un déplacement préventif ordonné hors de la zone de danger",
+        "Toujours préférable au confinement",
+        "Réservée aux valides",
+        "Une action après extinction"
+      ],
+      "answer": 0,
+      "explain": "Le COS peut préférer le confinement si le trajet expose trop le public."
+    },
+    {
+      "q": "En feux de forêt, la règle pour les structures en dur est…",
+      "choices": [
+        "Le confinement",
+        "L'évacuation massive",
+        "La fuite en véhicule",
+        "L'ascension sur les toits"
+      ],
+      "answer": 0,
+      "explain": "L'évacuation limitée et accompagnée reste l'exception."
+    },
+    {
+      "q": "En cas de mises en sécurité multiples par l'extérieur, on privilégie…",
+      "choices": [
+        "Les moyens élévateurs aériens",
+        "Le LSPCC seul",
+        "L'échelle à crochets",
+        "La corde lisse"
+      ],
+      "answer": 0,
+      "explain": "MEA prioritaires en cas d'impraticabilité des communications ou de sauvetages multiples."
+    },
+    {
+      "q": "Si la victime est valide, le sauveteur…",
+      "choices": [
+        "L'accompagne, l'aide et la conseille",
+        "La porte systématiquement",
+        "La laisse seule",
+        "Attend le renfort"
+      ],
+      "answer": 0,
+      "explain": "Mise en sécurité : déplacement commandé et accompagné."
+    },
+    {
+      "q": "Qui décide entre évacuation et confinement ?",
+      "choices": [
+        "Le COS",
+        "Chaque équipier",
+        "La victime",
+        "Le CODIS uniquement"
+      ],
+      "answer": 0,
+      "explain": "Le commandant des opérations de secours arbitre selon l'exposition du trajet."
+    },
+    {
+      "q": "Le sauvetage par l'extérieur utilise notamment…",
+      "choices": [
+        "MEA, échelles à mains, LSPCC",
+        "Uniquement l'hélicoptère",
+        "La LDT",
+        "Le dévidoir"
+      ],
+      "answer": 0,
+      "explain": "Moyens élévateurs aériens, échelles à coulisse et à crochets, lot de sauvetage."
+    }
+  ],
+  "milieu-vicie": [
+    {
+      "q": "O₂ < 19 % : quel port de l'ARI ?",
+      "choices": [
+        "Capelé, coiffé et encliqueté",
+        "Capelé, masque en attente",
+        "Pas d'ARI",
+        "Masque seul"
+      ],
+      "answer": 0,
+      "explain": "Entre 19 et 21 % : capelé, pièce faciale en attente. Sous 19 % : coiffé + encliqueté."
+    },
+    {
+      "q": "Le contrôle croisé se fait…",
+      "choices": [
+        "En vis-à-vis, sous la responsabilité du binôme",
+        "Par le COS",
+        "Après l'engagement",
+        "Uniquement en exercice"
+      ],
+      "answer": 0,
+      "explain": "Obligatoire une fois l'habillage terminé : tenue, ARI, masque-SAD, balise armée."
+    },
+    {
+      "q": "Un contrôleur gère…",
+      "choices": [
+        "Un seul point de pénétration",
+        "Tous les accès du bâtiment",
+        "Deux bâtiments",
+        "Les transmissions du COS"
+      ],
+      "answer": 0,
+      "explain": "Maximum 10 porteurs supervisés : 4 binômes + le binôme de sécurité."
+    },
+    {
+      "q": "Nombre maxi de porteurs supervisés par un contrôleur ?",
+      "choices": [
+        "10",
+        "6",
+        "4",
+        "12"
+      ],
+      "answer": 0,
+      "explain": "4 binômes engagés + le binôme de sécurité."
+    },
+    {
+      "q": "Le binôme de sécurité est sous l'autorité…",
+      "choices": [
+        "Du seul contrôleur",
+        "Du COS",
+        "Du chef d'agrès",
+        "De personne"
+      ],
+      "answer": 0,
+      "explain": "Même équipement que les binômes engagés, en attente au point de pénétration."
+    },
+    {
+      "q": "En attente, le binôme de sécurité a…",
+      "choices": [
+        "Masque coiffé, SAD non encliquetée, bouteille ouverte",
+        "Masque au cou, bouteille fermée",
+        "ARI au sol",
+        "SAD encliquetée"
+      ],
+      "answer": 0,
+      "explain": "Prêt à s'engager en quelques secondes."
+    },
+    {
+      "q": "L'engagement du binôme de sécurité impose…",
+      "choices": [
+        "De désigner un remplaçant au plus tôt",
+        "D'arrêter la reconnaissance",
+        "De couper la ventilation",
+        "De doubler les lances"
+      ],
+      "answer": 0,
+      "explain": "Il ne doit jamais manquer de binôme de sécurité au point de pénétration."
+    },
+    {
+      "q": "Durée limite d'une reconnaissance sous ARI ?",
+      "choices": [
+        "45 minutes",
+        "20 minutes",
+        "1 h 30",
+        "Illimitée"
+      ],
+      "answer": 0,
+      "explain": "Dépassement = engagement sans préavis du binôme de sécurité."
+    },
+    {
+      "q": "Si un des deux SP ne peut plus accomplir la mission…",
+      "choices": [
+        "Le binôme se replie impérativement",
+        "Il continue seul",
+        "Il attend sur place",
+        "Il retire son masque"
+      ],
+      "answer": 0,
+      "explain": "Le binôme est indissociable."
+    },
+    {
+      "q": "Un sauvetage immédiat…",
+      "choices": [
+        "Peut justifier un engagement sans contrôleur ni binôme de sécurité",
+        "Est interdit sans contrôleur",
+        "Dispense de l'enregistrement",
+        "Se fait sans ARI"
+      ],
+      "answer": 0,
+      "explain": "Mais l'information au chef d'agrès et l'enregistrement restent primordiaux."
+    }
+  ],
+  "arico": [
+    {
+      "q": "Pression mini d'une bouteille 300 bars avant engagement ?",
+      "choices": [
+        "270 bars",
+        "300 bars",
+        "250 bars",
+        "200 bars"
+      ],
+      "answer": 0,
+      "explain": "Nominale − 10 % : 270 b pour une 300 b, 180 b pour une 200 b."
+    },
+    {
+      "q": "Le sifflet de fin de charge se déclenche à…",
+      "choices": [
+        "50 bars ± 5",
+        "100 bars",
+        "30 bars",
+        "10 bars"
+      ],
+      "answer": 0,
+      "explain": "Il est monté sur le circuit HP, sans détendeur."
+    },
+    {
+      "q": "Le détendeur abaisse la pression à…",
+      "choices": [
+        "6 à 7 bars (moyenne pression)",
+        "1 bar",
+        "50 bars",
+        "0,5 bar"
+      ],
+      "answer": 0,
+      "explain": "MP constante vers la SAD et la prise auxiliaire."
+    },
+    {
+      "q": "La légère surpression dans le masque sert à…",
+      "choices": [
+        "Empêcher les fumées d'entrer",
+        "Gonfler le masque",
+        "Économiser l'air",
+        "Chauffer l'air"
+      ],
+      "answer": 0,
+      "explain": "La SAD délivre une pression légèrement supérieure à 1 bar."
+    },
+    {
+      "q": "Débit minimal du by-pass de la SAD ?",
+      "choices": [
+        "300 L/min",
+        "40 L/min",
+        "100 L/min",
+        "1000 L/min"
+      ],
+      "answer": 0,
+      "explain": "En cas d'effort violent ou de défaillance."
+    },
+    {
+      "q": "Alarme « homme mort » du Bodyguard : après…",
+      "choices": [
+        "21 s d'immobilité (pré-alarme) + 8 s",
+        "60 s",
+        "5 s",
+        "2 min"
+      ],
+      "answer": 0,
+      "explain": "Pré-alarme à 21 s, alarme complète à 29 s au total."
+    },
+    {
+      "q": "Débit de la cagoule d'évacuation ?",
+      "choices": [
+        "40 L/min en continu",
+        "100 L/min",
+        "10 L/min",
+        "300 L/min"
+      ],
+      "answer": 0,
+      "explain": "Branchée sur la prise auxiliaire — son usage impose un retour immédiat (deux personnes sur une bouteille)."
+    },
+    {
+      "q": "Pourquoi chef et équipier ne doivent-ils jamais être tous deux en liaison longue ?",
+      "choices": [
+        "12 m entre eux, c'est trop long",
+        "La corde casserait",
+        "Les mousquetons s'usent",
+        "Question de poids"
+      ],
+      "answer": 0,
+      "explain": "Liaison personnelle : 6 m au total (courte 1,25 m / longue 6 m)."
+    },
+    {
+      "q": "Repère « être sur son 31 » sur la ligne guide signifie…",
+      "choices": [
+        "On sort (3 olives puis 1)",
+        "On entre",
+        "31 mètres parcourus",
+        "31 minutes restantes"
+      ],
+      "answer": 0,
+      "explain": "13 olives vers le feu, 31 vers la sortie. Ligne guide : 50 m, Ø 6-8 mm."
+    },
+    {
+      "q": "Autonomie d'une 7 L / 300 b à 100 L/min ?",
+      "choices": [
+        "≈ 19 minutes",
+        "≈ 45 minutes",
+        "≈ 8 minutes",
+        "≈ 60 minutes"
+      ],
+      "answer": 0,
+      "explain": "(300×7)/1,1 ≈ 1909 L ÷ 100 L/min ≈ 19 min (lutte incendie)."
+    }
+  ],
+  "lspcc": [
+    {
+      "q": "Combien de possibilités d'utilisation du LSPCC ?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "8"
+      ],
+      "answer": 0,
+      "explain": "Sauvetage extérieur, reconnaissance d'appartement, puits/fosses, abordage victime en péril, déplacement victime invalide, évolution avec risque de chute."
+    },
+    {
+      "q": "Couleur du sac du lot engin ?",
+      "choices": [
+        "Jaune citron",
+        "Bleu",
+        "Rouge",
+        "Vert"
+      ],
+      "answer": 0,
+      "explain": "Bleu = lot échelle. Deux lots dans le FPTGP, un dans le VTU."
+    },
+    {
+      "q": "Caractéristiques de la corde du lot engin ?",
+      "choices": [
+        "Semi-statique, 30 m, Ø 12-13 mm",
+        "Dynamique, 50 m, Ø 9 mm",
+        "Statique, 20 m, Ø 8 mm",
+        "Semi-statique, 60 m, Ø 11 mm"
+      ],
+      "answer": 0,
+      "explain": "Rupture > 3 t, allongement ≤ 4 %, nœud de huit double à chaque extrémité."
+    },
+    {
+      "q": "Résistance de la commande (cordelette) ?",
+      "choices": [
+        "Nulle",
+        "750 kg",
+        "2 tonnes",
+        "300 kg"
+      ],
+      "answer": 0,
+      "explain": "30 m, Ø 7 mm : elle écarte la victime de la façade, monte du matériel — jamais de charge humaine."
+    },
+    {
+      "q": "Le frein de charge s'utilise…",
+      "choices": [
+        "Exclusivement en point fixe",
+        "Sur le harnais du sauveteur",
+        "En bout de commande",
+        "Sur la victime"
+      ],
+      "answer": 0,
+      "explain": "Résistance 2 t, toujours sur point fixe (règle n°2)."
+    },
+    {
+      "q": "Résistance d'un mousqueton dans le grand axe ?",
+      "choices": [
+        "2 t (750 kg petit axe)",
+        "750 kg",
+        "5 t",
+        "300 kg"
+      ],
+      "answer": 0,
+      "explain": "Travail uniquement dans le grand axe, vis fermée sans forcer, jamais en appui sur un angle."
+    },
+    {
+      "q": "La poulie permet de…",
+      "choices": [
+        "Diviser le poids par deux (mouflage)",
+        "Doubler la vitesse",
+        "Freiner la corde",
+        "Mesurer la charge"
+      ],
+      "answer": 0,
+      "explain": "Résistance 2 t."
+    },
+    {
+      "q": "Le triangle d'évacuation s'attache…",
+      "choices": [
+        "Deux attaches de même couleur, sous les aisselles",
+        "Par une seule sangle",
+        "Aux chevilles",
+        "Autour du cou"
+      ],
+      "answer": 0,
+      "explain": "Attaches symétriques deux mêmes couleurs + mousqueton automatique ou anti-panique."
+    },
+    {
+      "q": "Le sauveteur progresse toujours…",
+      "choices": [
+        "En dessous du point fixe",
+        "Au-dessus du point fixe",
+        "À côté de la victime",
+        "Sans amarrage"
+      ],
+      "answer": 0,
+      "explain": "Règle n°5 des 6 règles de sécurité. Et toujours doubler les amarrages (règle n°1)."
+    },
+    {
+      "q": "Motif de réforme immédiate de la corde ?",
+      "choices": [
+        "Amortissement d'une chute, quelle que soit la hauteur",
+        "Une utilisation en exercice",
+        "Un lavage à l'eau douce",
+        "Un stockage à plat"
+      ],
+      "answer": 0,
+      "explain": "Aussi : souillure corrosive, brûlure, coupure laissant voir l'âme, hernie. Lavage : eau ≤ 30 °C sans détergent, séchage à l'ombre."
+    }
+  ],
+  "echelles": [
+    {
+      "q": "Longueur et masse de l'échelle à crochets ?",
+      "choices": [
+        "4,25 m — 8 kg",
+        "9 m — 33 kg",
+        "5,6 m — 20 kg",
+        "3 m — 12 kg"
+      ],
+      "answer": 0,
+      "explain": "Elle progresse en façade d'étage en étage, suspendue par ses crochets."
+    },
+    {
+      "q": "L'échelle à crochets se manipule…",
+      "choices": [
+        "Seul, mais s'utilise en binôme",
+        "Toujours à deux",
+        "À trois",
+        "Uniquement par le chef"
+      ],
+      "answer": 0,
+      "explain": "1 SP dessus (2 exceptionnellement en sauvetage). À tester avant engagement."
+    },
+    {
+      "q": "Échelle 2 plans grand modèle déployée ?",
+      "choices": [
+        "9 m",
+        "5,6 m",
+        "12 m",
+        "7 m"
+      ],
+      "answer": 0,
+      "explain": "Repliée 5 m, 33 kg, largeur mini 30 cm — atteint le 1er et le 2e étage."
+    },
+    {
+      "q": "Échelle 2 plans petit modèle déployée ?",
+      "choices": [
+        "5,6 m",
+        "9 m",
+        "4,25 m",
+        "8 m"
+      ],
+      "answer": 0,
+      "explain": "Repliée 3,6 m, 20 kg."
+    },
+    {
+      "q": "Combien de personnes par plan ?",
+      "choices": [
+        "Une (sauf sauvetage)",
+        "Deux",
+        "Trois",
+        "Illimité"
+      ],
+      "answer": 0,
+      "explain": "Précaution de base des échelles à coulisse."
+    },
+    {
+      "q": "Règle de piétage ?",
+      "choices": [
+        "Pied éloigné du mur d'1/3 de la longueur développée",
+        "Pied collé au mur",
+        "Pied à 5 m du mur",
+        "Moitié de la longueur"
+      ],
+      "answer": 0,
+      "explain": "Repères pratiques : un pas par étage, test du coude, bras tendus."
+    },
+    {
+      "q": "Au déploiement, les mains se placent…",
+      "choices": [
+        "Sur les montants",
+        "Sur les échelons",
+        "Sur les parachutes",
+        "Sur les crochets"
+      ],
+      "answer": 0,
+      "explain": "Jamais sur les échelons : risque de pincement à la descente des plans."
+    },
+    {
+      "q": "Itinéraire de secours : position de l'échelle ?",
+      "choices": [
+        "Retournée grand plan vers le bas, piétage augmenté, amarrée ou calée",
+        "Normale, piétage réduit",
+        "À plat sur le sol",
+        "Suspendue par les crochets"
+      ],
+      "answer": 0,
+      "explain": "Haut juste sous le rebord ; 4 grands pas de la façade pour le 1er étage, 5 pour le 2e."
+    },
+    {
+      "q": "Avant d'engager une échelle à crochets, on doit…",
+      "choices": [
+        "La tester",
+        "La peindre",
+        "La mouiller",
+        "La lester"
+      ],
+      "answer": 0,
+      "explain": "Test avant engagement obligatoire."
+    },
+    {
+      "q": "Lors de sauvetages multiples, le trait…",
+      "choices": [
+        "N'est pas attaché, placé pour ne pas gêner",
+        "Est noué à chaque étage",
+        "Est retiré",
+        "Sert de main courante"
+      ],
+      "answer": 0,
+      "explain": "Placement judicieux pour ne pas gêner les rotations."
+    }
+  ],
+  "parc": [
+    {
+      "q": "Surface maxi d'un compartiment de PSC ?",
+      "choices": [
+        "3000 m² (6000 m² si sprinklage)",
+        "1000 m²",
+        "10 000 m²",
+        "500 m²"
+      ],
+      "answer": 0,
+      "explain": "Recoupement par parois coupe-feu et portes à fermeture automatique."
+    },
+    {
+      "q": "Distance maxi entre 2 escaliers ?",
+      "choices": [
+        "40 m (25 m en cul-de-sac)",
+        "100 m",
+        "10 m",
+        "60 m"
+      ],
+      "answer": 0,
+      "explain": "SAS si l'escalier ne débouche pas directement sur l'extérieur."
+    },
+    {
+      "q": "Ordre d'enclenchement du désenfumage mécanique ?",
+      "choices": [
+        "Petite Vitesse SYSTÉMATIQUEMENT avant Grande Vitesse",
+        "GV directement",
+        "GV puis PV",
+        "Indifférent"
+      ],
+      "answer": 0,
+      "explain": "Coffret extérieur en entrée de rampe : PV avant GV."
+    },
+    {
+      "q": "Un moyen de désenfumage déclenché…",
+      "choices": [
+        "Ne doit jamais être arrêté",
+        "Doit être coupé après 10 min",
+        "S'arrête seul",
+        "Se coupe avec l'électricité générale"
+      ],
+      "answer": 0,
+      "explain": "La coupure électrique générale doit rester exceptionnelle pour ne pas stopper le désenfumage."
+    },
+    {
+      "q": "Hauteur des points d'ancrage pour la ligne guide ?",
+      "choices": [
+        "Entre 0,5 et 0,8 m",
+        "2 m",
+        "Au sol",
+        "1,5 à 2,5 m"
+      ],
+      "answer": 0,
+      "explain": "Dispositifs d'amarrage numérotés le long des cheminements."
+    },
+    {
+      "q": "Distance maxi entre raccord de colonne sèche et BI ?",
+      "choices": [
+        "100 m",
+        "300 m",
+        "20 m",
+        "500 m"
+      ],
+      "answer": 0,
+      "explain": "Pour permettre une alimentation rapide de la colonne."
+    },
+    {
+      "q": "Les 3 grands principes de la conduite opérationnelle en PSC ?",
+      "choices": [
+        "Localisation rapide, attaque massive, sécurité du personnel",
+        "Ventiler, confiner, évacuer",
+        "Couper, aérer, noyer",
+        "Reconnaître, éclairer, déblayer"
+      ],
+      "answer": 0,
+      "explain": "Itinéraire de repli balisé, binôme de sécurité + contrôleur, moyen hydraulique au point de pénétration."
+    },
+    {
+      "q": "Signes d'emballement d'un véhicule électrique ?",
+      "choices": [
+        "Flammes vives, projections incandescentes, croissance exponentielle",
+        "Fumée blanche légère",
+        "Odeur d'essence",
+        "Klaxon continu"
+      ],
+      "answer": 0,
+      "explain": "→ REPLI IMMÉDIAT et attitude défensive."
+    },
+    {
+      "q": "En reconnaissance, l'ascenseur…",
+      "choices": [
+        "Est ramené au niveau de référence",
+        "Sert à descendre les binômes",
+        "Est condamné à l'étage",
+        "Reste en service public"
+      ],
+      "answer": 0,
+      "explain": "Avec coupure des bornes de recharge (IRVE) et engagement par les cages d'escaliers."
+    },
+    {
+      "q": "Particularité thermique des feux de PSC ?",
+      "choices": [
+        "Effet de four important, phénomènes thermiques très limités",
+        "Flashovers fréquents",
+        "Températures faibles",
+        "Pas de fumées"
+      ],
+      "answer": 0,
+      "explain": "Chaleur emmagasinée par le béton, propagation rapide des fumées, feu multi-niveaux possible."
+    }
+  ],
+  "feux-foret": [
+    {
+      "q": "Autonomie minimale du système d'air respirable d'un CCF ?",
+      "choices": [
+        "10 minutes pour 4 personnes",
+        "45 minutes",
+        "5 minutes pour 2",
+        "1 heure"
+      ],
+      "answer": 0,
+      "explain": "30 L/min par personne — avec la protection thermique (films, rideaux d'eau)."
+    },
+    {
+      "q": "La capacité d'autoprotection (CA) est…",
+      "choices": [
+        "La réserve d'eau dédiée à la protection thermique du véhicule",
+        "L'eau totale de la tonne",
+        "La réserve d'extinction",
+        "Le carburant de secours"
+      ],
+      "answer": 0,
+      "explain": "La capacité utile (CU) dédiée à l'extinction EXCLUT cette part."
+    },
+    {
+      "q": "Personnel menacé par le feu : le chef d'agrès fait…",
+      "choices": [
+        "Regrouper le personnel DANS le CCF et met en œuvre l'autoprotection",
+        "Fuir à pied",
+        "Monter sur le toit",
+        "Creuser un abri"
+      ],
+      "answer": 0,
+      "explain": "Fermer les vannes si nécessaire, autoprotection + air respirable, alerter l'échelon supérieur."
+    },
+    {
+      "q": "L'autodéfense « passive » se fait…",
+      "choices": [
+        "Sans moyens hydrauliques",
+        "Avec lances et canon",
+        "Avec avions",
+        "Sans véhicules"
+      ],
+      "answer": 0,
+      "explain": "Positionnement des véhicules + autoprotection ; « active » = avec lances/canon."
+    },
+    {
+      "q": "Si le feu surprend le GIFF, les véhicules…",
+      "choices": [
+        "« Serrent » en autodéfense passive",
+        "Se dispersent",
+        "Accélèrent à travers le front",
+        "Font demi-tour individuellement"
+      ],
+      "answer": 0,
+      "explain": "Regroupement serré des véhicules, autoprotection enclenchée."
+    },
+    {
+      "q": "En urgence, le conducteur du CCF…",
+      "choices": [
+        "Enclenche l'autoprotection, reste à l'arrière, percute et coiffe son ARI",
+        "Sort inspecter le feu",
+        "Coupe le moteur",
+        "Vide la tonne"
+      ],
+      "answer": 0,
+      "explain": "Il veille aussi la radio et la permanence de l'eau."
+    },
+    {
+      "q": "Le repli du groupe se fait…",
+      "choices": [
+        "En MARCHE AVANT",
+        "En marche arrière",
+        "À pied",
+        "Un véhicule à la fois"
+      ],
+      "answer": 0,
+      "explain": "Déplacement en marche avant pour laisser passer le front de feu si la ligne d'appui est inefficace."
+    },
+    {
+      "q": "Pour les structures en dur menacées par un feu de forêt…",
+      "choices": [
+        "Le confinement demeure la règle",
+        "L'évacuation est systématique",
+        "On les arrose en priorité",
+        "On les démolit"
+      ],
+      "answer": 0,
+      "explain": "L'évacuation limitée et accompagnée reste l'exception."
+    },
+    {
+      "q": "Le conducteur protège le CCF au moyen…",
+      "choices": [
+        "De la LDT ou du dispositif d'autoprotection",
+        "Du canon uniquement",
+        "D'extincteurs",
+        "De pelles"
+      ],
+      "answer": 0,
+      "explain": "Tout en veillant radio et permanence de l'eau."
+    },
+    {
+      "q": "Après pompage en eaux naturelles…",
+      "choices": [
+        "Rincer et vérifier les orifices de pompe et buses d'autoprotection",
+        "Rien à faire",
+        "Changer la pompe",
+        "Vider le carburant"
+      ],
+      "answer": 0,
+      "explain": "Aucun sédiment ne doit obstruer pompe ou buses d'autoprotection."
+    }
+  ],
+  "radio": [
+    {
+      "q": "Quel status signale le départ en intervention ?",
+      "choices": [
+        "Status 1",
+        "Status 2",
+        "Status 3",
+        "Status 7"
+      ],
+      "answer": 0,
+      "explain": "Status 2 = arrivée sur les lieux, Status 3 = demande de parole, Status 7 = retour disponible."
+    },
+    {
+      "q": "Le message d'ambiance est passé par…",
+      "choices": [
+        "Le chef d'agrès, pendant le transit ou à l'arrivée",
+        "Le CODIS",
+        "Le conducteur",
+        "Le stationnaire uniquement"
+      ],
+      "answer": 0,
+      "explain": "Précédé d'une demande de parole (Status 3), il conditionne l'engagement d'éventuels renforts."
+    },
+    {
+      "q": "Ordre du corps de texte d'un compte-rendu ?",
+      "choices": [
+        "Je Suis, je Vois, je Fais, (je Prévois), je Demande",
+        "Je Vois, je Suis, je Demande, je Fais",
+        "Je Demande, je Fais, je Vois",
+        "Libre, selon la situation"
+      ],
+      "answer": 0,
+      "explain": "Ordre GOC à respecter pour accélérer la saisie au CTA-CODIS."
+    },
+    {
+      "q": "Dans « je Demande », on précise…",
+      "choices": [
+        "Le nombre TOTAL de moyens nécessaires sur les lieux",
+        "Uniquement les moyens manquants",
+        "Le nombre de personnels",
+        "Les moyens déjà engagés"
+      ],
+      "answer": 0,
+      "explain": "Le SGO déclenche les agrès nécessaires en tenant compte des moyens en transit et sur place."
+    },
+    {
+      "q": "Périodicité maximale entre deux comptes-rendus ?",
+      "choices": [
+        "1 heure (20 min en début d'opération)",
+        "2 heures",
+        "10 minutes fixes",
+        "Aucune règle"
+      ],
+      "answer": 0,
+      "explain": "Un message toutes les 20 min au début, puis selon la cinétique sans dépasser une heure."
+    },
+    {
+      "q": "La prise d'appellation « COS + commune » est impérative…",
+      "choices": [
+        "En présence des moyens aériens nationaux",
+        "La nuit",
+        "En NOVI uniquement",
+        "Jamais"
+      ],
+      "answer": 0,
+      "explain": "Le COS informe le CODIS et les unités sur les lieux ; le CODIS prévient les moyens en transit."
+    },
+    {
+      "q": "Signal radio d'évacuation d'urgence ?",
+      "choices": [
+        "« ÉVACUATION » transmis 3 fois minimum + deux-tons des engins",
+        "Un coup de sifflet",
+        "« REPLI » une fois",
+        "Status 5"
+      ],
+      "answer": 0,
+      "explain": "Sur les canaux tactiques, complété par l'activation de tous les deux-tons des engins sur les lieux."
+    },
+    {
+      "q": "Formulation pour déclencher le NOVI ?",
+      "choices": [
+        "« En présence d'un grand nombre de victimes, je demande le déclenchement des moyens du plan NOVI »",
+        "« Envoyez tout »",
+        "« Plan rouge »",
+        "« Demande renforts sanitaires » suffit"
+      ],
+      "answer": 0,
+      "explain": "Le COS peut préciser les modules attendus : PRV, renfort PRV, PMA."
+    },
+    {
+      "q": "Un message d'exercice doit être…",
+      "choices": [
+        "Encadré par « POUR EXERCICE » répété",
+        "Passé sur un canal secret",
+        "Précédé d'un silence radio",
+        "Identique à un message réel"
+      ],
+      "answer": 0,
+      "explain": "Pour éviter toute confusion avec une opération réelle."
+    },
+    {
+      "q": "Le message d'ambiance sur opération courante est…",
+      "choices": [
+        "Facultatif (peut être confondu avec le compte-rendu)",
+        "Toujours obligatoire",
+        "Interdit",
+        "Réservé au CODIS"
+      ],
+      "answer": 0,
+      "explain": "Sur une opération courante, ambiance et compte-rendu peuvent être confondus."
+    }
+  ],
+  "fli": [
+    {
+      "q": "Le point éclair (PE) d'un liquide est…",
+      "choices": [
+        "La température à partir de laquelle il émet assez de vapeurs pour s'enflammer en présence d'une flamme",
+        "La température d'ébullition",
+        "La température d'auto-inflammation",
+        "Le point de congélation"
+      ],
+      "answer": 0,
+      "explain": "La TAI est la température d'inflammation SPONTANÉE, sans source externe."
+    },
+    {
+      "q": "Les 4 scénarios majeurs FLI ?",
+      "choices": [
+        "Feu de nappe, explosion de réservoir, boil-over, UVCE",
+        "Flashover, backdraft, FGI, feu de nappe",
+        "Fuite, feu, explosion, pollution",
+        "BLEVE, boil-over, feu d'entrepôt, UVCE"
+      ],
+      "answer": 0,
+      "explain": "L'UVCE est l'explosion d'un nuage de vapeurs non confiné."
+    },
+    {
+      "q": "Le boil-over est…",
+      "choices": [
+        "Un moussage brutal avec boule de feu et projection de produit enflammé",
+        "Une explosion de ciel gazeux",
+        "Un débordement d'eau",
+        "Une fuite enflammée"
+      ],
+      "answer": 0,
+      "explain": "L'onde de chaleur vaporise un fond d'eau : débordement + boule de feu (~150 kW/m²)."
+    },
+    {
+      "q": "Le boil-over est un phénomène…",
+      "choices": [
+        "Retardé — son délai dépend de la hauteur de liquide",
+        "Immédiat",
+        "Impossible sur les fiouls lourds",
+        "Sans danger à distance"
+      ],
+      "answer": 0,
+      "explain": "Ex. : bac de gasoil de 60 m, 20 m de produit → déclenchement estimé à 83 h (couche mince)."
+    },
+    {
+      "q": "Le LIF 1 est engagé…",
+      "choices": [
+        "En phase réflexe : protection TMD, fuite, ou nappe < 800 m²",
+        "En phase réfléchie sur dépôt",
+        "Uniquement sur ordre du Préfet",
+        "Pour les feux > 1200 m²"
+      ],
+      "answer": 0,
+      "explain": "Dans tous les cas : risque potentiel d'explosion → périmètre de sécurité de 100 m."
+    },
+    {
+      "q": "Périmètre de sécurité initial sur intervention FLI ?",
+      "choices": [
+        "100 m",
+        "50 m",
+        "300 m",
+        "500 m"
+      ],
+      "answer": 0,
+      "explain": "À adapter ensuite selon l'analyse (distances d'effets, flux thermiques)."
+    },
+    {
+      "q": "Capacité du LIF 2 ?",
+      "choices": [
+        "4000 à 6000 L/min de solution moussante à 60-70 m",
+        "500 L/min",
+        "20 000 L/min",
+        "1000 L/min à 10 m"
+      ],
+      "answer": 0,
+      "explain": "Via les lances-canons des CEEM, sur nappe < 800 m² (LI non miscible pour la LC 4000)."
+    },
+    {
+      "q": "Les 5 groupes du LIF 2 ?",
+      "choices": [
+        "Commandement, alimentation, attaque, émulseur, protection",
+        "Reco, attaque, soutien, santé, alim",
+        "Attaque, ventilation, alimentation, mousse, PC",
+        "Commandement, extinction, noria, tri, logistique"
+      ],
+      "answer": 0,
+      "explain": "En LIF 2 renforcé : 2 secteurs ALIM/ATTAQUE et niveau 3 de commandement."
+    },
+    {
+      "q": "Réserve d'eau minimale pour une extinction en 40 minutes ?",
+      "choices": [
+        "300 m³",
+        "30 m³",
+        "1000 m³",
+        "100 m³"
+      ],
+      "answer": 0,
+      "explain": "Anticiper la mise en œuvre la plus précoce possible de l'alimentation."
+    },
+    {
+      "q": "Le LIF 2 renforcé permet…",
+      "choices": [
+        "4 lances-canons, 8000 à 12 000 L/min, surfaces > 1200 m²",
+        "2 LDV supplémentaires",
+        "Uniquement de la protection",
+        "Le remplacement du LIF 1"
+      ],
+      "answer": 0,
+      "explain": "C'est la capacité maximale d'extinction du SDIS 33."
+    }
+  ],
+  "ops-multiples": [
+    {
+      "q": "La doctrine « opérations multiples » répond à…",
+      "choices": [
+        "Un afflux massif de demandes lors d'événements climatiques",
+        "Un feu de forêt majeur",
+        "Une grève",
+        "Un exercice ORSEC"
+      ],
+      "answer": 0,
+      "explain": "Tempête, inondation, orage, neige/verglas/grand froid → nombreuses opérations de protection des biens."
+    },
+    {
+      "q": "Que déclenche une vigilance météo annoncée ?",
+      "choices": [
+        "Un ordre préparatoire de mobilisation gradué",
+        "Rien avant l'événement",
+        "L'évacuation préventive",
+        "Le plan NOVI"
+      ],
+      "answer": 0,
+      "explain": "Effectifs par groupement, CTA-CODIS et chaîne de commandement mobilisés selon le risque."
+    },
+    {
+      "q": "Comment sont traitées les opérations DIV en crise ?",
+      "choices": [
+        "De façon délocalisée (salle de crise CODIS, PCG, PCA)",
+        "Une par une au CTA",
+        "Par ordre d'appel strict",
+        "Par les maires"
+      ],
+      "answer": 0,
+      "explain": "Le tri et la conduite sont rapprochés du terrain pour désengorger le CTA-CODIS."
+    },
+    {
+      "q": "Qu'est-ce qu'une EIL ?",
+      "choices": [
+        "Équipe d'intervention légère pour les opérations simples et nombreuses",
+        "Équipe d'intervention lourde",
+        "Élément d'intervention logistique",
+        "Équipe incendie légère"
+      ],
+      "answer": 0,
+      "explain": "L'équipe d'appui (EA) traite les chantiers plus lourds."
+    },
+    {
+      "q": "Quelle priorité en cas d'afflux de demandes ?",
+      "choices": [
+        "Secours à personnes et situations dangereuses avant la protection des biens",
+        "Ordre chronologique strict",
+        "Les biens d'abord",
+        "Les demandes des élus"
+      ],
+      "answer": 0,
+      "explain": "Des contre-appels permettent de requalifier les demandes en attente."
+    },
+    {
+      "q": "En mode dégradé (SGO saturé), on utilise…",
+      "choices": [
+        "Fiches de déclaration départ/rentrée et messages de point de situation",
+        "Uniquement le téléphone",
+        "Rien",
+        "Des SMS aux chefs de centre"
+      ],
+      "answer": 0,
+      "explain": "PCA → CIS → PC groupement → CODIS, avec synthèse départementale."
+    },
+    {
+      "q": "Le PCA est…",
+      "choices": [
+        "Un poste de commandement avancé au plus près du terrain",
+        "Le PC de la préfecture",
+        "Un véhicule sanitaire",
+        "Une application"
+      ],
+      "answer": 0,
+      "explain": "Il complète la salle de crise CODIS et le PC de groupement (PCG)."
+    },
+    {
+      "q": "Fin d'événement : le dispositif est levé par…",
+      "choices": [
+        "Un message de levée totale ou partielle",
+        "Extinction naturelle",
+        "Le retour des équipes",
+        "Un mail administratif"
+      ],
+      "answer": 0,
+      "explain": "Avec recueil du renseignement et bilan d'activité (y compris colonnes extra-départementales."
+    }
+  ],
+  "risque-electrique": [
+    {
+      "q": "Domaine d'intervention en sécurité des SP ?",
+      "choices": [
+        "Basse tension : < 1000 V alternatif / < 1500 V continu",
+        "Toutes tensions",
+        "< 20 000 V",
+        "< 50 000 V avec gants"
+      ],
+      "answer": 0,
+      "explain": "Au-delà : sécurisation par un technicien habilité du gestionnaire de réseau."
+    },
+    {
+      "q": "DLV pour une installation HTA (< 50 kV) ?",
+      "choices": [
+        "3 mètres",
+        "1 mètre",
+        "5 mètres",
+        "10 mètres"
+      ],
+      "answer": 0,
+      "explain": "BT : 1 m · HTA : 3 m · HTB : 5 m. Risque d'amorçage d'arc sans contact."
+    },
+    {
+      "q": "DLV pour une installation HTB (> 50 kV) ?",
+      "choices": [
+        "5 mètres",
+        "3 mètres",
+        "1 mètre",
+        "20 mètres"
+      ],
+      "answer": 0,
+      "explain": "C'est pourquoi on ne pénètre pas dans un transformateur avec conducteurs nus sous tension."
+    },
+    {
+      "q": "Jet droit indispensable près d'une ligne HTB : distance ?",
+      "choices": [
+        "10 mètres (DLV doublée)",
+        "5 mètres",
+        "3 mètres",
+        "15 mètres"
+      ],
+      "answer": 0,
+      "explain": "Le jet peut dévier (vent, accident) : distances doublées — 6 m HTA / 10 m HTB."
+    },
+    {
+      "q": "Qu'autorise la consignation d'une ligne ?",
+      "choices": [
+        "Intervenir dans la DLV avec le matériel électro-secours",
+        "Rien de plus",
+        "Toucher les conducteurs à mains nues",
+        "Couper la ligne soi-même"
+      ],
+      "answer": 0,
+      "explain": "Mise hors tension + mise à la terre, formalisée par télécopies CODIS ↔ RTE (délai ≥ 1 h)."
+    },
+    {
+      "q": "Pourquoi la simple mise hors tension ne suffit-elle pas ?",
+      "choices": [
+        "Risque de ré-alimentation et courant induit par les lignes voisines",
+        "Elle suffit toujours",
+        "La ligne reste chaude",
+        "Question administrative"
+      ],
+      "answer": 0,
+      "explain": "Seule la consignation (avec mise à la terre) garantit l'absence de tension."
+    },
+    {
+      "q": "La tension de pas apparaît…",
+      "choices": [
+        "Quand un courant se disperse dans le sol autour d'un conducteur tombé",
+        "Sur les échelles",
+        "Dans les transformateurs uniquement",
+        "En BT seulement"
+      ],
+      "answer": 0,
+      "explain": "S'éloigner à petits pas ou pieds joints pour limiter la différence de potentiel entre les pieds."
+    },
+    {
+      "q": "Particularité du circuit photovoltaïque panneaux → onduleur ?",
+      "choices": [
+        "Courant continu BT d'intensité mortelle, impossible à couper de jour",
+        "Aucun danger",
+        "Haute tension alternative",
+        "Coupé par le disjoncteur général"
+      ],
+      "answer": 0,
+      "explain": "Considérer que ce circuit ne peut pas être coupé ; porte-lance à 5 m minimum des panneaux."
+    },
+    {
+      "q": "Victime au contact d'une installation photovoltaïque ?",
+      "choices": [
+        "La dégager avec les gants diélectriques du lot électro-secours",
+        "La tirer par les vêtements à mains nues",
+        "Arroser d'abord",
+        "Attendre la nuit"
+      ],
+      "answer": 0,
+      "explain": "Éviter tout contact direct avec l'installation ; marcher sur les panneaux est interdit."
+    },
+    {
+      "q": "Batterie de traction d'un véhicule électrique ?",
+      "choices": [
+        "200 à 600 V en courant continu",
+        "12 V",
+        "48 V alternatif",
+        "10 000 V"
+      ],
+      "answer": 0,
+      "explain": "S'ajoute à la batterie de servitude classique (12/24/48 V). Utiliser les fiches d'aide à la décision."
+    }
+  ],
+  "novi": [
+    {
+      "q": "Le dispositif ORSEC NOVI…",
+      "choices": [
+        "Se déploie progressivement selon l'ampleur, activé par le Préfet",
+        "Se déclenche sur demande du maire",
+        "Est automatique dès 3 victimes",
+        "N'existe qu'en préfecture"
+      ],
+      "answer": 0,
+      "explain": "Disposition générale ORSEC prévue à l'article R.741-8 du code de la sécurité intérieure."
+    },
+    {
+      "q": "Ordre de la chaîne des secours NOVI ?",
+      "choices": [
+        "Chantier → petite noria → PRV → PMA → grande noria → hôpitaux",
+        "Chantier → PMA → PRV → hôpitaux",
+        "PRV → chantier → PMA",
+        "Hôpital → PMA → chantier"
+      ],
+      "answer": 0,
+      "explain": "Objectif : préserver les hôpitaux de l'engorgement."
+    },
+    {
+      "q": "Le PRV est créé par…",
+      "choices": [
+        "Les premiers intervenants, à l'abri des effets du sinistre",
+        "Le Préfet",
+        "Le SAMU uniquement",
+        "La police"
+      ],
+      "answer": 0,
+      "explain": "Il soustrait les victimes aux effets secondaires et à la vue de la scène ; dénombrement + catégorisation."
+    },
+    {
+      "q": "À partir de quel seuil le module PRV est-il déclenché ?",
+      "choices": [
+        "Au-delà de 5 VSAV engagés, pour toute demande de vecteur supplémentaire",
+        "10 victimes",
+        "2 VSAV",
+        "Sur ordre du DSM uniquement"
+      ],
+      "answer": 0,
+      "explain": "Modules « renfort PRV » et « PMA » sur décision du CDSD. Le SDIS dispose de 3 modules PRV."
+    },
+    {
+      "q": "Qui désigne le DSM ?",
+      "choices": [
+        "Le Préfet, parmi les médecins du SAMU, le médecin-chef du SDIS ou leurs adjoints",
+        "Le COS",
+        "Le premier médecin arrivé",
+        "Le CODIS"
+      ],
+      "answer": 0,
+      "explain": "Le médecin chef PRV assure la fonction de 1er DSM en début d'opération."
+    },
+    {
+      "q": "Le PMA est implanté…",
+      "choices": [
+        "Au plus près du sinistre mais à l'abri de tout risque évolutif",
+        "Dans la zone d'exclusion",
+        "À l'hôpital",
+        "À 10 km minimum"
+      ],
+      "answer": 0,
+      "explain": "Espaces tri, soins UA/UR et évacuation ; CAI et dépôt mortuaire isolés mais à proximité."
+    },
+    {
+      "q": "Le CAI accueille…",
+      "choices": [
+        "Les impliqués (personnes indemnes physiquement)",
+        "Les urgences absolues",
+        "Les décédés",
+        "Les journalistes"
+      ],
+      "answer": 0,
+      "explain": "Structure en dur isolée du chantier ; les impliqués peuvent devenir des urgences médico-psychologiques."
+    },
+    {
+      "q": "SINUS sert à…",
+      "choices": [
+        "Suivre chaque victime (entrée/sortie PRV, PMA, orientation)",
+        "Compter les engins",
+        "Gérer la radio",
+        "Cartographier le sinistre"
+      ],
+      "answer": 0,
+      "explain": "Bracelets + postes de secrétariat ; mise en œuvre précoce au PRV décidée par le 1er COS."
+    },
+    {
+      "q": "Le dépôt mortuaire est sous la responsabilité…",
+      "choices": [
+        "Du COPJ (autorité judiciaire)",
+        "Du DSM",
+        "Du COS",
+        "Du maire"
+      ],
+      "answer": 0,
+      "explain": "Accueil temporaire des décédés avant transfert (chapelle ardente ou IML)."
+    },
+    {
+      "q": "La petite noria assure…",
+      "choices": [
+        "Le ramassage : du chantier vers le PRV/PMA",
+        "L'évacuation vers les hôpitaux",
+        "Le ravitaillement",
+        "La rotation des relèves"
+      ],
+      "answer": 0,
+      "explain": "La grande noria assure l'évacuation du PMA vers les établissements de soins."
+    }
+  ],
+  "nautique": [
+    {
+      "q": "En eaux intérieures, l'intervention nautique est…",
+      "choices": [
+        "Une mission propre des sapeurs-pompiers",
+        "Une mission partagée",
+        "Interdite",
+        "Réservée à la SNSM"
+      ],
+      "answer": 0,
+      "explain": "Sur le secteur maritime, c'est une mission partagée, possible en première intention."
+    },
+    {
+      "q": "« Première intention » signifie…",
+      "choices": [
+        "Traitement immédiat sans contact préalable des autres services",
+        "Après accord du CROSS",
+        "Sur réquisition uniquement",
+        "Premier arrivé, premier servi"
+      ],
+      "answer": 0,
+      "explain": "Dans le respect des dispositifs négociés avec les partenaires du secteur maritime."
+    },
+    {
+      "q": "Mission SAV typique ?",
+      "choices": [
+        "Personne à l'eau, envasée, ou embarcation chavirée avec personne à bord",
+        "Récupération d'une ancre",
+        "Convoyage de plaisance",
+        "Nettoyage de coque"
+      ],
+      "answer": 0,
+      "explain": "Les SAV traitent aussi la mise en sécurité d'embarcation et le sauvetage d'animaux."
+    },
+    {
+      "q": "Les SAL (scaphandriers) assurent…",
+      "choices": [
+        "Sauvetage, prompts secours hyperbares et reconnaissances subaquatiques",
+        "Uniquement la surface",
+        "Le remorquage",
+        "La météo marine"
+      ],
+      "answer": 0,
+      "explain": "Ils assurent aussi la sécurité des interventions en site aquatique."
+    },
+    {
+      "q": "Ne relève PAS du SDIS…",
+      "choices": [
+        "La recherche et récupération de biens (hors réquisition)",
+        "Le sauvetage d'animaux",
+        "La personne envasée",
+        "La sécurité des personnels"
+      ],
+      "answer": 0,
+      "explain": "Les missions de biens ne sont réalisées que sur réquisition."
+    },
+    {
+      "q": "Transmission spécifique en milieu nautique ?",
+      "choices": [
+        "Veille VHF marine en complément d'ANTARES",
+        "CB routière",
+        "Sémaphore uniquement",
+        "Aucune"
+      ],
+      "answer": 0,
+      "explain": "Avec un ordre particulier des transmissions (OPT) nautique."
+    },
+    {
+      "q": "Face à un accident de plongée ?",
+      "choices": [
+        "O₂ 15 L/min, hydratation, paramètres de plongée, alerte caisson via régulation",
+        "Recomprimer sur place",
+        "Faire remonter en apnée",
+        "Attendre 1 h"
+      ],
+      "answer": 0,
+      "explain": "Fiche réflexe dédiée du guide nautique."
+    },
+    {
+      "q": "Procédures d'engagement spécifiques prévues pour…",
+      "choices": [
+        "L'estuaire de la Gironde, l'inondation/fort courant, l'assistance aux ABE",
+        "Les piscines privées",
+        "La haute mer uniquement",
+        "Les ports de plaisance"
+      ],
+      "answer": 0,
+      "explain": "ABE : avions bombardiers d'eau en écopage sur plan d'eau."
+    }
+  ],
+  "rch-pol": [
+    {
+      "q": "Composition minimale d'une équipe de reconnaissance RCH ?",
+      "choices": [
+        "1 chef d'équipe RCH2/GOC1 + 2 équipiers RCH1",
+        "2 RCH3",
+        "1 RCH1 seul",
+        "4 RCH2"
+      ],
+      "answer": 0,
+      "explain": "En carence : exceptionnellement 2 agents dont au moins 1 RCH2."
+    },
+    {
+      "q": "La CMIC est…",
+      "choices": [
+        "L'association d'une équipe de reconnaissance et de l'équipe d'intervention, commandée par l'OP CMIC/CMIR",
+        "Un véhicule",
+        "Une cellule de crise préfectorale",
+        "Le laboratoire départemental"
+      ],
+      "answer": 0,
+      "explain": "3e niveau de la réponse RCH du SDIS 33."
+    },
+    {
+      "q": "Niveau de formation de l'OP CMIC/CMIR ?",
+      "choices": [
+        "RCH3, en astreinte départementale",
+        "RCH1",
+        "RCH2",
+        "GOC5"
+      ],
+      "answer": 0,
+      "explain": "Il commande la CMIC et conseille le COS sur tout élément chimique ou radiologique."
+    },
+    {
+      "q": "Missions de l'équipe d'intervention ?",
+      "choices": [
+        "Confirmer risques et périmètre, contrôler et décontaminer les personnes exposées",
+        "Uniquement mesurer",
+        "Faire le périmètre de police",
+        "Évacuer les populations"
+      ],
+      "answer": 0,
+      "explain": "Avec mise en œuvre du sas de contrôle ou du portique mobile de contamination."
+    },
+    {
+      "q": "Centre d'appui de l'équipe d'intervention ?",
+      "choices": [
+        "Le CIS Bruges",
+        "Le CIS Bassens",
+        "La préfecture",
+        "Le CIS Langon"
+      ],
+      "answer": 0,
+      "explain": "Le matériel est transporté par la CEICR ou un autre vecteur adapté."
+    },
+    {
+      "q": "Pli ou colis suspect sans levée de doute par la CNC ?",
+      "choices": [
+        "Isolement par l'équipe d'intervention CMIC",
+        "Ouverture prudente",
+        "Transport au CIS",
+        "Destruction sur place"
+      ],
+      "answer": 0,
+      "explain": "À défaut, récupération par les forces de l'ordre ; transport final par société spécialisée."
+    },
+    {
+      "q": "L'engagement des moyens RCH peut se faire…",
+      "choices": [
+        "À l'appel, à la demande du COS, en secours a priori, ou avec accord du CDSD",
+        "Uniquement sur ordre préfectoral",
+        "Jamais de nuit",
+        "Sur demande du maire"
+      ],
+      "answer": 0,
+      "explain": "En concertation avec l'officier CMIC/CMIR."
+    },
+    {
+      "q": "Qui est le conseiller technique du COS avant l'arrivée de l'OP CMIC/CMIR ?",
+      "choices": [
+        "Le chef d'équipe d'intervention",
+        "Le CODIS",
+        "Le premier équipier",
+        "Personne"
+      ],
+      "answer": 0,
+      "explain": "Les équipiers d'intervention exécutent ensuite les ordres de l'officier CMIC/CMIR."
+    }
+  ],
+  "rad": [
+    {
+      "q": "Différence irradiation / contamination ?",
+      "choices": [
+        "Irradiation = exposition à distance ; contamination = dépôt ou incorporation de substances radioactives",
+        "Aucune",
+        "La contamination cesse en s'éloignant",
+        "L'irradiation rend la victime radioactive"
+      ],
+      "answer": 0,
+      "explain": "L'irradiation cesse avec l'éloignement (temps, distance, écran) ; le contaminé transporte la source."
+    },
+    {
+      "q": "Une situation d'urgence radiologique peut découler…",
+      "choices": [
+        "D'un accident, d'un acte de malveillance ou d'une contamination de l'environnement détectée",
+        "Uniquement d'une centrale nucléaire",
+        "Uniquement d'un TMD",
+        "D'un orage"
+      ],
+      "answer": 0,
+      "explain": "Y compris détection par le réseau de mesures de la radioactivité de l'environnement."
+    },
+    {
+      "q": "Protection de base contre l'irradiation ?",
+      "choices": [
+        "Temps, distance, écran",
+        "Eau, mousse, poudre",
+        "Confinement seul",
+        "FFP2"
+      ],
+      "answer": 0,
+      "explain": "Réduire la durée d'exposition, s'éloigner, s'abriter derrière des écrans."
+    },
+    {
+      "q": "En sortie de zone, les intervenants passent par…",
+      "choices": [
+        "Le sas de contrôle de la radioactivité",
+        "La douche du CIS",
+        "Rien",
+        "Le PC"
+      ],
+      "answer": 0,
+      "explain": "Ou le portique mobile de contrôle de la contamination, sur ordre de l'officier CMIC/CMIR."
+    },
+    {
+      "q": "L'équipe d'intervention peut cartographier…",
+      "choices": [
+        "La contamination radioactive s'il y a lieu",
+        "Les vents",
+        "Les réseaux d'eau",
+        "Les accès pompiers"
+      ],
+      "answer": 0,
+      "explain": "En complément de la confirmation des risques et du périmètre."
+    },
+    {
+      "q": "Source radioactive trouvée ?",
+      "choices": [
+        "Ne pas manipuler, établir un périmètre, détecter, remonter vers l'ASN",
+        "La rapporter au CIS",
+        "L'immerger",
+        "L'enterrer"
+      ],
+      "answer": 0,
+      "explain": "La gestion des sources orphelines suit un guide dédié."
+    },
+    {
+      "q": "Objectif d'intervention sur l'environnement ?",
+      "choices": [
+        "Arrêter ou réduire la contamination des personnes et des biens",
+        "Nettoyer les routes",
+        "Mesurer pour la presse",
+        "Évacuer systématiquement"
+      ],
+      "answer": 0,
+      "explain": "La protection des personnes prime."
+    },
+    {
+      "q": "Qui commande les moyens spécialisés RAD sur intervention ?",
+      "choices": [
+        "L'officier CMIC/CMIR (RCH3/RAD)",
+        "Le chef d'agrès du premier engin",
+        "Le SAMU",
+        "L'exploitant"
+      ],
+      "answer": 0,
+      "explain": "Même organisation que la réponse RCH : reconnaissance, intervention, CMIR."
+    }
+  ],
+  "risques-infectieux": [
+    {
+      "q": "Principal mode de transmission des maladies infectieuses ?",
+      "choices": [
+        "La voie manuportée",
+        "L'air uniquement",
+        "L'eau",
+        "Les vêtements"
+      ],
+      "answer": 0,
+      "explain": "D'où l'hygiène des mains systématique : savon doux ou friction hydro-alcoolique."
+    },
+    {
+      "q": "Contenu du kit R.I. de base ?",
+      "choices": [
+        "4 FFP2, 1 masque chirurgical (victime), 4 lunettes, blouses",
+        "2 ARI",
+        "1 combinaison NRBC",
+        "10 masques chirurgicaux"
+      ],
+      "answer": 0,
+      "explain": "Disponible dans tout VSAV ; kit renforcé : gants à manchettes longues, charlottes."
+    },
+    {
+      "q": "Le masque chirurgical se place…",
+      "choices": [
+        "Sur la victime",
+        "Sur le chef d'agrès",
+        "Sur le conducteur",
+        "Dans la poche"
+      ],
+      "answer": 0,
+      "explain": "Si la victime ne peut pas le porter (masque O₂…) : FFP2 obligatoire pour les intervenants."
+    },
+    {
+      "q": "Durée maximale de port continu du FFP2 ?",
+      "choices": [
+        "3 heures (saturation du filtre)",
+        "8 heures",
+        "30 minutes",
+        "Illimitée"
+      ],
+      "answer": 0,
+      "explain": "Ou avant, dès qu'il devient difficile d'inspirer. Efficacité accrue sur visage rasé."
+    },
+    {
+      "q": "Retrait du FFP2 ?",
+      "choices": [
+        "Par les élastiques, en apnée, yeux fermés",
+        "Par la coque avant",
+        "En soufflant fort",
+        "Sous la douche"
+      ],
+      "answer": 0,
+      "explain": "Ne pas se toucher le visage ; jamais de masque en attente sur le cou."
+    },
+    {
+      "q": "Règle d'usage des gants d'examen ?",
+      "choices": [
+        "1 paire – 1 geste – 1 patient",
+        "1 paire par garde",
+        "1 paire par équipe",
+        "Réutilisables après lavage"
+      ],
+      "answer": 0,
+      "explain": "Souillés ou contexte infectieux → DASRIA ; nettoyage-désinfection → DAOM."
+    },
+    {
+      "q": "Le protocole de désinfection SIMPLE s'applique…",
+      "choices": [
+        "Après tout transport sanitaire",
+        "Une fois par mois",
+        "Sur ordre du médecin-chef seulement",
+        "Jamais"
+      ],
+      "answer": 0,
+      "explain": "Renforcé : risque particulier ou avis SSSM. Hebdomadaire : chaque semaine."
+    },
+    {
+      "q": "Après un protocole renforcé, la fiche de traçabilité est…",
+      "choices": [
+        "Obligatoire, datée et signée par le chef d'agrès",
+        "Facultative",
+        "Remplie par le CODIS",
+        "Orale"
+      ],
+      "answer": 0,
+      "explain": "Chaque agrès sanitaire et local de santé dispose de sa propre fiche."
+    },
+    {
+      "q": "Lavage des tenues d'intervention ?",
+      "choices": [
+        "À 60 °C, séparément du linge familial",
+        "À froid avec le linge",
+        "Au pressing uniquement",
+        "Jamais"
+      ],
+      "answer": 0,
+      "explain": "Lavage immédiat après exposition."
+    },
+    {
+      "q": "Que faire après un AES ?",
+      "choices": [
+        "Lavage/désinfection immédiate, avis médical urgent, déclaration",
+        "Continuer l'intervention",
+        "Attendre les symptômes",
+        "Un simple pansement"
+      ],
+      "answer": 0,
+      "explain": "Procédure « AES/AEV » dédiée du guide."
+    }
+  ],
+  "chaine-commandement": [
+    {
+      "q": "Qui est DOS ?",
+      "choices": [
+        "Le Préfet (ou le maire sur sa commune)",
+        "Le COS",
+        "Le CODIS",
+        "Le DDSIS toujours"
+      ],
+      "answer": 0,
+      "explain": "Le directeur des opérations DIRIGE : objectifs, priorités, coordination, communication."
+    },
+    {
+      "q": "Le COS est chargé de…",
+      "choices": [
+        "Mettre en œuvre tous les moyens publics et privés mobilisés pour les secours",
+        "Diriger la crise",
+        "Réguler les hôpitaux",
+        "La police de la circulation"
+      ],
+      "answer": 0,
+      "explain": "Sous l'autorité du DO. Il peut être assisté de conseillers techniques."
+    },
+    {
+      "q": "COS et COPG sont…",
+      "choices": [
+        "Tour à tour menant et concourant selon la nature de la crise",
+        "Toujours rivaux",
+        "Le même officier",
+        "Sous les ordres du SAMU"
+      ],
+      "answer": 0,
+      "explain": "Ex. attentat : COPG menant ; secours : COS menant."
+    },
+    {
+      "q": "Après la phase de secours d'une pollution maritime…",
+      "choices": [
+        "Le COS s'efface au profit du COL (commandant des opérations de lutte)",
+        "Le COS reste",
+        "Le maire commande",
+        "Plus personne ne commande"
+      ],
+      "answer": 0,
+      "explain": "La part dédiée au secours est généralement réduite dans le temps."
+    },
+    {
+      "q": "Le PCO est implanté…",
+      "choices": [
+        "Au plus près de l'intervention, en zone non dangereuse",
+        "En préfecture",
+        "À Paris",
+        "Dans la zone d'exclusion"
+      ],
+      "answer": 0,
+      "explain": "Son emplacement est proposé au DOS par le COS ; activé sur décision préfectorale."
+    },
+    {
+      "q": "Le COD est…",
+      "choices": [
+        "Le centre opérationnel départemental, structure de coordination de la préfecture",
+        "Un véhicule PC",
+        "Le standard du SDIS",
+        "Une application"
+      ],
+      "answer": 0,
+      "explain": "Le SDIS y délègue un officier pour la remontée d'informations."
+    },
+    {
+      "q": "Sur un grand site industriel, l'exploitant fournit…",
+      "choices": [
+        "Un agent de terrain identifiable à disposition du COS",
+        "Rien",
+        "Uniquement des plans",
+        "Un vigile à l'entrée"
+      ],
+      "answer": 0,
+      "explain": "Reconnaissable par une chasuble ; il informe les secours des risques du site."
+    },
+    {
+      "q": "Un conseiller technique du COS est…",
+      "choices": [
+        "Placé sous l'autorité du COS",
+        "Indépendant",
+        "Sous l'autorité du Préfet",
+        "Décisionnaire"
+      ],
+      "answer": 0,
+      "explain": "Ex. : conseiller départemental en spéléologie pour le secours souterrain."
+    }
+  ],
+  "evacuation-massive": [
+    {
+      "q": "Qui décide une évacuation massive ?",
+      "choices": [
+        "Le Préfet (DOS)",
+        "Le COS",
+        "Chaque maire seul",
+        "Le CODIS"
+      ],
+      "answer": 0,
+      "explain": "Décision difficile, possible à toute heure, avec dimension nationale (COGIC) selon l'ampleur."
+    },
+    {
+      "q": "Qu'est-ce qu'un CARe ?",
+      "choices": [
+        "Un centre d'accueil et de regroupement des évacués",
+        "Un véhicule de commandement",
+        "Un centre d'appels",
+        "Une cellule médicale"
+      ],
+      "answer": 0,
+      "explain": "Gymnases, salles des fêtes… référencés dans l'ORSEC « Soutien des populations »."
+    },
+    {
+      "q": "Surface à prévoir par personne hébergée ?",
+      "choices": [
+        "4 m²",
+        "1 m²",
+        "10 m²",
+        "20 m²"
+      ],
+      "answer": 0,
+      "explain": "Règle de dimensionnement des lieux d'accueil (salle de classe, gymnase…)."
+    },
+    {
+      "q": "L'évacuation est formalisée par…",
+      "choices": [
+        "Un arrêté préfectoral (périmètre, circuits, laissez-passer, exécution d'office)",
+        "Un simple message radio",
+        "Une conférence de presse",
+        "Un vote municipal"
+      ],
+      "answer": 0,
+      "explain": "Le retour en zone est subordonné à un laissez-passer délivré par la préfecture."
+    },
+    {
+      "q": "Missions des sapeurs-pompiers dans l'évacuation ?",
+      "choices": [
+        "Diffuser l'alerte, faciliter l'évacuation, activer et ravitailler les CARe, soutenir les populations",
+        "Garder les commerces",
+        "Contrôler les identités",
+        "Réquisitionner les bus"
+      ],
+      "answer": 0,
+      "explain": "En appui logistique au dispositif général."
+    },
+    {
+      "q": "Les communes à risques particuliers doivent…",
+      "choices": [
+        "Identifier leurs structures d'accueil via le plan communal de sauvegarde (PCS)",
+        "Ne rien préparer",
+        "Compter sur l'État seul",
+        "Fermer les gymnases"
+      ],
+      "answer": 0,
+      "explain": "Et signaler les groupes de mineurs sous leur autorité en zone d'évacuation."
+    },
+    {
+      "q": "Populations vulnérables ?",
+      "choices": [
+        "Prise en compte spécifique (établissements de santé, EHPAD, personnes isolées)",
+        "Évacuées en dernier",
+        "Non concernées",
+        "Confinées d'office"
+      ],
+      "answer": 0,
+      "explain": "L'accueil peut être organisé au niveau intercommunal."
+    },
+    {
+      "q": "En temps de crise, les CARe peuvent être désengorgés par…",
+      "choices": [
+        "La solidarité (hébergement chez des proches)",
+        "Des hôtels réquisitionnés uniquement",
+        "Le retour immédiat",
+        "Des campings d'État"
+      ],
+      "answer": 0,
+      "explain": "La liste des CARe n'est pas exhaustive."
+    }
+  ],
+  "tmd": [
+    {
+      "q": "Sur le panneau orange, le code danger se lit…",
+      "choices": [
+        "En haut ; le code ONU (4 chiffres) en bas",
+        "En bas",
+        "À gauche",
+        "Sur la cabine"
+      ],
+      "answer": 0,
+      "explain": "Panneaux rectangulaires orange rétro-réfléchissants de 40 × 30 cm."
+    },
+    {
+      "q": "Le 1er chiffre du code danger indique…",
+      "choices": [
+        "Le danger principal",
+        "Le poids",
+        "La classe de prix",
+        "Le nombre d'essieux"
+      ],
+      "answer": 0,
+      "explain": "Les 2e et 3e chiffres indiquent les dangers secondaires."
+    },
+    {
+      "q": "Un chiffre doublé (33, 66…) signifie…",
+      "choices": [
+        "Une intensification du danger",
+        "Deux produits",
+        "Un aller-retour",
+        "Un transport international"
+      ],
+      "answer": 0,
+      "explain": "Ex. 33 = liquide très inflammable."
+    },
+    {
+      "q": "Un « X » devant le code danger signifie…",
+      "choices": [
+        "Réagit dangereusement avec l'eau",
+        "Produit inconnu",
+        "Explosif",
+        "Interdit en tunnel"
+      ],
+      "answer": 0,
+      "explain": "Ne jamais utiliser d'eau sans avis spécialisé."
+    },
+    {
+      "q": "Le code 336 / 1230 correspond à…",
+      "choices": [
+        "Un liquide très inflammable et toxique (méthanol)",
+        "Un gaz comprimé",
+        "Un corrosif",
+        "Un explosif"
+      ],
+      "answer": 0,
+      "explain": "336 = code danger ; 1230 = numéro ONU du méthanol."
+    },
+    {
+      "q": "Le numéro ONU identifie…",
+      "choices": [
+        "La matière transportée selon la nomenclature ONU",
+        "Le transporteur",
+        "Le pays d'origine",
+        "La citerne"
+      ],
+      "answer": 0,
+      "explain": "Numéro à 4 chiffres en partie basse du panneau."
+    },
+    {
+      "q": "TRANSAID permet…",
+      "choices": [
+        "De trouver des entreprises volontaires et compétentes pour appuyer les secours",
+        "De traduire les codes",
+        "De fermer les routes",
+        "D'indemniser"
+      ],
+      "answer": 0,
+      "explain": "Recherche par matière (nom/code ONU), par code danger ou par département."
+    },
+    {
+      "q": "Approche d'un TMD accidenté ?",
+      "choices": [
+        "Vent dans le dos, périmètre, identification à distance (jumelles, documents de bord)",
+        "Au contact direct",
+        "Par l'aval du vent",
+        "Sans périmètre"
+      ],
+      "answer": 0,
+      "explain": "Engagement minimal avant l'avis spécialisé RCH."
+    },
+    {
+      "q": "Les plaques-étiquettes en losange indiquent…",
+      "choices": [
+        "La classe de danger (inflammable, toxique, corrosif, radioactif…)",
+        "La vitesse maximale",
+        "Le tonnage",
+        "La destination"
+      ],
+      "answer": 0,
+      "explain": "Apposées sur citernes et conteneurs, en complément du panneau orange."
+    }
+  ],
+  "gdto-ssuap": [
+    {
+      "q": "Les 4 phases du bilan médico-secouriste ?",
+      "choices": [
+        "Circonstanciel, primaire, secondaire, surveillance",
+        "Primaire, secondaire, tertiaire, final",
+        "Rapide, complet, médical, radio",
+        "Visuel, tactile, auditif, écrit"
+      ],
+      "answer": 0,
+      "explain": "Évaluer, agir, contrôler, réévaluer — les phases sont souvent imbriquées."
+    },
+    {
+      "q": "Le bilan circonstanciel sert à…",
+      "choices": [
+        "Évaluer le contexte, les risques et la sécurité",
+        "Mesurer la tension",
+        "Compter les victimes uniquement",
+        "Remplir la tablette"
+      ],
+      "answer": 0,
+      "explain": "Vision globale avant d'agir."
+    },
+    {
+      "q": "Que signifie le X de XABCDE ?",
+      "choices": [
+        "eXsanguination : hémorragie externe grave",
+        "eXamen",
+        "eXposition",
+        "eXtraction"
+      ],
+      "answer": 0,
+      "explain": "À traiter en tout premier, avant même les voies aériennes."
+    },
+    {
+      "q": "Le A de XABCDE inclut…",
+      "choices": [
+        "Les voies aériennes ET la stabilisation du rachis",
+        "L'alerte",
+        "L'analgésie",
+        "L'ambiance"
+      ],
+      "answer": 0,
+      "explain": "Airway : liberté des voies aériennes avec protection du rachis cervical."
+    },
+    {
+      "q": "RCP adulte en équipe ?",
+      "choices": [
+        "30 compressions / 2 insufflations sous O₂, DSA dès que possible",
+        "15/2",
+        "5 insufflations d'abord",
+        "Compressions seules toujours"
+      ],
+      "answer": 0,
+      "explain": "Canule oro-pharyngée et aspiration sans retarder la RCP."
+    },
+    {
+      "q": "Position d'attente d'une femme sur le point d'accoucher ?",
+      "choices": [
+        "Sur le côté gauche, jamais sur le dos",
+        "Sur le dos",
+        "Assise",
+        "Debout"
+      ],
+      "answer": 0,
+      "explain": "Établir le score de Malinas, bilan primaire et secondaire."
+    },
+    {
+      "q": "Face à un refus de soins ?",
+      "choices": [
+        "Cocher « refus de soin », renseigner l'identité et les précisions d'intervention",
+        "Forcer la victime",
+        "Partir sans rien noter",
+        "Appeler la famille"
+      ],
+      "answer": 0,
+      "explain": "Nul ne peut être soigné sans consentement ; « X » si la personne refuse de donner son identité."
+    },
+    {
+      "q": "Violences supposées sur une victime ?",
+      "choices": [
+        "Demander les forces de l'ordre et ne jamais quitter la victime",
+        "Confronter l'agresseur",
+        "Ignorer si pas de plainte",
+        "Photographier"
+      ],
+      "answer": 0,
+      "explain": "Des questions simples et explicites peuvent être posées lors du bilan."
+    },
+    {
+      "q": "Conditions de vie dégradées constatées ?",
+      "choices": [
+        "Cocher la case dédiée, demander l'autorité communale et un chef de groupe",
+        "Nettoyer le logement",
+        "Appeler la presse",
+        "Ne rien faire"
+      ],
+      "answer": 0,
+      "explain": "Logement présentant un danger pour la santé ou la sécurité des occupants."
+    },
+    {
+      "q": "Le bilan secondaire consiste à…",
+      "choices": [
+        "Approfondir l'examen : autres signes, mesure des paramètres",
+        "Traiter les détresses vitales",
+        "Sécuriser la zone",
+        "Transmettre au CODIS"
+      ],
+      "answer": 0,
+      "explain": "Il suit le bilan primaire (détresses vitales évidentes)."
+    }
+  ],
+  "valeurs-seuils": [
+    {
+      "q": "Les 3 niveaux d'effets des valeurs seuils ?",
+      "choices": [
+        "Réversibles, irréversibles, 1ers effets létaux",
+        "Faible, moyen, fort",
+        "Local, régional, national",
+        "Aigu, chronique, différé"
+      ],
+      "answer": 0,
+      "explain": "Le seuil choisi doit être appliqué aux trois niveaux d'effets."
+    },
+    {
+      "q": "Les AEGL couvrent…",
+      "choices": [
+        "La population générale, individus sensibles inclus",
+        "Les travailleurs uniquement",
+        "Les pompiers uniquement",
+        "Les animaux"
+      ],
+      "answer": 0,
+      "explain": "Conçus pour les situations d'urgence avec facteurs de protection importants."
+    },
+    {
+      "q": "Particularité des ERPG ?",
+      "choices": [
+        "Une seule durée d'exposition : 1 heure",
+        "24 heures",
+        "10 minutes",
+        "Durée variable"
+      ],
+      "answer": 0,
+      "explain": "Définis pour l'urgence, travailleurs en priorité."
+    },
+    {
+      "q": "L'IDLH est défini pour…",
+      "choices": [
+        "Permettre à un travailleur de s'échapper sans risque en 30 minutes",
+        "Une exposition de 8 h",
+        "La population générale",
+        "Les nourrissons"
+      ],
+      "answer": 0,
+      "explain": "Valeur NIOSH, une seule durée d'exposition : 30 minutes."
+    },
+    {
+      "q": "Les VSTAF (SER/SEI/SPEL) sont…",
+      "choices": [
+        "Des valeurs réglementaires françaises NON conçues pour l'urgence",
+        "Les plus adaptées à l'urgence",
+        "Des valeurs américaines",
+        "Des seuils d'explosivité"
+      ],
+      "answer": 0,
+      "explain": "Élaborées pour les installations classées — à manier avec précaution en situation d'urgence."
+    },
+    {
+      "q": "Le losange NFPA 704 note…",
+      "choices": [
+        "Santé, inflammabilité, instabilité de 0 à 4",
+        "Prix, poids, volume",
+        "3 couleurs sans chiffres",
+        "De 1 à 10"
+      ],
+      "answer": 0,
+      "explain": "Bleu = santé, rouge = inflammabilité, jaune = instabilité + case blanche des risques spécifiques."
+    },
+    {
+      "q": "Le symbole W barré (NFPA 704) signifie…",
+      "choices": [
+        "Réagit violemment ou explosivement avec l'eau",
+        "Soluble dans l'eau",
+        "Lavable",
+        "Sans danger"
+      ],
+      "answer": 0,
+      "explain": "Ex. : phosphore, sodium. SA = gaz asphyxiant simple, OX = oxydant."
+    },
+    {
+      "q": "Inflammabilité NFPA niveau 4 ?",
+      "choices": [
+        "Point d'éclair < 23 °C avec vaporisation rapide (ex. propane)",
+        "Incombustible",
+        "PE entre 38 et 93 °C",
+        "Ne brûle qu'après chauffage"
+      ],
+      "answer": 0,
+      "explain": "Le gazole (PE 38-93 °C) est en niveau 2."
+    },
+    {
+      "q": "Un produit très volatil est…",
+      "choices": [
+        "Non détectable au risque froid mais se disperse vite dans l'air",
+        "Toujours toxique",
+        "Toujours inflammable",
+        "Sans intérêt opérationnel"
+      ],
+      "answer": 0,
+      "explain": "La volatilité (pression de vapeur saturante) conditionne la dispersion atmosphérique."
+    },
+    {
+      "q": "PAC-1/2/3 combinent…",
+      "choices": [
+        "Les valeurs AEGL, ERPG et TEEL (1 h)",
+        "Uniquement les VSTAF",
+        "Des mesures terrain",
+        "Les seuils explosifs"
+      ],
+      "answer": 0,
+      "explain": "Compilation utilisée quand les AEGL/ERPG n'existent pas pour la substance."
+    }
+  ],
+  "fpt-vue": [
+    {
+      "q": "PTAC du FPT SR 4 000 ?",
+      "choices": [
+        "16 000 kg",
+        "12 000 kg",
+        "19 000 kg",
+        "7 500 kg"
+      ],
+      "answer": 0,
+      "explain": "Longueur 7 794 mm, largeur 2 550 mm, châssis Renault D15 P4x2 280 E6."
+    },
+    {
+      "q": "Capacité de la cuve à eau ?",
+      "choices": [
+        "3 800 L",
+        "3 000 L",
+        "4 000 L",
+        "2 500 L"
+      ],
+      "answer": 0,
+      "explain": "PEHD monobloc avec cloison brise-lames + cuve mouillant de 200 L."
+    },
+    {
+      "q": "Modèle de la pompe ?",
+      "choices": [
+        "WATEROUS S 200 G",
+        "CAMIVA 2000",
+        "SIDES X15",
+        "GODIVA P2"
+      ],
+      "answer": 0,
+      "explain": "Amorçage automatique à pistons dès que la pression de refoulement < 0,5 bar."
+    },
+    {
+      "q": "Rôle de la cloison dans la cuve ?",
+      "choices": [
+        "Brise-lames (2 compartiments)",
+        "Filtration",
+        "Chauffage",
+        "Renfort du toit"
+      ],
+      "answer": 0,
+      "explain": "Elle limite les mouvements d'eau ; un trou d'homme permet la visite."
+    },
+    {
+      "q": "Le dévidoir PS embarque…",
+      "choices": [
+        "40 m de semi-rigide + lance 150 L/min",
+        "80 m de Ø45",
+        "2 tuyaux de 70",
+        "Une LDV 500"
+      ],
+      "answer": 0,
+      "explain": "Enroulement électrique, manivelle de secours en cas de panne."
+    },
+    {
+      "q": "Caractéristiques de la PDM ?",
+      "choices": [
+        "NL/10B — 270 Nm — rapport 2,03",
+        "BV12 — 500 Nm",
+        "NL/5 — 100 Nm",
+        "Rapport 1,0"
+      ],
+      "answer": 0,
+      "explain": "Montée sur la boîte OPTITRONIC 6AS 1000."
+    },
+    {
+      "q": "Hauteur du mât déployé ?",
+      "choices": [
+        "4,95 m",
+        "10 m",
+        "2,5 m",
+        "7,5 m"
+      ],
+      "answer": 0,
+      "explain": "TEKLITE TF340 NT/3 avec 4 projecteurs LED 55 W."
+    },
+    {
+      "q": "Plage d'utilisation du véhicule ?",
+      "choices": [
+        "−5 °C à +30 °C, 90 % d'humidité",
+        "−20 °C à +50 °C",
+        "0 °C à +40 °C",
+        "Sans limite"
+      ],
+      "answer": 0,
+      "explain": "Pente maxi 14°, dévers statique maxi 32°."
+    }
+  ],
+  "circuit-eau": [
+    {
+      "q": "En attaque sur cuve, quelle vanne doit être ouverte ?",
+      "choices": [
+        "La vanne d'isolation pompe-tonne",
+        "La vanne d'alimentation",
+        "La vanne de retour tonne",
+        "Toutes les vannes"
+      ],
+      "answer": 0,
+      "explain": "L'eau de la tonne alimente directement la pompe : isolation pompe-tonne ouverte, alimentation et retour fermés."
+    },
+    {
+      "q": "Lors du passage sur une alimentation extérieure, que fait-on simultanément à l'ouverture de la vanne d'alimentation ?",
+      "choices": [
+        "On ferme la vanne d'isolation pompe-tonne",
+        "On ouvre le retour tonne en grand",
+        "On coupe la PDM",
+        "On vidange le corps de pompe"
+      ],
+      "answer": 0,
+      "explain": "Ouvrir la vanne d'alimentation ET fermer la vanne d'isolation pompe-tonne (sauf système automatique)."
+    },
+    {
+      "q": "À quoi sert la « sauterelle » ?",
+      "choices": [
+        "Renvoyer de l'eau vers la tonne",
+        "Amorcer la pompe",
+        "Vidanger le corps de pompe",
+        "Alimenter le dévidoir"
+      ],
+      "answer": 0,
+      "explain": "La vanne de retour tonne complète le niveau de la tonne et refroidit la pompe (ouverture partielle)."
+    },
+    {
+      "q": "Quand ouvre-t-on partiellement le retour tonne ?",
+      "choices": [
+        "Quand les porte-lances ne sont pas à vue",
+        "À chaque amorçage",
+        "Uniquement par temps froid",
+        "Jamais en intervention"
+      ],
+      "answer": 0,
+      "explain": "Ouverture partielle pour le refroidissement de la pompe quand les porte-lances ne sont pas à vue — attention à la cavitation."
+    },
+    {
+      "q": "Pendant l'amorçage, la vanne d'isolation pompe-tonne doit être…",
+      "choices": [
+        "Fermée",
+        "Ouverte",
+        "Ouverte à moitié",
+        "Indifférent"
+      ],
+      "answer": 0,
+      "explain": "Ne jamais laisser la vanne d'isolation pompe-tonne ouverte pendant l'amorçage : le vide ne pourrait pas se créer."
+    },
+    {
+      "q": "Quel élément crée et maintient la pression dans les établissements ?",
+      "choices": [
+        "La pompe centrifuge",
+        "Le collecteur",
+        "La tonne",
+        "Le dévidoir"
+      ],
+      "answer": 0,
+      "explain": "La pompe centrifuge crée et maintient la pression définie par le conducteur."
+    },
+    {
+      "q": "Que faire après un pompage d'eaux chargées ?",
+      "choices": [
+        "Rincer la pompe à l'eau propre",
+        "Vidanger le carburant",
+        "Démonter la roue à aubes",
+        "Rien de particulier"
+      ],
+      "answer": 0,
+      "explain": "Rincer la pompe à l'eau propre et graisser régulièrement au moyen des graisseurs."
+    },
+    {
+      "q": "Pourquoi vidanger le corps de pompe par temps froid ?",
+      "choices": [
+        "Éviter le gel et l'éclatement des organes",
+        "Économiser l'eau",
+        "Faciliter l'amorçage",
+        "Réduire la corrosion"
+      ],
+      "answer": 0,
+      "explain": "L'eau qui gèle augmente de volume et peut faire éclater le corps de pompe : mise hors gel obligatoire."
+    },
+    {
+      "q": "Le collecteur de refoulement…",
+      "choices": [
+        "Rassemble l'eau sous pression vers les refoulements",
+        "Aspire l'eau de la tonne",
+        "Filtre les impuretés",
+        "Crée le vide d'air"
+      ],
+      "answer": 0,
+      "explain": "En sortie de pompe, il répartit l'eau sous pression vers les différents refoulements."
+    },
+    {
+      "q": "La LDT est alimentée par…",
+      "choices": [
+        "Le refoulement de la pompe via le dévidoir tournant",
+        "Directement la tonne par gravité",
+        "L'hydrant uniquement",
+        "Le bac d'amorçage"
+      ],
+      "answer": 0,
+      "explain": "Le tuyau semi-rigide du dévidoir tournant est alimenté par le refoulement de la pompe."
+    },
+    {
+      "q": "Quand doit-on alimenter l'engin ?",
+      "choices": [
+        "Pour tout débit supérieur à celui de la LDT",
+        "Uniquement si la tonne est vide",
+        "Uniquement en aspiration",
+        "Jamais avant l'extinction"
+      ],
+      "answer": 0,
+      "explain": "Aussi à l'établissement d'une lance à mousse, et sur ordre du chef d'agrès qui désigne la prise d'eau."
+    },
+    {
+      "q": "Pression minimale requise sur hydrant ?",
+      "choices": [
+        "1 bar",
+        "5 bars",
+        "0,5 bar",
+        "3 bars"
+      ],
+      "answer": 0,
+      "explain": "La pression de l'hydrant doit être au moins de 1 bar."
+    },
+    {
+      "q": "Hydrant à 10-20 m : quel établissement ?",
+      "choices": [
+        "1 tuyau de 110 (10 m) + coude, OU 2 tuyaux de 70 (20 m) + retenue",
+        "3 tuyaux de 45",
+        "1 tuyau de 70 seul",
+        "2 tuyaux de 110 + division"
+      ],
+      "answer": 0,
+      "explain": "Deux solutions normalisées selon la distance."
+    },
+    {
+      "q": "Une fois l'engin alimenté, le conducteur…",
+      "choices": [
+        "Rend compte au chef d'agrès",
+        "Coupe le moteur",
+        "Ferme tous les refoulements",
+        "Quitte le tableau"
+      ],
+      "answer": 0,
+      "explain": "Rendre compte que l'engin est alimenté fait partie de la procédure."
+    },
+    {
+      "q": "Dimensions de la plateforme d'aspiration pour FPT/CCGC/CCF ?",
+      "choices": [
+        "4 × 8 m",
+        "2 × 4 m",
+        "6 × 10 m",
+        "3 × 3 m"
+      ],
+      "answer": 0,
+      "explain": "Plateforme de 4 m sur 8 m."
+    },
+    {
+      "q": "Pourquoi éviter le « col de cygne » sur la ligne d'aspiration ?",
+      "choices": [
+        "Risque de désamorçage (poche d'air)",
+        "Usure des raccords",
+        "Perte de débit à la lance",
+        "Blocage de la crépine"
+      ],
+      "answer": 0,
+      "explain": "Un point haut piège l'air et compromet l'amorçage."
+    },
+    {
+      "q": "Le BAL et la clé de barrage servent pour…",
+      "choices": [
+        "La bouche incendie (BI)",
+        "Le poteau incendie (PI)",
+        "La citerne souple",
+        "Le dévidoir"
+      ],
+      "answer": 0,
+      "explain": "BI enterrée : bouche à clé + clé de barrage. Le PI se manœuvre avec la clé de poteau."
+    },
+    {
+      "q": "En mise en eau, le retour tonne s'ouvre…",
+      "choices": [
+        "Partiellement et progressivement",
+        "En grand d'un coup",
+        "Jamais",
+        "Avant la vanne d'alimentation"
+      ],
+      "answer": 0,
+      "explain": "Pour compléter le niveau sans provoquer de cavitation."
+    },
+    {
+      "q": "Surveillances du conducteur une fois alimenté :",
+      "choices": [
+        "Tuyau d'alimentation et tableau de bord",
+        "Uniquement la radio",
+        "Le trafic routier",
+        "Les porte-lances en permanence"
+      ],
+      "answer": 0,
+      "explain": "Tuyau qui s'écrase = débit insuffisant ; tableau = pressions et niveaux."
+    },
+    {
+      "q": "Avant d'aspirer, on vérifie dans le vase de l'amorceur…",
+      "choices": [
+        "La présence d'eau",
+        "La présence d'huile",
+        "L'absence d'eau",
+        "Le niveau d'émulseur"
+      ],
+      "answer": 0,
+      "explain": "Sans eau, l'amorceur à anneau d'eau ne peut pas créer le vide."
+    },
+    {
+      "q": "Première action de la mise hors gel ?",
+      "choices": [
+        "Fermer la vanne Tonne-Pompe",
+        "Ouvrir les robinets de vidange",
+        "Vider la tonne",
+        "Couper la PDM"
+      ],
+      "answer": 0,
+      "explain": "Fermer la vanne Tonne-Pompe AVANT d'ouvrir les vidanges, sinon la tonne se vide par la pompe."
+    },
+    {
+      "q": "Après fermeture de la vanne Tonne-Pompe, on ouvre…",
+      "choices": [
+        "Les robinets de vidange (pompe + amorceur)",
+        "La vanne d'alimentation",
+        "Le retour tonne en grand",
+        "Les refoulements"
+      ],
+      "answer": 0,
+      "explain": "Robinets de vidange du corps de pompe et de l'amorceur à anneau d'eau (CCF/FPT), puis laisser égoutter."
+    },
+    {
+      "q": "Pourquoi la mise hors gel ?",
+      "choices": [
+        "Éviter le gel et l'éclatement des organes",
+        "Nettoyer la pompe",
+        "Économiser du carburant",
+        "Préparer l'amorçage"
+      ],
+      "answer": 0,
+      "explain": "L'eau en gelant augmente de volume et fait éclater le corps de pompe."
+    },
+    {
+      "q": "Sur quels engins vidange-t-on aussi l'amorceur à anneau d'eau ?",
+      "choices": [
+        "CCF et FPT",
+        "VSAV",
+        "VTU",
+        "Échelles"
+      ],
+      "answer": 0,
+      "explain": "L'eau résiduelle du bac et de l'amorceur doit être évacuée."
+    },
+    {
+      "q": "Que se passe-t-il quand on enclenche la PDM (aspirations extérieures fermées) ?",
+      "choices": [
+        "La vanne aspiration cuve (rep 1) s'ouvre automatiquement",
+        "Rien",
+        "La cuve se vidange",
+        "Les refoulements s'ouvrent"
+      ],
+      "answer": 0,
+      "explain": "Vanne motorisée : PDM = ouverture rep 1 ; ouverture rep 2 = fermeture rep 1."
+    },
+    {
+      "q": "Lors de la bascule cuve ⇄ alimentation extérieure…",
+      "choices": [
+        "Couper IMPÉRATIVEMENT la régulation de pression",
+        "Accélérer",
+        "Ouvrir toutes les vannes",
+        "Rien de particulier"
+      ],
+      "answer": 0,
+      "explain": "Consigne du constructeur GIMAEX (p. 19)."
+    },
+    {
+      "q": "Pression maxi pour remplir la cuve par la pompe ?",
+      "choices": [
+        "5 bar",
+        "15 bar",
+        "1 bar",
+        "10 bar"
+      ],
+      "answer": 0,
+      "explain": "Ralentir à 90 % et attendre l'écoulement par la surverse."
+    }
+  ],
+  "chaine": [
+    {
+      "q": "Ordre correct de la chaîne de propulsion ?",
+      "choices": [
+        "Moteur → embrayage → boîte → arbre → pont → roues",
+        "Moteur → pont → boîte → roues",
+        "Boîte → moteur → embrayage → roues",
+        "Moteur → arbre → embrayage → pont"
+      ],
+      "answer": 0,
+      "explain": "C'est la chaîne cinématique classique d'un véhicule."
+    },
+    {
+      "q": "Rôle du moteur ?",
+      "choices": [
+        "Transformer l'énergie thermique en énergie mécanique",
+        "Créer la pression d'eau",
+        "Stocker l'énergie",
+        "Refroidir la pompe"
+      ],
+      "answer": 0,
+      "explain": "La combustion produit l'énergie mécanique qui propulse le véhicule et entraîne la pompe."
+    },
+    {
+      "q": "Rôle de la prise de mouvement (PDM) ?",
+      "choices": [
+        "Dériver le mouvement du moteur vers la pompe",
+        "Freiner le véhicule",
+        "Changer les rapports",
+        "Alimenter la radio"
+      ],
+      "answer": 0,
+      "explain": "La PDM prélève le mouvement pour entraîner la pompe."
+    },
+    {
+      "q": "La PDM doit être enclenchée…",
+      "choices": [
+        "Avant l'amorçage",
+        "Après l'amorçage",
+        "Jamais en pompage",
+        "Uniquement en roulant"
+      ],
+      "answer": 0,
+      "explain": "PDM non enclenchée = cause classique d'amorçage défectueux."
+    },
+    {
+      "q": "Rôle de l'embrayage ?",
+      "choices": [
+        "Accoupler/désaccoupler moteur et boîte",
+        "Multiplier la vitesse",
+        "Bloquer le différentiel",
+        "Entraîner la pompe"
+      ],
+      "answer": 0,
+      "explain": "Il permet de désolidariser temporairement le moteur de la transmission."
+    },
+    {
+      "q": "Rôle de la boîte de vitesses ?",
+      "choices": [
+        "Adapter couple et régime aux besoins",
+        "Créer le vide",
+        "Refroidir le moteur",
+        "Répartir l'eau"
+      ],
+      "answer": 0,
+      "explain": "Elle démultiplie le mouvement selon la vitesse et l'effort demandés."
+    },
+    {
+      "q": "Le pont sert à…",
+      "choices": [
+        "Renvoyer le mouvement aux roues",
+        "Porter la tonne",
+        "Fixer la pompe",
+        "Amortir les chocs"
+      ],
+      "answer": 0,
+      "explain": "Dernier maillon avant les roues."
+    },
+    {
+      "q": "L'amorceur anneau d'eau débrayable se débraye à…",
+      "choices": [
+        "3 bars",
+        "1 bar",
+        "5 bars",
+        "8 bars"
+      ],
+      "answer": 0,
+      "explain": "Quand la pompe atteint 3 bars, l'amorçage est terminé."
+    },
+    {
+      "q": "Le clapet d'amorçage se ferme…",
+      "choices": [
+        "Au contact de l'eau",
+        "À 10 bars",
+        "Quand on coupe la PDM",
+        "Au démarrage moteur"
+      ],
+      "answer": 0,
+      "explain": "L'eau arrivée à la pompe ferme le clapet : fin d'amorçage."
+    },
+    {
+      "q": "La pompe est reliée à la PDM par…",
+      "choices": [
+        "Un arbre de transmission",
+        "Une courroie unique",
+        "Un câble",
+        "Une chaîne de vélo"
+      ],
+      "answer": 0,
+      "explain": "Un arbre de transmission dédié entraîne la pompe."
+    },
+    {
+      "q": "Il est formellement interdit de… sur un châssis :",
+      "choices": [
+        "Souder ou percer",
+        "Boulonner",
+        "Riveter",
+        "Laver"
+      ],
+      "answer": 0,
+      "explain": "Risque d'affaiblissement ou de déformation de la structure."
+    },
+    {
+      "q": "Le FPT étudié utilise un châssis…",
+      "choices": [
+        "Rigide",
+        "Articulé",
+        "Souple",
+        "Sans traverses"
+      ],
+      "answer": 0,
+      "explain": "Aucune déformation ; seules les suspensions gardent les roues au sol."
+    },
+    {
+      "q": "En 4 temps, un cycle complet =",
+      "choices": [
+        "4 courses de piston, 2 tours de vilebrequin",
+        "2 courses, 1 tour",
+        "8 courses, 4 tours",
+        "1 course, 1 tour"
+      ],
+      "answer": 0,
+      "explain": "Admission, compression, combustion/détente, échappement."
+    },
+    {
+      "q": "Le différentiel sert à…",
+      "choices": [
+        "Laisser les roues tourner à des vitesses différentes en virage",
+        "Freiner",
+        "Bloquer les roues",
+        "Multiplier le couple"
+      ],
+      "answer": 0,
+      "explain": "Pignon → couronne → satellites → planétaires. Défaut : roue qui patine = toute la puissance."
+    },
+    {
+      "q": "Le blocage de différentiel s'enclenche…",
+      "choices": [
+        "À l'arrêt ou à très faible vitesse, jamais en patinage",
+        "En pleine accélération",
+        "Uniquement sur autoroute",
+        "En freinant"
+      ],
+      "answer": 0,
+      "explain": "Trajectoire droite, retirer dès le franchissement effectué."
+    },
+    {
+      "q": "La boîte de transfert équipe…",
+      "choices": [
+        "Les véhicules à plusieurs ponts moteurs (CCF 4x4)",
+        "Tous les FPT urbains",
+        "Les VSAV",
+        "Les motos"
+      ],
+      "answer": 0,
+      "explain": "Le FPT urbain 4x2 n'en a pas : un seul pont moteur."
+    }
+  ],
+  "pompe": [
+    {
+      "q": "Quel élément met l'eau en vitesse dans la pompe ?",
+      "choices": [
+        "La roue à aubes",
+        "Les diffuseurs",
+        "Le collecteur",
+        "Le filtre"
+      ],
+      "answer": 0,
+      "explain": "La roue à aubes en rotation projette l'eau vers l'extérieur par force centrifuge : elle crée la vitesse."
+    },
+    {
+      "q": "Quel élément transforme la vitesse en pression ?",
+      "choices": [
+        "Les diffuseurs",
+        "La roue à aubes",
+        "L'axe",
+        "Le ½ raccord"
+      ],
+      "answer": 0,
+      "explain": "Les diffuseurs ralentissent l'eau et transforment son énergie cinétique en pression."
+    },
+    {
+      "q": "Le collecteur du corps de pompe sert à…",
+      "choices": [
+        "Rassembler l'eau vers le refoulement",
+        "Créer le vide",
+        "Filtrer l'eau",
+        "Refroidir le moteur"
+      ],
+      "answer": 0,
+      "explain": "Après les diffuseurs, le collecteur dirige l'eau vers le refoulement."
+    },
+    {
+      "q": "Qu'est-ce qu'une pompe multicellulaire ?",
+      "choices": [
+        "Plusieurs étages roue + diffuseurs en série",
+        "Deux pompes côte à côte",
+        "Une pompe à deux moteurs",
+        "Une pompe à membrane"
+      ],
+      "answer": 0,
+      "explain": "Les étages montés en série augmentent la pression obtenue."
+    },
+    {
+      "q": "L'axe de la pompe est entraîné par…",
+      "choices": [
+        "La prise de mouvement (PDM)",
+        "Un moteur électrique dédié",
+        "La pression de l'eau",
+        "Le dévidoir"
+      ],
+      "answer": 0,
+      "explain": "La PDM dérive le mouvement du moteur du véhicule vers l'axe de la pompe."
+    },
+    {
+      "q": "Le filtre à l'aspiration sert à…",
+      "choices": [
+        "Retenir les impuretés",
+        "Augmenter la pression",
+        "Mesurer le débit",
+        "Réduire la cavitation"
+      ],
+      "answer": 0,
+      "explain": "Il protège la roue à aubes et le corps de pompe des corps étrangers."
+    },
+    {
+      "q": "Dans l'ordre du cheminement de l'eau :",
+      "choices": [
+        "Aspiration → roue à aubes → diffuseurs → collecteur → refoulement",
+        "Aspiration → diffuseurs → roue → refoulement",
+        "Refoulement → roue → aspiration",
+        "Roue → filtre → collecteur"
+      ],
+      "answer": 0,
+      "explain": "L'eau entre par l'aspiration, est accélérée par la roue, mise en pression par les diffuseurs, dirigée par le collecteur."
+    },
+    {
+      "q": "La force qui projette l'eau vers l'extérieur de la roue est…",
+      "choices": [
+        "La force centrifuge",
+        "La gravité",
+        "La dépression",
+        "La capillarité"
+      ],
+      "answer": 0,
+      "explain": "D'où le nom de pompe centrifuge."
+    },
+    {
+      "q": "Une pompe centrifuge peut-elle aspirer l'air seule ?",
+      "choices": [
+        "Non, il faut un amorceur",
+        "Oui, toujours",
+        "Oui, au-dessus de 3 bars",
+        "Seulement à haut régime"
+      ],
+      "answer": 0,
+      "explain": "La pompe centrifuge ne sait pas pomper l'air : l'amorceur crée le vide pour faire venir l'eau."
+    },
+    {
+      "q": "Le ½ raccord d'entrée du corps de pompe sert à…",
+      "choices": [
+        "Connecter la ligne d'aspiration",
+        "Vidanger la pompe",
+        "Régler la pression",
+        "Fixer le manomètre"
+      ],
+      "answer": 0,
+      "explain": "C'est le point de connexion de l'aspiration au corps de pompe."
+    },
+    {
+      "q": "Hauteur théorique maximale d'aspiration ?",
+      "choices": [
+        "10,33 m",
+        "7,50 m",
+        "15 m",
+        "5 m"
+      ],
+      "answer": 0,
+      "explain": "Torricelli : 10,33 m à 1013 mb. En pratique on ne dépasse guère 7,50 m."
+    },
+    {
+      "q": "Hauteur pratique d'aspiration ?",
+      "choices": [
+        "Environ 7,50 m",
+        "10,33 m",
+        "12 m",
+        "3 m"
+      ],
+      "answer": 0,
+      "explain": "Les pertes (étanchéité, température…) limitent l'aspiration réelle à ~7,50 m."
+    },
+    {
+      "q": "Combien de types d'amorceurs ?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "6"
+      ],
+      "answer": 0,
+      "explain": "Éjecteur à gaz, anneau d'eau, anneau d'eau débrayable automatique, membrane ou piston."
+    },
+    {
+      "q": "L'amorceur à anneau d'eau débrayable automatique se débraye à…",
+      "choices": [
+        "3 bars",
+        "4 bars",
+        "6 bars",
+        "10 bars"
+      ],
+      "answer": 0,
+      "explain": "Il se débraye quand la pression de refoulement atteint 3 bars."
+    },
+    {
+      "q": "Sur l'amorceur à membrane ou piston, le clapet se bloque à…",
+      "choices": [
+        "4 bars",
+        "3 bars",
+        "1 bar",
+        "7 bars"
+      ],
+      "answer": 0,
+      "explain": "Le clapet se bloque à 4 bars."
+    },
+    {
+      "q": "L'amorceur du GIMAEX est…",
+      "choices": [
+        "À pistons, automatique dès refoulement < 0,5 bar",
+        "À anneau d'eau manuel",
+        "À éjecteur de gaz",
+        "Inexistant"
+      ],
+      "answer": 0,
+      "explain": "Accouplé par embrayage électromagnétique ; régime optimal ≈ 1 000 tr/min."
+    },
+    {
+      "q": "Consigne de pression d'attente de la régulation ?",
+      "choices": [
+        "3 bar",
+        "6 bar",
+        "10 bar",
+        "1 bar"
+      ],
+      "answer": 0,
+      "explain": "Réglable ±1 bar par impulsion sur les boutons +/-."
+    },
+    {
+      "q": "Message « Sécurité surpression » à…",
+      "choices": [
+        "20 bar",
+        "6 bar",
+        "54 bar",
+        "12 bar"
+      ],
+      "answer": 0,
+      "explain": "Autres messages : cavitation, défaut amorçage (60 s), défaut capteur, sécurité pompe…"
+    },
+    {
+      "q": "Voyant température pompe rouge à…",
+      "choices": [
+        "54 °C (gris à 35 °C)",
+        "90 °C",
+        "20 °C",
+        "70 °C"
+      ],
+      "answer": 0,
+      "explain": "Régulation impossible tant que le voyant est rouge ; valve thermique à 50 °C."
+    },
+    {
+      "q": "En cavitation, la régulation…",
+      "choices": [
+        "Prend la pression réelle comme consigne puis remonte pas à pas",
+        "S'arrête définitivement",
+        "Accélère à fond",
+        "Ferme les vannes"
+      ],
+      "answer": 0,
+      "explain": "Tant que la pression de refoulement reste > 3 bar. Sinon rester en mode manuel."
+    }
+  ],
+  "mousse": [
+    {
+      "q": "Solution moussante =",
+      "choices": [
+        "Eau + émulseur",
+        "Eau + air",
+        "Émulseur + air",
+        "Eau + sable"
+      ],
+      "answer": 0,
+      "explain": "Solution moussante + air = mousse."
+    },
+    {
+      "q": "Plage de dosage du CTD ?",
+      "choices": [
+        "0,2 à 1 %",
+        "5 à 10 %",
+        "10 à 20 %",
+        "0,01 %"
+      ],
+      "answer": 0,
+      "explain": "CTD = Christian Tabouret Diffuseur, dosage automatique."
+    },
+    {
+      "q": "Taux de foisonnement =",
+      "choices": [
+        "Volume de mousse ÷ solution moussante fournie",
+        "Eau ÷ émulseur",
+        "Air ÷ eau",
+        "Mousse ÷ air"
+      ],
+      "answer": 0,
+      "explain": "Plus il y a d'air fourni, plus le foisonnement est élevé."
+    },
+    {
+      "q": "Bas foisonnement (< 20) :",
+      "choices": [
+        "Lance-canon, longue portée, feux à fort rayonnement",
+        "Générateur-ventilateur",
+        "Espaces clos",
+        "Portée < 10 m"
+      ],
+      "answer": 0,
+      "explain": "Peu sensible aux conditions atmosphériques."
+    },
+    {
+      "q": "Haut foisonnement (> 200) :",
+      "choices": [
+        "Espaces clos et entrepôts, déversé en sortie d'appareil",
+        "Longue portée",
+        "Feux de VL",
+        "Feux électriques"
+      ],
+      "answer": 0,
+      "explain": "Très sensible aux conditions atmosphériques."
+    },
+    {
+      "q": "Avec une lance à mousse, fermer…",
+      "choices": [
+        "La vanne retour tonne",
+        "Le refoulement",
+        "L'aspiration",
+        "La vanne d'isolement additif"
+      ],
+      "answer": 0,
+      "explain": "Sinon la solution moussante retourne dans la cuve."
+    },
+    {
+      "q": "Après STOP, le système CTD…",
+      "choices": [
+        "Déclenche un rinçage automatique de 30 s",
+        "S'arrête net",
+        "Vidange la cuve",
+        "Redémarre"
+      ],
+      "answer": 0,
+      "explain": "Il amorce aussi en projetant du produit au sol en début de phase."
+    },
+    {
+      "q": "Pour doser depuis un bidon externe :",
+      "choices": [
+        "Raccord GFR (rep 19) + bouton EXT + concentration",
+        "Verser dans la cuve eau",
+        "Impossible",
+        "Vanne rep 6"
+      ],
+      "answer": 0,
+      "explain": "La pompe de dosage s'amorce automatiquement ; pression d'injection affichée."
+    },
+    {
+      "q": "La vanne d'isolement cuve additif (rep 16) est…",
+      "choices": [
+        "Ouverte en utilisation normale",
+        "Toujours fermée",
+        "Ouverte uniquement l'hiver",
+        "Sans importance"
+      ],
+      "answer": 0,
+      "explain": "Voir mode d'emploi CTD (annexe GIMAEX)."
+    }
+  ],
+  "tableaux": [
+    {
+      "q": "Rôle de la régulation automatique ?",
+      "choices": [
+        "Maintenir la pression de refoulement quel que soit le débit",
+        "Limiter le régime moteur",
+        "Remplir la tonne automatiquement",
+        "Amorcer la pompe"
+      ],
+      "answer": 0,
+      "explain": "Elle agit sur la vitesse d'entraînement de la pompe via de nombreux capteurs."
+    },
+    {
+      "q": "Le voyant de cavitation s'allume quand…",
+      "choices": [
+        "Le débit d'alimentation est insuffisant",
+        "La tonne est pleine",
+        "La pression dépasse 15 bars",
+        "La PDM est enclenchée"
+      ],
+      "answer": 0,
+      "explain": "La pompe demande plus d'eau qu'elle n'en reçoit : risque de cavitation."
+    },
+    {
+      "q": "Signe visible d'un débit d'alimentation insuffisant ?",
+      "choices": [
+        "Le tuyau d'alimentation s'écrase",
+        "Le tuyau gonfle",
+        "Le manomètre HP monte",
+        "La tonne déborde"
+      ],
+      "answer": 0,
+      "explain": "Un tuyau d'alimentation qui s'écrase = dépression = cavitation imminente."
+    },
+    {
+      "q": "Le vacuomètre mesure…",
+      "choices": [
+        "La pression (ou dépression) à l'aspiration",
+        "La pression de refoulement",
+        "Le régime moteur",
+        "Le niveau d'eau"
+      ],
+      "answer": 0,
+      "explain": "Il indique la dépression côté aspiration (utile en aspiration)."
+    },
+    {
+      "q": "Enclenchement de la PMT depuis le tableau : conditions préalables ?",
+      "choices": [
+        "Boîte au NEUTRE + frein de parc serré",
+        "Moteur coupé",
+        "Vitesse engagée",
+        "Portes ouvertes"
+      ],
+      "answer": 0,
+      "explain": "1. NEUTRE + FREIN DE PARC. 2. Appui LONG sur le bouton PMT jusqu'à ce qu'il s'éclaire."
+    },
+    {
+      "q": "Comment s'enclenche le bouton PMT ?",
+      "choices": [
+        "Appui long jusqu'à éclairage",
+        "Appui bref",
+        "Double clic",
+        "Rotation d'un quart de tour"
+      ],
+      "answer": 0,
+      "explain": "Appui long jusqu'à ce que le voyant s'allume."
+    },
+    {
+      "q": "L'arrêt d'urgence du tableau arrière est asservi…",
+      "choices": [
+        "Au cran de pompe",
+        "Au frein de parc",
+        "À la vitesse",
+        "Aux gyrophares"
+      ],
+      "answer": 0,
+      "explain": "Comme l'éclairage du tableau de bord."
+    },
+    {
+      "q": "Avant de rembobiner un dévidoir…",
+      "choices": [
+        "Enlever le frein",
+        "Serrer le frein",
+        "Couper la PMT",
+        "Vider le tuyau"
+      ],
+      "answer": 0,
+      "explain": "Le frein du dévidoir doit être desserré avant la commande d'enroulement."
+    },
+    {
+      "q": "Les commandes 7-8 du tableau agissent sur…",
+      "choices": [
+        "Le régime moteur ou la consigne de régulation",
+        "La direction",
+        "Les feux de route",
+        "La suspension"
+      ],
+      "answer": 0,
+      "explain": "Diminution/augmentation du régime en manuel, ou de la consigne en régulation."
+    },
+    {
+      "q": "Précaution à la montée du mât d'éclairage ?",
+      "choices": [
+        "Vérifier l'environnement (obstacles, lignes)",
+        "Couper le moteur",
+        "Fermer les vannes",
+        "Éteindre les phares"
+      ],
+      "answer": 0,
+      "explain": "Risque de contact avec obstacles aériens ou lignes électriques."
+    },
+    {
+      "q": "L'avertisseur sonore de l'écran cabine active aussi…",
+      "choices": [
+        "Gyrophares et feux de pénétration",
+        "La caméra de recul",
+        "Le mât d'éclairage",
+        "La PMT"
+      ],
+      "answer": 0,
+      "explain": "Commande combinée : avertisseur + gyrophare + feux de pénétration."
+    },
+    {
+      "q": "L'écran cabine affiche notamment…",
+      "choices": [
+        "Niveaux cuve eau et mouillant, pression pompe, témoin PMT",
+        "La météo",
+        "Le plan de la commune",
+        "Le débit de chaque lance"
+      ],
+      "answer": 0,
+      "explain": "Jauges, horamètre pompe, pression de refoulement, témoin PMT, voyants d'état."
+    },
+    {
+      "q": "Le voyant « verrouillage portes-échelles » signale…",
+      "choices": [
+        "L'état de verrouillage des supports/portes-échelles",
+        "Une porte de cabine ouverte",
+        "Un défaut moteur",
+        "La position du mât"
+      ],
+      "answer": 0,
+      "explain": "Comme les voyants rideaux/marchepieds : état des équipements de carrosserie."
+    },
+    {
+      "q": "L'éclairage pompe fonctionne…",
+      "choices": [
+        "Feux de position allumés",
+        "Moteur coupé uniquement",
+        "En roulant uniquement",
+        "Jamais la nuit"
+      ],
+      "answer": 0,
+      "explain": "La commande d'éclairage pompe est active feux de position allumés."
+    },
+    {
+      "q": "Avant la descente du mât, il faut…",
+      "choices": [
+        "Couper l'éclairage puis patienter 2 minutes",
+        "Accélérer",
+        "Klaxonner",
+        "Ouvrir un refoulement"
+      ],
+      "answer": 0,
+      "explain": "Le bon rangement est indiqué par l'extinction du voyant rouge."
+    },
+    {
+      "q": "Le mode diagnostic de l'écran arrière affiche…",
+      "choices": [
+        "L'état des capteurs : CHÂSSIS / CAN / ÉQUIPEMENT",
+        "La météo",
+        "Le plan de la commune",
+        "Les fréquences radio"
+      ],
+      "answer": 0,
+      "explain": "Touche gauche de l'écran arrière — facilite la recherche de panne."
+    }
+  ],
+  "hydro": [
+    {
+      "q": "Formule de la pression de refoulement ?",
+      "choices": [
+        "Pr = Po + J45 + J70 + J110 + Z",
+        "Pr = Po − J + Z",
+        "Pr = Q × V ÷ Z",
+        "Pr = Po × Z"
+      ],
+      "answer": 0,
+      "explain": "Pression à l'orifice + pertes de charge de chaque diamètre + dénivellation."
+    },
+    {
+      "q": "Les pertes de charge sont proportionnelles…",
+      "choices": [
+        "Au carré du débit",
+        "Au débit",
+        "À la pression",
+        "À la racine du débit"
+      ],
+      "answer": 0,
+      "explain": "Débit doublé = pertes de charge multipliées par 4."
+    },
+    {
+      "q": "Les pertes de charge dépendent-elles de la pression ?",
+      "choices": [
+        "Non, seul le débit compte",
+        "Oui, fortement",
+        "Oui, au-delà de 10 bars",
+        "Seulement en aspiration"
+      ],
+      "answer": 0,
+      "explain": "5e loi : indépendantes de la pression."
+    },
+    {
+      "q": "Valeur de la dénivellation Z ?",
+      "choices": [
+        "1 bar par 10 m",
+        "1 bar par mètre",
+        "0,1 bar par 10 m",
+        "10 bars par 10 m"
+      ],
+      "answer": 0,
+      "explain": "Positive si les lances sont au-dessus de l'engin (ajouter), négative si en dessous."
+    },
+    {
+      "q": "Lances 30 m au-dessus de l'engin : Z = ?",
+      "choices": [
+        "+3 bars",
+        "−3 bars",
+        "+0,3 bar",
+        "+30 bars"
+      ],
+      "answer": 0,
+      "explain": "30 m ÷ 10 = 3 bars à ajouter."
+    },
+    {
+      "q": "Perte de charge nominale d'un Ø70 (PIL) ?",
+      "choices": [
+        "0,55 b/hm à 500 l/min",
+        "1,5 b/hm à 250 l/min",
+        "0,27 b/hm à 1000 l/min",
+        "2 b/hm à 500 l/min"
+      ],
+      "answer": 0,
+      "explain": "Ø45 : 1,5 b/hm à 250 l/min · Ø110 : 0,27 b/hm à 1000 l/min."
+    },
+    {
+      "q": "Débit d'une lance 65/18 à 5,7 bars ?",
+      "choices": [
+        "500 l/min",
+        "250 l/min",
+        "1000 l/min",
+        "750 l/min"
+      ],
+      "answer": 0,
+      "explain": "40/14 : 250 l/min · 65/18 : 500 l/min · 100/25 : 1000 l/min."
+    },
+    {
+      "q": "Pression d'utilisation d'une LDV 45 ?",
+      "choices": [
+        "6 à 8 bars",
+        "3 bars",
+        "10 à 12 bars",
+        "1 bar"
+      ],
+      "answer": 0,
+      "explain": "LDV 45 : 500 l/min à 6-8 bars selon la lance."
+    },
+    {
+      "q": "Plus le diamètre est grand, plus les pertes de charge sont…",
+      "choices": [
+        "Faibles",
+        "Fortes",
+        "Identiques",
+        "Imprévisibles"
+      ],
+      "answer": 0,
+      "explain": "Les pertes de charge sont inversement proportionnelles au diamètre."
+    },
+    {
+      "q": "Formule du débit maxi d'un hydrant ?",
+      "choices": [
+        "Qmax = Q utilisé × √(P statique ÷ P utilisée)",
+        "Qmax = P × V ÷ Z",
+        "Qmax = Q × P",
+        "Qmax = P statique − P dynamique"
+      ],
+      "answer": 0,
+      "explain": "On peut aussi utiliser l'abaque de débit maxi."
+    }
+  ],
+  "mat-echelles": [
+    {
+      "q": "Conditions pour monter le mât ?",
+      "choices": [
+        "Moteur en fonctionnement + pression d'air servitudes",
+        "Aucune",
+        "Frein desserré",
+        "PDM enclenchée"
+      ],
+      "answer": 0,
+      "explain": "Commandes au coffre arrière gauche."
+    },
+    {
+      "q": "Avant la descente du mât :",
+      "choices": [
+        "Couper l'éclairage puis patienter 2 minutes",
+        "Descendre immédiatement",
+        "Accélérer le moteur",
+        "Purger la pompe"
+      ],
+      "answer": 0,
+      "explain": "Extinction du voyant rouge = mât bien rangé."
+    },
+    {
+      "q": "Fréquence de purge du mât ?",
+      "choices": [
+        "Une fois par semaine",
+        "Une fois par an",
+        "Jamais",
+        "À chaque sortie"
+      ],
+      "answer": 0,
+      "explain": "Depuis la position haute, vanne de purge du coffre avant droit jusqu'à la position basse."
+    },
+    {
+      "q": "Pour déverrouiller le porte-échelles :",
+      "choices": [
+        "Bras sur le verrou, pivoter vers l'extérieur SANS FORCER",
+        "Taper dessus",
+        "Tirer d'un coup sec",
+        "Dévisser le berceau"
+      ],
+      "answer": 0,
+      "explain": "Puis tirer le bras pour sortir complètement le porte-échelles."
+    },
+    {
+      "q": "Une fois le porte-échelles au sol, l'échelle se libère…",
+      "choices": [
+        "Pièce mobile centrale + soulever et pivoter le rond",
+        "En coupant une sangle",
+        "Automatiquement",
+        "Avec une clé de 13"
+      ],
+      "answer": 0,
+      "explain": "Rep 4 de la procédure GIMAEX p. 24."
+    },
+    {
+      "q": "Dernière vérification au rangement ?",
+      "choices": [
+        "Tirer sur le bras : le verrou supérieur doit être engagé",
+        "Klaxonner",
+        "Vérifier le carburant",
+        "Rien"
+      ],
+      "answer": 0,
+      "explain": "Puis ranger le bras dans son support. Ne jamais rester sous le porte-échelles."
+    },
+    {
+      "q": "Le voyant rouge du mât éteint signifie…",
+      "choices": [
+        "Mât bien rangé",
+        "Panne",
+        "Mât déployé",
+        "Batterie faible"
+      ],
+      "answer": 0,
+      "explain": "Il reste allumé tant que le mât n'est pas en position basse verrouillée."
+    }
+  ],
+  "annexes": [
+    {
+      "q": "Fuite d'huile sur un réducteur de roue :",
+      "choices": [
+        "Véhicule indisponible + GTL avisé",
+        "On continue",
+        "Simple surveillance",
+        "Ajouter de l'huile"
+      ],
+      "answer": 0,
+      "explain": "Précaution du cours Ponts et réducteurs."
+    },
+    {
+      "q": "Après un coup d'accélérateur, arrêter le moteur…",
+      "choices": [
+        "Jamais immédiatement : le turbo tourne sans lubrification",
+        "Tout de suite",
+        "En accélérant encore",
+        "Avec le frein"
+      ],
+      "answer": 0,
+      "explain": "Laisser tourner au ralenti pour lubrifier et évacuer les calories."
+    },
+    {
+      "q": "Le voyant relevage dévidoir allumé + buzzer =",
+      "choices": [
+        "Risque de descente du support au sol",
+        "Tout va bien",
+        "Cuve vide",
+        "PDM enclenchée"
+      ],
+      "answer": 0,
+      "explain": "Trouver la source ou rentrer à petite vitesse, verrou de sécurité vérifié."
+    },
+    {
+      "q": "Le dépannage manuel de la vanne motorisée rend…",
+      "choices": [
+        "Le système de dosage CTD non opérationnel",
+        "La pompe inutilisable",
+        "Le véhicule immobile",
+        "Les freins inactifs"
+      ],
+      "answer": 0,
+      "explain": "Interrupteur noir en mode manuel + quart de tour à la poignée."
+    },
+    {
+      "q": "Un ralentisseur sert à…",
+      "choices": [
+        "Freiner en endurance sans échauffer les freins de service",
+        "Accélérer",
+        "Freiner en urgence",
+        "Bloquer le différentiel"
+      ],
+      "answer": 0,
+      "explain": "Longues descentes ; prudence sur sol glissant."
+    }
+  ]
+}

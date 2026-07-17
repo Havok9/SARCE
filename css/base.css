@@ -1,0 +1,79 @@
+/* ============================================================
+   base.css — reset, variables, typographie
+   Style « Obsidian-like » : fond sombre, accents rouge/orange
+   ============================================================ */
+
+:root{
+  /* Couleurs */
+  --bg:        #1a1a2e;   /* fond général */
+  --bg-deep:   #14142a;   /* fond sidebar / plus sombre */
+  --panel:     #20203a;   /* cartes */
+  --panel-2:   #262644;   /* cartes survolées / imbriquées */
+  --panel-3:   #2e2e52;   /* éléments actifs */
+  --line:      #34345c;   /* bordures */
+  --txt:       #e8e9f3;   /* texte principal */
+  --mut:       #9a9ab8;   /* texte secondaire */
+  --mut-2:     #62628a;   /* texte tertiaire */
+  --red:       #c0392b;   /* rouge pompier */
+  --red-hi:    #e74c3c;   /* rouge clair (hover) */
+  --orange:    #e67e22;   /* orange accent */
+  --ok:        #27ae60;   /* vert maîtrise */
+  --cyan:      #3aa8c9;   /* accent schémas / eau */
+
+  /* Typo */
+  --font: 'IBM Plex Sans', system-ui, sans-serif;
+  --disp: 'Chakra Petch', var(--font);
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Divers */
+  --radius: 12px;
+  --sidebar-w: 264px;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+/* Le display des .app/.login-screen ne doit jamais l'emporter sur [hidden] */
+[hidden]{ display:none !important; }
+
+html,body{
+  margin:0; padding:0;
+  background:var(--bg);
+  color:var(--txt);
+  font-family:var(--font);
+  font-size:15px; line-height:1.5;
+}
+
+::selection{ background:var(--red); color:#fff; }
+
+h1,h2,h3,h4{ font-family:var(--disp); line-height:1.15; margin:0; }
+p{ margin:0 0 .7em; }
+
+a{ color:var(--orange); text-decoration:none; }
+a:hover{ color:#f39c4a; text-decoration:underline; }
+
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; padding:0; }
+input{ font-family:inherit; }
+
+input[type="text"], input[type="search"], input[type="password"]{
+  width:100%; padding:10px 12px;
+  border-radius:9px; border:1px solid var(--line);
+  background:var(--bg-deep); color:var(--txt);
+  font-size:14.5px; outline:none;
+  transition:border-color .15s;
+}
+input:focus{ border-color:var(--orange); }
+
+/* Animations légères */
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+@keyframes flowdash{ to{ stroke-dashoffset:-48; } }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@keyframes pulseGlow{
+  0%{ box-shadow:0 0 0 2px rgba(230,126,34,.5); }
+  50%{ box-shadow:0 0 0 9px rgba(230,126,34,0); }
+  100%{ box-shadow:0 0 0 2px rgba(230,126,34,.5); }
+}
+
+/* Scrollbars discrètes */
+::-webkit-scrollbar{ width:10px; height:10px; }
+::-webkit-scrollbar-thumb{ background:var(--panel-3); border-radius:5px; }
+::-webkit-scrollbar-track{ background:transparent; }
