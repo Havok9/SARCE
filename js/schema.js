@@ -1841,7 +1841,7 @@ const Schema = (() => {
     };
     schChip(bar, 'Boîte au NEUTRE', false, c => { neutre = !neutre; c.classList.toggle('active', neutre); });
     schChip(bar, 'FREIN de parc', false, c => { frein = !frein; c.classList.toggle('active', frein); });
-    const bP = schChip(bar, 'PMT — MAINTENIR appuyé', false, () => {});
+    const bP = schChip(bar, 'CRAN DE POMPE / PMT — MAINTENIR appuyé', false, () => {});
     const start = () => {
       if (pmt){ pmt = false; rpm = 800; bP.classList.remove('active'); upd(); say('PMT désengagée.', 'var(--mut)'); return; }
       say('Maintenez… (appui long)', 'var(--cyan)');
