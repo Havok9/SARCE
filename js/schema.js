@@ -32,6 +32,15 @@ const Schema = (() => {
   const ENV_SVG = `
   <svg viewBox="0 0 1000 900">
     ${ENV_DEFS}
+    <!-- compartiment arrière inspiré du coffre réel : cadre pompier, rails et sol aluminium -->
+    <rect x="12" y="12" width="976" height="876" rx="24" fill="#070b0f" stroke="#26333c" stroke-width="4"/>
+    <rect x="26" y="26" width="948" height="848" rx="18" fill="none" stroke="url(#redP)" stroke-width="22" filter="url(#soft)"/>
+    <path d="M48 64H952M48 842H952" stroke="#79848a" stroke-width="10"/>
+    <path d="M52 78H948M52 828H948" stroke="#252d32" stroke-width="4"/>
+    <g opacity=".32" stroke="#b6bdc0" stroke-width="2">
+      ${Array.from({length:16},(_,i)=>`<path d="M${70+i*56} 42l-22 22M${70+i*56} 838l-22 22"/>`).join('')}
+    </g>
+    <text x="60" y="112" fill="#89979f" font-family="IBM Plex Mono" font-size="15">COMPARTIMENT POMPE · VUE OPÉRATEUR</text>
     <!-- tuyauteries -->
     <g fill="none" stroke-linecap="round" stroke-linejoin="round">
       <g stroke="#101020" stroke-width="26">
@@ -122,41 +131,74 @@ const Schema = (() => {
   /* --- Schémas d'appui simples (fond des points chauds) --- */
   const S = {}; // slug -> {aspect, svg}
 
-  S.env = { aspect: '1000 / 900', svg: ENV_SVG };
+  S.env = { aspect: '1000 / 900', className: 'schema-realistic', svg: ENV_SVG };
 
-  S.analyse = { aspect: '1000 / 620', svg: `
+  S.analyse = { aspect: '1000 / 620', className: 'schema-realistic schema-pump-cutaway', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
-    <!-- ligne d'aspiration -->
-    <g fill="none" stroke-linecap="round">
-      <path d="M40 320 H330" stroke="#101020" stroke-width="26"/>
-      <path d="M40 320 H330" stroke="#41416a" stroke-width="15"/>
+    <defs>
+      <linearGradient id="pc-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f4f5"/><stop offset=".2" stop-color="#77838a"/><stop offset=".48" stop-color="#dce1e3"/><stop offset=".72" stop-color="#4a555b"/><stop offset="1" stop-color="#aeb7bb"/></linearGradient>
+      <linearGradient id="pc-bronze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3b268"/><stop offset=".45" stop-color="#8f5524"/><stop offset="1" stop-color="#4e2b15"/></linearGradient>
+      <radialGradient id="pc-dark" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#707c83"/><stop offset=".35" stop-color="#2d363b"/><stop offset="1" stop-color="#080b0d"/></radialGradient>
+      <filter id="pc-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#000" flood-opacity=".55"/></filter>
+    </defs>
+    <rect x="20" y="20" width="960" height="580" rx="18" fill="#080d12" stroke="#2c3942" stroke-width="3"/>
+    <text x="48" y="57" fill="#82919a" font-family="IBM Plex Mono" font-size="14">WATEROUS S 200 G · POMPE MULTICELLULAIRE</text>
+    <path d="M72 490H930" stroke="#202a31" stroke-width="2" stroke-dasharray="8 12"/>
+
+    <!-- axe commun, volontairement visible comme sur une vue éclatée -->
+    <path d="M92 318H930" stroke="#2b180e" stroke-width="24" stroke-linecap="round" filter="url(#pc-shadow)"/>
+    <path d="M92 311H930" stroke="url(#pc-bronze)" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- demi-raccord filtré d'aspiration -->
+    <g transform="translate(100 318)" filter="url(#pc-shadow)">
+      <path d="M-54-46H30V46H-54Q-72 24-72 0Q-72-24-54-46Z" fill="url(#pc-steel)" stroke="#151a1e" stroke-width="6"/>
+      <circle cx="30" r="48" fill="#222a2f" stroke="#c2cace" stroke-width="7"/>
+      <circle cx="30" r="30" fill="#080b0d" stroke="#6f7b82" stroke-width="4"/>
+      <g stroke="#7b878e" stroke-width="3"><path d="M10-18L50 18M10 0L44 28M18-28L52 6"/></g>
     </g>
-    <rect x="148" y="290" width="74" height="60" rx="7" fill="url(#tankBody)" stroke="#5a6488" stroke-width="3" filter="url(#soft)"/>
-    <g stroke="#4a4a78" stroke-width="3" stroke-linecap="round"><line x1="162" y1="298" x2="162" y2="342"/><line x1="178" y1="298" x2="178" y2="342"/><line x1="194" y1="298" x2="194" y2="342"/><line x1="210" y1="298" x2="210" y2="342"/></g>
-    <!-- corps de pompe volumétrique -->
-    <ellipse cx="500" cy="545" rx="170" ry="18" fill="#000" opacity="0.35"/>
-    <circle cx="500" cy="320" r="185" fill="none" stroke="#44446e" stroke-width="3"/>
-    <circle cx="500" cy="320" r="150" fill="url(#pumpG)" stroke="#68689a" stroke-width="4" filter="url(#soft)"/>
-    <path d="M395 215 A150 150 0 0 1 585 230" fill="none" stroke="#a8b4d8" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
-    <g style="transform-box:fill-box;transform-origin:center;animation:spin 5s linear infinite;">
-      <circle cx="500" cy="320" r="118" fill="none" stroke="#565686" stroke-width="2"/>
-      <g stroke="#3aa8c9" stroke-width="8" stroke-linecap="round" opacity=".95" fill="none">
-        <path d="M500 320 Q560 290 590 240"/><path d="M500 320 Q560 350 610 340"/><path d="M500 320 Q470 380 500 435"/><path d="M500 320 Q430 350 385 385"/><path d="M500 320 Q440 290 405 245"/><path d="M500 320 Q505 250 555 220"/>
+
+    <!-- premier étage : roue et diffuseur -->
+    <g transform="translate(315 318)" filter="url(#pc-shadow)">
+      <circle r="120" fill="url(#pc-dark)" stroke="#a8b1b6" stroke-width="7"/>
+      <circle r="91" fill="#151d22" stroke="#536068" stroke-width="4"/>
+      <g id="pc-wheel-one" style="transform-box:fill-box;transform-origin:center;animation:spin 4.2s linear infinite;">
+        ${Array.from({length:8},(_,i)=>`<path d="M0 0 Q48 -18 75 -58" transform="rotate(${i*45})" fill="none" stroke="url(#pc-steel)" stroke-width="18" stroke-linecap="round"/>`).join('')}
+        <circle r="27" fill="url(#pc-steel)" stroke="#20272b" stroke-width="5"/>
       </g>
-      <circle cx="500" cy="320" r="24" fill="url(#valG)" stroke="#7878aa" stroke-width="3"/>
     </g>
-    <path d="M500 202 A118 118 0 0 1 618 320" fill="none" stroke="#4B8FE0" stroke-width="4" marker-end="url(#abl)"/>
-    <!-- axe + refoulement -->
-    <g fill="none" stroke-linecap="round">
-      <path d="M500 470 V560" stroke="#101020" stroke-width="24"/>
-      <path d="M500 470 V560" stroke="#41416a" stroke-width="13"/>
-      <path d="M650 320 H720 V500" stroke="#101020" stroke-width="24"/>
-      <path d="M650 320 H720 V500" stroke="#41416a" stroke-width="13"/>
+    <g transform="translate(468 318)">
+      <circle r="137" fill="none" stroke="url(#pc-steel)" stroke-width="24"/>
+      <circle r="108" fill="none" stroke="#39454c" stroke-width="17" stroke-dasharray="34 13"/>
+      <circle r="148" fill="none" stroke="#11171a" stroke-width="6"/>
     </g>
+
+    <!-- second étage -->
+    <g transform="translate(620 318)" filter="url(#pc-shadow)">
+      <circle r="120" fill="url(#pc-dark)" stroke="#a8b1b6" stroke-width="7"/>
+      <circle r="91" fill="#151d22" stroke="#536068" stroke-width="4"/>
+      <g id="pc-wheel-two" style="transform-box:fill-box;transform-origin:center;animation:spin 4.2s linear infinite;">
+        ${Array.from({length:8},(_,i)=>`<path d="M0 0 Q48 -18 75 -58" transform="rotate(${i*45})" fill="none" stroke="url(#pc-steel)" stroke-width="18" stroke-linecap="round"/>`).join('')}
+        <circle r="27" fill="url(#pc-steel)" stroke="#20272b" stroke-width="5"/>
+      </g>
+    </g>
+
+    <!-- collecteur final et sortie de refoulement -->
+    <g transform="translate(790 318)" filter="url(#pc-shadow)">
+      <path d="M-122-122Q42-162 126-70Q176-14 130 96Q80 164-102 126L-72 84Q42 112 79 50Q108-8 60-55Q12-96-82-75Z" fill="url(#pc-steel)" stroke="#171d21" stroke-width="7"/>
+      <circle r="94" fill="none" stroke="#3b474e" stroke-width="18" stroke-dasharray="31 12"/>
+      <path d="M82-74Q135-118 174-98V-18H118" fill="url(#pc-steel)" stroke="#171d21" stroke-width="7"/>
+      <ellipse cx="173" cy="-58" rx="40" ry="48" fill="url(#pc-steel)" stroke="#151a1e" stroke-width="7"/>
+      <ellipse cx="173" cy="-58" rx="23" ry="30" fill="#11171a"/>
+    </g>
+
+    <!-- flux fonctionnels -->
+    <path d="M36 318H260" stroke="#4cd68a" stroke-width="8" stroke-dasharray="13 17" marker-end="url(#agr)" fill="none" style="animation:flowdash .85s linear infinite"/>
+    <path d="M690 210Q790 150 910 214" stroke="#e8695c" stroke-width="8" stroke-dasharray="13 17" marker-end="url(#ard)" fill="none" style="animation:flowdash .85s linear infinite"/>
+    <g font-family="IBM Plex Mono" font-size="15" text-anchor="middle"><text x="120" y="430" fill="#79e4a7">ASPIRATION</text><text x="315" y="477" fill="#b9c5ca">ROUE 1</text><text x="468" y="508" fill="#b9c5ca">DIFFUSEUR</text><text x="620" y="477" fill="#b9c5ca">ROUE 2</text><text x="810" y="508" fill="#ff9187">COLLECTEUR / REFOULEMENT</text></g>
   </svg>` };
 
-  S.amorcage = { aspect: '1000 / 620', svg: `
+  S.amorcage = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
     <!-- tuyauteries -->
@@ -1474,7 +1516,7 @@ const Schema = (() => {
   /* ================= ENGIN-POMPE : nouveaux schémas ================= */
 
   /* --- Vue d'ensemble : FPT de profil, zones cliquables --- */
-  S['fpt-profil'] = { aspect: '1000 / 560', svg: `
+  S['fpt-profil'] = { aspect: '1000 / 560', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1000 560">
     ${ENV_DEFS}
     <line x1="20" y1="525" x2="980" y2="525" stroke="#2a2a4c" stroke-width="3"/>
@@ -1524,7 +1566,7 @@ const Schema = (() => {
   </svg>` };
 
   /* --- Circuit d'eau détaillé : 28 repères (schéma p. 9) --- */
-  S['gimaex-hydro'] = { aspect: '1400 / 900', svg: (() => {
+  S['gimaex-hydro'] = { aspect: '1400 / 900', className: 'schema-realistic', svg: (() => {
     const V = (x,y,c) => `<g class="gh-v" id="gh-${c}"><circle cx="${x}" cy="${y}" r="15" fill="url(#valG)" stroke="#8a94b8" stroke-width="3.5"/><line x1="${x-11}" y1="${y}" x2="${x+11}" y2="${y}" stroke="#8a94b8" stroke-width="3"/></g>`;
     const F = (d,col,id) => `<path id="${id}" visibility="hidden" d="${d}" fill="none" stroke="${col}" stroke-width="6" stroke-linecap="round" stroke-dasharray="13 17" marker-end="url(#agr)" style="animation:flowdash .9s linear infinite;"/>`;
     return `
@@ -1603,7 +1645,7 @@ const Schema = (() => {
   </svg>`; })() };
 
   /* --- Chaîne cinématique : vue de dessus du châssis (p. 3) --- */
-  S['chaine-fpt'] = { aspect: '1400 / 700', svg: `
+  S['chaine-fpt'] = { aspect: '1400 / 700', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1400 700">
     ${ENV_DEFS}
     <!-- roues -->
@@ -1817,7 +1859,7 @@ const Schema = (() => {
   </svg>` };
 
   /* --- Mât & porte-échelles : arrière du véhicule --- */
-  S['mat-pe'] = { aspect: '1000 / 620', svg: `
+  S['mat-pe'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
     <line x1="20" y1="560" x2="980" y2="560" stroke="#2a2a4c" stroke-width="3"/>

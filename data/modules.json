@@ -913,40 +913,40 @@
             {
               "id": "raccord",
               "n": 1,
-              "x": 8,
-              "y": 51.6,
+              "x": 10,
+              "y": 51.3,
               "label": "½ raccord filtre",
               "role": "Entrée d’aspiration du corps de pompe, avec filtre."
             },
             {
               "id": "roue",
               "n": 2,
-              "x": 50,
-              "y": 51.6,
+              "x": 31.5,
+              "y": 51.3,
               "label": "Roue à aubes (turbine)",
               "role": "L’eau entre AU CENTRE, est accélérée par force centrifuge et projetée vers l’extérieur : la roue crée la vitesse."
             },
             {
               "id": "diff",
               "n": 3,
-              "x": 62,
-              "y": 35.5,
+              "x": 46.8,
+              "y": 51.3,
               "label": "Diffuseurs",
               "role": "Transforment la vitesse en pression."
             },
             {
               "id": "coll",
               "n": 4,
-              "x": 68,
-              "y": 51.6,
+              "x": 79,
+              "y": 51.3,
               "label": "Collecteur",
               "role": "Dirige l’eau vers le refoulement. Pompe multicellulaire : étages roue+diffuseurs+collecteur intermédiaire en série."
             },
             {
               "id": "axe",
               "n": 5,
-              "x": 50,
-              "y": 78,
+              "x": 92,
+              "y": 51.3,
               "label": "Axe de la pompe",
               "role": "Entraîné par la PDM via l’arbre de transmission."
             }

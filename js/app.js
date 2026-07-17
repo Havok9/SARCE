@@ -558,10 +558,25 @@ const App = (() => {
     if (mode === 'guide' && mod.guide){ zone.appendChild(guidePanel); }
     if (isEx){ zone.appendChild(drillBar); }
 
+    /* Les scénarios et les commandes restent au-dessus de l'image. */
+    if (scenarioBar) zone.appendChild(scenarioBar);
+
+    const workspace = document.createElement('div');
+    workspace.className = 'schema-workspace';
+    zone.appendChild(workspace);
+
     const schemaBox = document.createElement('div');
     const schemaClass = String(view.schema || 'unknown').toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
     schemaBox.className = `schema-box schema-box-${schemaClass}`;
-    zone.appendChild(schemaBox);
+    workspace.appendChild(schemaBox);
+
+    /* Sur écran large, la fiche apparaît à droite sans pousser le schéma
+       sous la ligne de flottaison. Sur mobile elle repasse naturellement dessous. */
+    const detail = document.createElement('aside');
+    detail.className = 'schema-detail-pane';
+    detail.setAttribute('aria-live', 'polite');
+    detail.hidden = true;
+    workspace.appendChild(detail);
 
     const handle = Schema.render(schemaBox, view.schema, els, {
       mode,
@@ -573,11 +588,6 @@ const App = (() => {
       }
     });
     if (scenario) handle.setScenario(scenario);
-    if (scenarioBar) zone.appendChild(scenarioBar);
-
-    /* détail d'élément (mode fiche) */
-    const detail = document.createElement('div');
-    zone.appendChild(detail);
 
     /* chips d'éléments */
     const chips = document.createElement('div');
@@ -604,12 +614,25 @@ const App = (() => {
       handle.setSelected(id);
       chips.querySelectorAll('.element-chip').forEach(c => c.classList.toggle('sel', c.dataset.id === id));
       const el = els.find(e => e.id === id);
-      if (!el){ detail.innerHTML = ''; return; }
+      if (!el){ clearDetail(); return; }
       const st = elState(id);
+      detail.hidden = false;
+      workspace.classList.add('has-detail');
       detail.innerHTML = `<div class="element-detail">
+        <button type="button" class="schema-detail-close" aria-label="Fermer la fiche">×</button>
         <div class="ed-head"><span class="ed-num">${el.n}</span><span class="ed-label">${esc(el.label)}</span>
         ${st ? `<span class="badge ${st.cls} ed-state">${st.label}</span>` : ''}</div>
         <div class="ed-role">${esc(el.role)}</div></div>`;
+      detail.querySelector('.schema-detail-close').addEventListener('click', () => {
+        clearDetail(); handle.setSelected(null);
+        chips.querySelectorAll('.element-chip').forEach(c => c.classList.remove('sel'));
+      });
+    }
+
+    function clearDetail(){
+      detail.innerHTML = '';
+      detail.hidden = true;
+      workspace.classList.remove('has-detail');
     }
 
     if (scenarioBar){
@@ -621,7 +644,7 @@ const App = (() => {
           x.setAttribute('aria-pressed', String(active));
         });
         handle.setScenario(scenario);
-        detail.innerHTML = ''; handle.setSelected(null);
+        clearDetail(); handle.setSelected(null);
         chips.querySelectorAll('.element-chip').forEach(c => c.classList.remove('sel'));
       }));
     }
@@ -631,7 +654,7 @@ const App = (() => {
       const ids = els.map(e => e.id);
       for (let i = ids.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
       drill = { queue: ids, idx: 0, correct: 0, wrong: 0, found: {} };
-      handle.reset(); detail.innerHTML = '';
+      handle.reset(); clearDetail();
       renderDrillBar();
     }
     function renderDrillBar(fb, fbColor){

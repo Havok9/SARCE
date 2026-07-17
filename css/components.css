@@ -81,6 +81,7 @@
   margin-top:28px; padding-top:14px;
   border-top:1px solid var(--line);
 }
+
 .mod-actions{ display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
 
 /* Points clés / révision rapide — grille 2 colonnes sur grand écran */
@@ -150,8 +151,40 @@
 
 /* ---------- Schéma interactif ---------- */
 .schema-box{ width:100%; min-width:0; max-width:100%; }
+.schema-workspace{
+  display:grid; grid-template-columns:minmax(0, 860px); justify-content:center;
+  gap:14px; width:100%; min-width:0; margin-top:12px;
+  transition:grid-template-columns .25s ease;
+}
+.schema-workspace.has-detail{
+  grid-template-columns:minmax(0, 780px) minmax(260px, 310px);
+  align-items:start; max-width:1104px; margin-left:auto; margin-right:auto;
+}
+.schema-detail-pane{
+  position:sticky; top:82px; min-width:0;
+  background:linear-gradient(145deg, rgba(17,27,42,.98), rgba(9,16,26,.98));
+  border:1px solid #2b3b4e; border-radius:13px;
+  box-shadow:0 14px 34px rgba(0,0,0,.25);
+  animation:detailSlide .22s ease;
+}
+.schema-detail-pane .element-detail{
+  position:relative; margin:0; min-height:150px; padding-right:38px;
+  border:0; border-left:3px solid var(--orange);
+  background:transparent; box-shadow:none;
+}
+.schema-detail-close{
+  position:absolute; top:9px; right:9px; width:26px; height:26px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid #33465b; border-radius:7px;
+  background:#111b28; color:var(--mut); font-size:18px; line-height:1;
+}
+.schema-detail-close:hover{ border-color:var(--orange); color:var(--txt); }
+@keyframes detailSlide{
+  from{ opacity:0; transform:translateX(12px); }
+  to{ opacity:1; transform:none; }
+}
 .schema-stage{
-  position:relative; width:100%;
+  position:relative; width:100%; max-width:840px; margin-left:auto; margin-right:auto;
   background:radial-gradient(120% 120% at 50% 0%, #21213f, #15152b);
   border:1px solid var(--line); border-radius:14px;
   overflow:hidden; margin-top:14px;
@@ -163,6 +196,11 @@
   background-size:40px 40px;
 }
 .schema-stage svg{ position:absolute; inset:0; width:100%; height:100%; }
+.schema-stage.schema-realistic{
+  background:#080d12; border-color:#293844;
+  box-shadow:0 18px 45px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.025);
+}
+.schema-stage.schema-realistic::before{ display:none; }
 
 /* Vue photographique du tableau arrière GIMAEX. Le ratio vertical reste
    piloté par Schema.render(), tandis que la largeur est bornée sur desktop. */
@@ -175,9 +213,11 @@
 }
 .schema-stage.schema-photo::before{ display:none; }
 .schema-stage.schema-gimaex-rear{
-  width:100%; max-width:740px;
+  width:100%; max-width:680px;
   margin:14px auto 0;
 }
+.schema-stage[data-schema-id="env"]{ max-width:680px; }
+.schema-stage[data-schema-id="fpt-profil"]{ max-width:840px; }
 
 .hotspot{
   position:absolute; transform:translate(-50%,-50%); z-index:4;
@@ -721,6 +761,9 @@
   flex:1 1 150px; justify-content:flex-start;
 }
 .schema-interaction-panel:first-child{ margin-top:0; margin-bottom:14px; }
+.schema-scenario-panel{
+  max-width:900px; margin:0 auto 12px;
+}
 .schema-scenario-panel .schema-panel-actions{ margin-top:2px; }
 .schema-scenario-panel .scenario-btn{ flex:1 1 150px; justify-content:flex-start; }
 .sch-msg{
@@ -818,6 +861,28 @@
   .gx-condition-row > button{ flex-basis:100%; }
   .schema-bottom-panel{ padding:12px; border-radius:12px; }
   .schema-bottom-head{ align-items:flex-start; }
+}
+
+@media (max-width:900px){
+  .schema-workspace,
+  .schema-workspace.has-detail{ grid-template-columns:minmax(0,1fr); max-width:100%; }
+  .schema-detail-pane{ position:relative; top:auto; order:2; }
+}
+
+@media (max-width:600px){
+  .schema-workspace{ margin-top:8px; gap:9px; }
+  .schema-stage{ margin-top:10px; border-radius:10px; }
+  .schema-bottom-panel{ box-shadow:none; }
+  .schema-panel-actions:not(.gx-cabin-panel){
+    flex-wrap:nowrap; overflow-x:auto; overscroll-behavior-inline:contain;
+    scrollbar-width:thin; padding-bottom:3px;
+  }
+  .schema-panel-actions:not(.gx-cabin-panel) .scenario-btn{
+    flex:0 0 auto; min-width:148px;
+  }
+  .schema-detail-pane .element-detail{ min-height:0; }
+  .element-detail .ed-head{ flex-wrap:wrap; }
+  .element-detail .ed-state{ margin-left:0; }
 }
 
 @keyframes engshake{ 0%,100%{ transform:translate(0,0);} 25%{ transform:translate(.9px,-.5px);} 75%{ transform:translate(-.9px,.5px);} }
