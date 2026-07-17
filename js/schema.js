@@ -2132,8 +2132,11 @@ const Schema = (() => {
     function update(){
       const ready = cabinReady();
       bNeutral.classList.toggle('active', state.neutral);
+      bNeutral.classList.toggle('control-active', state.neutral);
       bBrake.classList.toggle('active', state.parkingBrake);
+      bBrake.classList.toggle('control-active', state.parkingBrake);
       bPto.classList.toggle('active', state.pto);
+      bPto.classList.toggle('control-active', state.pto);
       bPto.innerHTML = '<span class="dot"></span>' + (state.pto ? 'PDM engagée — appuyer pour couper' : 'PDM — maintenir pour engager');
 
       if (systemState){

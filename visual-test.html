@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    body{padding:24px;background:#101020}
+    main{max-width:980px;margin:auto}
+  </style>
+</head>
+<body>
+  <main><div id="schema"></div></main>
+  <script src="js/schema.js"></script>
+  <script>
+    fetch('data/modules.json').then(response => response.json()).then(data => {
+      const module = data.modules.find(item => item.id === 'tableaux');
+      const view = module.views.find(item => item.schema === 'gimaex-tableau');
+      Schema.render(document.querySelector('#schema'), view.schema, view.elements, {
+        mode: 'operate',
+        interactive: true,
+        onSelect: () => {}
+      });
+    });
+  </script>
+</body>
+</html>

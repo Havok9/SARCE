@@ -477,6 +477,8 @@ const App = (() => {
     const els = view.elements || [];
     const scenarios = view.scenarios || mod.scenarios;
     const isEx = mode === 'drill' || mode === 'ident';
+    const isGimaexRear = view.schema === 'gimaex-tableau';
+    const isFreeTest = mode === 'test';
 
     if (views.length > 1){
       const tabs = document.createElement('div');
@@ -484,8 +486,31 @@ const App = (() => {
       tabs.innerHTML = views.map((v, i) =>
         `<button class="scenario-btn ${i === viewIdx ? 'active':''}" data-v="${i}"><span class="dot"></span>${esc(v.label || 'Vue ' + (i + 1))}</button>`).join('');
       zone.appendChild(tabs);
-      tabs.querySelectorAll('[data-v]').forEach(b =>
-        b.addEventListener('click', () => mountSchema(mod, mode, +b.dataset.v)));
+      tabs.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => {
+        const nextIdx = +b.dataset.v;
+        const nextView = views[nextIdx] || views[0];
+        const nextMode = (mode === 'operate' || mode === 'test') && nextView.schema !== 'gimaex-tableau'
+          ? 'fiche'
+          : mode;
+        mountSchema(mod, nextMode, nextIdx);
+      }));
+    }
+
+    /* Le pupitre arrière sépare clairement repérage, manipulation et test libre. */
+    if (isGimaexRear && !isEx){
+      const modeBar = document.createElement('div');
+      modeBar.className = 'scenario-bar gx-mode-bar';
+      modeBar.innerHTML = '<span class="gx-mode-label">Mode du pupitre</span>' +
+        [
+          ['fiche', 'Repérage'],
+          ['operate', 'Fonctionnement'],
+          ['test', 'Test libre']
+        ].map(([key, label]) =>
+          `<button class="scenario-btn ${mode === key ? 'active' : ''}" data-mode="${key}"><span class="dot"></span>${label}</button>`
+        ).join('');
+      zone.appendChild(modeBar);
+      modeBar.querySelectorAll('[data-mode]').forEach(button =>
+        button.addEventListener('click', () => mountSchema(mod, button.dataset.mode, viewIdx)));
     }
 
     let scenario = scenarios ? Object.keys(scenarios)[0] : null;
@@ -518,10 +543,10 @@ const App = (() => {
 
     const handle = Schema.render(schemaBox, view.schema, els, {
       mode,
-      interactive: !isEx,
+      interactive: !isEx && (!isGimaexRear || mode !== 'fiche'),
       onSelect: id => {
         if (mode === 'drill' && drill) return answerDrill(id);
-        if (mode === 'ident') return;
+        if (mode === 'ident' || isFreeTest) return;
         select(id);
       }
     });
@@ -536,7 +561,7 @@ const App = (() => {
     chips.className = 'element-chips';
     chips.innerHTML = els.map(e =>
       `<button class="element-chip" data-id="${e.id}"><span class="n">${e.n}</span>${esc(e.label)}</button>`).join('');
-    if (mode !== 'drill' && mode !== 'ident') zone.appendChild(chips);
+    if (mode !== 'drill' && mode !== 'ident' && !isFreeTest) zone.appendChild(chips);
     chips.querySelectorAll('.element-chip').forEach(c =>
       c.addEventListener('click', () => {
         if (isEx) return;
