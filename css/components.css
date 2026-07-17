@@ -155,6 +155,22 @@
   background-size:40px 40px;
 }
 .schema-stage svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+/* Vue photographique du tableau arrière GIMAEX. Le ratio vertical reste
+   piloté par Schema.render(), tandis que la largeur est bornée sur desktop. */
+.schema-stage.schema-photo{
+  background:#080b0f;
+  border-color:#293341;
+  border-radius:12px;
+  box-shadow:0 20px 55px rgba(0,0,0,.42),
+             inset 0 0 0 1px rgba(255,255,255,.025);
+}
+.schema-stage.schema-photo::before{ display:none; }
+.schema-stage.schema-gimaex-rear{
+  width:100%; max-width:740px;
+  margin:14px auto 0;
+}
+
 .hotspot{
   position:absolute; transform:translate(-50%,-50%); z-index:4;
   min-width:32px; height:32px; padding:0 4px; border-radius:16px;
@@ -171,6 +187,86 @@
   font-family:var(--disp); font-weight:600; font-size:11.5px;
   padding:3px 8px; border-radius:6px; pointer-events:none;
 }
+
+/* Les grandes zones suivent les dimensions de l'organe réel ; le badge reste
+   le seul marqueur visible afin de ne pas masquer la photographie. */
+.hotspot-area{
+  min-width:0; min-height:0; padding:0;
+  border-radius:10px;
+  background:transparent; border-color:transparent;
+  color:inherit;
+  transition:background-color .15s, border-color .15s, box-shadow .15s;
+}
+.hotspot-area:hover{
+  background:rgba(255,116,0,.08);
+  border-color:rgba(255,116,0,.7);
+}
+.hotspot-area.sel{
+  background:rgba(255,116,0,.11);
+  border-color:var(--orange);
+  color:inherit;
+  animation:none;
+  box-shadow:0 0 0 2px rgba(230,126,34,.2);
+}
+.hotspot-area.ok{
+  background:rgba(39,174,96,.12);
+  border-color:var(--ok);
+  color:inherit;
+  animation:none;
+  box-shadow:0 0 0 2px rgba(39,174,96,.18);
+}
+.hotspot-area.control-active{
+  background:rgba(39,174,96,.13);
+  border-color:#4cd68a;
+  color:inherit;
+  animation:none;
+  box-shadow:0 0 0 2px rgba(39,174,96,.18), 0 0 18px rgba(39,174,96,.2);
+}
+.hotspot-area:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:2px;
+  background:rgba(230,126,34,.14);
+  border-color:var(--orange);
+}
+.hotspot-badge{
+  position:absolute; top:-12px; left:-12px;
+  width:26px; height:26px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#111720; border:2px solid #ffb000; color:#ffcf40;
+  font-family:var(--mono); font-size:11px; font-weight:700; line-height:1;
+  box-shadow:0 3px 12px rgba(0,0,0,.6);
+  pointer-events:none;
+  transition:opacity .15s, border-color .15s, color .15s;
+}
+.hotspot-area.sel .hotspot-badge{
+  border-color:var(--orange); color:#ffd29f;
+}
+.hotspot-area.ok .hotspot-badge,
+.hotspot-area.control-active .hotspot-badge{
+  border-color:#4cd68a; color:#9ff0c1;
+}
+
+/* Les exercices GIMAEX conservent toute la surface cliquable, sans donner la
+   réponse par le numéro. Les deux formes couvrent une classe de mode placée
+   soit sur le stage, soit sur son conteneur. */
+.schema-gimaex-rear.schema-mode-drill .hotspot-badge,
+.schema-gimaex-rear.schema-mode-ident .hotspot-badge,
+.schema-mode-drill .schema-gimaex-rear .hotspot-badge,
+.schema-mode-ident .schema-gimaex-rear .hotspot-badge{
+  opacity:0; visibility:hidden;
+}
+
+/* 40 px offre une cible tactile confortable sans dilater les zones sur tous
+   les appareils ni rapprocher les commandes voisines sur desktop. */
+@media (pointer:coarse){
+  .schema-gimaex-rear .hotspot-area{
+    min-width:40px; min-height:40px;
+  }
+  .schema-gimaex-rear .hotspot-badge{
+    width:28px; height:28px;
+  }
+}
+
 .scenario-bar{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; align-items:center; }
 .scenario-btn{
   display:flex; align-items:center; gap:7px;
@@ -493,6 +589,80 @@
   border-radius:9px; padding:9px 13px; font-size:12.5px; line-height:1.5; color:var(--txt);
   backdrop-filter:blur(3px); animation:fadeUp .2s ease;
 }
+
+/* Variante placée dans le flux, sous le tableau : elle ne recouvre jamais les
+   commandes basses et reste alignée avec la vue GIMAEX centrée. */
+.sch-msg-flow{
+  position:relative; inset:auto; z-index:auto;
+  width:100%; max-width:740px;
+  margin:10px auto 0;
+  background:rgba(20,20,38,.96);
+  border:1px solid var(--line); border-left:3px solid var(--cyan);
+  border-radius:9px; padding:9px 13px;
+  font-size:12.5px; line-height:1.5; color:var(--txt);
+  backdrop-filter:none; animation:fadeUp .2s ease;
+}
+
+/* Conditions cabine : les prérequis restent visuellement distincts des
+   commandes physiques disposées sur le tableau arrière. */
+.gx-cabin-panel{
+  width:100%; max-width:740px;
+  margin:12px auto 0; padding:12px 14px;
+  background:linear-gradient(135deg, rgba(32,32,58,.98), rgba(20,20,42,.98));
+  border:1px solid var(--line); border-left:3px solid var(--cyan);
+  border-radius:11px;
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+}
+.gx-condition-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; flex-wrap:wrap;
+  margin-bottom:10px;
+  font-family:var(--mono); font-size:10.5px; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase; color:var(--mut);
+}
+.gx-condition-row{
+  display:flex; align-items:stretch; gap:8px; flex-wrap:wrap;
+}
+.gx-condition-row > button{
+  flex:1 1 190px; min-height:40px;
+  justify-content:flex-start; text-align:left;
+}
+.gx-condition-row .control-active{
+  background:rgba(39,174,96,.12);
+  border-color:rgba(76,214,138,.8);
+  color:#c8f4dc;
+}
+.gx-condition-row .control-active .dot{
+  background:#4cd68a;
+  box-shadow:0 0 7px rgba(76,214,138,.65);
+}
+.gx-system-state{
+  display:inline-flex; align-items:center; gap:7px;
+  margin-left:auto; padding:4px 9px;
+  border:1px solid var(--line); border-radius:999px;
+  background:var(--bg-deep); color:var(--mut);
+  font-family:var(--mono); font-size:10.5px; line-height:1.2;
+  letter-spacing:.3px; white-space:nowrap;
+}
+.gx-system-state::before{
+  content:""; width:7px; height:7px; flex-shrink:0;
+  border-radius:50%; background:var(--mut-2);
+}
+.gx-system-state.control-active{
+  border-color:rgba(76,214,138,.65);
+  background:rgba(39,174,96,.12); color:#9ff0c1;
+}
+.gx-system-state.control-active::before{
+  background:#4cd68a;
+  box-shadow:0 0 7px rgba(76,214,138,.7);
+}
+
+@media (max-width:520px){
+  .gx-cabin-panel{ padding:11px; }
+  .gx-system-state{ width:100%; margin-left:0; justify-content:center; }
+  .gx-condition-row > button{ flex-basis:100%; }
+}
+
 @keyframes engshake{ 0%,100%{ transform:translate(0,0);} 25%{ transform:translate(.9px,-.5px);} 75%{ transform:translate(-.9px,.5px);} }
 @keyframes blinkred{ 50%{ opacity:.25; } }
 

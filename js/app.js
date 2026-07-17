@@ -512,9 +512,12 @@ const App = (() => {
     if (isEx){ zone.appendChild(drillBar); }
 
     const schemaBox = document.createElement('div');
+    const schemaClass = String(view.schema || 'unknown').toLowerCase().replace(/[^a-z0-9_-]+/g, '-');
+    schemaBox.className = `schema-box schema-box-${schemaClass}`;
     zone.appendChild(schemaBox);
 
     const handle = Schema.render(schemaBox, view.schema, els, {
+      mode,
       interactive: !isEx,
       onSelect: id => {
         if (mode === 'drill' && drill) return answerDrill(id);

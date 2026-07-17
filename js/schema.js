@@ -369,46 +369,250 @@ const Schema = (() => {
   </svg>` };
 
   /* --- FPT GIMAEX : tableau de commande arrière --- */
-  S['gimaex-tableau'] = { aspect: '1000 / 900', svg: `
-  <svg viewBox="0 0 1000 900">
-    ${ENV_DEFS}
-    <ellipse cx="500" cy="884" rx="330" ry="13" fill="#000" opacity="0.35"/>
-    <rect x="200" y="46" width="600" height="828" rx="14" fill="url(#redP)" stroke="#5a1c12" stroke-width="4" filter="url(#soft)"/>
-    <rect x="216" y="64" width="16" height="792" rx="8" fill="#ffffff" opacity="0.08"/>
-    <path d="M200 46 L262 132 H738 L800 46 Z" fill="#8a2418"/>
-    <!-- écran principal -->
-    <rect x="255" y="152" width="490" height="330" rx="18" fill="#101018" stroke="#2a2a3a" stroke-width="4"/>
-    <rect x="285" y="180" width="430" height="274" rx="8" fill="#1b2430"/>
-    <g fill="#141c26" stroke="#4a5a6a" stroke-width="3"><circle cx="385" cy="305" r="52"/><circle cx="500" cy="300" r="68"/><circle cx="615" cy="305" r="52"/></g>
-    <path d="M345 268 A52 52 0 0 1 400 254" fill="none" stroke="#27ae60" stroke-width="6" stroke-linecap="round"/>
-    <path d="M448 252 A68 68 0 0 1 552 252" fill="none" stroke="#3aa8c9" stroke-width="6" stroke-linecap="round"/>
-    <g stroke="#e8e9f3" stroke-width="3" stroke-linecap="round"><line x1="385" y1="305" x2="362" y2="270"/><line x1="500" y1="300" x2="500" y2="242"/><line x1="615" y1="305" x2="640" y2="272"/></g>
-    <rect x="300" y="408" width="400" height="26" rx="5" fill="#0d141c"/>
-    <text id="gx-rpm" x="500" y="427" text-anchor="middle" font-family="IBM Plex Mono" font-size="17" fill="#7ec36a">RÉGIME 800 tr/min · PMT —</text>
-    <!-- éclairage tableau -->
-    <rect x="452" y="506" width="96" height="32" rx="9" fill="#141414" stroke="#2e2e2e" stroke-width="3"/>
-    <!-- plaques d'étiquettes -->
-    <g fill="#e8e8e8" opacity="0.8">
-      <rect x="282" y="562" width="56" height="13" rx="2"/><rect x="522" y="562" width="56" height="13" rx="2"/>
-      <rect x="282" y="652" width="56" height="13" rx="2"/><rect x="402" y="652" width="56" height="13" rx="2"/><rect x="522" y="652" width="56" height="13" rx="2"/><rect x="642" y="652" width="56" height="13" rx="2"/>
-      <rect x="262" y="742" width="56" height="13" rx="2"/><rect x="392" y="742" width="56" height="13" rx="2"/><rect x="512" y="742" width="56" height="13" rx="2"/><rect x="632" y="742" width="56" height="13" rx="2"/><rect x="742" y="742" width="56" height="13" rx="2"/>
+  S['gimaex-tableau'] = {
+    aspect: '740 / 1000',
+    className: 'schema-photo schema-gimaex-rear',
+    svg: `
+  <svg viewBox="0 0 740 1000" role="img" aria-labelledby="gx-panel-title" preserveAspectRatio="xMidYMid meet">
+    <title id="gx-panel-title">Tableau de commande arrière GIMAEX</title>
+    <defs>
+      <linearGradient id="gx-backdrop" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#111820"/><stop offset=".52" stop-color="#080b0f"/><stop offset="1" stop-color="#020304"/>
+      </linearGradient>
+      <linearGradient id="gx-red-panel" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff4a35"/><stop offset=".18" stop-color="#d72c1d"/>
+        <stop offset=".68" stop-color="#b71912"/><stop offset="1" stop-color="#750d0a"/>
+      </linearGradient>
+      <linearGradient id="gx-red-edge" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#6d0908"/><stop offset=".09" stop-color="#ff5d43"/>
+        <stop offset=".45" stop-color="#d4261a"/><stop offset=".9" stop-color="#8f100c"/><stop offset="1" stop-color="#480504"/>
+      </linearGradient>
+      <linearGradient id="gx-bevel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3d444a"/><stop offset=".16" stop-color="#090b0d"/>
+        <stop offset=".82" stop-color="#020304"/><stop offset="1" stop-color="#252b30"/>
+      </linearGradient>
+      <linearGradient id="gx-screen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#233746"/><stop offset=".55" stop-color="#12212b"/><stop offset="1" stop-color="#091116"/>
+      </linearGradient>
+      <linearGradient id="gx-metal" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#606a71"/><stop offset=".22" stop-color="#171b1e"/>
+        <stop offset=".7" stop-color="#050607"/><stop offset="1" stop-color="#535c62"/>
+      </linearGradient>
+      <radialGradient id="gx-black-knob" cx="35%" cy="28%" r="75%">
+        <stop offset="0" stop-color="#535b60"/><stop offset=".32" stop-color="#15191c"/><stop offset="1" stop-color="#020303"/>
+      </radialGradient>
+      <radialGradient id="gx-yellow" cx="32%" cy="25%" r="80%">
+        <stop offset="0" stop-color="#fff27a"/><stop offset=".38" stop-color="#e4bd20"/><stop offset="1" stop-color="#8a5f00"/>
+      </radialGradient>
+      <radialGradient id="gx-red-button" cx="34%" cy="25%" r="78%">
+        <stop offset="0" stop-color="#ff7868"/><stop offset=".38" stop-color="#df251b"/><stop offset="1" stop-color="#6d0807"/>
+      </radialGradient>
+      <filter id="gx-panel-shadow" x="-25%" y="-15%" width="150%" height="140%">
+        <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".72"/>
+      </filter>
+      <filter id="gx-control-shadow" x="-60%" y="-60%" width="220%" height="240%">
+        <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity=".76"/>
+      </filter>
+      <filter id="gx-screen-glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#6db5dc" flood-opacity=".22"/>
+      </filter>
+      <filter id="gx-grain" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency=".62" numOctaves="3" seed="17"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <clipPath id="gx-panel-clip"><rect x="38" y="18" width="664" height="964" rx="22"/></clipPath>
+      <style>
+        .gx-plate{fill:#e9ece9;stroke:#aeb5b3;stroke-width:1}
+        .gx-label{fill:#181b1c;font-family:IBM Plex Mono,monospace;font-size:9px;font-weight:700;letter-spacing:.35px}
+        .gx-screen-copy{font-family:IBM Plex Mono,monospace}
+        .gx-bolt{fill:#101315;stroke:#657078;stroke-width:2}
+      </style>
+    </defs>
+
+    <rect width="740" height="1000" fill="url(#gx-backdrop)"/>
+    <ellipse cx="370" cy="976" rx="312" ry="18" fill="#000" opacity=".72"/>
+
+    <!-- Tôle rouge verticale, arêtes, reflets et grain -->
+    <g filter="url(#gx-panel-shadow)">
+      <rect x="38" y="18" width="664" height="964" rx="22" fill="url(#gx-red-edge)" stroke="#360403" stroke-width="4"/>
+      <path d="M58 28 H674 Q692 28 692 48 V952 Q692 972 672 972 H58 Q48 972 48 952 V48 Q48 28 58 28Z"
+            fill="url(#gx-red-panel)" stroke="#ff6b51" stroke-opacity=".28" stroke-width="2"/>
+      <path d="M54 56 Q170 18 300 44 T686 40 V96 Q530 70 372 88 T54 92Z" fill="#fff" opacity=".055"/>
+      <path d="M58 30 V970" stroke="#fff" stroke-width="10" opacity=".065"/>
+      <path d="M678 38 V962" stroke="#3d0504" stroke-width="12" opacity=".45"/>
+      <rect x="42" y="22" width="656" height="956" rx="20" fill="#fff" opacity=".055"
+            filter="url(#gx-grain)" clip-path="url(#gx-panel-clip)"/>
     </g>
-    <!-- rangée 1 : éclairage pompe / arrêt d'urgence / régulation -->
-    <circle cx="310" cy="600" r="22" fill="url(#valG)" stroke="#181820" stroke-width="3"/><line x1="296" y1="586" x2="324" y2="614" stroke="#c8d0e8" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="430" cy="600" r="32" fill="#d4ac2b"/><circle cx="430" cy="600" r="21" fill="#c0392b" stroke="#7e2418" stroke-width="3"/><circle cx="424" cy="593" r="6" fill="#ffffff" opacity="0.25"/>
-    <circle cx="550" cy="600" r="18" fill="#1f8a5b" stroke="#0e4a30" stroke-width="3"/><circle cx="545" cy="594" r="5" fill="#ffffff" opacity="0.3"/>
-    <!-- rangée 2 : PMT / régime − / régime + / mât -->
-    <g id="gx-pmt"><circle cx="310" cy="690" r="18" fill="#1f8a5b" stroke="#0e4a30" stroke-width="3"/><circle cx="305" cy="684" r="5" fill="#ffffff" opacity="0.3"/></g>
-    <circle cx="430" cy="690" r="18" fill="#2a6fdb" stroke="#123a78" stroke-width="3"/><line x1="421" y1="690" x2="439" y2="690" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="550" cy="690" r="18" fill="#2a6fdb" stroke="#123a78" stroke-width="3"/><g stroke="#fff" stroke-width="4" stroke-linecap="round"><line x1="541" y1="690" x2="559" y2="690"/><line x1="550" y1="681" x2="550" y2="699"/></g>
-    <circle cx="670" cy="690" r="21" fill="url(#valG)" stroke="#181820" stroke-width="3"/><line x1="670" y1="672" x2="670" y2="708" stroke="#c8d0e8" stroke-width="5" stroke-linecap="round"/>
-    <!-- rangée 3 : isolement air / dévidoirs -->
-    <circle cx="290" cy="790" r="23" fill="#2a5a3a" stroke="#123a20" stroke-width="3"/><line x1="272" y1="790" x2="308" y2="790" stroke="#c8d0e8" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="420" cy="790" r="18" fill="url(#valG)" stroke="#181820" stroke-width="3"/>
-    <circle cx="540" cy="790" r="18" fill="url(#valG)" stroke="#181820" stroke-width="3"/>
-    <g fill="#d4ac2b" stroke="#8a6a1a" stroke-width="3"><circle cx="660" cy="790" r="18"/><circle cx="770" cy="790" r="18"/></g>
-    <g stroke="#8a6a1a" stroke-width="6" stroke-linecap="round"><path d="M660 790 q16 14 26 30"/><path d="M770 790 q16 14 26 30"/></g>
-  </svg>` };
+
+    <!-- Écran principal : cadre noir épais en relief -->
+    <g filter="url(#gx-control-shadow)">
+      <rect x="124" y="42" width="496" height="478" rx="20" fill="#040506" stroke="#171b1e" stroke-width="5"/>
+      <path d="M143 58 H601 L585 76 H159Z" fill="#50575c" opacity=".56"/>
+      <path d="M143 58 L159 76 V487 L143 504Z" fill="#24292d"/>
+      <path d="M601 58 L585 76 V487 L601 504Z" fill="#000"/>
+      <path d="M143 504 L159 487 H585 L601 504Z" fill="#32383c"/>
+      <rect x="158" y="75" width="428" height="414" rx="8" fill="url(#gx-screen)" stroke="#020303" stroke-width="4"/>
+    </g>
+    <g class="gx-screen-copy" filter="url(#gx-screen-glow)">
+      <rect x="171" y="89" width="402" height="34" rx="4" fill="#0a151d" stroke="#3c5969"/>
+      <text x="184" y="111" fill="#d7e4e9" font-size="13" font-weight="700">GIMAEX FT 12.1</text>
+      <text x="558" y="111" text-anchor="end" fill="#91a8b3" font-size="11">POMPE · ARRIÈRE</text>
+      <g fill="#0b151b" stroke="#547080" stroke-width="2">
+        <circle cx="253" cy="250" r="62"/><circle cx="370" cy="237" r="82"/><circle cx="487" cy="250" r="62"/>
+      </g>
+      <g fill="none" stroke-linecap="round" stroke-width="7">
+        <path d="M207 272 A52 52 0 0 1 291 215" stroke="#4dbe78"/>
+        <path d="M305 260 A70 70 0 0 1 427 198" stroke="#58a9d5"/>
+        <path d="M447 217 A52 52 0 0 1 535 267" stroke="#e7b736"/>
+      </g>
+      <g stroke="#f0f4f4" stroke-width="3" stroke-linecap="round">
+        <line x1="253" y1="250" x2="225" y2="218"/><line x1="370" y1="237" x2="395" y2="177"/><line x1="487" y1="250" x2="520" y2="225"/>
+      </g>
+      <g fill="#d9e3e6" text-anchor="middle">
+        <text x="253" y="326" font-size="11">ASPIRATION</text><text x="370" y="326" font-size="11">PRESSION</text>
+        <text x="487" y="326" font-size="11">DÉBIT</text>
+      </g>
+      <rect x="181" y="346" width="382" height="44" rx="5" fill="#071015" stroke="#314954"/>
+      <g fill="#8ed6ef" font-size="12">
+        <text x="196" y="365">EAU 100 %</text><text x="544" y="365" text-anchor="end">MOUILLANT 100 %</text>
+        <text x="196" y="382">0.0 bar</text><text x="544" y="382" text-anchor="end">0 L/min</text>
+      </g>
+      <g id="gx-display-overlay">
+        <rect x="181" y="402" width="382" height="60" rx="6" fill="#060c10" stroke="#365261"/>
+        <text id="gx-rpm" x="372" y="427" text-anchor="middle" font-size="15" font-weight="700" fill="#dce8df">800 tr/min · PDM non engagée</text>
+        <text id="gx-pressure" x="372" y="449" text-anchor="middle" font-size="11" fill="#8ca2ac">Mode manuel · consigne 3 bar</text>
+      </g>
+    </g>
+    <g class="gx-bolt">
+      <circle cx="143" cy="60" r="6"/><circle cx="601" cy="60" r="6"/>
+      <circle cx="143" cy="502" r="6"/><circle cx="601" cy="502" r="6"/>
+    </g>
+
+    <!-- Capteur de luminosité déporté à gauche de l'écran -->
+    <g filter="url(#gx-control-shadow)">
+      <circle cx="96" cy="340" r="18" fill="#15191b" stroke="#050606" stroke-width="4"/>
+      <circle cx="96" cy="340" r="9" fill="#06090a" stroke="#66747b" stroke-width="2"/>
+      <circle cx="92" cy="336" r="3" fill="#b7d6df" opacity=".5"/>
+    </g>
+    <rect x="60" y="369" width="72" height="18" rx="2" class="gx-plate"/>
+    <text x="96" y="381" text-anchor="middle" class="gx-label" font-size="8">LUMINOSITÉ</text>
+
+    <!-- Niveau supérieur : deux commutateurs irréguliers et levier de bord -->
+    <g>
+      <rect x="204" y="582" width="96" height="27" rx="3" class="gx-plate"/>
+      <text x="252" y="594" text-anchor="middle" class="gx-label"><tspan x="252">ÉCLAIRAGE</tspan><tspan x="252" dy="10">ZONE POMPE</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="252" cy="640" r="28" fill="url(#gx-metal)" stroke="#050606" stroke-width="4"/>
+        <circle cx="252" cy="640" r="18" fill="url(#gx-black-knob)"/>
+        <path d="M241 630 L263 650" stroke="#d7dde0" stroke-width="6" stroke-linecap="round"/>
+        <circle id="gx-pump-state" cx="273" cy="618" r="7" fill="#351711" stroke="#090a0a" stroke-width="2"/>
+      </g>
+
+      <rect x="358" y="582" width="98" height="27" rx="3" class="gx-plate"/>
+      <text x="407" y="594" text-anchor="middle" class="gx-label"><tspan x="407">ALARME</tspan><tspan x="407" dy="10">DE REPLI</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="407" cy="640" r="27" fill="url(#gx-metal)" stroke="#050606" stroke-width="4"/>
+        <rect x="393" y="625" width="28" height="31" rx="6" fill="url(#gx-black-knob)"/>
+        <path d="M399 632 H415" stroke="#d2d8da" stroke-width="4" stroke-linecap="round"/>
+        <circle id="gx-repli-state" cx="429" cy="618" r="7" fill="#351711" stroke="#090a0a" stroke-width="2"/>
+      </g>
+
+      <rect x="640" y="573" width="66" height="44" rx="3" class="gx-plate"/>
+      <text x="673" y="586" text-anchor="middle" class="gx-label" font-size="7.6"><tspan x="673">ÉCLAIRAGE</tspan><tspan x="673" dy="9">TABLEAU</tspan><tspan x="673" dy="9">DE BORD</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <rect x="665" y="625" width="42" height="72" rx="9" fill="#07090a" stroke="#262c2f" stroke-width="4"/>
+        <path id="gx-table-lever" d="M687 677 L687 642" stroke="#111517" stroke-width="15" stroke-linecap="round"/>
+        <path d="M681 645 H693" stroke="#aeb6ba" stroke-width="4" stroke-linecap="round"/>
+        <circle id="gx-table-light" cx="687" cy="615" r="8" fill="#321912" stroke="#080909" stroke-width="2"/>
+      </g>
+    </g>
+
+    <!-- Niveau médian -->
+    <g>
+      <rect x="54" y="706" width="100" height="28" rx="3" class="gx-plate"/>
+      <text x="104" y="718" text-anchor="middle" class="gx-label"><tspan x="104">DÉVIDOIR G</tspan><tspan x="104" dy="10">MONTÉE · DESC.</tspan></text>
+      <g id="gx-dev-g" filter="url(#gx-control-shadow)" style="transform-origin:104px 770px;transform-box:view-box;">
+        <rect x="66" y="746" width="76" height="48" rx="12" fill="#15191b" stroke="#050606" stroke-width="4"/>
+        <path d="M80 774 Q104 742 128 774 L118 798 H90Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
+        <path d="M104 754 V786" stroke="#403100" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <rect x="218" y="714" width="96" height="27" rx="3" class="gx-plate"/>
+      <text x="266" y="726" text-anchor="middle" class="gx-label"><tspan x="266">MISE EN ROUTE</tspan><tspan x="266" dy="10">RÉGULATION</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="266" cy="780" r="27" fill="#101514" stroke="#050606" stroke-width="4"/>
+        <circle cx="266" cy="780" r="18" fill="#155a3b" stroke="#092b1d" stroke-width="3"/>
+        <circle cx="260" cy="773" r="5" fill="#fff" opacity=".22"/>
+        <circle id="gx-reg-light" cx="266" cy="780" r="18" fill="transparent"/>
+      </g>
+
+      <rect x="344" y="704" width="112" height="28" rx="3" class="gx-plate"/>
+      <text x="400" y="721" text-anchor="middle" class="gx-label" font-size="10">ARRÊT D'URGENCE</text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="400" cy="780" r="46" fill="url(#gx-yellow)" stroke="#6e5000" stroke-width="4"/>
+        <circle cx="400" cy="780" r="34" fill="url(#gx-red-button)" stroke="#710a07" stroke-width="4"/>
+        <ellipse cx="389" cy="768" rx="9" ry="6" fill="#fff" opacity=".22"/>
+        <circle id="gx-emergency-state" cx="400" cy="780" r="36" fill="transparent"/>
+      </g>
+
+      <rect x="552" y="714" width="94" height="27" rx="3" class="gx-plate"/>
+      <text x="599" y="726" text-anchor="middle" class="gx-label"><tspan x="599">ENROULEMENT</tspan><tspan x="599" dy="10">LDT</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <rect x="568" y="752" width="62" height="56" rx="9" fill="#080a0b" stroke="#262d31" stroke-width="4"/>
+        <rect x="578" y="760" width="42" height="38" rx="7" fill="url(#gx-black-knob)"/>
+        <path d="M586 773 H612" stroke="#d4dadd" stroke-width="4" stroke-linecap="round"/>
+        <circle id="gx-ldt-state" cx="628" cy="750" r="7" fill="#201913" stroke="#070808" stroke-width="2"/>
+      </g>
+    </g>
+
+    <!-- Niveau inférieur -->
+    <g>
+      <rect x="54" y="846" width="100" height="28" rx="3" class="gx-plate"/>
+      <text x="104" y="858" text-anchor="middle" class="gx-label"><tspan x="104">DÉVIDOIR D</tspan><tspan x="104" dy="10">MONTÉE · DESC.</tspan></text>
+      <g id="gx-dev-d" filter="url(#gx-control-shadow)" style="transform-origin:104px 910px;transform-box:view-box;">
+        <rect x="66" y="886" width="76" height="48" rx="12" fill="#15191b" stroke="#050606" stroke-width="4"/>
+        <path d="M80 914 Q104 882 128 914 L118 938 H90Z" fill="url(#gx-yellow)" stroke="#755400" stroke-width="3"/>
+        <path d="M104 894 V926" stroke="#403100" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <rect x="223" y="850" width="86" height="24" rx="3" class="gx-plate"/>
+      <text x="266" y="866" text-anchor="middle" class="gx-label">RÉGIME MOTEUR −</text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="266" cy="910" r="27" fill="#0c1b31" stroke="#050606" stroke-width="4"/>
+        <circle cx="266" cy="910" r="19" fill="#225daa" stroke="#10325f" stroke-width="3"/>
+        <path d="M256 910 H276" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <rect x="364" y="850" width="86" height="24" rx="3" class="gx-plate"/>
+      <text x="407" y="866" text-anchor="middle" class="gx-label">RÉGIME MOTEUR +</text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="407" cy="910" r="27" fill="#0c1b31" stroke="#050606" stroke-width="4"/>
+        <circle cx="407" cy="910" r="19" fill="#225daa" stroke="#10325f" stroke-width="3"/>
+        <path d="M397 910 H417 M407 900 V920" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      </g>
+
+      <rect x="535" y="839" width="100" height="35" rx="3" class="gx-plate"/>
+      <text x="585" y="851" text-anchor="middle" class="gx-label" font-size="8"><tspan x="585">ISOLEMENT D'AIR</tspan><tspan x="585" dy="9">VANNES PNEUM.</tspan><tspan x="585" dy="9">AUTO · MANUEL</tspan></text>
+      <g filter="url(#gx-control-shadow)">
+        <circle cx="585" cy="900" r="35" fill="url(#gx-metal)" stroke="#050606" stroke-width="4"/>
+        <g id="gx-iso-lever" style="transform-origin:585px 900px;transform-box:view-box;">
+          <path d="M585 900 L614 882" stroke="#111416" stroke-width="14" stroke-linecap="round"/>
+          <path d="M610 884 L620 878" stroke="#c8cfd2" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Visserie et marques d'usage -->
+    <g class="gx-bolt">
+      <circle cx="60" cy="48" r="6"/><circle cx="680" cy="48" r="6"/>
+      <circle cx="60" cy="952" r="6"/><circle cx="680" cy="952" r="6"/>
+    </g>
+    <g fill="none" stroke="#5f0a08" stroke-linecap="round" opacity=".35">
+      <path d="M166 550 q32 -8 64 0" stroke-width="2"/><path d="M472 680 q42 8 84 -3" stroke-width="2"/>
+      <path d="M165 948 q70 12 134 2" stroke-width="3"/>
+    </g>
+  </svg>`
+  };
 
   /* --- FPT GIMAEX : écran cabine --- */
   S['gimaex-cabine'] = { aspect: '1000 / 620', svg: `
@@ -1673,7 +1877,17 @@ const Schema = (() => {
     bar.appendChild(c); return c;
   }
   function schMsg(stage){
-    const m = document.createElement('div'); m.className = 'sch-msg'; m.hidden = true; stage.appendChild(m);
+    const m = document.createElement('div');
+    m.className = 'sch-msg';
+    m.hidden = true;
+    m.setAttribute('role', 'status');
+    m.setAttribute('aria-live', 'polite');
+    if (stage.classList.contains('schema-gimaex-rear') && stage.parentElement){
+      m.classList.add('sch-msg-flow');
+      stage.insertAdjacentElement('afterend', m);
+    } else {
+      stage.appendChild(m);
+    }
     return (t, color) => { if (!t){ m.hidden = true; return; } m.hidden = false; m.innerHTML = t; m.style.borderLeftColor = color || 'var(--cyan)'; };
   }
   function schShow(stage, sel, on){ const g = stage.querySelector(sel); if (g) g.setAttribute('visibility', on ? 'visible' : 'hidden'); }
@@ -1827,38 +2041,336 @@ const Schema = (() => {
     say('Par temps froid : exécutez la procédure DANS L’ORDRE. Essayez de vous tromper pour comprendre pourquoi l’ordre est impératif.', 'var(--cyan)');
   };
 
-  /* FPT GIMAEX : appui long PMT avec conditions, régime, arrêt d'urgence */
+  /* FPT GIMAEX : conditions cabine + commandes directement sur le pupitre */
   INTERACT['gimaex-tableau'] = (stage) => {
-    const say = schMsg(stage), bar = schControls(stage);
-    let neutre = false, frein = false, pmt = false, rpm = 800, hold = null;
-    const rpmT = stage.querySelector('#gx-rpm'), pmtG = stage.querySelector('#gx-pmt');
-    const upd = () => {
-      if (rpmT) rpmT.textContent = 'RÉGIME ' + rpm + ' tr/min · PMT ' + (pmt ? '✓ ENGAGÉE' : '—');
-      if (pmtG){
-        pmtG.querySelector('circle').setAttribute('fill', pmt ? '#2ecc71' : '#1f8a5b');
-        pmtG.style.filter = pmt ? 'drop-shadow(0 0 10px #2ecc71)' : '';
+    const say = schMsg(stage);
+    const bar = schControls(stage);
+    bar.classList.add('gx-cabin-panel');
+    bar.innerHTML = '<div class="gx-condition-head"><span><b>CONDITIONS CABINE</b><small>Le pupitre arrière est disponible lorsque les trois conditions sont réunies.</small></span><span class="gx-system-state">EN ATTENTE</span></div>';
+
+    const conditionRow = document.createElement('div');
+    conditionRow.className = 'gx-condition-row';
+    bar.appendChild(conditionRow);
+
+    const hit = id => stage.querySelector('.hotspot[data-id="' + id + '"]');
+    const svg = id => stage.querySelector('#' + id);
+    const rpmText = svg('gx-rpm');
+    const pressureText = svg('gx-pressure');
+    const systemState = bar.querySelector('.gx-system-state');
+    const state = {
+      neutral: false,
+      parkingBrake: false,
+      pto: false,
+      rpm: 800,
+      regulation: false,
+      setpoint: 3,
+      emergency: false,
+      pumpLight: false,
+      repliAlarm: false,
+      panelLight: false,
+      ldt: false,
+      leftReel: 0,
+      rightReel: 0,
+      airAutomatic: true
+    };
+    let ptoHold = null;
+
+    const bNeutral = schChip(conditionRow, 'Boîte au neutre', false, () => {
+      state.neutral = !state.neutral;
+      if (!state.neutral && state.pto) disengagePto('PDM désengagée : la boîte n’est plus au neutre.');
+      else update();
+    });
+    const bBrake = schChip(conditionRow, 'Frein de parc serré', false, () => {
+      state.parkingBrake = !state.parkingBrake;
+      if (!state.parkingBrake && state.pto) disengagePto('PDM désengagée : le frein de parc a été desserré.');
+      else update();
+    });
+    const bPto = schChip(conditionRow, 'PDM — maintenir pour engager', false, () => {});
+
+    function cabinReady(){
+      return state.neutral && state.parkingBrake && state.pto && !state.emergency;
+    }
+
+    function missingConditions(){
+      const missing = [];
+      if (!state.neutral) missing.push('boîte au neutre');
+      if (!state.parkingBrake) missing.push('frein de parc');
+      if (!state.pto) missing.push('PDM engagée');
+      return missing;
+    }
+
+    function requireReady(){
+      if (state.emergency){
+        say('Arrêt d’urgence enclenché : réarmez le bouton avant toute manœuvre.', 'var(--red-hi)');
+        return false;
       }
-    };
-    schChip(bar, 'Boîte au NEUTRE', false, c => { neutre = !neutre; c.classList.toggle('active', neutre); });
-    schChip(bar, 'FREIN de parc', false, c => { frein = !frein; c.classList.toggle('active', frein); });
-    const bP = schChip(bar, 'CRAN DE POMPE / PMT — MAINTENIR appuyé', false, () => {});
-    const start = () => {
-      if (pmt){ pmt = false; rpm = 800; bP.classList.remove('active'); upd(); say('PMT désengagée.', 'var(--mut)'); return; }
-      say('Maintenez… (appui long)', 'var(--cyan)');
-      hold = setTimeout(() => {
-        if (neutre && frein){ pmt = true; bP.classList.add('active'); say('✓ PMT engagée : le bouton s’éclaire, la pompe est entraînée.', 'var(--ok)'); }
-        else say('✗ Refus : il faut NEUTRE + FREIN DE PARC avant d’engager la PMT (appui long).', 'var(--red-hi)');
-        upd();
+      if (!cabinReady()){
+        say('Pupitre indisponible — conditions manquantes : ' + missingConditions().join(', ') + '.', 'var(--orange)');
+        return false;
+      }
+      return true;
+    }
+
+    function setLamp(id, on, color){
+      const lamp = svg(id);
+      if (!lamp) return;
+      lamp.setAttribute('fill', on ? color : (id === 'gx-reg-light' || id === 'gx-emergency-state' ? 'transparent' : '#351711'));
+      lamp.style.filter = on ? 'drop-shadow(0 0 9px ' + color + ')' : '';
+    }
+
+    function setPressed(id, on){
+      const control = hit(id);
+      if (!control) return;
+      control.classList.toggle('control-active', on);
+      control.setAttribute('aria-pressed', String(!!on));
+    }
+
+    function reelLabel(value){
+      return value > 0 ? 'montée' : value < 0 ? 'descente' : 'neutre';
+    }
+
+    function update(){
+      const ready = cabinReady();
+      bNeutral.classList.toggle('active', state.neutral);
+      bBrake.classList.toggle('active', state.parkingBrake);
+      bPto.classList.toggle('active', state.pto);
+      bPto.innerHTML = '<span class="dot"></span>' + (state.pto ? 'PDM engagée — appuyer pour couper' : 'PDM — maintenir pour engager');
+
+      if (systemState){
+        systemState.textContent = state.emergency ? 'ARRÊT URGENCE' : ready ? 'PRÊT' : 'EN ATTENTE';
+        systemState.classList.toggle('ready', ready);
+        systemState.classList.toggle('danger', state.emergency);
+      }
+
+      if (rpmText){
+        rpmText.textContent = state.emergency
+          ? 'ARRÊT D’URGENCE — MOTEUR COUPÉ'
+          : state.pto
+            ? state.rpm + ' tr/min · PDM engagée'
+            : state.rpm + ' tr/min · PDM non engagée';
+        rpmText.setAttribute('fill', state.emergency ? '#ff7568' : ready ? '#dce8df' : '#a6b3b8');
+      }
+      if (pressureText){
+        pressureText.textContent = state.regulation
+          ? 'Régulation active · consigne ' + state.setpoint + ' bar'
+          : 'Mode manuel · consigne attente ' + state.setpoint + ' bar';
+      }
+
+      setLamp('gx-pump-state', state.pumpLight, '#ffd34b');
+      setLamp('gx-repli-state', state.repliAlarm, '#ff7a32');
+      setLamp('gx-table-light', state.panelLight, '#ffe382');
+      setLamp('gx-reg-light', state.regulation, '#35df78');
+      setLamp('gx-emergency-state', state.emergency, 'rgba(255, 62, 42, .48)');
+      setLamp('gx-ldt-state', state.ldt, '#55c7e8');
+
+      const tableLever = svg('gx-table-lever');
+      if (tableLever){
+        tableLever.style.transformBox = 'view-box';
+        tableLever.style.transformOrigin = '687px 677px';
+        tableLever.style.transition = 'transform .2s';
+        tableLever.style.transform = state.panelLight ? 'rotate(24deg)' : '';
+      }
+      const leftReel = svg('gx-dev-g');
+      const rightReel = svg('gx-dev-d');
+      if (leftReel){ leftReel.style.transition = 'transform .2s'; leftReel.style.transform = 'rotate(' + (state.leftReel * 17) + 'deg)'; }
+      if (rightReel){ rightReel.style.transition = 'transform .2s'; rightReel.style.transform = 'rotate(' + (state.rightReel * 17) + 'deg)'; }
+      const isoLever = svg('gx-iso-lever');
+      if (isoLever){
+        isoLever.style.transition = 'transform .25s';
+        isoLever.style.transform = state.airAutomatic ? '' : 'rotate(-58deg)';
+      }
+
+      setPressed('ecl-pompe', state.pumpLight);
+      setPressed('repli', state.repliAlarm);
+      setPressed('ecl-tb', state.panelLight);
+      setPressed('dev-g', state.leftReel !== 0);
+      setPressed('regul', state.regulation);
+      setPressed('au', state.emergency);
+      setPressed('ldt', state.ldt);
+      setPressed('dev-d', state.rightReel !== 0);
+      setPressed('iso-air', !state.airAutomatic);
+      stage.classList.toggle('gx-emergency', state.emergency);
+    }
+
+    function disengagePto(message){
+      state.pto = false;
+      state.regulation = false;
+      state.rpm = 800;
+      state.ldt = false;
+      state.leftReel = 0;
+      state.rightReel = 0;
+      update();
+      if (message) say(message, 'var(--mut)');
+    }
+
+    function startPtoHold(event){
+      if (event && event.type === 'keydown' && event.repeat) return;
+      if (state.emergency){
+        say('Impossible d’engager la PDM : arrêt d’urgence enclenché.', 'var(--red-hi)');
+        return;
+      }
+      if (state.pto){
+        disengagePto('PDM désengagée. Le pupitre revient au régime de ralenti.');
+        return;
+      }
+      if (!state.neutral || !state.parkingBrake){
+        say('Refus PDM : placez la boîte au neutre et serrez le frein de parc.', 'var(--red-hi)');
+        return;
+      }
+      say('Maintenez la commande PDM…', 'var(--cyan)');
+      clearTimeout(ptoHold);
+      ptoHold = setTimeout(() => {
+        state.pto = true;
+        state.rpm = 800;
+        update();
+        say('PDM engagée : état système prêt, commandes arrière disponibles.', 'var(--ok)');
+        ptoHold = null;
       }, 800);
-    };
-    const cancel = () => clearTimeout(hold);
-    ['mousedown', 'touchstart'].forEach(e => bP.addEventListener(e, start));
-    ['mouseup', 'mouseleave', 'touchend'].forEach(e => bP.addEventListener(e, cancel));
-    schChip(bar, 'Régime −', false, () => { rpm = Math.max(800, rpm - 100); upd(); });
-    schChip(bar, 'Régime +', false, () => { if (pmt) rpm = Math.min(2200, rpm + 100); else say('Engagez d’abord la PMT pour piloter le régime pompe.', 'var(--orange)'); upd(); });
-    schChip(bar, '🛑 Arrêt d’urgence', false, () => { rpm = 0; pmt = false; bP.classList.remove('active'); upd(); say('🛑 ARRÊT D’URGENCE — moteur coupé (asservi au cran de pompe).', 'var(--red-hi)'); });
-    upd();
-    say('Testez l’enclenchement de la PMT : activez les 2 conditions puis MAINTENEZ le bouton PMT.', 'var(--cyan)');
+    }
+
+    function cancelPtoHold(){
+      if (ptoHold){
+        clearTimeout(ptoHold);
+        ptoHold = null;
+        say('Appui trop court : maintenez la commande PDM pendant 0,8 s.', 'var(--orange)');
+      }
+    }
+
+    bPto.addEventListener('pointerdown', startPtoHold);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(name => bPto.addEventListener(name, cancelPtoHold));
+    bPto.addEventListener('keydown', event => {
+      if (event.key === ' ' || event.key === 'Enter'){
+        event.preventDefault();
+        startPtoHold(event);
+      }
+    });
+    bPto.addEventListener('keyup', event => {
+      if (event.key === ' ' || event.key === 'Enter') cancelPtoHold();
+    });
+
+    hit('ecran')?.addEventListener('click', () => {
+      say(state.emergency ? 'L’écran signale l’arrêt d’urgence.' : 'Écran principal : régime, état PDM et mode de régulation.', 'var(--cyan)');
+    });
+    hit('capteur')?.addEventListener('click', () => {
+      say('Capteur de luminosité : bascule automatique jour / nuit de l’affichage.', 'var(--mut)');
+    });
+    hit('ecl-pompe')?.addEventListener('click', () => {
+      state.pumpLight = !state.pumpLight;
+      update();
+      say(state.pumpLight ? 'Éclairage de la zone pompe activé.' : 'Éclairage de la zone pompe coupé.', state.pumpLight ? 'var(--ok)' : 'var(--mut)');
+    });
+    hit('repli')?.addEventListener('click', () => {
+      state.repliAlarm = !state.repliAlarm;
+      update();
+      say(state.repliAlarm ? 'Alarme sonore de repli activée.' : 'Alarme sonore de repli arrêtée.', state.repliAlarm ? 'var(--orange)' : 'var(--mut)');
+    });
+    hit('ecl-tb')?.addEventListener('click', () => {
+      if (!requireReady()) return;
+      state.panelLight = !state.panelLight;
+      update();
+      say(state.panelLight ? 'Éclairage du tableau de bord activé.' : 'Éclairage du tableau de bord coupé.', state.panelLight ? 'var(--ok)' : 'var(--mut)');
+    });
+
+    function cycleReel(key, label){
+      if (!requireReady()) return;
+      if (!state.airAutomatic){
+        say('Commande pneumatique indisponible : isolement d’air en mode manuel.', 'var(--red-hi)');
+        return;
+      }
+      state[key] = state[key] === 0 ? 1 : state[key] === 1 ? -1 : 0;
+      update();
+      say(label + ' : ' + reelLabel(state[key]) + '.', state[key] ? 'var(--cyan)' : 'var(--mut)');
+    }
+    hit('dev-g')?.addEventListener('click', () => cycleReel('leftReel', 'Dévidoir gauche'));
+    hit('dev-d')?.addEventListener('click', () => cycleReel('rightReel', 'Dévidoir droit'));
+
+    hit('regul')?.addEventListener('click', () => {
+      if (!requireReady()) return;
+      state.regulation = !state.regulation;
+      update();
+      say(state.regulation ? 'Régulation mise en service à ' + state.setpoint + ' bar.' : 'Régulation arrêtée : retour au réglage manuel du régime.', state.regulation ? 'var(--ok)' : 'var(--mut)');
+    });
+    hit('reg-moins')?.addEventListener('click', () => {
+      if (!requireReady()) return;
+      if (state.regulation) state.setpoint = Math.max(1, state.setpoint - 1);
+      else state.rpm = Math.max(800, state.rpm - 100);
+      update();
+      say(state.regulation ? 'Consigne abaissée à ' + state.setpoint + ' bar.' : 'Régime moteur : ' + state.rpm + ' tr/min.', 'var(--cyan)');
+    });
+    hit('reg-plus')?.addEventListener('click', () => {
+      if (!requireReady()) return;
+      if (state.regulation) state.setpoint = Math.min(15, state.setpoint + 1);
+      else state.rpm = Math.min(2200, state.rpm + 100);
+      update();
+      say(state.regulation ? 'Consigne portée à ' + state.setpoint + ' bar.' : 'Régime moteur : ' + state.rpm + ' tr/min.', 'var(--cyan)');
+    });
+
+    const ldt = hit('ldt');
+    function startLdt(event){
+      if (!requireReady()) return;
+      if (!state.airAutomatic){
+        say('Enroulement impossible : alimentation pneumatique isolée.', 'var(--red-hi)');
+        return;
+      }
+      if (event?.pointerId != null && ldt?.setPointerCapture){
+        try { ldt.setPointerCapture(event.pointerId); } catch (_) {}
+      }
+      state.ldt = true;
+      update();
+      say('Enroulement de la LDT en cours… Relâchez la commande pour arrêter.', 'var(--cyan)');
+    }
+    function stopLdt(){
+      if (!state.ldt) return;
+      state.ldt = false;
+      update();
+      say('Enroulement de la LDT arrêté.', 'var(--mut)');
+    }
+    ldt?.addEventListener('pointerdown', startLdt);
+    ['pointerup', 'pointercancel', 'pointerleave', 'lostpointercapture'].forEach(name => ldt?.addEventListener(name, stopLdt));
+    ldt?.addEventListener('keydown', event => {
+      if ((event.key === ' ' || event.key === 'Enter') && !event.repeat){
+        event.preventDefault();
+        startLdt(event);
+      }
+    });
+    ldt?.addEventListener('keyup', event => {
+      if (event.key === ' ' || event.key === 'Enter') stopLdt();
+    });
+
+    hit('iso-air')?.addEventListener('click', () => {
+      state.airAutomatic = !state.airAutomatic;
+      if (!state.airAutomatic){
+        state.ldt = false;
+        state.leftReel = 0;
+        state.rightReel = 0;
+      }
+      update();
+      say(state.airAutomatic ? 'Vannes pneumatiques en mode automatique.' : 'Alimentation pneumatique isolée : mode manuel de dépannage.', state.airAutomatic ? 'var(--ok)' : 'var(--orange)');
+    });
+
+    hit('au')?.addEventListener('click', () => {
+      clearTimeout(ptoHold);
+      ptoHold = null;
+      if (state.emergency){
+        state.emergency = false;
+        state.rpm = 800;
+        update();
+        say('Arrêt d’urgence réarmé. La PDM reste désengagée : rétablissez les conditions cabine.', 'var(--orange)');
+        return;
+      }
+      state.emergency = true;
+      state.pto = false;
+      state.regulation = false;
+      state.rpm = 0;
+      state.ldt = false;
+      state.leftReel = 0;
+      state.rightReel = 0;
+      update();
+      say('ARRÊT D’URGENCE — moteur coupé, PDM désengagée et mouvements stoppés.', 'var(--red-hi)');
+    });
+
+    update();
+    say('Préparez la cabine : boîte au neutre, frein de parc serré, puis maintenez la PDM. Les commandes se manipulent ensuite directement sur le pupitre.', 'var(--cyan)');
   };
 
   /* Tableau CAMIVA : régulation, consigne, cavitation simulée */
@@ -2136,7 +2648,9 @@ const Schema = (() => {
     if (!def) return null;
 
     const stage = document.createElement('div');
-    stage.className = 'schema-stage';
+    stage.className = ['schema-stage', def.className || '', opts.mode ? 'schema-mode-' + opts.mode : '']
+      .filter(Boolean).join(' ');
+    stage.dataset.mode = opts.mode || 'fiche';
     stage.style.aspectRatio = def.aspect;
     stage.innerHTML = def.svg;
     container.appendChild(stage);
@@ -2144,12 +2658,25 @@ const Schema = (() => {
     const hotspots = {};
     elements.forEach(el => {
       const b = document.createElement('button');
-      b.className = 'hotspot';
+      const isArea = el.w != null && el.h != null && Number(el.w) > 0 && Number(el.h) > 0;
+      b.type = 'button';
+      b.className = isArea ? 'hotspot hotspot-area' : 'hotspot';
       b.style.left = el.x + '%';
       b.style.top  = el.y + '%';
+      if (isArea){
+        b.style.width = el.w + '%';
+        b.style.height = el.h + '%';
+        const badge = document.createElement('span');
+        badge.className = 'hotspot-badge';
+        badge.textContent = el.n;
+        b.appendChild(badge);
+      } else {
+        b.textContent = el.n;
+      }
       b.dataset.id = el.id;
+      if (el.type) b.dataset.type = el.type;
       b.title = el.label;
-      b.textContent = el.n;
+      b.setAttribute('aria-label', el.n + ' — ' + el.label);
       b.addEventListener('click', () => opts.onSelect && opts.onSelect(el.id));
       stage.appendChild(b);
       hotspots[el.id] = b;
