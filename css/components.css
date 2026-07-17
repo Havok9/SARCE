@@ -620,6 +620,7 @@
 /* Conditions cabine : les prérequis restent visuellement distincts des
    commandes physiques disposées sur le tableau arrière. */
 .gx-cabin-panel{
+  display:block;
   width:100%; max-width:740px;
   margin:12px auto 0; padding:12px 14px;
   background:linear-gradient(135deg, rgba(32,32,58,.98), rgba(20,20,42,.98));
