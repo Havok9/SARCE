@@ -98,7 +98,13 @@
 .kp-layout-wide{ grid-column:span 8; }
 .kp-layout-compact{ grid-column:span 4; }
 .kp-layout-half{ grid-column:span 6; }
+.kp-layout-vehicle{ grid-column:span 3; }
+.kp-layout-drivetrain{ grid-column:span 3; }
+.kp-layout-dimensions{ grid-column:span 6; }
+.kp-layout-tanks{ grid-column:span 5; }
+.kp-layout-pump{ grid-column:span 7; }
 .kp-toggle{
+  display:flex; flex-direction:column;
   width:100%; min-width:0; max-width:100%; min-height:100%; overflow:hidden;
   padding:16px; text-align:left; color:var(--txt);
   font:inherit; background:transparent; border:0; cursor:pointer;
@@ -114,6 +120,317 @@
 .kp-title{
   font-family:var(--disp); font-size:12px; font-weight:700; letter-spacing:.8px;
   text-transform:uppercase; color:var(--mut);
+}
+
+/* Bibliothèque de mini-schémas techniques SVG */
+.kp-tech-diagram{ position:relative; width:100%; min-width:0; }
+.kp-tech-svg{ display:block; width:100%; height:auto; overflow:visible; }
+.kp-tech-badge{
+  position:absolute; top:0; right:2px; z-index:2; padding:3px 8px;
+  border:1px solid rgba(230,126,34,.45); border-radius:4px;
+  color:#f0a557; background:rgba(230,126,34,.08);
+  font:700 10px var(--mono); letter-spacing:1px;
+}
+.kp-svg-muted{
+  fill:rgba(88,106,132,.12); stroke:#7f8da8; stroke-width:2;
+}
+.kp-svg-accent-soft{ fill:rgba(230,126,34,.13); stroke:#d9822b; }
+.kp-svg-accent{ fill:none; stroke:#e67e22; }
+.kp-svg-callout{ fill:#8fe0ff; stroke:#47bce6; stroke-width:1.2; }
+.kp-svg-callout path{ fill:none; }
+.kp-svg-callout text{
+  fill:#b9c5d7; stroke:none; font:700 8px var(--mono); letter-spacing:.25px;
+}
+.kp-callout-legend{
+  display:grid; grid-template-columns:1fr; gap:4px; margin-top:2px;
+  color:#aeb9ca; font:7.5px var(--mono); letter-spacing:.25px;
+}
+.kp-callout-legend span{ display:flex; align-items:center; gap:5px; min-width:0; }
+.kp-callout-legend i{
+  display:inline-flex; align-items:center; justify-content:center; flex:0 0 15px; height:15px;
+  border:1px solid rgba(71,188,230,.45); border-radius:50%; color:#8fe0ff; font-style:normal;
+}
+.kp-mech-part{ fill:rgba(108,128,155,.11); stroke:#8492a9; stroke-width:2; }
+.kp-pump-part{ fill:rgba(230,126,34,.09); stroke:#e67e22; stroke-width:2.2; }
+.kp-drive-flow{ fill:none; stroke:#39bce5; stroke-width:2; }
+.kp-drive-flow .kp-drive-arrowhead{ fill:#39bce5; stroke:none; }
+.kp-svg-labels text{
+  fill:#aab6c8; font:700 9px var(--mono); text-anchor:middle; letter-spacing:.2px;
+}
+.kp-mech-labels{
+  display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:3px; margin-top:-5px;
+  color:#aab6c8; font:700 6.8px var(--mono); text-align:center;
+}
+.kp-mech-labels span{ min-width:0; overflow-wrap:anywhere; }
+.kp-dimension-lines{ fill:none; stroke:#47bce6; stroke-width:1.3; }
+#kp-dim-arrow path{ fill:#47bce6; stroke:none; }
+.kp-dimension-lines text{ fill:#9edaf0; stroke:none; font:700 8px var(--mono); letter-spacing:.5px; }
+.kp-dimension-values{
+  display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:8px; margin-top:3px;
+}
+.kp-dimension-values span, .kp-instruments span{
+  min-width:0; padding:7px 4px; border-top:1px solid rgba(127,141,168,.26); text-align:center;
+}
+.kp-dimension-values i, .kp-instruments i{
+  display:block; color:#8794a9; font:8.5px var(--mono); font-style:normal; letter-spacing:.4px;
+}
+.kp-dimension-values strong, .kp-instruments strong{
+  display:block; margin-top:4px; color:#e7ebf2; font:700 12px var(--mono); white-space:normal;
+}
+.kp-tank-shell{ fill:rgba(107,124,151,.07); stroke:#8492a9; stroke-width:2; }
+.kp-liquid-water{ fill:rgba(41,156,214,.42); stroke:none; }
+.kp-liquid-foam{ fill:rgba(224,132,36,.44); stroke:none; }
+.kp-liquid-line{ fill:none; stroke:#bdeeff; stroke-width:1.6; }
+.kp-tank-title{ fill:#b8c4d6; font:700 9px var(--mono); letter-spacing:.6px; }
+.kp-tank-volume{ fill:#fff; font:700 18px var(--mono); }
+.kp-tank-grades{ fill:none; stroke:#78869c; stroke-width:1; }
+.kp-tank-grades text{ fill:#78869c; stroke:none; font:7px var(--mono); }
+.kp-water-flow{ fill:none; stroke:#39bce5; stroke-width:3; }
+.kp-pressure-flow{ fill:none; stroke:#e67e22; stroke-width:3; }
+#kp-water-arrow path{ fill:#39bce5; }
+#kp-pressure-arrow path{ fill:#e67e22; }
+.kp-water-flow text, .kp-pressure-flow text{ stroke:none; font:700 9px var(--mono); letter-spacing:.5px; }
+.kp-water-flow text{ fill:#69d3f5; }
+.kp-pressure-flow text{ fill:#f0a557; }
+.kp-pump-model{ fill:#99a7bb; font:700 8px var(--mono); letter-spacing:.5px; }
+.kp-instruments{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; margin-top:2px; }
+.kp-pump-diagram{ display:grid; grid-template-columns:minmax(0, 1fr) minmax(145px, 185px); align-items:center; gap:14px; }
+.kp-pump-diagram .kp-instruments{ grid-template-columns:1fr; }
+.kp-instruments span:first-child{ border-top-color:rgba(57,188,229,.45); }
+.kp-instruments span:last-child{ border-top-color:rgba(230,126,34,.45); }
+.kp-default-visual{ display:flex; align-items:center; gap:14px; min-height:72px; }
+.kp-default-visual svg{ width:118px; flex:0 0 118px; fill:none; stroke:#718097; stroke-width:1.5; }
+.kp-default-visual span{ color:#aab6c8; font-family:var(--disp); font-size:14px; }
+
+/* Mini-circuits hydrauliques */
+.kp-hydraulic-diagram{
+  flex:1; display:flex; flex-direction:column; justify-content:center; min-width:0;
+}
+.kp-hydraulic-svg{ min-height:210px; }
+.hyd-object, .hyd-valve{
+  fill:rgba(101,119,146,.09); stroke:#7f8da8; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.hyd-object path, .hyd-object circle, .hyd-object rect,
+.hyd-valve path, .hyd-valve circle{ vector-effect:non-scaling-stroke; }
+.hyd-object.hyd-open, .hyd-object.hyd-active{ stroke:#55bd84; }
+.hyd-object.hyd-inactive{ stroke:#657187; opacity:.55; }
+.hyd-object.hyd-closed{ stroke:#657187; opacity:.5; }
+.hyd-pump-shell{ fill:rgba(230,126,34,.08); stroke:#e67e22; }
+.hyd-hot .hyd-pump-shell, .hyd-hot circle{ stroke:#e8695c; }
+.hyd-heat{ fill:none; stroke:#e8695c; stroke-width:2; }
+.hyd-water-fill{ fill:rgba(41,156,214,.4); stroke:none; }
+.hyd-inactive .hyd-water-fill, .hyd-closed .hyd-water-fill{ fill:rgba(101,113,134,.15); }
+.hyd-inactive .hyd-surface, .hyd-closed .hyd-surface{ stroke:#657187; }
+.hyd-surface, .hyd-source-water{ fill:none; stroke:#77daf5; stroke-width:1.8; }
+.hyd-strainer{ fill:rgba(127,141,168,.1); stroke:#8f9db1; }
+.hyd-label{
+  fill:#aeb9ca; stroke:none; font:700 8px var(--mono); letter-spacing:.25px;
+}
+.hyd-short{
+  fill:#9ddcf2; stroke:none; font:700 9px var(--mono); letter-spacing:.7px; text-anchor:middle;
+}
+.hyd-pipe{ fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.hyd-flow-active{ stroke:#39bce5; stroke-dasharray:10 5; }
+.hyd-flow-pressure{ stroke:#72d8f4; stroke-dasharray:12 4; }
+.hyd-flow-partial{ stroke:#e69a45; stroke-dasharray:5 5; }
+.hyd-flow-inactive{ stroke:#626e82; stroke-width:2; opacity:.55; }
+.hyd-air-line, .hyd-air-path{ fill:none; stroke:#bceeff; stroke-width:1.8; stroke-dasharray:3 6; }
+.hyd-air-path{ opacity:.9; }
+.kp-visual:hover .hyd-flow-active, .kp-visual:hover .hyd-flow-pressure,
+.kp-visual:focus-within .hyd-flow-active, .kp-visual:focus-within .hyd-flow-pressure{
+  animation:hydraulicFlow 1.8s linear infinite;
+}
+@keyframes hydraulicFlow{ to{ stroke-dashoffset:-30; } }
+.hyd-valve circle{ fill:#111b29; }
+.hyd-valve.hyd-open circle{ stroke:#4cd68a; }
+.hyd-valve.hyd-open path{ stroke:#4cd68a; }
+.hyd-valve.hyd-partial circle, .hyd-valve.hyd-partial path{ stroke:#e69a45; }
+.hyd-valve.hyd-closed circle, .hyd-valve.hyd-closed path{ stroke:#78859a; }
+.hyd-valve-x{ stroke:#e8695c !important; stroke-width:2.5; }
+.hyd-drain{ fill:none; stroke:#55c9ed; stroke-width:2; }
+.hyd-drop{ fill:rgba(57,188,229,.45); stroke:#77daf5; }
+.hyd-drain .hyd-label{ fill:#8f9db1; }
+.hyd-mech-flow{ fill:none; stroke:#e67e22; stroke-width:2.5; stroke-dasharray:9 5; }
+.hyd-stop-flow{ stroke:#6e7b90; stroke-dasharray:4 6; }
+.hyd-step-numbers circle{ fill:#121d2d; stroke:#e67e22; stroke-width:1.4; }
+.hyd-step-numbers text{ fill:#f0a557; font:700 9px var(--mono); }
+.hyd-step-legend{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(92px, 1fr)); gap:7px; margin-top:3px;
+}
+.hyd-step-legend span{
+  display:flex; align-items:flex-start; gap:6px; min-width:0; padding-top:6px;
+  border-top:1px solid rgba(127,141,168,.2); color:#aeb9ca;
+  font:700 8.5px/1.3 var(--mono); overflow-wrap:anywhere;
+}
+.hyd-step-legend i{
+  display:inline-flex; align-items:center; justify-content:center; flex:0 0 16px; height:16px;
+  border:1px solid rgba(230,126,34,.4); border-radius:50%; color:#f0a557; font-style:normal;
+}
+.hyd-state-title{ fill:#c1c9d6; font:700 9px var(--mono); letter-spacing:.5px; }
+.hyd-switch{ fill:none; stroke:#e67e22; stroke-width:1.8; }
+.hyd-switch text{ fill:#f0a557; stroke:none; font:700 8px var(--mono); letter-spacing:.5px; }
+.hyd-zero-flow{ fill:#e8695c; font:700 14px var(--mono); }
+.hyd-heat-label{ fill:#e8695c; font:700 9px var(--mono); letter-spacing:.5px; }
+.hyd-threshold-line{ fill:none; stroke:#e69a45; stroke-width:1.4; }
+.hyd-threshold-line text{ fill:#c5cfdd; stroke:none; font:700 8px var(--mono); }
+.hyd-threshold-line .hyd-threshold-role{ fill:#7f8da8; font-size:6px; letter-spacing:.2px; }
+.hyd-air-fault{ stroke:#e8695c; stroke-dasharray:4 4; }
+.hyd-fault-center{ fill:#e8695c; font:700 11px var(--mono); letter-spacing:.5px; }
+.hyd-cause-orbit{ fill:rgba(192,57,43,.07); stroke:#e8695c; stroke-width:1.2; }
+.hyd-cause-orbit path{ fill:none; stroke-dasharray:3 4; }
+.hyd-cause-orbit text{ fill:#e9a09a; stroke:none; font:700 7px var(--mono); }
+.hyd-limit{ fill:#e69a45; font:700 9px var(--mono); }
+.hyd-snow{ fill:none; stroke:#9de4fa; stroke-width:1.8; opacity:.9; }
+.hyd-state-arrow{ fill:none; stroke:#e67e22; stroke-width:2; }
+.hyd-inline-notes{ display:flex; justify-content:center; flex-wrap:wrap; gap:7px; margin-top:2px; }
+.hyd-inline-notes span{
+  padding:3px 7px; border-top:1px solid rgba(57,188,229,.35);
+  color:#9ddcf2; font:700 9px var(--mono);
+}
+
+/* Mini-schémas métier : mécanique, mousse, pupitres, hydraulique et équipements. */
+.kp-course-diagram{ flex:1; display:flex; flex-direction:column; justify-content:center; }
+.kp-course-svg{ max-height:250px; }
+.kp-course-svg path, .kp-course-svg circle, .kp-course-svg rect,
+.kp-course-svg line{ vector-effect:non-scaling-stroke; }
+.course-object{
+  fill:rgba(104,124,151,.1); stroke:#8796ad; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.course-object-accent{ fill:rgba(230,126,34,.09); stroke:#e67e22; }
+.course-wheel{ fill:#101722; stroke:#76849a; stroke-width:5; }
+.course-label{
+  fill:#aeb9ca; stroke:none; font:700 8px var(--mono); letter-spacing:.25px;
+}
+.course-label.course-orange, .course-orange{ fill:#f0a557; color:#f0a557; }
+.course-label.course-green, .course-green{ fill:#66d499; color:#66d499; }
+.course-label.course-blue, .course-blue{ fill:#70d4f2; color:#70d4f2; }
+.course-label.course-red, .course-red{ fill:#ec8177; color:#ec8177; }
+.course-arrow{ fill:none; stroke-width:2.2; stroke-linecap:round; }
+.course-arrow.course-blue{ stroke:#4fc8ed; }
+.course-arrow.course-orange{ stroke:#e98a35; }
+.course-arrow.course-green{ stroke:#54ca8a; }
+.course-arrow.course-red{ stroke:#e66d62; }
+.course-arrow-head{ stroke:none; fill:currentColor; }
+.course-arrow.course-blue .course-arrow-head{ fill:#4fc8ed; }
+.course-arrow.course-orange .course-arrow-head{ fill:#e98a35; }
+.course-arrow.course-green .course-arrow-head{ fill:#54ca8a; }
+.course-arrow.course-red .course-arrow-head{ fill:#e66d62; }
+.kp-course-legend{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:4px; }
+.kp-course-legend span{
+  padding:3px 7px; border:1px solid rgba(113,132,158,.2); border-radius:5px;
+  color:#9ba9bc; font:700 8px var(--mono);
+}
+.course-panel rect{ fill:rgba(9,15,24,.82); stroke:#67758a; stroke-width:1.7; }
+.course-panel circle{ fill:#121d2b; stroke:#7e8ca2; stroke-width:2; }
+.course-panel text{ fill:#d3dae5; stroke:none; font:700 11px var(--mono); text-anchor:middle; }
+.course-panel .course-green circle{ stroke:#51c986; }
+.course-panel .course-red circle{ stroke:#e66d62; }
+.course-panel .course-orange circle{ stroke:#e98a35; }
+.course-panel .course-blue circle{ stroke:#4fc8ed; }
+.course-pdm{ fill:rgba(230,126,34,.06); stroke:#dc8432; stroke-width:2; }
+
+/* Mousse */
+.foam-blue{ stroke:#4fc8ed; }.foam-orange{ stroke:#e98a35; }.foam-green{ stroke:#54ca8a; }
+.foam-blue .foam-liquid{ fill:rgba(51,174,219,.38); stroke:none; }
+.foam-orange .foam-liquid{ fill:rgba(230,126,34,.35); stroke:none; }
+.foam-green .foam-liquid{ fill:rgba(84,202,138,.3); stroke:none; }
+.foam-bubbles{ fill:rgba(184,231,245,.15); stroke:#8edcf1; stroke-width:1.4; }
+.foam-mixer{ stroke:#d39b56; }.foam-fan{ stroke:#68c7e4; }
+.foam-surface{ fill:none; stroke:#72d6f2; stroke-width:2; }
+.foam-gauge{ fill:none; stroke:#d8a05c; stroke-width:2.2; }
+.foam-gauge text{ fill:#f0a557; stroke:none; font:700 11px var(--mono); text-anchor:middle; }
+.course-pipe{ fill:none; stroke:#708097; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.foam-water{ stroke:#4fc8ed; }.foam-additive{ stroke:#e98a35; }.foam-return{ stroke:#df794f; stroke-dasharray:7 5; }
+.foam-cylinder{ fill:rgba(110,129,154,.05); stroke:#8796ad; stroke-width:1.8; }
+.foam-solution{ fill:rgba(56,179,220,.36); stroke:#62caec; }
+.course-formula{ fill:#c3ccda; stroke:none; font:700 12px var(--mono); letter-spacing:.2px; }
+.course-fraction{ fill:none; stroke:#73839a; stroke-width:1.5; }
+.course-equals{ fill:#e98a35; stroke:none; font:700 28px var(--mono); }
+.foam-target{ fill:rgba(105,122,146,.07); stroke:#7d8ca2; stroke-width:2; }
+.foam-valve-closed{ fill:#111b29; stroke:#e96f62; stroke-width:2; }
+.foam-checks rect{ fill:rgba(26,38,55,.7); stroke:#67758a; stroke-width:1.5; }
+.foam-checks circle{ fill:rgba(56,179,220,.08); stroke:#7890aa; stroke-width:1.5; }
+.foam-checks path{ fill:none; stroke:#86d9ed; stroke-width:1.8; }
+.foam-checks .foam-check{ fill:rgba(53,185,116,.12); stroke:#51c986; }
+.foam-checks .foam-checkmark{ stroke:#51c986; stroke-width:2.5; }
+
+/* Pupitres */
+.course-panel-gauge{ fill:none; stroke:#7890a9; stroke-width:1.6; }
+.course-panel-gauge text{ fill:#b7c2d1; stroke:none; font:700 7px var(--mono); text-anchor:middle; }
+.course-panel-gauge.course-blue{ stroke:#56c8e9; }
+.course-panel-gauge.course-orange{ stroke:#e9913d; }
+.course-panel-gauge.course-red{ stroke:#e56c61; }
+.course-panel-gauge.course-green{ stroke:#57cb8c; }
+.control-faults rect{ fill:rgba(34,24,29,.48); stroke:#985049; stroke-width:1.5; }
+.control-faults path{ fill:none; stroke:#aeb8c7; stroke-width:1.8; }
+.control-faults .course-cross{ stroke:#e66d62; opacity:.7; }
+.control-reel{ fill:none; stroke:#8290a5; stroke-width:2.2; }
+.control-reel .course-brake{ stroke:#e66d62; stroke-width:7; }
+
+/* Notions hydrauliques */
+.hydro-timer, .hydro-piston, .hydro-laws, .hydro-firefighter,
+.hydro-nozzle-table, .hydro-measures, .hydro-height,
+.hydro-height-tick, .hydro-pressure-bars{
+  fill:none; stroke:#7f8da4; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+}
+.hydro-force{ stroke:#e66d62; stroke-width:4; }
+.hydro-laws circle{ fill:rgba(40,59,81,.55); stroke:#67cdea; }
+.hydro-law-symbol{ fill:#8cdcf1; stroke:none; font:700 23px var(--mono); text-anchor:middle; }
+.course-ground{ fill:none; stroke:#69778b; stroke-width:3; }
+.hydro-height, .hydro-height-tick{ stroke:#e9903d; }
+.hydro-long-hose{ stroke-width:5; }
+.hydro-measures text{ fill:#b8c4d4; stroke:none; font:700 11px var(--mono); text-anchor:middle; }
+.hydro-crushed{ stroke-width:3; }
+.hydro-cav-bubbles{ fill:rgba(222,235,242,.1); stroke:#d7e7ed; stroke-width:1.2; }
+.hydro-pressure-bars{ stroke:#62cee9; stroke-width:4; }
+.hydro-firefighter{ fill:none; stroke-width:4; }
+.hydro-nozzle-table rect{ fill:rgba(29,43,60,.7); stroke:#62738b; }
+.hydro-nozzle-table text{ fill:#c0cad8; stroke:none; font:700 9px var(--mono); text-anchor:middle; }
+
+/* Mât et porte-échelles */
+.mast-object, .ladder-carrier{ fill:none; stroke:#8392a8; stroke-width:1.8; stroke-linejoin:round; }
+.mast-truck{ fill:rgba(177,50,40,.13); stroke:#c9574a; }
+.mast-column{ fill:rgba(121,137,159,.15); stroke:#a2aebe; }
+.mast-head{ fill:#172231; stroke:#91a0b5; }
+.mast-beam{ fill:none; stroke:#f4d679; stroke-width:2.5; opacity:.65; }
+.mast-height, .mast-height-tick{ fill:none; stroke:#ef9c45; stroke-width:1.8; }
+.mast-leds circle{ fill:rgba(246,211,103,.25); stroke:#f1cf69; stroke-width:1.8; }
+.mast-leds text{ fill:#eacb72; stroke:none; font:700 7px var(--mono); text-anchor:middle; }
+.mast-air rect{ fill:rgba(94,169,195,.08); stroke:#6ac9e5; stroke-width:2; }
+.mast-air circle{ fill:none; stroke:#93def0; }
+.mast-timer, .mast-final, .mast-cylinder, .mast-purge-valve{ fill:none; stroke:#8392a8; stroke-width:2; }
+.mast-timer text{ fill:#f0a557; stroke:none; font:700 13px var(--mono); text-anchor:middle; }
+.mast-light-off{ fill:#141c27; stroke:#5a677a; }
+.ladder-carrier>g path{ stroke-width:7; }
+
+/* Organes mécaniques annexes */
+.equip-turbo, .equip-retarder, .equip-axle, .equip-transfer,
+.equip-4x4{ fill:none; stroke:#8493a8; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.equip-impeller path{ stroke:#58c8e8; stroke-width:6; }
+.equip-impeller.equip-hot path{ stroke:#e88945; }
+.equip-static path{ stroke:#e2a05e; }
+.equip-gears circle{ fill:rgba(230,126,34,.09); stroke:#d89147; }
+.equip-leak{ fill:#e66d62; stroke:#f3a39c; }
+.equip-step{ fill:#dce2eb; stroke:none; font:700 28px var(--mono); text-anchor:middle; }
+.equip-4x4 circle{ fill:rgba(49,71,94,.55); stroke:#62cae8; }
+.equip-4x4 text{ fill:#94a3b8; stroke:none; font:700 9px var(--mono); text-anchor:middle; }
+.equip-release{ stroke:#5cc98c; stroke-width:2; }
+
+.kp-visual:hover .course-arrow.course-blue path:first-child,
+.kp-visual:focus-within .course-arrow.course-blue path:first-child,
+.kp-visual:hover .foam-water,
+.kp-visual:focus-within .foam-water{ stroke-dasharray:9 5; animation:courseFlow 1.7s linear infinite; }
+@keyframes courseFlow{ to{ stroke-dashoffset:-28; } }
+
+@media (prefers-reduced-motion:reduce){
+  .kp-visual:hover .hyd-flow-active, .kp-visual:hover .hyd-flow-pressure,
+  .kp-visual:focus-within .hyd-flow-active, .kp-visual:focus-within .hyd-flow-pressure{ animation:none; }
+  .kp-visual:hover .course-arrow.course-blue path:first-child,
+  .kp-visual:focus-within .course-arrow.course-blue path:first-child,
+  .kp-visual:hover .foam-water,
+  .kp-visual:focus-within .foam-water{ animation:none; }
 }
 .kp-path, .kp-cause-path{
   display:flex; align-items:center; justify-content:center; gap:7px; min-height:60px;
@@ -187,7 +504,7 @@
 }
 .kp-open-label{
   display:flex; align-items:center; justify-content:flex-end; gap:6px;
-  margin-top:14px; color:var(--mut-2); font-size:10.5px;
+  margin-top:auto; padding-top:14px; color:var(--mut-2); font-size:10.5px;
 }
 .kp-open-label i{ color:var(--orange); font-style:normal; font-size:14px; }
 .kp-detail{ padding:0 16px 16px; }
@@ -199,14 +516,18 @@
 
 @media (max-width:1050px){
   .keypoints-visual{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-  .kp-visual, .kp-layout-wide, .kp-layout-compact, .kp-layout-half{ grid-column:span 1; }
+  .kp-visual, .kp-layout-wide, .kp-layout-compact, .kp-layout-half,
+  .kp-layout-vehicle, .kp-layout-drivetrain, .kp-layout-dimensions,
+  .kp-layout-tanks, .kp-layout-pump{ grid-column:span 1; }
   .kp-layout-hero{ grid-column:span 2; }
   .kp-path, .kp-cause-path{ flex-wrap:wrap; }
   .kp-loop{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width:700px){
   .keypoints-visual{ grid-template-columns:minmax(0, 1fr); gap:10px; }
-  .kp-visual, .kp-layout-hero, .kp-layout-wide, .kp-layout-compact, .kp-layout-half{ grid-column:1; }
+  .kp-visual, .kp-layout-hero, .kp-layout-wide, .kp-layout-compact, .kp-layout-half,
+  .kp-layout-vehicle, .kp-layout-drivetrain, .kp-layout-dimensions,
+  .kp-layout-tanks, .kp-layout-pump{ grid-column:1; }
   .kp-toggle{ padding:14px; }
   .kp-path, .kp-cause-path{ justify-content:flex-start; }
   .kp-arrow{ transform:rotate(90deg); }
@@ -214,6 +535,12 @@
   .kp-node, .kp-cause{ width:100%; }
   .kp-icon-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
   .kp-concept > strong{ font-size:17px; }
+  .kp-dimension-values{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .kp-instruments{ grid-template-columns:1fr; }
+  .kp-pump-diagram{ grid-template-columns:1fr; }
+  .kp-mech-labels{ font-size:7.5px; }
+  .kp-hydraulic-svg{ min-height:0; }
+  .hyd-step-legend{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
 
 /* Sections de faits — présentation historique conservée */

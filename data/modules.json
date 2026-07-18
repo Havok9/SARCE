@@ -67,31 +67,94 @@
       "keypoints": [
         {
           "t": "Type de véhicule",
-          "d": "Fourgon Pompe Tonne – Secours Routier (FPT SR 4 000), environnement routier / urbain. SDIS 33."
+          "d": "Fourgon Pompe Tonne – Secours Routier (FPT SR 4 000), environnement routier / urbain. SDIS 33. Plage d’utilisation : −5 °C à +30 °C jusqu’à 90 % d’humidité · pente maxi 14° · dévers statique maxi 32°.",
+          "visual": {
+            "type": "vehicle",
+            "layout": "vehicle",
+            "badge": "FPT",
+            "callouts": [
+              "CABINE",
+              "CAISSE / CELLULE",
+              "GROUPE MOTOPOMPE"
+            ]
+          }
         },
         {
           "t": "Châssis",
-          "d": "RENAULT TRUCKS D15 P4x2 FPT 280 E6 — empattement 3 800 mm. Boîte OPTITRONIC 6AS 1000."
+          "d": "RENAULT TRUCKS D15 P4x2 FPT 280 E6 — empattement 3 800 mm. Boîte OPTITRONIC 6AS 1000. Prise de mouvement NL/10B — 270 Nm — rapport 2,03.",
+          "visual": {
+            "type": "drivetrain",
+            "layout": "drivetrain",
+            "labels": [
+              "MOTEUR",
+              "BOÎTE",
+              "TRANSMISSION",
+              "POMPE"
+            ]
+          }
         },
         {
           "t": "Dimensions & poids",
-          "d": "PTAC 16 000 kg · longueur 7 794 mm · largeur 2 550 mm · hauteur 3 178,5 mm en charge (+50 mm à vide)."
+          "d": "PTAC 16 000 kg · longueur 7 794 mm · largeur 2 550 mm · hauteur 3 178,5 mm en charge (+50 mm à vide).",
+          "visual": {
+            "type": "dimensions",
+            "layout": "dimensions",
+            "values": [
+              {
+                "label": "LONGUEUR",
+                "value": "7 794 mm"
+              },
+              {
+                "label": "LARGEUR",
+                "value": "2 550 mm"
+              },
+              {
+                "label": "HAUTEUR",
+                "value": "3 178,5 mm"
+              },
+              {
+                "label": "PTAC",
+                "value": "16 000 kg"
+              }
+            ]
+          }
         },
         {
           "t": "Cuves",
-          "d": "Eau : 3 800 L · mouillant : 200 L — polyéthylène haute densité."
+          "d": "Eau : 3 800 L · mouillant : 200 L — polyéthylène haute densité.",
+          "visual": {
+            "type": "tanks",
+            "layout": "tanks",
+            "tanks": [
+              {
+                "label": "CUVE À EAU",
+                "volume": "3 800 L"
+              },
+              {
+                "label": "CUVE MOUSSANT",
+                "volume": "200 L"
+              }
+            ]
+          }
         },
         {
           "t": "Pompe",
-          "d": "WATEROUS modèle S 200 G, amorçage automatique à pistons (dès que la pression de refoulement < 0,5 bar). Régime optimal d’amorçage ≈ 1 000 tr/min."
-        },
-        {
-          "t": "Prise de mouvement",
-          "d": "NL/10B — 270 Nm — rapport 2,03."
-        },
-        {
-          "t": "Plage d’utilisation",
-          "d": "−5 °C à +30 °C jusqu’à 90 % d’humidité · pente maxi 14° · dévers statique maxi 32°."
+          "d": "WATEROUS modèle S 200 G, amorçage automatique à pistons (dès que la pression de refoulement < 0,5 bar). Régime optimal d’amorçage ≈ 1 000 tr/min.",
+          "visual": {
+            "type": "pump",
+            "layout": "pump",
+            "model": "WATEROUS S 200 G",
+            "instruments": [
+              {
+                "label": "PRESSION D’AMORÇAGE",
+                "value": "< 0,5 bar"
+              },
+              {
+                "label": "RÉGIME D’AMORÇAGE",
+                "value": "≈ 1 000 tr/min"
+              }
+            ]
+          }
         }
       ],
       "sections": [
@@ -595,43 +658,154 @@
       "keypoints": [
         {
           "t": "Mise en service (p. 17)",
-          "d": "Établir si nécessaire une ligne d’alimentation et/ou de refoulement · fermer les vannes de refoulement rep 8 à 13 · enclencher la PDM."
+          "d": "Établir si nécessaire une ligne d’alimentation et/ou de refoulement · fermer les vannes de refoulement rep 8 à 13 · enclencher la PDM.",
+          "visual": {
+            "type": "hydraulic-sequence",
+            "layout": "half",
+            "scenario": "startup",
+            "aria": "Séquence de mise en service de la pompe",
+            "steps": [
+              "LIGNES ÉTABLIES",
+              "REFOULEMENTS FERMÉS",
+              "PDM ENCLENCHÉE"
+            ]
+          }
         },
         {
           "t": "Sur citerne",
-          "d": "Vannes d’aspiration extérieures FERMÉES → enclencher la PDM : la vanne aspiration cuve (rep 1) s’ouvre automatiquement."
+          "d": "Vannes d’aspiration extérieures FERMÉES → enclencher la PDM : la vanne aspiration cuve (rep 1) s’ouvre automatiquement.",
+          "visual": {
+            "type": "hydraulic-flow",
+            "layout": "half",
+            "sourceScenario": "cuve",
+            "aria": "Trajet de l’eau depuis la cuve vers la pompe et les lances"
+          }
         },
         {
           "t": "Source sous pression",
-          "d": "Alimentation branchée sur le nez de pompe → ouvrir la vanne rep 2 (rep 1 se ferme) → enclencher la PDM."
+          "d": "Alimentation branchée sur le nez de pompe → ouvrir la vanne rep 2 (rep 1 se ferme) → enclencher la PDM.",
+          "visual": {
+            "type": "hydraulic-flow",
+            "layout": "half",
+            "sourceScenario": "hydrant",
+            "aria": "Trajet de l’eau depuis une source extérieure sous pression"
+          }
         },
         {
           "t": "Source sans pression (aspiration)",
-          "d": "Ligne d’aspiration branchée → ouvrir rep 2 → PDM. Si pression < 0,5 bar, l’amorceur à pistons se met en action AUTOMATIQUEMENT. Régime ≈ 1 000 tr/min ; dès 0,5 bar atteint, baisser le régime puis ouvrir les refoulements."
+          "d": "Ligne d’aspiration branchée → ouvrir rep 2 → PDM. Si pression < 0,5 bar, l’amorceur à pistons se met en action AUTOMATIQUEMENT. Régime ≈ 1 000 tr/min ; dès 0,5 bar atteint, baisser le régime puis ouvrir les refoulements.",
+          "visual": {
+            "type": "hydraulic-flow",
+            "layout": "half",
+            "sourceScenario": "aspi",
+            "aria": "Aspiration depuis un plan d’eau avec amorceur",
+            "notes": [
+              "< 0,5 bar",
+              "≈ 1 000 tr/min"
+            ]
+          }
         },
         {
           "t": "Bascule cuve ⇄ extérieur",
-          "d": "Il est IMPÉRATIF de couper la régulation de pression lors de la bascule."
+          "d": "Il est IMPÉRATIF de couper la régulation de pression lors de la bascule.",
+          "visual": {
+            "type": "hydraulic-state",
+            "layout": "half",
+            "aria": "Bascule entre alimentation par la cuve et alimentation extérieure",
+            "states": [
+              "cuve",
+              "hydrant"
+            ],
+            "regulation": "OFF"
+          }
         },
         {
           "t": "Arrêt de la pompe",
-          "d": "Baisser le régime → désenclencher la PDM (fermeture automatique de rep 1) → fermer aspirations et refoulements."
+          "d": "Baisser le régime → désenclencher la PDM (fermeture automatique de rep 1) → fermer aspirations et refoulements.",
+          "visual": {
+            "type": "hydraulic-sequence",
+            "layout": "half",
+            "scenario": "stop",
+            "aria": "Ordre d’arrêt de la pompe",
+            "steps": [
+              "BAISSER LE RÉGIME",
+              "PDM OFF",
+              "FERMER ASPIRATIONS",
+              "FERMER REFOULEMENTS"
+            ]
+          }
         },
         {
           "t": "Pompe sans refoulement ouvert",
-          "d": "Échauffement : voyant rouge à 54 °C (gris à 35 °C), valve thermique à 50 °C. En attente, ouvrir légèrement le retour cuve (rep 8). Régulation impossible tant que le voyant est rouge."
+          "d": "Échauffement : voyant rouge à 54 °C (gris à 35 °C), valve thermique à 50 °C. En attente, ouvrir légèrement le retour cuve (rep 8). Régulation impossible tant que le voyant est rouge.",
+          "visual": {
+            "type": "hydraulic-cause",
+            "layout": "half",
+            "scenario": "heat",
+            "aria": "Échauffement de la pompe sans débit de refoulement",
+            "values": [
+              {
+                "value": "35 °C",
+                "label": "VOYANT GRIS"
+              },
+              {
+                "value": "50 °C",
+                "label": "VALVE THERMIQUE"
+              },
+              {
+                "value": "54 °C",
+                "label": "VOYANT ROUGE"
+              }
+            ]
+          }
         },
         {
           "t": "Amorçage défectueux",
-          "d": "Ne pas prolonger au-delà d’1 minute : anomalie sur le circuit (étanchéité, crépine, purges ouvertes…)."
+          "d": "Ne pas prolonger au-delà d’1 minute : anomalie sur le circuit (étanchéité, crépine, purges ouvertes…).",
+          "visual": {
+            "type": "hydraulic-cause",
+            "layout": "half",
+            "scenario": "priming-fault",
+            "aria": "Causes possibles d’un amorçage défectueux",
+            "causes": [
+              "ÉTANCHÉITÉ",
+              "CRÉPINE",
+              "PURGES OUVERTES"
+            ]
+          }
         },
         {
           "t": "Purges par temps froid (p. 27)",
-          "d": "Dévidoir PS : lance + rep 13 + purge rep 28. Pompe/tuyauteries : refoulements 9-12 + purge pompe rep 5 + aspirations rep 2, puis cran de pompe 15 s pour vider l’amorceur. Vannes à 45° pour remisage."
+          "d": "Dévidoir PS : lance + rep 13 + purge rep 28. Pompe/tuyauteries : refoulements 9-12 + purge pompe rep 5 + aspirations rep 2, puis cran de pompe 15 s pour vider l’amorceur. Vannes à 45° pour remisage.",
+          "visual": {
+            "type": "hydraulic-drain",
+            "layout": "half",
+            "scenario": "winter",
+            "aria": "Purge des points bas par temps froid",
+            "steps": [
+              "DÉVIDOIR + REP 13 / 28",
+              "REFOUL. 9–12 + REP 5 / 2",
+              "CRAN POMPE 15 S",
+              "VANNES À 45°"
+            ]
+          }
         },
         {
           "t": "Vidange de la cuve",
-          "d": "Purger pompe/tuyauteries → ouvrir vidange cuve rep 6 → fermer rep 2 → cran de pompe 15 s → tout refermer."
+          "d": "Purger pompe/tuyauteries → ouvrir vidange cuve rep 6 → fermer rep 2 → cran de pompe 15 s → tout refermer.",
+          "visual": {
+            "type": "hydraulic-drain",
+            "layout": "half",
+            "scenario": "tank",
+            "aria": "Vidange complète de la cuve après purge de la pompe",
+            "steps": [
+              "PURGER POMPE / TUYAUX",
+              "OUVRIR REP 6",
+              "FERMER REP 2",
+              "CRAN POMPE 15 S",
+              "TOUT REFERMER"
+            ]
+          }
         }
       ]
     },
@@ -657,19 +831,23 @@
       "keypoints": [
         {
           "t": "Définition",
-          "d": "La chaîne cinématique est l’ensemble des organes du véhicule permettant son mouvement : moteur, embrayage, boîte de vitesses, transmission et roues."
+          "d": "La chaîne cinématique est l’ensemble des organes du véhicule permettant son mouvement : moteur, embrayage, boîte de vitesses, transmission et roues.",
+          "visual": { "type": "mechanical-course", "scenario": "definition", "aria": "Moteur, embrayage, boîte, transmission et roues reliés mécaniquement" }
         },
         {
           "t": "Cheminement propulsion",
-          "d": "Moteur → embrayage → boîte de vitesses → arbre de transmission → pont arrière → demi-arbres → roues."
+          "d": "Moteur → embrayage → boîte de vitesses → arbre de transmission → pont arrière → demi-arbres → roues.",
+          "visual": { "type": "mechanical-course", "scenario": "propulsion", "aria": "Cheminement mécanique complet de la propulsion jusqu’aux roues" }
         },
         {
           "t": "Bifurcation pompe",
-          "d": "Prise de mouvement → arbre de transmission de pompe → pompe centrifuge."
+          "d": "Prise de mouvement → arbre de transmission de pompe → pompe centrifuge.",
+          "visual": { "type": "mechanical-course", "scenario": "pump-branch", "aria": "Bifurcation de la boîte vers le pont et vers la pompe centrifuge" }
         },
         {
           "t": "PDM du GIMAEX",
-          "d": "NL/10B, 270 Nm, rapport 2,03. Enclenchement : NEUTRE + frein de parc, appui long. Son enclenchement ouvre la vanne aspiration cuve."
+          "d": "NL/10B, 270 Nm, rapport 2,03. Enclenchement : NEUTRE + frein de parc, appui long. Son enclenchement ouvre la vanne aspiration cuve.",
+          "visual": { "type": "mechanical-course", "scenario": "pdm", "aria": "Prise de mouvement NL 10B et conditions d’enclenchement" }
         }
       ],
       "sections": [
@@ -1118,8 +1296,7 @@
       "links": [
         "circuit-eau",
         "pompe",
-        "tableaux",
-        "accessoires"
+        "tableaux"
       ],
       "views": [
         {
@@ -1160,43 +1337,53 @@
       "keypoints": [
         {
           "t": "Principe (COD 1)",
-          "d": "Eau + émulseur = SOLUTION MOUSSANTE ; solution + air = MOUSSE. Actions : refroidissement, étouffement, isolement, écran. Pour feux d’hydrocarbures et de liquides inflammables ; un solvant polaire exige un émulseur explicitement compatible."
+          "d": "Eau + émulseur = SOLUTION MOUSSANTE ; solution + air = MOUSSE. Actions : refroidissement, étouffement, isolement, écran. Pour feux d’hydrocarbures et de liquides inflammables ; un solvant polaire exige un émulseur explicitement compatible.",
+          "visual": { "type": "foam-course", "scenario": "principle", "aria": "Eau et émulseur mélangés puis aérés pour produire la mousse" }
         },
         {
           "t": "Émulseurs",
-          "d": "Diminuent la tension superficielle de l’eau pour favoriser la formation de mousse. Base protéinique ou synthétique."
+          "d": "Diminuent la tension superficielle de l’eau pour favoriser la formation de mousse. Base protéinique ou synthétique.",
+          "visual": { "type": "foam-course", "scenario": "emulsifier", "aria": "Action de l’émulseur sur la tension superficielle de l’eau" }
         },
         {
           "t": "Taux de concentration",
-          "d": "Quantité d’émulseur mélangée à l’eau. CTD (Christian Tabouret Diffuseur) : dosage automatique de 0,2 à 1 %."
+          "d": "Quantité d’émulseur mélangée à l’eau. CTD (Christian Tabouret Diffuseur) : dosage automatique de 0,2 à 1 %.",
+          "visual": { "type": "foam-course", "scenario": "concentration", "aria": "Pompe CTD injectant de 0,2 à 1 pour cent d’émulseur dans l’eau" }
         },
         {
           "t": "Taux de foisonnement",
-          "d": "Volume de mousse ÷ solution moussante fournie. Plus il y a d’air, plus le foisonnement est élevé et plus les bulles sont grosses."
+          "d": "Volume de mousse ÷ solution moussante fournie. Plus il y a d’air, plus le foisonnement est élevé et plus les bulles sont grosses.",
+          "visual": { "type": "foam-course", "scenario": "expansion", "aria": "Rapport entre volume de mousse et volume de solution moussante" }
         },
         {
           "t": "Bas foisonnement (< 20)",
-          "d": "Lance / lance-canon, longue portée, feux à fort rayonnement en extérieur, peu sensible aux conditions atmosphériques."
+          "d": "Lance / lance-canon, longue portée, feux à fort rayonnement en extérieur, peu sensible aux conditions atmosphériques.",
+          "visual": { "type": "foam-course", "scenario": "low", "aria": "Jet de mousse à bas foisonnement et longue portée sur un feu extérieur" }
         },
         {
           "t": "Moyen foisonnement (20 à 200)",
-          "d": "Lance / générateur, portée < 10 m : feux de VL, poubelles, préventif sur écoulement, consolide une extinction au bas foisonnement."
+          "d": "Lance / générateur, portée < 10 m : feux de VL, poubelles, préventif sur écoulement, consolide une extinction au bas foisonnement.",
+          "visual": { "type": "foam-course", "scenario": "medium", "aria": "Mousse à moyen foisonnement couvrant une surface et un véhicule" }
         },
         {
           "t": "Haut foisonnement (> 200)",
-          "d": "Générateur-ventilateur déversé en sortie d’appareil : espaces clos, entrepôts. Très sensible aux conditions atmosphériques."
+          "d": "Générateur-ventilateur déversé en sortie d’appareil : espaces clos, entrepôts. Très sensible aux conditions atmosphériques.",
+          "visual": { "type": "foam-course", "scenario": "high", "aria": "Mousse à haut foisonnement remplissant un volume clos" }
         },
         {
           "t": "Lance à mousse",
-          "d": "Fermer la vanne RETOUR TONNE (sinon la solution moussante retourne dans la cuve)."
+          "d": "Fermer la vanne RETOUR TONNE (sinon la solution moussante retourne dans la cuve).",
+          "visual": { "type": "foam-course", "scenario": "return-valve", "aria": "Circuit mousse avec la vanne de retour tonne fermée" }
         },
         {
           "t": "Choix opérationnel",
-          "d": "Choisir d’abord l’objectif : portée et résistance au vent → bas ; couverture de surface ou prévention → moyen ; remplissage d’un volume clos → haut."
+          "d": "Choisir d’abord l’objectif : portée et résistance au vent → bas ; couverture de surface ou prévention → moyen ; remplissage d’un volume clos → haut.",
+          "visual": { "type": "foam-course", "scenario": "choice", "aria": "Choix entre bas, moyen et haut foisonnement selon l’objectif" }
         },
         {
           "t": "Vérification avant emploi",
-          "d": "Identifier le combustible et vérifier la compatibilité de l’émulseur, le taux de concentration demandé, le moyen de production disponible et l’influence du vent."
+          "d": "Identifier le combustible et vérifier la compatibilité de l’émulseur, le taux de concentration demandé, le moyen de production disponible et l’influence du vent.",
+          "visual": { "type": "foam-course", "scenario": "checks", "aria": "Cinq contrôles avant la production de mousse" }
         }
       ],
       "sections": [
@@ -2027,19 +2214,23 @@
       "keypoints": [
         {
           "t": "Enclenchement PMT",
-          "d": "NEUTRE + frein de parc, appui LONG jusqu’à éclairage du bouton. Asservissements : arrêt d’urgence et éclairage tableau au cran de pompe ; flash + buzzer au frein de parc."
+          "d": "NEUTRE + frein de parc, appui LONG jusqu’à éclairage du bouton. Asservissements : arrêt d’urgence et éclairage tableau au cran de pompe ; flash + buzzer au frein de parc.",
+          "visual": { "type": "control-course", "scenario": "pmt", "aria": "Voyants et commandes nécessaires à l’enclenchement de la prise de mouvement" }
         },
         {
           "t": "Surveillance en utilisation (p. 26)",
-          "d": "Régime moteur · témoin d’alerte moteur · pression de refoulement · pression d’aspiration · température pompe · niveau d’eau (sauf aspiration extérieure)."
+          "d": "Régime moteur · témoin d’alerte moteur · pression de refoulement · pression d’aspiration · température pompe · niveau d’eau (sauf aspiration extérieure).",
+          "visual": { "type": "control-course", "scenario": "monitor", "aria": "Six instruments à surveiller sur le tableau de commande" }
         },
         {
           "t": "Mauvaises manipulations",
-          "d": "Jamais de pompe à sec · jamais refoulements fermés (échauffement) · amorçage > 1 min = anomalie · éviter l’arrêt brusque du moteur (1 min au ralenti)."
+          "d": "Jamais de pompe à sec · jamais refoulements fermés (échauffement) · amorçage > 1 min = anomalie · éviter l’arrêt brusque du moteur (1 min au ralenti).",
+          "visual": { "type": "control-course", "scenario": "faults", "aria": "Quatre mauvaises manipulations interdites sur la pompe" }
         },
         {
           "t": "Rembobinage dévidoirs",
-          "d": "ENLEVER LE FREIN avant rembobinage (LDT et stockage)."
+          "d": "ENLEVER LE FREIN avant rembobinage (LDT et stockage).",
+          "visual": { "type": "control-course", "scenario": "reel", "aria": "Dévidoir dont le frein est libéré avant rembobinage" }
         }
       ]
     },
@@ -2058,8 +2249,7 @@
       ],
       "links": [
         "circuit-eau",
-        "pompe",
-        "accessoires"
+        "pompe"
       ],
       "views": [
         {
@@ -2158,43 +2348,53 @@
       "keypoints": [
         {
           "t": "Débit (Q)",
-          "d": "Quantité d’eau écoulée par unité de temps : L/s, L/min, m³/h."
+          "d": "Quantité d’eau écoulée par unité de temps : L/s, L/min, m³/h.",
+          "visual": { "type": "hydro-course", "scenario": "flow", "aria": "Volume d’eau traversant une lance pendant un temps donné" }
         },
         {
           "t": "Pression (P)",
-          "d": "Force par unité de surface, en bars (1 bar = 1 kg/cm²). STATIQUE : eau au repos · DYNAMIQUE : eau en mouvement."
+          "d": "Force par unité de surface, en bars (1 bar = 1 kg/cm²). STATIQUE : eau au repos · DYNAMIQUE : eau en mouvement.",
+          "visual": { "type": "hydro-course", "scenario": "pressure", "aria": "Force appliquée sur une surface et comparaison pression statique dynamique" }
         },
         {
           "t": "Les 5 lois des pertes de charge",
-          "d": "1 proportionnelles au CARRÉ du débit (débit ×2 = pertes ×4) · 2 proportionnelles à la longueur · 3 fonction de la rugosité (PIL/toile) · 4 inversement proportionnelles au diamètre · 5 indépendantes de la pression."
+          "d": "1 proportionnelles au CARRÉ du débit (débit ×2 = pertes ×4) · 2 proportionnelles à la longueur · 3 fonction de la rugosité (PIL/toile) · 4 inversement proportionnelles au diamètre · 5 indépendantes de la pression.",
+          "visual": { "type": "hydro-course", "scenario": "loss-laws", "aria": "Les cinq facteurs gouvernant les pertes de charge" }
         },
         {
           "t": "Dénivellation",
-          "d": "1 bar par 10 m, positive si la lance est au-dessus de l’engin (ajouter), négative en dessous (retirer)."
+          "d": "1 bar par 10 m, positive si la lance est au-dessus de l’engin (ajouter), négative en dessous (retirer).",
+          "visual": { "type": "hydro-course", "scenario": "elevation", "aria": "Alimentation d’une lance située au-dessus de la pompe avec un bar pour dix mètres" }
         },
         {
           "t": "Situation : établissement long",
-          "d": "100 m de Ø45 à 250 L/min = 1,5 bar de pertes — à ajouter à la pression de lance."
+          "d": "100 m de Ø45 à 250 L/min = 1,5 bar de pertes — à ajouter à la pression de lance.",
+          "visual": { "type": "hydro-course", "scenario": "long-line", "aria": "Établissement de cent mètres en diamètre quarante-cinq avec ses pertes" }
         },
         {
           "t": "Situation : alimentation insuffisante",
-          "d": "Pression demandée > capacité d’alimentation → CAVITATION : bruit de billes, tuyau d’alimentation qui s’écrase. Fermer le retour cuve, réduire les débits, rendre compte."
+          "d": "Pression demandée > capacité d’alimentation → CAVITATION : bruit de billes, tuyau d’alimentation qui s’écrase. Fermer le retour cuve, réduire les débits, rendre compte.",
+          "visual": { "type": "hydro-course", "scenario": "cavitation", "aria": "Tuyau d’alimentation écrasé et bulles de cavitation dans la pompe" }
         },
         {
           "t": "Situation : plusieurs lances",
-          "d": "Les débits s’additionnent → les pertes de charge explosent (loi du carré). Calculer sur la lance la plus défavorisée."
+          "d": "Les débits s’additionnent → les pertes de charge explosent (loi du carré). Calculer sur la lance la plus défavorisée.",
+          "visual": { "type": "hydro-course", "scenario": "multi-nozzle", "aria": "Collecteur alimentant deux lances dont une est défavorisée" }
         },
         {
           "t": "Réaction à la lance",
-          "d": "Plus la pression et le débit sont élevés, plus la réaction au porte-lance est forte — adapter la pression aux porteurs."
+          "d": "Plus la pression et le débit sont élevés, plus la réaction au porte-lance est forte — adapter la pression aux porteurs.",
+          "visual": { "type": "hydro-course", "scenario": "reaction", "aria": "Jet de lance et force de réaction opposée sur le porte-lance" }
         },
         {
           "t": "Débit maximal d’un hydrant",
-          "d": "Mesurer Pstat, Pdyn et le débit réel. Qmax = Q utilisé × √(Pstat ÷ (Pstat − Pdyn)) ; conserver une marge et surveiller la chute de pression lors de l’ajout de lances."
+          "d": "Mesurer Pstat, Pdyn et le débit réel. Qmax = Q utilisé × √(Pstat ÷ (Pstat − Pdyn)) ; conserver une marge et surveiller la chute de pression lors de l’ajout de lances.",
+          "visual": { "type": "hydro-course", "scenario": "hydrant-max", "aria": "Hydrant équipé pour mesurer pression statique dynamique et débit" }
         },
         {
           "t": "Pressions usuelles des lances du cours",
-          "d": "40/14 : 250 L/min à 3,5 bar · 65/18 : 500 L/min à 5,7 bar · 100/25 : 1 000 L/min à 6,1 bar · LDV 45 : jusqu’à 500 L/min, 6 à 8 bar."
+          "d": "40/14 : 250 L/min à 3,5 bar · 65/18 : 500 L/min à 5,7 bar · 100/25 : 1 000 L/min à 6,1 bar · LDV 45 : jusqu’à 500 L/min, 6 à 8 bar.",
+          "visual": { "type": "hydro-course", "scenario": "nozzle-table", "aria": "Quatre lances dessinées avec leur débit et pression usuels" }
         }
       ]
     },
@@ -2217,23 +2417,28 @@
       "keypoints": [
         {
           "t": "Mât — présentation",
-          "d": "Mât télescopique TEKLITE TF340 NT/3, hauteur déployée 4,95 m, 4 projecteurs LED 55 W pré-réglables, à l’avant de la structure. Commandes au coffre arrière gauche."
+          "d": "Mât télescopique TEKLITE TF340 NT/3, hauteur déployée 4,95 m, 4 projecteurs LED 55 W pré-réglables, à l’avant de la structure. Commandes au coffre arrière gauche.",
+          "visual": { "type": "mast-course", "scenario": "overview", "aria": "Fourgon avec mât télescopique déployé et quatre projecteurs" }
         },
         {
           "t": "Mât — conditions de montée",
-          "d": "Moteur du véhicule EN FONCTIONNEMENT et pression d’air dans les bouteilles de servitude châssis."
+          "d": "Moteur du véhicule EN FONCTIONNEMENT et pression d’air dans les bouteilles de servitude châssis.",
+          "visual": { "type": "mast-course", "scenario": "conditions", "aria": "Moteur et bouteilles d’air alimentant la montée du mât" }
         },
         {
           "t": "Mât — descente",
-          "d": "COUPER l’éclairage des projecteurs puis PATIENTER 2 MINUTES avant la descente. Le bon rangement est indiqué par l’extinction du voyant rouge."
+          "d": "COUPER l’éclairage des projecteurs puis PATIENTER 2 MINUTES avant la descente. Le bon rangement est indiqué par l’extinction du voyant rouge.",
+          "visual": { "type": "mast-course", "scenario": "descent", "aria": "Projecteurs coupés, attente de deux minutes puis rangement du mât" }
         },
         {
           "t": "Mât — purge hebdomadaire",
-          "d": "Une fois par semaine : depuis la position haute, appuyer sur la vanne de purge (coffre avant droit) jusqu’à la position basse (voyant éteint)."
+          "d": "Une fois par semaine : depuis la position haute, appuyer sur la vanne de purge (coffre avant droit) jusqu’à la position basse (voyant éteint).",
+          "visual": { "type": "mast-course", "scenario": "purge", "aria": "Vérin du mât en position haute relié à sa vanne de purge" }
         },
         {
           "t": "Porte-échelles — présentation",
-          "d": "Basculant semi-automatique en partie gauche : monter/descendre les échelles depuis le sol sans accéder à la plateforme. Commande au coffre arrière gauche."
+          "d": "Basculant semi-automatique en partie gauche : monter/descendre les échelles depuis le sol sans accéder à la plateforme. Commande au coffre arrière gauche.",
+          "visual": { "type": "mast-course", "scenario": "ladder-carrier", "aria": "Porte-échelles basculant commandé depuis le coffre arrière gauche" }
         }
       ],
       "sections": [
@@ -2351,8 +2556,7 @@
       "links": [
         "chaine",
         "tableaux",
-        "circuit-eau",
-        "accessoires"
+        "circuit-eau"
       ],
       "views": [
         {
@@ -2411,23 +2615,28 @@
       "keypoints": [
         {
           "t": "Turbo-compresseur",
-          "d": "Traité comme sous-partie du MOTEUR → module Chaîne cinématique, section B."
+          "d": "Traité comme sous-partie du MOTEUR → module Chaîne cinématique, section B.",
+          "visual": { "type": "equipment-course", "scenario": "turbo", "aria": "Turbine d’échappement reliée par un axe au compresseur d’admission" }
         },
         {
           "t": "Ponts, réducteurs, différentiel",
-          "d": "→ module Chaîne cinématique, section G. Précautions : connaître la « boule de pont », vérifier déformations et fuites d’huile (fuite réducteur = véhicule indisponible + GTL avisé), bruits anormaux."
+          "d": "→ module Chaîne cinématique, section G. Précautions : connaître la « boule de pont », vérifier déformations et fuites d’huile (fuite réducteur = véhicule indisponible + GTL avisé), bruits anormaux.",
+          "visual": { "type": "equipment-course", "scenario": "axle", "aria": "Pont avec différentiel central, réducteurs et roues" }
         },
         {
           "t": "Boîte de transfert",
-          "d": "→ encadré comparatif FPT 4x2 / CCF 4x4 du module Chaîne cinématique."
+          "d": "→ encadré comparatif FPT 4x2 / CCF 4x4 du module Chaîne cinématique.",
+          "visual": { "type": "equipment-course", "scenario": "transfer", "aria": "Boîte de transfert répartissant le mouvement vers les ponts" }
         },
         {
           "t": "Ordre 4×4",
-          "d": "1 enclencher le pont avant · 2 passer de GV à PV à l’arrêt · 3 bloquer les différentiels si nécessaire. Retirer les blocages dès le franchissement terminé."
+          "d": "1 enclencher le pont avant · 2 passer de GV à PV à l’arrêt · 3 bloquer les différentiels si nécessaire. Retirer les blocages dès le franchissement terminé.",
+          "visual": { "type": "equipment-course", "scenario": "four-wheel-order", "aria": "Séquence en trois étapes d’enclenchement des fonctions quatre par quatre" }
         },
         {
           "t": "Ralentisseur",
-          "d": "Complément du frein moteur et de la retenue moteur : il limite l’échauffement des freins de service lors d’un ralentissement prolongé."
+          "d": "Complément du frein moteur et de la retenue moteur : il limite l’échauffement des freins de service lors d’un ralentissement prolongé.",
+          "visual": { "type": "equipment-course", "scenario": "retarder", "aria": "Rotor et stator d’un ralentisseur hydrodynamique" }
         }
       ],
       "sections": [
@@ -2498,242 +2707,6 @@
             {
               "t": "Sécurité",
               "d": "Toutes opérations véhicule à l’arrêt, frein de parc serré. Ne jamais rester sous le porte-échelles. Personne dans le champ de manœuvre des dévidoirs."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "accessoires",
-      "domain": "engins",
-      "icon": "▦",
-      "schema": "accessoires-hydro",
-      "title": "Accessoires & équipements COD 1",
-      "tag": "Reconnaître les raccords hydrauliques, l’aspiration et les équipements de mise en œuvre générale du COD 1.",
-      "tags": [
-        "accessoires",
-        "alimentation",
-        "aspiration",
-        "raccords",
-        "équipements",
-        "COD 1"
-      ],
-      "links": [
-        "fpt-vue",
-        "circuit-eau",
-        "hydro",
-        "mousse"
-      ],
-      "views": [
-        {
-          "label": "Accessoires hydrauliques",
-          "schema": "accessoires-hydro"
-        },
-        {
-          "label": "Équipements COD 1",
-          "schema": "accessoires-operation",
-          "elements": [
-            {
-              "id": "calage",
-              "n": 1,
-              "x": 15,
-              "y": 34,
-              "label": "Calage du véhicule",
-              "role": "Immobilise l’engin en complément du frein de parc. Poser les cales selon la pente et vérifier leur appui avant toute mise en œuvre de la pompe ou du parc-échelles."
-            },
-            {
-              "id": "balisage",
-              "n": 2,
-              "x": 38,
-              "y": 34,
-              "label": "Balisage, gyrophares et feux",
-              "role": "Rend l’engin et la zone de travail visibles. Adapter le balisage au trafic, à la visibilité et au risque, sans exposer le personnel lors de sa pose."
-            },
-            {
-              "id": "manometre",
-              "n": 3,
-              "x": 62,
-              "y": 34,
-              "label": "Contrôle de pression hydrant",
-              "role": "Permet de comparer pression statique et dynamique avec un débit connu afin d’évaluer la capacité du réseau et d’anticiper une alimentation insuffisante."
-            },
-            {
-              "id": "forcement",
-              "n": 4,
-              "x": 85.5,
-              "y": 34,
-              "label": "Outils de forcement",
-              "role": "Regrouper, contrôler et rendre accessibles les outils désignés par le chef d’agrès. Transport protecteur et emploi uniquement dans la zone sécurisée."
-            },
-            {
-              "id": "echelles",
-              "n": 5,
-              "x": 28,
-              "y": 77,
-              "label": "Parc-échelles et verrouillage",
-              "role": "Contrôler les verrous et le rangement avant déplacement. Personne ne reste sous le porte-échelles pendant sa manœuvre."
-            },
-            {
-              "id": "reconditionnement",
-              "n": 6,
-              "x": 74.5,
-              "y": 77,
-              "label": "Reconditionnement du matériel",
-              "role": "Dépressuriser, rincer, vidanger, contrôler et ranger chaque matériel. Signaler immédiatement toute perte, fuite, joint absent ou détérioration."
-            }
-          ]
-        }
-      ],
-      "elements": [
-        {
-          "id": "division",
-          "n": 1,
-          "x": 15,
-          "y": 33,
-          "label": "Division",
-          "role": "Répartit une conduite d’alimentation ou de refoulement vers plusieurs établissements. Les sorties inutilisées restent fermées et obturées."
-        },
-        {
-          "id": "coude",
-          "n": 2,
-          "x": 40,
-          "y": 33,
-          "label": "Coude d’alimentation",
-          "role": "Oriente le tuyau à la sortie du point d’eau et limite les contraintes sur le raccord. Le placer sans torsion ni coude serré dans le tuyau."
-        },
-        {
-          "id": "retenue",
-          "n": 3,
-          "x": 65,
-          "y": 33,
-          "label": "Retenue de bouche d’incendie",
-          "role": "Pièce de raccordement prévue pour l’alimentation sur bouche d’incendie. Elle est posée et contrôlée avant la mise en eau selon l’armement local."
-        },
-        {
-          "id": "bouchon",
-          "n": 4,
-          "x": 87.5,
-          "y": 33,
-          "label": "Bouchon obturateur Ø70",
-          "role": "Ferme une sortie inutilisée. En cas de bouchon manquant, appliquer le montage de dépannage en circuit fermé prévu au COD 1, sans improviser sous pression."
-        },
-        {
-          "id": "crepine",
-          "n": 5,
-          "x": 17,
-          "y": 76,
-          "label": "Crépine d’aspiration",
-          "role": "Filtre les corps étrangers à l’entrée de la ligne d’aspiration. Elle doit rester immergée, dégagée du fond et amarrée."
-        },
-        {
-          "id": "aspiral",
-          "n": 6,
-          "x": 47,
-          "y": 76,
-          "label": "Aspiral Ø110",
-          "role": "Tuyau semi-rigide résistant à la dépression. Aligner les raccords, serrer la ligne et éviter toute prise d’air ou point haut."
-        },
-        {
-          "id": "gfr",
-          "n": 7,
-          "x": 78,
-          "y": 76,
-          "label": "Canne plongeuse GFR",
-          "role": "Prélève l’émulseur dans le bidon pour le générateur de mousse. Vérifier la concentration, l’immersion de la canne et l’absence de prise d’air."
-        }
-      ],
-      "keypoints": [
-        {
-          "t": "Choisir avant de raccorder",
-          "d": "Identifier la source d’eau, le diamètre, le sens de circulation et la fonction de la pièce. Contrôler joints, demi-raccords, verrouillage et propreté avant la mise en pression."
-        },
-        {
-          "t": "Alimentation sur hydrant",
-          "d": "Établir sans torsion, ouvrir progressivement et surveiller la pression dynamique. Une chute importante entre pression statique et dynamique signale une capacité réseau limitée."
-        },
-        {
-          "t": "Aspiration sur point d’eau naturel",
-          "d": "Ligne étanche et aussi courte que possible : crépine immergée et amarrée, sans contact avec le fond. Toute prise d’air dégrade ou empêche l’amorçage."
-        },
-        {
-          "t": "Après utilisation",
-          "d": "Dépressuriser avant tout désaccouplement, rincer si nécessaire, vidanger, contrôler joints et filets, puis remettre bouchons et accessoires à leur emplacement."
-        },
-        {
-          "t": "MGO — équipements",
-          "d": "Avant l’action hydraulique : positionnement, signaux lumineux, éclairage, calage et balisage. Après l’action : parc-échelles, outils et matériel sont contrôlés puis reconditionnés."
-        }
-      ],
-      "sections": [
-        {
-          "title": "Alimenter depuis un PI ou une BI",
-          "color": "#2aa9d6",
-          "facts": [
-            {
-              "t": "Avant ouverture",
-              "d": "Identifier le point d’eau, purger si la procédure locale le prévoit, monter la retenue ou le coude, raccorder l’alimentation et annoncer la mise en eau."
-            },
-            {
-              "t": "Pendant l’alimentation",
-              "d": "Ouvrir progressivement. Surveiller la pression dynamique et éviter les coups de bélier, les coudes brusques et le passage d’engins sur les tuyaux."
-            },
-            {
-              "t": "Sortie inutilisée",
-              "d": "La maintenir fermée et obturée. Ne jamais déposer un bouchon ni un raccord tant que la ligne est sous pression."
-            }
-          ]
-        },
-        {
-          "title": "Aspirer sur un point d’eau naturel",
-          "color": "#3fcf8e",
-          "facts": [
-            {
-              "t": "Montage",
-              "d": "Assembler les aspiraux Ø110 en contrôlant chaque joint. Poser la crépine, l’amarrer et maintenir l’ensemble immergé sans aspirer vase, sable ou débris."
-            },
-            {
-              "t": "Étanchéité",
-              "d": "Une ligne d’aspiration travaille en dépression : un joint absent, un raccord mal serré ou une fissure fait entrer de l’air sans forcément laisser sortir d’eau."
-            },
-            {
-              "t": "Amorçage",
-              "d": "Fermer les vannes parasites, lancer l’amorceur et surveiller la montée de pression. À 3 bars, l’amorceur du GIMAEX débraye automatiquement."
-            }
-          ]
-        },
-        {
-          "title": "Produire de la mousse avec un GFR",
-          "color": "#b68cff",
-          "facts": [
-            {
-              "t": "Canne plongeuse",
-              "d": "La plonger dans l’émulseur adapté au combustible. Le bidon reste stable, accessible et suffisamment ventilé pour ne pas se mettre en dépression."
-            },
-            {
-              "t": "Dosage",
-              "d": "Régler le proportionnement prescrit par l’émulseur et conserver le débit nominal de la lance. Un mauvais débit ou une prise d’air dégrade le dosage et la qualité de mousse."
-            },
-            {
-              "t": "Fin d’emploi",
-              "d": "Fermer l’émulseur, rincer le circuit à l’eau claire selon la procédure, vidanger puis remettre la canne et les raccords propres dans leur logement."
-            }
-          ]
-        },
-        {
-          "title": "Équipements et fin de mission COD 1",
-          "color": "#e6a43a",
-          "facts": [
-            {
-              "t": "Avant la pompe",
-              "d": "Positionner l’engin, porter les EPI prescrits, activer la signalisation utile, éclairer, caler puis baliser avant d’exposer le personnel autour de l’engin."
-            },
-            {
-              "t": "Contrôles avant départ",
-              "d": "Vérifier la fermeture des vannes, la remise en place des bouchons, le verrouillage des dévidoirs et du parc-échelles, ainsi que le rangement des outils."
-            },
-            {
-              "t": "Anomalie",
-              "d": "Tout matériel détérioré, manquant ou douteux est isolé et signalé. Ne pas remettre en service un accessoire dont l’étanchéité ou le verrouillage n’est pas garanti."
             }
           ]
         }
