@@ -444,7 +444,7 @@ const App = (() => {
     'hydraulic-flow', 'hydraulic-sequence', 'hydraulic-state',
     'hydraulic-cause', 'hydraulic-drain',
     'mechanical-course', 'foam-course', 'control-course',
-    'hydro-course', 'mast-course', 'equipment-course',
+    'hydro-course', 'mast-course', 'equipment-course', 'incident-course',
     'flow', 'cause-effect', 'loop', 'sequence',
     'icons', 'comparison', 'threshold', 'concept', 'default'
   ]);
@@ -988,8 +988,437 @@ const App = (() => {
     return drawEquipmentCourse(visual);
   }
 
+  /*
+   * Planche Incendie : chaque index possède une scène explicite. Les chaînes
+   * ci-dessous ne sont jamais déduites des titres et ne modifient pas le cours.
+   * Format : [composition, "objet|légende|état,...", note courte].
+   */
+  const INCIDENT_SCENES = {
+    'systeme-feu': [
+      ['orbit','fire|FLAMME|orange,outside|EXTÉRIEUR|blue,air|ZONE BASSE|blue,smoke|ZONE HAUTE|red,fuel|GAZ COMB.|orange,wall|PAROIS|grey,heat|ÉNERGIE|red','7 ZONES RELIÉES'],
+      ['flow','air|O₂|blue,fuel|PYROLYSE|orange,fire|COMBUSTION|red,smoke|FUMÉES|grey','MATIÈRE EN CIRCULATION'],
+      ['compare','fire|FOYER|orange,smoke|CONVECTION|red,heat|RAYONNEMENT|orange,wall|CONDUCTION FAIBLE|grey','ÉCHANGES D’ÉNERGIE'],
+      ['network','fire|ACTION|orange,room|VOLUME|grey,smoke|FUMÉES|red,air|AIR|blue,fuel|COMBUSTIBLE|orange,heat|CHALEUR|red','TOUT LE SYSTÈME RÉAGIT'],
+      ['flow','outside|EXTÉRIEUR|grey,door-closed|PORTE FERMÉE|green,air|AIR COUPÉ|grey,fire|FOYER ↓|green','ANTIVENTILATION'],
+      ['flow','outside|EXTÉRIEUR|blue,door-open|PORTE OUVERTE|orange,air|AIR ENTRE|blue,fire|FOYER ↑|red','CONVECTION ACTIVÉE'],
+      ['flow','nozzle|IMPULSION|blue,smoke|CIEL GAZEUX|red,steam|VAPEUR|blue,heat|RAYONNEMENT ↓|green','REFROIDIR · INERTER'],
+      ['scene','smoke|BACKDRAFT|red,air|COMBURANT|blue,fuel|FLASHOVER|orange,heat|FGI|red,chain|RADICAUX|orange','TÉTRAÈDRE DE COMBUSTION']
+    ],
+    phenomenes: [
+      ['scene','room|VOLUME|grey,fuel|COMBUSTIBLE|orange,fire-small|FEU NAISSANT|orange,smoke-small|PEU DE FUMÉES|grey','PUISSANCE MODÉRÉE'],
+      ['compare','door-open|VENTILÉ|blue,fire|FLC|orange,door-closed|SOUS-VENTILÉ|grey,smoke|FLV|red','DEUX RÉGIMES'],
+      ['scene','room|PIÈCE|grey,fuel|TOUT LE MOBILIER|orange,fire|PLEINEMENT DÉV.|red,smoke|VENTILATION LIMITANTE|red','APRÈS FLASHOVER'],
+      ['timeline','fire|PUISSANCE MAX|red,fire-small|RÉGRESSION|orange,smoke|FUMÉES PRÉSENTES|red','DANGER RÉSIDUEL'],
+      ['orbit','smoke|FUMÉES|red,skull|TOXICITÉ|red,eye|OPACITÉ|grey,heat|RAYONNEMENT|orange,fire|INFLAMMABILITÉ|red,building|ENVAHISSEMENT|grey','7 DANGERS'],
+      ['sequence','fire-small|FEU LOCALISÉ|orange,smoke|GAZ CHAUDS|red,heat|SEUIL ÉNERGIE|red,fire|EMBRASEMENT|red','VOLUME VENTILÉ'],
+      ['sequence','door-closed|CONFINÉ|grey,smoke|FUMÉES RICHES|red,door-open|APPORT D’AIR|orange,explosion|BACKDRAFT|red','COMBURANT DÉCLENCHEUR'],
+      ['sequence','smoke|GAZ IMBRÛLÉS|grey,heat|SOURCE D’IGNITION|orange,explosion|FGI|red','ÉNERGIE D’ACTIVATION']
+    ],
+    extinction: [
+      ['flow','outside|AIR|blue,door-closed|OUVRANT CONTRÔLÉ|green,air|COMBURANT ↓|grey,fire|FEU MAÎTRISÉ|green','ANTIVENTILATION'],
+      ['flow','smoke|FUMÉES|red,nozzle|EAU|blue,steam|VAPORISATION|blue,heat|TEMPÉRATURE ↓|green','ÉVACUER · REFROIDIR · INERTER'],
+      ['flow','fuel|COMBUSTIBLE|orange,nozzle|APPLICATION DIRECTE|blue,heat|TEMPÉRATURE ↓|green,smoke-small|PYROLYSE ↓|green','AGIR À LA SOURCE'],
+      ['flow','chain|RADICAUX LIBRES|red,powder|POUDRE / GAZ|orange,chain-broken|RÉACTION CASSÉE|green','INHIBITION'],
+      ['sequence','controller|CHEF D’AGRÈS|orange,pair|BAT|blue,hose|ÉTABLISSEMENT|blue,nozzle|ATTAQUE|orange','ORDRES PRÉPARATOIRES'],
+      ['compare','reel|100 m|blue,clock|≈ 2 MIN|green,tank|CITERNE SOUPLE|blue,clock|≈ 20 MIN|orange','ORDRES DE GRANDEUR'],
+      ['orbit','truck|ENGIN ALIMENTÉ|blue,tanker|NORIA 1|orange,tanker|NORIA 2|orange,tank|RÉSERVE D’EAU|blue,nozzle|LANCES|blue','PÉRENNITÉ DE L’EAU']
+    ],
+    ventilation: [
+      ['scene','room|VOLUME|grey,door-open|ENTRANT|blue,fan|VENTILATEUR|orange,smoke|FLUX GAZEUX|red,outlet|SORTANT|green','AGIR SUR LES FLUX'],
+      ['flow','air|AIR ENTRANT|blue,door-open|OUVRANT|green,smoke|VEINE D’AIR|red,outlet|FUMÉES SORTANTES|green','ENTRANT → SORTANT'],
+      ['stack','air|GAZ FROIDS EN BAS|blue,smoke|GAZ CHAUDS EN HAUT|red,outlet|TIRAGE|orange','CONVECTION + PRESSION'],
+      ['orbit','fan|VENTILER|orange,shield|PROTÉGER|green,smoke|DÉSENFUMER|blue,nozzle|ATTAQUER|red','3 OBJECTIFS'],
+      ['compare','fire|LOCAL EN FEU|red,fan|DÉPRESSION|blue,building|VOLUME SAIN|green,fan|SURPRESSION|green','RECLOISONNER LES FLUX'],
+      ['compare','fan|VENTILATION ATTAQUE|orange,nozzle|ATTAQUE HYDRAULIQUE|blue,door-closed|ANTIVENTILATION|green,fire|COMBURANT COUPÉ|grey','DEUX TACTIQUES'],
+      ['sequence','controller|CHEF DE GROUPE|orange,check|FEU ÉTEINT / ORDRE|green,fan|DÉSENFUMAGE|blue','CONDITION DE MISE EN ŒUVRE'],
+      ['flow','fan|ACTION|orange,smoke|FLUX|red,outlet|SORTANT|green,gauge|VITESSE ↑|blue','INDICATEUR D’EFFICACITÉ']
+    ],
+    sauvetage: [
+      ['flow','person-danger|VICTIME|red,stairs|COMMUNICATIONS|green,ladder|MOYEN EXTÉRIEUR|orange,safe|ZONE SÛRE|green','DANGER IMMINENT'],
+      ['flow','person|PERSONNE VALIDE|blue,rescuer|ACCOMPAGNER|orange,safe|ZONE SÛRE|green','DÉPLACEMENT GUIDÉ'],
+      ['scene','room|LOCAL ÉTANCHE|green,person|PERSONNES|blue,shield|PROTECTION|green,smoke|DANGER DEHORS|red','RESTER À L’ABRI'],
+      ['compare','people|PUBLIC|blue,exit|ÉVACUATION|orange,smoke|TRAJET EXPOSÉ|red,room|CONFINEMENT|green','CHOISIR LE MOINS EXPOSANT'],
+      ['compare','building|STRUCTURE EN DUR|green,shield|CONFINER|green,people|ÉVACUATION|orange,rescuer|ACCOMPAGNER|orange','FORÊT : CONFINEMENT PRIORITAIRE'],
+      ['scene','stairs|ACCÈS EXISTANT|green,smoke|IMPRATICABLE|red,ladder|ÉCHELLE|orange,aerial|MEA|blue,person-danger|VICTIMES|red','VOIES D’ACTION']
+    ],
+    'milieu-vicie': [
+      ['compare','gauge|O₂ < 21 %|orange,bottle|ARI CAPELÉ|blue,gauge|O₂ < 19 %|red,mask|COIFFÉ + ENCLIQUETÉ|red','SEUILS D’OXYGÈNE'],
+      ['compare','firefighter|PORTEUR 1|blue,mask|MASQUE / SAD|green,firefighter|PORTEUR 2|blue,bottle|ARI / TENUE|green','CONTRÔLE CROISÉ'],
+      ['sequence','pair|BINÔME|blue,controller|CONTRÔLEUR|orange,table|TGR|green,door-open|ENGAGEMENT|red','ENREGISTRER AVANT D’ENTRER'],
+      ['orbit','controller|1 CONTRÔLEUR|orange,pair|BINÔME 1|blue,pair|BINÔME 2|blue,pair|BINÔME 3|blue,pair|BINÔME 4|blue,pair-safe|SÉCURITÉ|green,radio|ÉCOUTE|blue','MAXIMUM 10 PORTEURS'],
+      ['sequence','pair-safe|ATTENTE ÉQUIPÉE|green,alarm|DIFFICULTÉ|red,pair-safe|ENGAGEMENT|orange,pair|REMPLAÇANT|green','SOUS AUTORITÉ DU CONTRÔLEUR'],
+      ['flow','pair|BINÔME|blue,person-danger|UN MEMBRE EN DIFFICULTÉ|red,exit|REPLI IMPÉRATIF|green','INDISSOCIABLES'],
+      ['timeline','clock|0 MIN|blue,pair|RECONNAISSANCE|orange,clock|45 MIN MAX|red,alarm|SÉCURITÉ ENGAGÉE|red','TEMPS CONTRÔLÉ'],
+      ['flow','person-danger|VICTIME IMMÉDIATE|red,pair|BINÔME ENVOYÉ|orange,radio|CHEF INFORMÉ|blue,table|ENREGISTREMENT|green','EXCEPTION ENCADRÉE']
+    ],
+    arico: [
+      ['cutaway','bottle|7 L · 300 / 200 bar|blue,gauge|270 / 180 bar MINI|green,air|78 % N₂ · 21 % O₂|blue','BOUTEILLE D’AIR COMPRIMÉ'],
+      ['network','bottle|ROBINET|blue,whistle|SIFFLET HP|orange,gauge|MANOMÈTRE HP|blue,regulator|DÉTENDEUR|orange,mask|SAD|green,hose|PRISE AUX.|blue','4 FLEXIBLES'],
+      ['threshold','gauge|PRESSION ↓|blue,whistle|50 bar ± 5|orange,alarm|SIFFLET|red','CIRCUIT HAUTE PRESSION'],
+      ['flow','bottle|200 / 300 bar|red,regulator|DÉTENDEUR HP|orange,gauge|6 À 7 bar|green,mask|SAD|blue','MOYENNE PRESSION CONSTANTE'],
+      ['cutaway','regulator|SAD|orange,stop|BOUTON ROUGE|red,mask|MASQUE|green,air|BY-PASS 300 L/min|blue,shield|SURPRESSION / FUMÉES BLOQUÉES|green','ORGANE CENTRAL ET FONCTIONS'],
+      ['orbit','mask|PIÈCE FACIALE|blue,visor|VISIÈRE 96 %|green,seal|JUPE DOUBLE|green,valve|SOUPAPES|orange,strap|FIXATION|blue,voice|MEMBRANE PHONIQUE|blue','5 ÉLÉMENTS'],
+      ['timeline','bodyguard|IMMOBILITÉ|blue,clock|21 s|orange,alarm|PRÉ-ALARME|orange,clock|+ 8 s|red,alarm|HOMME MORT|red','29 SECONDES AU TOTAL'],
+      ['flow','regulator|MP|orange,hose|PRISE FEMELLE|blue,connector|PRISE MÂLE|green,mask|2e SAD / CAGOULE|blue','NARGUILÉ'],
+      ['flow','bottle|MÊME BOUTEILLE|blue,hose|1,5 m|blue,hood|40 L/min|orange,person|VICTIME|green,exit|RETOUR IMMÉDIAT|red','DEUX CONSOMMATEURS'],
+      ['compare','pair|CHEF + ÉQUIPIER|blue,rope|1,25 m + 6 m|green,pair|DEUX LONGUES|red,rope|12 m INTERDIT|red','LIAISON PERSONNELLE'],
+      ['cutaway','rope|LIGNE GUIDE 50 m|blue,olive|13 → FEU|orange,olive|31 → SORTIE|green,hose|40 m MAX DANS FEU|red','REPÈRES DE PROGRESSION'],
+      ['flow','rope|LIAISON PERSONNELLE|blue,rope-guide|LIGNE GUIDE|orange,anchor|LIEN CONSTANT|green,exit|SORTIE|green','LIGNE DE VIE'],
+      ['sequence','bottle|300 × 7 / 1,1|blue,air|≈ 1 909 L|green,lungs|100 L/min|orange,clock|≈ 19 MIN|red','CALCUL D’AUTONOMIE'],
+      ['flow','lungs|150 ml ESPACE MORT|blue,co2|CO₂ RÉINHALÉ|red,lungs|HYPERVENTILATION|orange,gauge|AIR CONSOMMÉ ↑|red','RÉINSPIRATION'],
+      ['sequence','damage|BRÛLÉ / DÉCHIRÉ|red,stop|RÉFORME|red,bottle|BOUTEILLE NEUVE|green,mask|MASQUE NEUF|green','RECONDITIONNEMENT']
+    ],
+    lspcc: [
+      ['orbit','rope|LSPCC|orange,person-danger|FAÇADE|red,well|PUITS / FOSSE|grey,harness|VICTIME|blue,cliff|RISQUE DE CHUTE|red,building|RECONNAISSANCE|blue','6 POSSIBILITÉS'],
+      ['compare','bag|LOT DISPONIBLE|green,harness|SITUATION STANDARD|blue,specialist|MATÉRIEL INSUFFISANT|red,ambulance|PRISE EN CHARGE SPÉCIALE|orange','PASSER LE RELAIS'],
+      ['scene','truck|FPTGP|blue,bag-yellow|2 SACS JAUNES|orange,van|VTU|blue,bag-blue|1 SAC BLEU|blue','LOCALISATION DES LOTS'],
+      ['cutaway','bag|SAC|orange,rope|CORDE PROTÉGÉE|blue,tarp|BÂCHE|green,dirt|SOUILLURES DEHORS|grey','RANGEMENT ET PROTECTION'],
+      ['cutaway','rope|30 m · Ø12–13|blue,knot|NŒUD DE HUIT DOUBLE|orange,gauge|> 3 TONNES|green,stretch|≤ 4 %|blue','CORDE SEMI-STATIQUE'],
+      ['flow','cord|COMMANDE Ø7|blue,person|ÉCARTER VICTIME|orange,bag|MATÉRIEL|blue,height|ESTIMER HAUTEUR|green','RÉSISTANCE NULLE'],
+      ['cutaway','rope|CORDE PORTEUSE|blue,cord|CORDELETTE 50–60 cm|orange,knot|NŒUD FRANÇAIS|green,hand|POIGNÉES|green','AUTOBLOQUANT'],
+      ['orbit','anchor|POINT FIXE|green,brake|FREIN 2 t|orange,carabiner|GRAND AXE 2 t|blue,pulley|POULIE 2 t|blue,load|CHARGE ÷ 2|green','PIÈCES MÉTALLIQUES'],
+      ['orbit','harness|CUISSARD|blue,triangle|TRIANGLE|orange,sling|ANNEAUX 80 cm|green,sling|ANNEAUX 150 cm|green,connector|DEMI-LUNE|red','TEXTILES'],
+      ['scene','edge|REBORD VIF|red,protector|PROTECTION|green,rope|CORDE|blue,load|CHARGE|orange','AUCUN FROTTEMENT DIRECT'],
+      ['sequence','anchor|DOUBLE AMARRAGE|green,brake|FREIN FIXE|orange,carabiner|VIS − ¼ TOUR|blue,knot|HUIT DOUBLE|green,person|SOUS POINT FIXE|blue,protector|REBORD PROTÉGÉ|green','6 RÈGLES'],
+      ['flow','fall|CHUTE AMORTIE|red,corrosive|SOUILLURE|red,burn|BRÛLURE / COUPURE|red,stop|RÉFORME|red','IMMÉDIATE'],
+      ['sequence','eye|CONTRÔLE VISUEL|blue,hand|CONTRÔLE TACTILE|blue,wash|EAU ≤ 30 °C|green,dry|OMBRE À PLAT|green,bag|RANGER|orange','APRÈS INTERVENTION']
+    ],
+    echelles: [
+      ['scene','wall|FAÇADE|grey,ladder-hook|ÉCHELLE À CROCHETS|orange,firefighter|1 SP|blue,window|ÉTAGE|red','4,25 m · 8 kg'],
+      ['cutaway','ladder-hook|ÉCHELLE|orange,hook|2 CROCHETS|red,rung|ÉCHELONS|blue,brace|ENTRETOISE|green,feet|2 SABOTS|grey','NOMENCLATURE'],
+      ['scene','truck|FPTGP|blue,ladder-hook|CROCHETS|orange,ladder|2 PLANS|green,van|VTU|blue','EMPLACEMENT À BORD'],
+      ['cutaway','ladder|DÉPLOYÉE 9 m|blue,height|REPLIÉE 5 m|green,gauge|33 kg|orange,team|1 ÉQUIPE|blue','GRAND MODÈLE'],
+      ['cutaway','ladder|DÉPLOYÉE 5,6 m|blue,height|REPLIÉE 3,6 m|green,gauge|20 kg|orange,team|1 ÉQUIPE|blue','PETIT MODÈLE'],
+      ['orbit','ladder|2 PLANS|blue,pulley|POULIE / GUIDES|orange,rope|TRAIT|blue,lock|PARACHUTES|green,feet|SABOTS|grey,tie|LIGATURE|orange','ORGANES DE MANŒUVRE'],
+      ['sequence','ground|SOL STABLE|green,feet|SABOTS POSÉS|green,lock|PARACHUTES|green,hand|MAINS MONTANTS|blue','AVANT DE MONTER'],
+      ['scene','wall|FAÇADE|grey,ladder|ÉCHELLE|blue,measure|1/3 LONGUEUR|orange,person|TEST DU COUDE|green','PIÉTAGE CORRECT'],
+      ['scene','wall|REBORD|grey,ladder-reverse|GRAND PLAN EN BAS|orange,anchor|AMARRÉE / CALÉE|green,measure|4 OU 5 PAS|blue','ITINÉRAIRE DE SECOURS'],
+      ['cutaway','ladder|ÉCHELLE|blue,rope|TRAIT LIBRE|green,people|SAUVETAGES MULTIPLES|orange,hand|LIBÉRATION RAPIDE|green','NE PAS GÊNER'],
+      ['flow','pair|BINÔME EN CHUTE|red,ladder|CHOC SUR ÉCHELLE|red,check|CONTRÔLE|orange,stop|RÉFORME POSSIBLE|red','QUELLE QUE SOIT LA HAUTEUR'],
+      ['sequence','hand|CONTRÔLE TACTILE|blue,eye|CONTRÔLE VISUEL|blue,wash|NETTOYER|green,truck|RECONDITIONNER|orange','APRÈS INTERVENTION']
+    ],
+    parc: [
+      ['scene','parking|PARC|grey,wall|COMPARTIMENT < 3000 m²|green,door-closed|PORTE CF|orange,sprinkler|6000 m² SI EAE|blue','RECOUPEMENT'],
+      ['scene','parking|NIVEAU|grey,stairs|2 ESCALIERS · 40 m|green,deadend|CUL-DE-SAC · 25 m|orange,airlock|SAS|blue','DISTANCES MAXIMALES'],
+      ['sequence','panel|COFFRET EXTÉRIEUR|blue,fan-low|PETITE VITESSE|green,fan|GRANDE VITESSE|orange,smoke|DÉSENFUMAGE|red','PV TOUJOURS AVANT GV'],
+      ['flow','power|COUPURE GÉNÉRALE|red,fan|DÉSENFUMAGE|blue,stop|ARRÊT DANGEREUX|red,smoke|FUMÉES PIÉGÉES|red','NE PAS COUPER'],
+      ['flow','hydrant|BI|blue,hose|≤ 100 m|green,dry-column|COLONNE SÈCHE|orange,anchor|ANCRAGES 0,5–0,8 m|blue','ACCÈS ET GUIDAGE'],
+      ['orbit','car|FEU DE VÉHICULE|red,smoke|FOUR / FUMÉES|red,levels|MULTI-NIVEAUX|grey,battery|ÉNERGIES ALT.|orange,structure|FRAGILISATION|red','RISQUES CARACTÉRISTIQUES'],
+      ['sequence','map|LOCALISER|blue,nozzle|ATTAQUE MASSIVE|orange,pair-safe|BINÔME SÉCURITÉ|green,rope-guide|REPLI BALISÉ|green','3 PRINCIPES'],
+      ['sequence','battery|BATTERIE VE|orange,fire|EMBALLEMENT|red,sparks|PROJECTIONS|red,exit|REPLI IMMÉDIAT|green','ATTITUDE DÉFENSIVE'],
+      ['sequence','map|PLAN|blue,power|COUPER IRVE|orange,elevator|ASCENSEUR RÉFÉRENCE|green,stairs|CAGE D’ESCALIER|green,camera|GUIDE + CAMÉRA|blue','RECONNAISSANCE']
+    ],
+    'feux-foret': [
+      ['scene','truck-forest|CCF|orange,spray|RIDEAUX D’EAU|blue,shield|PROTECTION THERMIQUE|green,bottle|AIR 10 MIN|blue,people|4 PERSONNES|green','30 L/min PAR PERSONNE'],
+      ['compare','tank|CA|blue,spray|AUTOPROTECTION|green,tank|CU|blue,nozzle|EXTINCTION|orange','DEUX RÉSERVES DISTINCTES'],
+      ['sequence','valve|FERMER VANNES|green,people|TOUS DANS CCF|orange,spray|AUTOPROTECTION|blue,bottle|AIR RESPIRABLE|green,radio|ALERTER|red','PERSONNEL MENACÉ'],
+      ['scene','truck-forest|CCF 1|orange,truck-forest|CCF 2|orange,truck-forest|CCF 3|orange,spray|AUTOPROTECTION|blue,fire-front|FRONT DE FEU|red','SERRER EN PASSIF'],
+      ['orbit','driver|CONDUCTEUR|orange,radio|VEILLE|blue,tank|EAU|blue,spray|PROTECTION CCF|green,mask|ARI EN URGENCE|red','PERMANENCE À L’ARRIÈRE'],
+      ['flow','hose|LIGNE INEFFICACE|red,truck-forest|MARCHE AVANT|orange,fire-front|LAISSER PASSER FRONT|red,building|CONFINEMENT DUR|green','REPLI DU GROUPE'],
+      ['flow','water-source|EAU NATURELLE|blue,sediment|SÉDIMENTS|red,wash|RINCER POMPE|green,spray|BUSES LIBRES|green','APRÈS POMPAGE']
+    ]
+  };
+
+  const INC_LABELS = {
+    fire:'FEU', 'fire-small':'FEU', smoke:'FUMÉES', 'smoke-small':'FUMÉES', air:'AIR', fuel:'COMBUSTIBLE', heat:'CHALEUR',
+    room:'VOLUME', outside:'EXTÉRIEUR', wall:'PAROI', person:'PERSONNE', people:'PERSONNES', pair:'BINÔME',
+    bottle:'BOUTEILLE', mask:'MASQUE', rope:'CORDE', ladder:'ÉCHELLE', truck:'ENGIN', car:'VÉHICULE', fan:'VENTILATEUR'
+  };
+
+  function incidentToken(raw, x, y, scale = 1){
+    const [token, explicitLabel, tone = 'blue'] = raw.split('|');
+    const label = explicitLabel || INC_LABELS[token] || token.toUpperCase();
+    let shape = '';
+    if (token.includes('fire') || token === 'burn') shape = '<path class="inc-fill" d="M35 62C4 48 17 25 31 5c2 14 12 20 9 33 10-8 15-17 15-25 20 29 10 49-20 49z"/>';
+    else if (token === 'fuel') shape = '<path d="M7 51 28 30l34 19M12 62h46M18 44l26 18M52 42 31 62"/><path class="inc-fill" d="M35 34C20 25 27 13 35 3c1 7 6 11 5 17 6-4 9-9 9-13 11 16 5 27-14 27z"/>';
+    else if (token === 'smoke' || token === 'smoke-small') shape = '<path d="M9 54c-12-13 2-25 14-20-5-18 21-27 29-12 18-7 28 19 11 28 4 15-17 21-26 11-9 9-24 4-28-7z"/>';
+    else if (['air','steam','co2'].includes(token)) shape = '<path d="M4 21q16-14 32 0t32 0M4 37q16-14 32 0t32 0M4 53q16-14 32 0t32 0"/>';
+    else if (token === 'heat') shape = '<path d="M12 62q-14-17 0-34t0-25M35 62q-14-17 0-34t0-25M58 62q-14-17 0-34t0-25"/>';
+    else if (['room','building','parking','structure'].includes(token)) shape = '<path d="M5 64V13h62v51M5 64h62M18 64V37h18v27M45 25h12v13H45"/>';
+    else if (token === 'wall' || token === 'edge') shape = '<path d="M12 65V5h48v60M12 20h48M12 36h48M12 52h48"/>';
+    else if (token === 'outside') shape = '<circle cx="35" cy="34" r="22"/><path d="M35 2v10M35 56v10M3 34h10M57 34h10M12 11l8 8M50 49l8 8M58 11l-8 8M20 49l-8 8"/>';
+    else if (token === 'door-open' || token === 'door-closed') shape = token === 'door-open' ? '<path d="M10 66V4h47v62M15 8l31 8v45l-31 5z"/><circle cx="39" cy="39" r="2"/>' : '<path d="M10 66V4h47v62M15 8h37v58H15z"/><circle cx="44" cy="38" r="2"/>';
+    else if (['person','rescuer','firefighter','driver','controller','specialist','person-danger'].includes(token)) shape = '<circle cx="35" cy="12" r="9"/><path d="M35 21v24M35 28 17 42M35 28l18 14M35 45 20 65M35 45l15 20"/>' + (token==='controller'?'<path d="M51 25h16v25H51zM55 31h8M55 38h8"/>':'');
+    else if (token === 'pair' || token === 'pair-safe' || token === 'team' || token === 'people') shape = '<circle cx="22" cy="14" r="8"/><circle cx="49" cy="14" r="8"/><path d="M22 22v24M49 22v24M22 29 9 42M49 29l13 13M22 46 12 65M22 46l10 19M49 46 39 65M49 46l10 19"/>';
+    else if (['safe','shield','protector'].includes(token)) shape = '<path class="inc-fill-soft" d="M35 3 63 14v22c0 17-11 26-28 33C18 62 7 53 7 36V14z"/><path d="m21 35 9 9 20-24"/>';
+    else if (['nozzle','hose'].includes(token)) shape = token === 'nozzle' ? '<path d="M3 34h34l18-13 11 9-17 15H3zM66 29l12-3v10l-12-3z"/>' : '<path d="M5 52q14-38 30 0t30 0M5 52h60"/>';
+    else if (token === 'fan' || token === 'fan-low') shape = '<circle cx="35" cy="34" r="29"/><path d="M35 34q8-25 19-10t-19 10q25 8 10 19t-10-19q-8 25-19 10t19-10q-25-8-10-19t10 19"/>';
+    else if (token === 'outlet' || token === 'exit') shape = '<path d="M10 66V5h42v61M17 12h28v54M35 36h33m-9-9 10 9-10 9"/>';
+    else if (['bottle','tank'].includes(token)) shape = '<path d="M22 10h26l6 9v42l-6 7H22l-6-7V19zM27 3h16v7"/><path class="inc-level" d="M19 40h32v18l-5 6H24l-5-6z"/>';
+    else if (token === 'mask' || token === 'hood') shape = '<path d="M12 17Q35-2 58 17v29Q49 66 35 69 21 66 12 46z"/><path d="M20 21h30v22H20zM25 50h20M35 43v13"/>';
+    else if (token === 'regulator') shape = '<circle cx="35" cy="34" r="27"/><circle cx="35" cy="34" r="9"/><path d="M35 7v18M35 43v18M8 34h18M44 34h18"/>';
+    else if (token === 'gauge' || token === 'clock' || token === 'bodyguard') shape = '<circle cx="35" cy="34" r="28"/><path d="M13 42a24 24 0 0144 0M35 34l16-13"/><circle cx="35" cy="34" r="4"/>';
+    else if (token === 'whistle' || token === 'alarm' || token === 'radio') shape = token === 'radio' ? '<rect x="14" y="11" width="42" height="51" rx="5"/><path d="M44 11 55 0M23 25h24M23 35h24"/><circle cx="35" cy="50" r="7"/>' : '<path d="M18 53V27a17 17 0 0134 0v26M10 53h50M25 14V6M45 14V6"/><path d="M5 27h8M57 27h8"/>';
+    else if (token === 'rope' || token === 'rope-guide' || token === 'cord') shape = '<path d="M9 15c50-25 50 52 0 29s-48 32 10 22"/><circle cx="12" cy="15" r="4"/><circle cx="18" cy="66" r="4"/>';
+    else if (token.includes('ladder') || token === 'aerial') shape = `<g transform="${token==='ladder-reverse'?'rotate(180 35 35)':''}"><path d="M15 66 25 4M55 66 45 4"/>${[14,25,36,47,58].map(v=>`<path d="M${19+(58-v)*.16} ${v}h${32-(58-v)*.32}"/>`).join('')}${token==='ladder-hook'?'<path d="M25 5q-15-12-18 5M45 5q15-12 18 5"/>':''}</g>`;
+    else if (token === 'stairs') shape = '<path d="M5 64h14V51h13V38h13V25h13V12h10"/>';
+    else if (token === 'truck' || token === 'tanker' || token === 'van' || token === 'ambulance' || token === 'truck-forest') shape = '<path d="M2 24h42v31H2zM44 34h17l10 21H44z"/><circle cx="17" cy="58" r="8"/><circle cx="56" cy="58" r="8"/>' + (token==='truck-forest'?'<path class="inc-water" d="M8 20q10-20 20 0M33 20q10-20 20 0"/>':'') + (token==='ambulance'?'<path d="M18 29v18M9 38h18"/>':'');
+    else if (token === 'car') shape = '<path d="M5 47h62l-8-23H22L12 47M18 24l9-15h25l7 15"/><circle cx="20" cy="51" r="8"/><circle cx="55" cy="51" r="8"/>';
+    else if (token === 'battery' || token === 'power') shape = '<rect x="9" y="14" width="54" height="47" rx="5"/><path d="M21 9v5M51 9v5M35 20 22 40h13l-5 16 20-25H37z"/>';
+    else if (token === 'tree' || token === 'fire-front') shape = '<path d="M35 5 13 34h14L8 55h21v13h12V55h21L43 34h14z"/>' + (token==='fire-front'?'<path class="inc-hot" d="M4 65q8-21 16 0t16 0 16 0 16 0"/>':'');
+    else if (token === 'spray' || token === 'water-source' || token === 'wash') shape = '<path class="inc-water" d="M35 3C9 34 12 63 35 63S61 34 35 3z"/><path d="M22 40q13-10 26 0"/>';
+    else if (token === 'rope-guide' || token === 'olive') shape = '<path d="M4 35h64"/><path class="inc-fill" d="M17 27h10l6 8-6 8H17l-6-8zM43 27h10l6 8-6 8H43l-6-8z"/>';
+    else if (['anchor','pulley','carabiner','connector','brake'].includes(token)) shape = token === 'pulley' ? '<circle cx="35" cy="32" r="26"/><circle cx="35" cy="32" r="11"/><path d="M35 58v10"/>' : token === 'carabiner' || token === 'connector' ? '<path d="M45 8C16-2 3 24 13 48s39 27 48 2L48 38c-6 15-24 14-29 1S24 11 39 16z"/>' : '<path d="M8 61 35 6l27 55M20 39h30M14 51h42"/>';
+    else if (['harness','triangle','sling'].includes(token)) shape = token === 'triangle' ? '<path d="M35 5 66 62H4zM35 20 18 52h34z"/>' : '<circle cx="35" cy="14" r="9"/><path d="M20 26h30l8 36H12zM20 26l15 18 15-18M35 44v22"/>';
+    else if (token === 'bag' || token.includes('bag-') || token === 'tarp') shape = '<path d="M10 22h50v43H10zM23 22V11h24v11M18 36h34"/>';
+    else if (token === 'explosion' || token === 'sparks') shape = '<path class="inc-fill" d="m35 2 8 20 20-11-10 21 17 11-22 5 7 20-20-12-18 12 5-21-21-5 18-11L7 12l21 10z"/>';
+    else if (token === 'powder') shape = '<path d="M15 62V18h40v44M22 18V7h26v11"/><path class="inc-dots" d="M58 25h10M58 35h10M58 45h10"/>';
+    else if (token === 'chain' || token === 'chain-broken') shape = '<path d="M8 45c-13-13 7-33 20-20l10 10M62 23c13 13-7 33-20 20L32 33"/>' + (token==='chain-broken'?'<path class="inc-hot" d="m27 18 16 32M43 18 27 50"/>':'');
+    else if (['eye','visor'].includes(token)) shape = '<path d="M3 35q32-30 64 0Q35 65 3 35z"/><circle cx="35" cy="35" r="12"/>';
+    else if (token === 'lungs') shape = '<path d="M31 20v18C12 14 5 47 11 62c18 5 25-6 24-24M39 20v18c19-24 26 9 20 24-18 5-25-6-24-24"/>';
+    else if (token === 'map' || token === 'table' || token === 'panel') shape = '<rect x="7" y="10" width="56" height="51" rx="4"/><path d="M18 10v51M43 10v51M18 25l25 16M43 20l20 12"/>';
+    else if (token === 'camera') shape = '<rect x="8" y="20" width="48" height="37" rx="5"/><circle cx="32" cy="38" r="12"/><path d="M56 28l12-7v34l-12-7"/>';
+    else if (token === 'hydrant' || token === 'dry-column') shape = '<path d="M21 20h28v45H21zM15 65h40M25 8h20l5 12H20zM10 31h11v17H10m39-17h11v17H49"/>';
+    else if (token === 'check') shape = '<circle cx="35" cy="35" r="28"/><path d="m19 35 11 11 23-25"/>';
+    else if (token === 'stop' || token === 'damage' || token === 'fall' || token === 'corrosive') shape = '<circle cx="35" cy="35" r="28"/><path class="inc-hot" d="M16 16l38 38M54 16 16 54"/>';
+    else if (token === 'skull') shape = '<path d="M12 29a23 23 0 0146 0c0 13-7 20-14 23v13H26V52c-7-3-14-10-14-23z"/><circle cx="27" cy="29" r="5"/><circle cx="43" cy="29" r="5"/><path d="M30 43h10M18 65l34-13M52 65 18 52"/>';
+    else if (token === 'window') shape = '<rect x="8" y="8" width="54" height="54"/><path d="M35 8v54M8 35h54"/>';
+    else if (token === 'airlock') shape = '<path d="M5 64V7h60v57M18 7v57M52 7v57M22 14h26v43H22"/><circle cx="27" cy="35" r="2"/><circle cx="43" cy="35" r="2"/>';
+    else if (token === 'elevator') shape = '<rect x="10" y="6" width="50" height="59"/><path d="M35 6v59M22 17l8-8 8 8M48 53l-8 8-8-8"/>';
+    else if (token === 'deadend') shape = '<path d="M8 58h35V13M28 13h30M28 6h30M58 6v14"/>';
+    else if (token === 'levels') shape = '<path d="M7 61h56M7 43h56M7 25h56M15 61V8h40v53"/>';
+    else if (token === 'well' || token === 'cliff') shape = token === 'well' ? '<ellipse cx="35" cy="18" rx="28" ry="12"/><path d="M7 18v44M63 18v44M7 62q28 12 56 0"/>' : '<path d="M3 11h33v20H23v16H12v21M36 11h31"/>';
+    else if (token === 'sprinkler') shape = '<path d="M35 3v24M17 27h36M25 27l-6 13M35 27v15M45 27l6 13"/><path class="inc-water" d="M15 47c-6 8-6 14 0 14s6-6 0-14M35 47c-6 8-6 14 0 14s6-6 0-14M55 47c-6 8-6 14 0 14s6-6 0-14"/>';
+    else if (token === 'valve') shape = '<path d="M4 35h20M46 35h20M24 20l11 15-11 15zM46 20 35 35l11 15zM35 20V7M23 7h24"/>';
+    else if (token === 'reel') shape = '<circle cx="31" cy="35" r="27"/><circle cx="31" cy="35" r="14"/><circle cx="31" cy="35" r="4"/><path d="M58 35h10M10 66h48"/>';
+    else if (token === 'hand') shape = '<path d="M20 64V31q0-7 6-7t6 7V12q0-7 6-7t6 7v18-14q0-7 6-7t6 7v22q8-7 12 0-7 24-25 30z"/>';
+    else if (token === 'ground') shape = '<path d="M3 55h64M8 55l10-12 9 12 12-15 13 15 8-9"/>';
+    else if (['height','measure','stretch'].includes(token)) shape = '<path d="M14 7v56M8 13l6-6 6 6M8 57l6 6 6-6M28 12h33M28 58h33"/><path d="M35 18v35M44 18v35M53 18v35"/>';
+    else if (token === 'knot') shape = '<path d="M15 60c36-4 48-38 22-45C10 8 4 39 26 48c21 9 43-8 33-27"/><circle cx="35" cy="36" r="8"/>';
+    else if (['hook','rung','brace','feet','lock','tie'].includes(token)) shape = token === 'hook' ? '<path d="M45 5v36c0 29-38 29-38 5 0-13 15-18 23-9"/>' : token === 'lock' ? '<rect x="12" y="30" width="46" height="34" rx="5"/><path d="M22 30v-9a13 13 0 0126 0v9"/>' : token === 'feet' ? '<path d="M12 7 30 62M58 7 40 62M20 62h18M32 62h18"/>' : '<path d="M10 15h50M10 35h50M10 55h50M20 8v54M50 8v54"/>';
+    else if (['seal','strap','voice'].includes(token)) shape = token === 'seal' ? '<path d="M10 35q25-39 50 0-25 39-50 0zM21 35q14-22 28 0-14 22-28 0z"/>' : token === 'strap' ? '<path d="M8 12h54v10H8zM8 48h54v10H8zM17 22l12 26M53 22 41 48"/>' : '<path d="M8 26h15l18-15v48L23 44H8zM49 23q18 12 0 24M55 16q28 19 0 38"/>';
+    else if (token === 'load') shape = '<path d="M18 21h34l8 42H10zM25 21a10 10 0 0120 0"/><text x="35" y="52">½</text>';
+    else if (token === 'sediment' || token === 'dirt') shape = '<path class="inc-water" d="M4 30q15-10 30 0t30 0M4 44q15-10 30 0t30 0"/><g class="inc-fill"><circle cx="16" cy="58" r="4"/><circle cx="31" cy="54" r="6"/><circle cx="49" cy="59" r="5"/><circle cx="61" cy="53" r="3"/></g>';
+    else if (token === 'dry') shape = '<circle cx="35" cy="23" r="13"/><path d="M35 2v7M35 37v7M14 23h7M49 23h7M20 8l5 5M45 33l5 5M50 8l-5 5M25 33l-5 5M6 60q14-12 28 0t28 0"/>';
+    else shape = '<circle cx="35" cy="35" r="27"/><path d="M19 35h32M35 19v32"/>';
+    return `<g class="inc-token inc-${tone} inc-${esc(token)}" transform="translate(${x} ${y}) scale(${scale})"><title>${esc(label)}</title>${shape}${courseLabel(35,84,label,tone)}</g>`;
+  }
+
+  function drawARISpecial(index, aria){
+    const wrap = (kind, content) => `<div class="kp-tech-diagram kp-course-diagram ari-special ari-special-${kind}" data-composition="ari-${kind}"><svg class="kp-tech-svg kp-course-svg ari-special-svg" viewBox="0 0 560 280" role="img" aria-label="${esc(aria || '')}"><defs>
+      <linearGradient id="ari-metal-${kind}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26384c"/><stop offset=".48" stop-color="#0d1724"/><stop offset="1" stop-color="#31465d"/></linearGradient>
+      <linearGradient id="ari-glass-${kind}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#75d6ee" stop-opacity=".35"/><stop offset="1" stop-color="#18334a" stop-opacity=".72"/></linearGradient>
+      <marker id="ari-arrow-${kind}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" class="ari-arrow-head"/></marker>
+    </defs><rect class="ari-blueprint" x="2" y="2" width="556" height="276" rx="18"/>${content}</svg></div>`;
+
+    if (index === 0) return wrap('bottle', `
+      <g class="ari-primary-object ari-bottle-object">
+        <path class="ari-bottle-shadow" d="M148 254h190"/>
+        <path class="ari-bottle-shell" d="M178 61V45h18V29h51v16h18v16c28 14 43 36 43 68v103c0 20-13 31-31 31h-81c-18 0-31-11-31-31V129c0-32 14-54 43-68z"/>
+        <path class="ari-bottle-highlight" d="M190 76c-9 15-13 32-13 53v96c0 15 7 22 19 25"/>
+        <path class="ari-bottle-band" d="M166 108h141v37H166z"/>
+        <path class="ari-bottle-boot" d="M174 238h125v24H174z"/>
+        <g class="ari-valve"><path d="M196 45h51M207 29V15h29v14M214 15V8h15v7M229 20h23v15"/><circle cx="256" cy="27" r="8"/></g>
+        <text class="ari-object-big" x="236" y="127">300</text><text class="ari-object-unit" x="236" y="141">BAR</text>
+        <text class="ari-object-data" x="236" y="185">7 L</text><text class="ari-object-small" x="236" y="207">AIR COMPRIMÉ</text>
+      </g>
+      <g class="ari-gauge-panel">
+        <text class="ari-callout-title" x="435" y="35">JAUGE D’ENGAGEMENT</text>
+        <path class="ari-gauge-track" d="M451 58v171"/><path class="ari-gauge-fill" d="M451 58v145"/>
+        <path class="ari-gauge-tick" d="M430 58h43M430 76h43M423 203h57"/>
+        <text x="498" y="62">100 %</text><text x="498" y="80">90 %</text><text class="ari-warning-text" x="492" y="199">LIMITE</text><text class="ari-warning-text" x="492" y="213">ENGAGEMENT</text>
+      </g>
+      <g class="ari-callout ari-callout-left"><path d="M34 52h106l45 15"/><text x="34" y="42">ROBINET + MANOMÈTRE</text></g>
+      <g class="ari-callout ari-callout-left"><path d="M35 228h105l25-18"/><text x="35" y="218">SABOT RENFORCÉ</text></g>`);
+
+    if (index === 3) return wrap('regulator', `
+      <g class="ari-pressure ari-pressure-hp"><text x="18" y="40">HAUTE PRESSION</text><text class="ari-pressure-value" x="18" y="61">200 / 300 bar</text><path d="M24 125H145" marker-end="url(#ari-arrow-regulator)"/></g>
+      <g class="ari-primary-object ari-regulator-object">
+        <path class="ari-mech-body" d="M153 92h48l18-30h96l22 30h44v73h-44l-22 30h-96l-18-30h-48z"/>
+        <path class="ari-mech-rib" d="M175 93v71M192 84v89M342 91v74M359 93v71"/>
+        <circle class="ari-diaphragm" cx="268" cy="128" r="66"/><circle class="ari-diaphragm-inner" cx="268" cy="128" r="43"/><circle class="ari-cap" cx="268" cy="128" r="19"/>
+        <g class="ari-bolts">${[0,60,120,180,240,300].map(a=>{const r=a*Math.PI/180;return `<circle cx="${268+54*Math.cos(r)}" cy="${128+54*Math.sin(r)}" r="4"/>`;}).join('')}</g>
+        <path class="ari-spring" d="M232 128h10l7-9 9 18 9-18 9 18 9-18 8 9h13"/>
+        <text class="ari-object-data" x="268" y="218">DÉTENDEUR HP → MP</text>
+      </g>
+      <g class="ari-pressure ari-pressure-mp"><path d="M382 128h39v-58h68"/><path d="M421 128v70h68"/><circle cx="421" cy="128" r="7"/><text x="423" y="36">MOYENNE PRESSION</text><text class="ari-pressure-value" x="423" y="55">6–7 bar</text></g>
+      <g class="ari-output ari-output-sad"><path class="ari-mini-mask" d="M482 61q30-14 58 0l-6 43-23 18-24-18z"/><path d="M493 74h36v24h-36z"/><text x="511" y="140">VERS SAD</text></g>
+      <g class="ari-output ari-output-aux"><path d="M478 184h43l16 14-16 14h-43l-12-14zM488 184v28M515 184v28"/><text x="502" y="235">PRISE AUXILIAIRE</text></g>`);
+
+    if (index === 4) return wrap('sad', `
+      <g class="ari-smoke-blocked"><path d="M15 78q22-23 44 0t44 0M12 104q24-23 48 0t48 0M18 130q21-20 42 0t42 0"/><path class="ari-stop-wall" d="M118 55v101M105 68l26 26M131 68l-26 26"/><text x="14" y="155">FUMÉES</text><text class="ari-ok-text" x="92" y="176">BLOQUÉES</text></g>
+      <g class="ari-primary-object ari-sad-mask-object">
+        <path class="ari-mask-skirt" d="M245 50q80-31 157 0l27 36-10 111-51 52h-91l-53-52-9-111z"/>
+        <path class="ari-mask-seal" d="M258 62q66-24 131 0l19 30-10 91-42 39h-66l-44-39-9-91z"/>
+        <path class="ari-mask-visor" d="M271 76q53-18 105 0l15 21-13 73-35 23-38-23-48-73z"/>
+        <path class="ari-positive-air" d="M309 158v-42M343 166v-55M374 157v-39" marker-end="url(#ari-arrow-sad)"/>
+        <text class="ari-pressure-plus" x="342" y="104">PRESSION +</text>
+        <g class="ari-sad-device"><path class="ari-mech-body" d="M150 91h50l17-19h49l27 30v61l-27 30h-49l-17-18h-50l-19-18v-48z"/><circle class="ari-diaphragm" cx="224" cy="132" r="45"/><circle class="ari-cap" cx="224" cy="132" r="19"/><path d="M269 113h36v38h-36"/><text class="ari-object-unit" x="224" y="137">SAD</text></g>
+        <path class="ari-air-pipe" d="M224 8v76" marker-end="url(#ari-arrow-sad)"/><text class="ari-callout-title" x="224" y="20">AIR MP · 6–7 BAR</text>
+      </g>
+      <g class="ari-secondary ari-red-button"><circle cx="170" cy="232" r="19"/><circle cx="170" cy="232" r="11"/><path d="M181 215l22-25"/><text x="120" y="267">BOUTON ROUGE · COUPE DÉBIT</text></g>
+      <g class="ari-secondary ari-bypass"><path d="M433 222h87M477 204v36M461 211l16-16 16 16"/><text x="472" y="260">BY-PASS ≥ 300 L/min</text></g>`);
+
+    return wrap('facepiece', `
+      <g class="ari-primary-object ari-facepiece-object">
+        <path class="ari-mask-strap" d="M180 62 99 112l72 26M381 62l81 50-72 26M175 172l-70 47M386 172l69 47"/>
+        <path class="ari-mask-skirt" d="M205 28q75-25 150 0l35 46-13 130-55 53h-84l-55-53-13-130z"/>
+        <path class="ari-mask-seal" d="M218 43q62-20 124 0l27 38-12 110-45 43h-64l-45-43-12-110z"/>
+        <path class="ari-mask-visor" d="M225 60q55-18 110 0l20 27-14 77-61 23-62-23-14-77z"/>
+        <path class="ari-visor-shine" d="M232 75q46-14 91-2M241 91q30-10 57-8"/>
+        <g class="ari-mask-valves"><circle cx="229" cy="192" r="13"/><path d="M221 192h16M229 184v16"/><circle cx="331" cy="192" r="13"/><path d="M323 192h16M331 184v16"/></g>
+        <g class="ari-mask-port"><circle cx="280" cy="221" r="30"/><circle cx="280" cy="221" r="18"/><path d="M280 191v60M250 221h60"/></g>
+      </g>
+      <g class="ari-callout"><path d="M280 51V10H171"/><circle cx="280" cy="51" r="4"/><text x="106" y="14">GRANDE VISIÈRE · 96 %</text></g>
+      <g class="ari-callout"><path d="M197 95H54"/><circle cx="197" cy="95" r="4"/><text x="24" y="85">JUPE DOUBLE</text><text x="24" y="101">ÉTANCHÉITÉ</text></g>
+      <g class="ari-callout"><path d="M170 137H63"/><circle cx="170" cy="137" r="4"/><text x="23" y="160">BRIDES / FIXATION</text></g>
+      <g class="ari-callout"><path d="M344 192h166"/><circle cx="344" cy="192" r="4"/><text x="424" y="181">SOUPAPES</text></g>
+      <g class="ari-callout"><path d="M280 251v18h116"/><circle cx="280" cy="251" r="4"/><text x="401" y="273">RACCORD SAD</text></g>`);
+  }
+
+  function incidentHeroObject(raw, cx, cy, scale = 1){
+    const [token, explicitLabel, tone = 'blue'] = raw.split('|');
+    const label = explicitLabel || INC_LABELS[token] || token.toUpperCase();
+    const people = ['person','rescuer','firefighter','driver','controller','specialist','person-danger'];
+    const pairs = ['pair','pair-safe','team','people'];
+    let shape = '';
+    if (token.includes('fire') || token === 'burn' || token === 'explosion') shape = `
+      <path class="hero-hot hero-flame-outer" d="M80 7c-7 35 28 44 5 80 2-29-19-33-18-57-51 47-61 103-25 132 28 23 84 7 88-38 3-31-13-52-33-76 2 30-13 39-22 51 8-38-17-58-20-92z"/>
+      <path class="hero-flame-mid" d="M82 73c-5 26-29 35-24 62 5 28 48 28 54 2 5-22-11-35-18-53 1 18-7 25-12 32 4-20-4-31 0-43z"/><path class="hero-ground" d="M21 165h118"/>`;
+    else if (token === 'smoke' || token === 'smoke-small' || token === 'air' || token === 'steam' || token === 'co2') shape = `
+      <path class="hero-smoke" d="M12 134c-22-24 3-49 31-38-12-34 34-55 54-25 33-15 63 23 43 50 26 27-13 58-42 39-23 25-69 13-86-26z"/>
+      <path class="hero-flow" d="M7 45q35-30 70 0t70 0M4 74q39-30 78 0t73 0"/>`;
+    else if (['room','building','parking','structure','wall','edge'].includes(token)) shape = `
+      <path class="hero-shell" d="M10 160V21h140v139M10 160h140M23 54h114M23 96h114M23 138h114"/>
+      <path class="hero-detail" d="M28 37h27v17M76 37h27v17M110 37h20v17M31 111h35v49M82 110h46v28H82z"/><path class="hero-hot" d="M91 151c-17-13-4-31 8-43 0 11 7 14 6 24 8-6 11-13 10-21 13 18 7 38-24 40z"/>`;
+    else if (token === 'door-open' || token === 'door-closed' || token === 'outside' || token === 'exit') shape = `
+      <path class="hero-shell" d="M25 166V13h111v153M42 28h75v138H42z"/>
+      ${token === 'door-closed' ? '<path class="hero-panel" d="M48 35h63v131H48z"/>' : '<path class="hero-panel" d="M48 35 102 53v98l-54 15z"/><circle class="hero-bolt" cx="91" cy="101" r="4"/>'}
+      <path class="hero-flow" d="M2 66h42M5 101h39M2 136h42"/>`;
+    else if (people.includes(token) || pairs.includes(token)) {
+      const firefighter = (dx) => `<g transform="translate(${dx})"><path class="hero-helmet" d="M25 31q9-27 33 0v12H22V32zM18 43h46"/><path class="hero-visor" d="M30 43h24v20H30z"/><path class="hero-pack" d="M55 66h23v67H55z"/><path class="hero-body" d="M22 66h39l13 67H10z"/><path class="hero-detail" d="M29 66v67M53 66v67M15 105h53"/><path class="hero-limb" d="M19 72 2 118M62 73l19 42M25 132 15 169M55 132l12 37"/><path class="hero-boot" d="M4 169h25M52 169h27"/></g>`;
+      shape = pairs.includes(token) ? `${firefighter(1)}${firefighter(79)}` : firefighter(39);
+    } else if (token === 'fan' || token === 'fan-low') shape = `
+      <circle class="hero-shell" cx="80" cy="79" r="68"/><circle class="hero-panel" cx="80" cy="79" r="51"/><circle class="hero-bolt" cx="80" cy="79" r="10"/>
+      <path class="hero-blade" d="M80 69c3-47 34-45 38-23 3 17-14 27-38 33 43 17 27 44 6 38-16-5-16-25-6-38-31 35-51 9-34-7 12-11 27-3 34 7z"/><path class="hero-stand" d="M38 160h84M58 132l-13 28M102 132l13 28"/>`;
+    else if (token.includes('ladder') || token === 'aerial' || token === 'stairs') shape = `
+      <path class="hero-rail" d="M39 169 57 12M121 169 103 12"/>${[27,43,59,75,91,107,123,139,155].map(y=>`<path class="hero-rung" d="M${52-y*.08} ${y}h${56+y*.16}"/>`).join('')}
+      ${token === 'ladder-hook' ? '<path class="hero-hook" d="M57 14Q31-9 18 16M103 14q26-23 39 2"/>' : ''}<path class="hero-boot" d="M24 169h40M96 169h40"/>`;
+    else if (token === 'rope' || token === 'rope-guide' || token === 'cord' || token === 'anchor') shape = `
+      <circle class="hero-rope" cx="78" cy="87" r="63"/><circle class="hero-rope" cx="78" cy="87" r="45"/><circle class="hero-rope" cx="78" cy="87" r="27"/><path class="hero-rope" d="M127 126q36 20 7 44M31 42 7 17M7 17h45"/>
+      <path class="hero-knot" d="M48 80c23-36 60-5 40 20-20 26-54-4-31-26 22-20 50 15 29 33"/>`;
+    else if (token === 'truck' || token === 'tanker' || token === 'van' || token === 'ambulance' || token === 'truck-forest' || token === 'car') shape = `
+      <path class="hero-vehicle" d="M5 68h93v72H5zM98 85h35l23 55H98z"/><path class="hero-window" d="M108 91h21l13 31h-34z"/>
+      <path class="hero-detail" d="M14 80h74v43H14zM23 88h18v27M49 88h30v27"/><circle class="hero-wheel" cx="35" cy="145" r="20"/><circle class="hero-wheel" cx="124" cy="145" r="20"/><circle class="hero-hub" cx="35" cy="145" r="7"/><circle class="hero-hub" cx="124" cy="145" r="7"/>
+      ${token === 'truck-forest' ? '<path class="hero-water" d="M16 61q16-37 32 0M52 61q16-37 32 0M88 61q16-37 32 0"/>' : ''}`;
+    else if (token === 'bottle' || token === 'tank' || token === 'hydrant' || token === 'dry-column') shape = `
+      <path class="hero-shell" d="M49 26V14h62v12l17 22v101l-14 18H46l-14-18V48z"/><path class="hero-valve" d="M61 14V4h38v10M80 4v-8M99 9h26"/><path class="hero-water-fill" d="M38 94h84v51l-12 15H50l-12-15z"/><path class="hero-highlight" d="M51 48v91"/>`;
+    else if (token === 'mask' || token === 'hood' || token === 'regulator') shape = token === 'regulator' ? `
+      <path class="hero-mech" d="M13 60h26l17-24h51l17 24h25v61h-25l-17 24H56l-17-24H13z"/><circle class="hero-panel" cx="81" cy="90" r="51"/><circle class="hero-bolt" cx="81" cy="90" r="18"/><path class="hero-detail" d="M81 39v33M81 108v34M30 90h33M99 90h33"/>` : `
+      <path class="hero-mask" d="M26 31q54-37 108 0l16 35-13 72-36 33H59l-36-33-13-72z"/><path class="hero-visor" d="M38 48q42-24 84 0l10 25-14 48-38 18-39-18-13-48z"/><circle class="hero-port" cx="80" cy="139" r="23"/><path class="hero-detail" d="M80 116v46M57 139h46"/>`;
+    else if (token === 'gauge' || token === 'clock' || token === 'bodyguard' || token === 'panel' || token === 'map' || token === 'table') shape = `
+      <rect class="hero-device" x="20" y="12" width="120" height="153" rx="18"/><rect class="hero-screen" x="34" y="30" width="92" height="53" rx="6"/><circle class="hero-dial" cx="80" cy="120" r="31"/><path class="hero-needle" d="M80 120 105 94"/><circle class="hero-bolt" cx="80" cy="120" r="6"/><circle class="hero-light" cx="43" cy="146" r="7"/><circle class="hero-light" cx="117" cy="146" r="7"/>`;
+    else if (token === 'nozzle' || token === 'hose' || token === 'reel' || token === 'water-source' || token === 'spray') shape = `
+      <path class="hero-hose" d="M5 145q38-83 74 0t74 0"/><path class="hero-nozzle" d="M25 59h74l27-22 25 20-31 31H25zM151 55l20-7v19l-20-8z"/><path class="hero-water" d="M166 58q-35 17-60 47M169 59q-24 35-46 66"/>`;
+    else if (token === 'bag' || token.includes('bag-') || token === 'tarp' || token === 'harness') shape = `
+      <path class="hero-bag" d="M18 49h124v116H18zM48 49V22h64v27M34 77h92M45 91l35 56 35-56M80 77v88"/><path class="hero-buckle" d="M67 115h26v24H67z"/>`;
+    else if (token === 'battery' || token === 'power' || token === 'chain' || token === 'damage' || token === 'fall') shape = `
+      <rect class="hero-device" x="17" y="28" width="126" height="126" rx="13"/><path class="hero-hot" d="M80 42 48 96h30l-12 48 49-70H84z"/><path class="hero-danger" d="M28 39 132 143M132 39 28 143"/>`;
+    else shape = `<g transform="translate(10 12) scale(2)">${incidentToken(raw,0,0,1)}</g>`;
+    return `<g class="inc-hero-object inc-hero-${esc(token)} inc-${esc(tone)}" transform="translate(${cx-80*scale} ${cy-87*scale}) scale(${scale})"><title>${esc(label)}</title>${shape}<text class="hero-label" x="80" y="184">${esc(label)}</text></g>`;
+  }
+
+  function drawIncidentIllustrated(modId, index, visual, aria){
+    const spec = visual.scene;
+    const kind = spec[0], tokens = spec[1].split(/,(?=[a-z][a-z-]*\|)/i), note = spec[2] || '';
+    const key = `${modId}-${index}`;
+    const fireModules = ['systeme-feu','phenomenes','extinction'];
+    const stage = fireModules.includes(modId) ? 'fire-room' : modId === 'ventilation' ? 'ventilation' : ['sauvetage','milieu-vicie'].includes(modId) ? 'rescue' : modId === 'arico' ? 'ari-equipment' : modId === 'lspcc' ? 'rope-rescue' : modId === 'echelles' ? 'ladder-ground' : modId === 'parc' ? 'garage' : 'forest';
+    const primaryOverrides = {
+      arico: {1:'harness|DOSSARD ARI|blue',2:'gauge|SIFFLET HP|orange',6:'bodyguard|BODYGUARD|orange',7:'regulator|PRISE AUXILIAIRE|orange',8:'hood|CAGOULE|green',9:'rope|LIAISON|blue',10:'rope-guide|LIGNE GUIDE|orange',11:'rope|LIGNE DE VIE|blue',12:'gauge|AUTONOMIE|green',13:'lungs|RÉINSPIRATION|red',14:'damage|CONTRÔLE|red'},
+      echelles: Object.fromEntries(Array.from({length:12},(_,i)=>[i, i === 0 ? 'ladder-hook|ÉCHELLE À CROCHETS|orange' : 'ladder|ÉCHELLE|blue'])),
+      parc: {0:'parking|PARC DE STATIONNEMENT|grey',1:'stairs|ESCALIERS|blue',2:'panel|COFFRET VENTILATION|orange',3:'fan|DÉSENFUMAGE|blue',4:'hydrant|COLONNE SÈCHE|blue',5:'car|VÉHICULE|orange',6:'map|PLAN D’ACTION|blue',7:'battery|BATTERIE VE|red',8:'map|RECONNAISSANCE|blue'},
+      'feux-foret': {0:'truck-forest|CCF|orange',1:'tank|RÉSERVES|blue',2:'truck-forest|CCF|orange',3:'truck-forest|AUTODÉFENSE|orange',4:'driver|CONDUCTEUR|blue',5:'truck-forest|REPLI|orange',6:'water-source|EAU NATURELLE|blue'}
+    };
+    const primary = primaryOverrides[modId]?.[index] || tokens[0];
+    const secondary = tokens.filter((_,i)=>i>0).slice(0,5);
+    const marker = `ill-arrow-${key}`;
+    const defs = `<defs><linearGradient id="ill-metal-${key}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26394e"/><stop offset=".55" stop-color="#101b29"/><stop offset="1" stop-color="#30465c"/></linearGradient><marker id="${marker}" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" class="ill-arrow-head"/></marker></defs>`;
+    const stageArt = {
+      'fire-room': '<path class="ill-stage-shell" d="M34 240V28h492v212M34 240h492M52 74h456"/><path class="ill-stage-window" d="M407 92h82v68h-82zM448 92v68M407 126h82"/><path class="ill-stage-door" d="M61 105h74v135H61z"/>',
+      ventilation: '<path class="ill-stage-shell" d="M116 238V31h407v207M116 238h407"/><path class="ill-stage-opening" d="M116 93H88M523 88h28"/><path class="ill-air-layer" d="M126 71h387M126 122h387M126 178h387"/>',
+      rescue: '<path class="ill-stage-shell" d="M48 239V35h464v204M48 239h464M48 91h464M48 150h464"/><path class="ill-stairs" d="M61 224h41v-23h38v-23h39v-23h38v-23h39"/><path class="ill-stage-window" d="M348 52h125v72H348zM410 52v72"/>',
+      'ari-equipment': '<path class="ill-tech-grid" d="M30 42h500M30 91h500M30 140h500M30 189h500M80 18v232M160 18v232M240 18v232M320 18v232M400 18v232M480 18v232"/><path class="ill-bench" d="M42 229h476M73 229v22M487 229v22"/>',
+      'rope-rescue': '<path class="ill-anchor-beam" d="M36 33h488M74 33v28M486 33v28"/><path class="ill-cliff" d="M30 238h191V96h42v142M263 238h271"/><circle class="ill-anchor" cx="152" cy="53" r="13"/><path class="ill-void" d="M270 76h244v143H270z"/>',
+      'ladder-ground': '<path class="ill-facade" d="M283 25h235v215H283zM302 51h82v64h-82zM418 51h80v64h-80zM302 141h82v72h-82zM418 141h80v72h-80z"/><path class="ill-ground" d="M23 241h514"/>',
+      garage: '<path class="ill-garage" d="M25 240V32h510v208M25 240h510M25 98h510M25 164h510"/><path class="ill-ramp" d="M42 220 183 173M373 153l144-46"/><path class="ill-garage-bays" d="M59 48h103v35H59zM204 48h103v35H204zM350 48h145v35H350z"/>',
+      forest: '<path class="ill-slope" d="M18 239q138-86 270-17t254-19"/><path class="ill-trees" d="M49 205v-61m0 0-27 38h54zm70 27v-89m0 0-34 47h68zm361 61v-78m0 0-31 43h62zM411 209v-55m0 0-24 35h48z"/><path class="ill-fireline" d="M20 235q17-45 34 0t34 0 34 0 34 0 34 0"/>'
+    }[stage];
+    const callouts = (items, positions) => items.map((token,i)=>{
+      const [x,y] = positions[i] || positions[positions.length-1];
+      return incidentToken(token,x-25,y-25,.7);
+    }).join('');
+    let content = '';
+    if (kind === 'compare'){
+      const cut = Math.ceil(tokens.length/2), right = tokens[cut] || tokens.at(-1);
+      content = `<rect class="ill-compare-side ill-side-a" x="18" y="20" width="252" height="226" rx="16"/><rect class="ill-compare-side ill-side-b" x="290" y="20" width="252" height="226" rx="16"/>${incidentHeroObject(primary,145,124,.93)}${incidentHeroObject(right,415,124,.93)}<path class="ill-vs" d="M267 110h26M267 136h26" marker-end="url(#${marker})"/>`;
+    } else if (kind === 'sequence' || kind === 'timeline'){
+      const milestones = tokens.slice(1,5), ys = milestones.map((_,i)=>48+i*(175/Math.max(1,milestones.length-1)));
+      content = `${stageArt}${incidentHeroObject(primary,145,136,1.05)}<path class="ill-process-rail" d="M310 35v205"/>${milestones.map((token,i)=>`<circle class="ill-process-dot" cx="310" cy="${ys[i]}" r="12"/><text class="ill-process-number" x="310" y="${ys[i]+4}">${i+1}</text><path class="ill-callout-line" d="M322 ${ys[i]}h54"/>${incidentToken(token,382,ys[i]-25,.68)}`).join('')}`;
+    } else if (kind === 'flow'){
+      const input=tokens[0], processor=tokens[1] || primary, outputs=tokens.slice(2,5), ys=outputs.map((_,i)=>70+i*(135/Math.max(1,outputs.length-1)));
+      content = `${stageArt}${incidentHeroObject(processor,270,132,1.08)}${incidentToken(input,18,102,.92)}<path class="ill-flow-pipe" d="M98 137h91" marker-end="url(#${marker})"/>${outputs.map((token,i)=>`<path class="ill-flow-pipe" d="M350 132Q406 132 419 ${ys[i]}" marker-end="url(#${marker})"/>${incidentToken(token,454,ys[i]-28,.78)}`).join('')}`;
+    } else {
+      const heroScale = stage === 'ladder-ground' ? 1.22 : stage === 'forest' ? 1.25 : 1.08;
+      const heroX = ['ladder-ground','forest'].includes(stage) ? 188 : 252;
+      const positions = [[435,48],[466,122],[432,204],[76,55],[72,190]];
+      content = `${stageArt}${incidentHeroObject(primary,heroX,135,heroScale)}<g class="ill-callouts">${secondary.map((_,i)=>`<path d="M${heroX+(i%2?55:-55)} ${95+i*20}Q${i<3?360:145} ${positions[i][1]} ${positions[i][0]} ${positions[i][1]}"/>`).join('')}</g>${callouts(secondary,positions)}`;
+    }
+    return `<div class="kp-tech-diagram kp-course-diagram inc-illustrated inc-illustrated-${stage} inc-layout-${kind}" data-composition="illustrated-${kind}"><svg class="kp-tech-svg kp-course-svg inc-illustrated-svg" viewBox="0 0 560 280" role="img" aria-label="${esc(aria || '')}">${defs}<rect class="ill-blueprint" x="2" y="2" width="556" height="276" rx="18"/>${content}${note ? courseLabel(280,270,note,'orange') : ''}</svg></div>`;
+  }
+
+  function drawIncidentCourse(visual){
+    const spec = visual.scene;
+    const kind = spec[0], tokens = spec[1].split(/,(?=[a-z][a-z-]*\|)/i), note = spec[2] || '';
+    const place = (token, cx, cy, scale = 1) => incidentToken(token, cx - 35 * scale, cy - 35 * scale, scale);
+    let content = '';
+    if (kind === 'orbit' || kind === 'network' || kind === 'cutaway'){
+      const rest = tokens.slice(1), cx = 280, cy = 110;
+      const radiusX = kind === 'cutaway' ? 205 : 215, radiusY = kind === 'cutaway' ? 76 : 82;
+      content = `<circle class="inc-central-halo" cx="${cx}" cy="${cy}" r="57"/><g class="inc-links">${rest.map((_,i)=>{const a=-Math.PI/2+i*Math.PI*2/rest.length;return `<path d="M${cx} ${cy}Q${cx+Math.cos(a)*115} ${cy+Math.sin(a)*45} ${cx+Math.cos(a)*radiusX} ${cy+Math.sin(a)*radiusY}"/>`;}).join('')}</g>${place(tokens[0],cx,cy,1.2)}${rest.map((token,i)=>{const a=-Math.PI/2+i*Math.PI*2/rest.length;return place(token,cx+Math.cos(a)*radiusX,cy+Math.sin(a)*radiusY,.72);}).join('')}`;
+    } else if (kind === 'scene'){
+      const rest = tokens.slice(1);
+      const positions = [[105,55],[455,55],[95,145],[465,145],[280,35],[280,165]];
+      content = `<path class="inc-scene-frame" d="M18 187V18h524v169M18 187h524"/><path class="inc-scene-floor" d="M40 170h480M80 170l-24 17M480 170l24 17"/><circle class="inc-central-halo" cx="280" cy="112" r="62"/>${place(tokens[0],280,108,1.22)}<g class="inc-links">${rest.map((_,i)=>`<path d="M280 108L${positions[i][0]} ${positions[i][1]}"/>`).join('')}</g>${rest.map((token,i)=>place(token,positions[i][0],positions[i][1],.7)).join('')}`;
+    } else if (kind === 'stack'){
+      content = `<path class="inc-stack-room" d="M95 15h370v180H95z"/>${tokens.map((token,i)=>incidentToken(token,245,130-i*58,.82)).join('')}${courseArrow(360,175,360,35,'orange')}`;
+    } else if (kind === 'compare'){
+      const cut = Math.ceil(tokens.length / 2), left = tokens.slice(0,cut), right = tokens.slice(cut);
+      const panel = (items, cx, tone) => {
+        const rest = items.slice(1);
+        const restX = rest.length > 1 ? [cx-58,cx+58] : [cx];
+        return `<rect class="inc-compare-panel inc-compare-${tone}" x="${cx-122}" y="18" width="244" height="174" rx="18"/><circle class="inc-central-halo" cx="${cx}" cy="70" r="47"/>${place(items[0],cx,66,1)}<g class="inc-links">${rest.map((_,i)=>`<path d="M${cx} 82Q${cx} 112 ${restX[i]} 142"/>`).join('')}</g>${rest.map((token,i)=>place(token,restX[i],145,.7)).join('')}`;
+      };
+      content = `${panel(left,140,'a')}${panel(right,420,'b')}<g class="inc-compare-vs"><circle cx="280" cy="104" r="20"/><text x="280" y="109">⇄</text></g>`;
+    } else if (kind === 'flow'){
+      const n = tokens.length;
+      if (n === 3){
+        content = `<path class="inc-system-frame" d="M170 35h220v145H170z"/>${place(tokens[0],72,105,.9)}${place(tokens[1],280,103,1.12)}${place(tokens[2],488,105,.9)}<path class="inc-system-flow" d="M112 105C165 105 190 70 230 90M330 90c40-20 65 15 118 15"/>${courseArrow(115,105,222,94,'blue')}${courseArrow(338,94,445,105,'green')}`;
+      } else if (n === 4){
+        content = `${place(tokens[0],65,108,.88)}${place(tokens[1],250,55,.82)}${place(tokens[2],250,155,.82)}${place(tokens[3],490,108,.9)}<g class="inc-system-flow"><path d="M105 108C155 108 165 55 210 55M105 108c50 0 60 47 105 47M290 55c65 0 75 53 158 53M290 155c65 0 75-47 158-47"/></g><circle class="inc-junction" cx="150" cy="108" r="5"/><circle class="inc-junction" cx="390" cy="108" r="5"/>`;
+      } else {
+        const outputs = tokens.slice(2), ys = outputs.length === 3 ? [40,108,176] : outputs.map((_,i)=>48+i*58);
+        content = `${place(tokens[0],60,108,.84)}${place(tokens[1],230,108,1.05)}<circle class="inc-central-halo" cx="230" cy="108" r="53"/><g class="inc-system-flow"><path d="M100 108C145 108 160 108 185 108"/>${outputs.map((_,i)=>`<path d="M275 108Q345 108 395 ${ys[i]}"/>`).join('')}</g>${outputs.map((token,i)=>place(token,450,ys[i],.7)).join('')}`;
+      }
+    } else if (kind === 'sequence'){
+      const n = tokens.length, gap = n > 1 ? 430/(n-1) : 0;
+      const positions = tokens.map((_,i)=>[65+i*gap, i%2 ? 142 : 58]);
+      content = `<path class="inc-process-path" d="${positions.map((p,i)=>`${i?'L':'M'}${p[0]} ${p[1]}`).join(' ')}"/>${tokens.map((token,i)=>{const [x,y]=positions[i];return `<g class="inc-process-step"><circle cx="${x-31}" cy="${y-31}" r="13"/><text x="${x-31}" y="${y-27}">${i+1}</text></g>${place(token,x,y,n>5?.64:.76)}`;}).join('')}`;
+    } else if (kind === 'timeline'){
+      const n = tokens.length, gap = n > 1 ? 154/(n-1) : 0;
+      content = `<path class="inc-timeline-rail" d="M82 25V188"/>${tokens.map((token,i)=>{const y=28+i*gap, x=i%2?370:205;return `<circle class="inc-timeline-dot" cx="82" cy="${y}" r="9"/><text class="inc-step-text" x="82" y="${y+3}">${i+1}</text><path class="inc-timeline-link" d="M91 ${y}H${x-35}"/>${place(token,x,y,.62)}`;}).join('')}`;
+    } else if (kind === 'threshold'){
+      const rest=tokens.slice(1);
+      content = `<path class="inc-threshold-arc" d="M105 154A120 120 0 01345 154"/><path class="inc-threshold-needle" d="M225 154 304 76"/><circle class="inc-threshold-hub" cx="225" cy="154" r="10"/>${place(tokens[0],225,92,1.18)}<g class="inc-links">${rest.map((_,i)=>`<path d="M330 105Q370 ${65+i*90} 415 ${65+i*90}"/>`).join('')}</g>${rest.map((token,i)=>place(token,465,65+i*90,.78)).join('')}`;
+    } else {
+      content = tokens.map((token,i)=>place(token,80+i*(400/Math.max(1,tokens.length-1)),105,.82)).join('');
+    }
+    return `<div class="kp-tech-diagram kp-course-diagram inc-composition-${kind}" data-composition="${esc(kind)}"><svg class="kp-tech-svg kp-course-svg" viewBox="0 0 560 230" role="img" aria-label="${esc(visual.aria || '')}">${content}${note ? courseLabel(280,220,note,'orange') : ''}</svg></div>`;
+  }
+
   function renderKeypointVisual(k, index, mod){
-    const visual = k.visual || {};
+    const incidentScene = INCIDENT_SCENES[mod.id]?.[index];
+    const visual = k.visual || (incidentScene ? { type:'incident-course', layout:'half', scene:incidentScene, aria:k.t } : {});
     const requestedType = visual.type || k.type || 'default';
     const type = keypointTypes.has(requestedType) ? requestedType : 'default';
     const layouts = ['hero', 'wide', 'compact', 'half', 'vehicle', 'drivetrain', 'dimensions', 'tanks', 'pump'];
@@ -1002,7 +1431,9 @@ const App = (() => {
     const detailId = `kp-detail-${index}`;
     let diagram = '';
 
-    if (type.endsWith('-course')) diagram = drawCourseVisual(type, visual);
+    if (type === 'incident-course' && mod.id === 'arico' && [0, 3, 4, 5].includes(index)) diagram = drawARISpecial(index, k.t);
+    else if (type === 'incident-course') diagram = drawIncidentIllustrated(mod.id, index, visual, k.t);
+    else if (type.endsWith('-course')) diagram = drawCourseVisual(type, visual);
     else if (type.startsWith('hydraulic-')) diagram = drawHydraulicVisual(type, visual, mod);
     else if (type === 'vehicle') diagram = drawFireTruck(visual);
     else if (type === 'drivetrain') diagram = drawDrivetrain(visual);
@@ -1043,10 +1474,13 @@ const App = (() => {
       diagram = `<div class="kp-default-visual"><svg viewBox="0 0 240 72" aria-hidden="true"><path d="M12 52h45l19-30h43l19 30h90M28 52V34h29M92 22v30M154 52V30h31v22"/><circle cx="76" cy="52" r="5"/><circle cx="138" cy="52" r="5"/></svg><span>${esc(k.t)}</span></div>`;
     }
 
-    return `<article class="kp-visual kp-type-${type} kp-layout-${layout}">
+    const sceneKey = `${mod.id}:${index}`;
+    return `<article class="kp-visual visual-keypoint kp-type-${type} kp-layout-${layout}"
+      data-domain="${esc(mod.domain || '')}" data-module="${esc(mod.id)}"
+      data-keypoint-index="${index}" data-scene-key="${esc(sceneKey)}">
       <button class="kp-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">
         <span class="kp-top"><span class="kp-symbol" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><span class="kp-title">${esc(k.t)}</span></span>
-        ${diagram}
+        <span class="visual-keypoint-scene">${diagram}</span>
         ${badges.length ? `<span class="kp-badges">${badges.map(b => `<span>${esc(b)}</span>`).join('')}</span>` : ''}
         <span class="kp-open-label">Voir l’explication <i aria-hidden="true">＋</i></span>
       </button>
@@ -1073,6 +1507,9 @@ const App = (() => {
     });
 
     body.innerHTML = html;
+    body.dataset.renderedModule = mod.id;
+    body.dataset.expectedVisualKeypoints = String((mod.keypoints || []).length);
+    body.dataset.renderedVisualKeypoints = String(body.querySelectorAll('.visual-keypoint').length);
     body.querySelectorAll('.kp-toggle').forEach(button => button.addEventListener('click', () => {
       const detail = document.getElementById(button.getAttribute('aria-controls'));
       const open = button.getAttribute('aria-expanded') === 'true';

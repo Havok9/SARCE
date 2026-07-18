@@ -110,6 +110,20 @@
   font:inherit; background:transparent; border:0; cursor:pointer;
 }
 .kp-toggle:focus-visible{ outline:2px solid var(--orange); outline-offset:-3px; }
+.visual-keypoint-scene{
+  display:block; width:100%; min-width:0; min-height:150px;
+  opacity:1; visibility:visible; position:relative;
+}
+.visual-keypoint-scene > .kp-tech-diagram,
+.visual-keypoint-scene > .kp-path,
+.visual-keypoint-scene > .kp-cause-path,
+.visual-keypoint-scene > .kp-loop,
+.visual-keypoint-scene > .kp-icon-grid,
+.visual-keypoint-scene > .kp-comparison,
+.visual-keypoint-scene > .kp-thresholds,
+.visual-keypoint-scene > .kp-concept,
+.visual-keypoint-scene > .kp-default-visual{ width:100%; min-height:150px; }
+.visual-keypoint-scene svg{ display:block; width:100%; height:auto; min-height:150px; opacity:1; visibility:visible; }
 .kp-top{ display:flex; align-items:center; gap:9px; margin-bottom:14px; }
 .kp-symbol{
   display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
@@ -418,6 +432,206 @@
 .equip-4x4 text{ fill:#94a3b8; stroke:none; font:700 9px var(--mono); text-anchor:middle; }
 .equip-release{ stroke:#5cc98c; stroke-width:2; }
 
+/* Points clés Incendie — bibliothèque d'objets et compositions communes. */
+.kp-type-incident-course .kp-course-svg{ min-height:205px; }
+.inc-token{
+  fill:rgba(89,109,139,.08); stroke:#8493aa; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.inc-token .inc-fill{ fill:rgba(130,151,180,.16); }
+.inc-token .inc-fill-soft{ fill:rgba(74,183,125,.12); }
+.inc-token .inc-level{ fill:rgba(54,178,219,.26); stroke:#58c9e9; }
+.inc-token .inc-water{ fill:rgba(54,178,219,.18); stroke:#59caeb; }
+.inc-token .inc-hot{ fill:none; stroke:#e66d62; stroke-width:2.6; }
+.inc-token .inc-dots{ stroke-dasharray:2 5; }
+.inc-token.inc-blue{ stroke:#61cce9; }
+.inc-token.inc-green{ stroke:#5ac98b; }
+.inc-token.inc-orange{ stroke:#e99845; }
+.inc-token.inc-red{ stroke:#e66d62; }
+.inc-token.inc-grey{ stroke:#758195; opacity:.72; }
+.inc-token.inc-red .inc-fill{ fill:rgba(219,77,64,.19); }
+.inc-token.inc-orange .inc-fill{ fill:rgba(230,126,34,.2); }
+.inc-token.inc-green .inc-fill{ fill:rgba(74,183,125,.16); }
+.inc-token .course-label{ font-size:7px; }
+.inc-links, .inc-baseline, .inc-divider, .inc-scene-frame, .inc-stack-room{
+  fill:none; stroke:#536178; stroke-width:1.25; stroke-linecap:round; stroke-linejoin:round;
+}
+.inc-links{ stroke-dasharray:5 5; opacity:.8; }
+.inc-divider{ stroke:#704d3b; stroke-dasharray:4 6; }
+.inc-scene-frame, .inc-stack-room{ fill:rgba(20,31,47,.34); stroke:#66748a; }
+.inc-scene-floor{ fill:none; stroke:#4d5b70; stroke-width:1.2; }
+.inc-central-halo{ fill:rgba(23,38,56,.78); stroke:#546b83; stroke-width:1.4; }
+.inc-baseline{ stroke:#52758a; }
+.inc-step{ fill:#151f2e; stroke:#e7903d; stroke-width:1.4; }
+.inc-step-text{ fill:#f0aa62; stroke:none; font:700 8px var(--mono); text-anchor:middle; }
+.inc-compare-panel{ fill:rgba(20,31,47,.58); stroke-width:1.4; }
+.inc-compare-a{ stroke:#507d93; }
+.inc-compare-b{ stroke:#81634a; }
+.inc-compare-vs circle{ fill:#111b29; stroke:#e7903d; stroke-width:1.5; }
+.inc-compare-vs text{ fill:#f0aa62; stroke:none; font:700 14px var(--mono); text-anchor:middle; }
+.inc-system-frame{ fill:rgba(20,31,47,.42); stroke:#51657c; stroke-width:1.2; stroke-dasharray:4 5; }
+.inc-system-flow, .inc-process-path, .inc-timeline-rail, .inc-timeline-link{
+  fill:none; stroke:#58bddd; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+}
+.inc-system-flow{ stroke-dasharray:8 5; }
+.inc-junction{ fill:#17283a; stroke:#65cce9; stroke-width:2; }
+.inc-process-path{ stroke:#6d7f96; stroke-width:1.5; }
+.inc-process-step circle{ fill:#172230; stroke:#e7903d; stroke-width:1.4; }
+.inc-process-step text{ fill:#f0aa62; stroke:none; font:700 8px var(--mono); text-anchor:middle; }
+.inc-timeline-rail{ stroke:#7d624a; stroke-width:3; }
+.inc-timeline-link{ stroke:#677990; stroke-width:1.4; stroke-dasharray:4 4; }
+.inc-timeline-dot{ fill:#172230; stroke:#e7903d; stroke-width:1.6; }
+.inc-threshold-arc{ fill:none; stroke:#5d7188; stroke-width:9; stroke-linecap:round; }
+.inc-threshold-needle{ stroke:#e66d62; stroke-width:3; }
+.inc-threshold-hub{ fill:#172230; stroke:#e7903d; stroke-width:2; }
+
+/* ARI — quatre planches techniques dédiées, hors bibliothèque de pictogrammes. */
+.ari-special-svg{ min-height:270px !important; overflow:hidden; }
+.ari-blueprint{ fill:rgba(7,14,24,.42); stroke:#26384e; stroke-width:1.2; }
+.ari-special-svg text{ fill:#b8c6d8; stroke:none; font:700 8px var(--mono); letter-spacing:.25px; }
+.ari-special-svg .ari-object-big{ fill:#eef3f8; font-size:29px; text-anchor:middle; letter-spacing:1px; }
+.ari-special-svg .ari-object-unit{ fill:#ef9a47; font-size:10px; text-anchor:middle; }
+.ari-special-svg .ari-object-data{ fill:#73d2ed; font-size:14px; text-anchor:middle; }
+.ari-special-svg .ari-object-small{ fill:#9dacbf; font-size:8px; text-anchor:middle; }
+.ari-callout-title{ fill:#dce6ef !important; font-size:9px !important; text-anchor:middle; }
+.ari-primary-object{ stroke-linecap:round; stroke-linejoin:round; }
+.ari-bottle-shadow{ fill:none; stroke:#000; stroke-width:12; opacity:.22; }
+.ari-bottle-object{ transform-box:fill-box; transform-origin:center; transform:scale(1.12,1.02); }
+.ari-bottle-shell{ fill:url(#ari-metal-bottle); stroke:#62cce9; stroke-width:3.2; }
+.ari-bottle-highlight{ fill:none; stroke:#c5f2ff; stroke-width:4; opacity:.28; }
+.ari-bottle-band{ fill:rgba(38,179,219,.24); stroke:#75d9ef; stroke-width:2; }
+.ari-bottle-boot{ fill:#111b27; stroke:#75869d; stroke-width:2.5; }
+.ari-valve{ fill:none; stroke:#e5a157; stroke-width:3; }
+.ari-gauge-panel{ fill:none; stroke:#607188; stroke-width:3; }
+.ari-gauge-panel text{ font-size:9px; }
+.ari-gauge-track{ stroke:#28394d; stroke-width:19; stroke-linecap:round; }
+.ari-gauge-fill{ stroke:#54c98a; stroke-width:12; stroke-linecap:round; }
+.ari-gauge-tick{ stroke:#91a0b3; stroke-width:2; }
+.ari-warning-text{ fill:#ee766b !important; font-size:8px !important; }
+.ari-callout path{ fill:none; stroke:#66798f; stroke-width:1.6; }
+.ari-callout circle{ fill:#e9903d; stroke:none; }
+.ari-callout text{ fill:#aebed0; font-size:8px; }
+.ari-mech-body{ fill:url(#ari-metal-regulator); stroke:#df9549; stroke-width:3; }
+.ari-mech-rib{ fill:none; stroke:#7990a8; stroke-width:2; }
+.ari-diaphragm{ fill:#172536; stroke:#6dd2ed; stroke-width:4; }
+.ari-diaphragm-inner{ fill:#0a111c; stroke:#8497ad; stroke-width:2.5; }
+.ari-cap{ fill:#263a50; stroke:#e99a48; stroke-width:3; }
+.ari-bolts circle{ fill:#aab9c9; stroke:#0b131e; stroke-width:1; }
+.ari-spring{ fill:none; stroke:#e7edf3; stroke-width:2.4; }
+.ari-pressure path{ fill:none; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+.ari-pressure text{ font-size:9px; }
+.ari-pressure-value{ font-size:12px !important; }
+.ari-pressure-hp path{ stroke:#e66d62; }
+.ari-pressure-hp text{ fill:#ef8176; }
+.ari-pressure-mp path{ stroke:#5bcdeb; }
+.ari-pressure-mp text{ fill:#76d8ef; }
+.ari-arrow-head{ fill:#5bcdeb; stroke:none; }
+.ari-output{ fill:none; stroke:#57c98b; stroke-width:2.6; stroke-linejoin:round; }
+.ari-output text{ fill:#67d699; text-anchor:middle; }
+.ari-mini-mask{ fill:#142233; }
+.ari-smoke-blocked{ fill:none; stroke:#9da9b9; stroke-width:4; stroke-linecap:round; }
+.ari-smoke-blocked text{ fill:#9da9b9; font-size:9px; }
+.ari-smoke-blocked .ari-stop-wall{ stroke:#e66d62; stroke-width:4; }
+.ari-smoke-blocked .ari-ok-text{ fill:#59cd8d; font-size:10px; }
+.ari-mask-skirt{ fill:url(#ari-metal-sad); stroke:#70d2eb; stroke-width:3.2; }
+.ari-mask-seal{ fill:#111d2b; stroke:#8ca0b7; stroke-width:2.3; }
+.ari-mask-visor{ fill:url(#ari-glass-sad); stroke:#7ddbf0; stroke-width:2.7; }
+.ari-positive-air{ fill:none; stroke:#5ccdea; stroke-width:3.2; }
+.ari-pressure-plus{ fill:#7bdef3 !important; font-size:10px !important; text-anchor:middle; }
+.ari-sad-device .ari-mech-body{ fill:url(#ari-metal-sad); }
+.ari-sad-device > path:not(.ari-mech-body){ fill:none; stroke:#71859d; stroke-width:3; }
+.ari-sad-device text{ fill:#f5ae62; font-size:11px; }
+.ari-air-pipe{ fill:none; stroke:#61cdea; stroke-width:5; }
+.ari-secondary{ fill:none; stroke-width:2.5; }
+.ari-secondary text{ font-size:8px; text-anchor:middle; }
+.ari-red-button{ stroke:#e66d62; }
+.ari-red-button circle:first-child{ fill:rgba(230,109,98,.2); }
+.ari-red-button text{ fill:#ef8379; }
+.ari-bypass{ stroke:#e99a48; }
+.ari-bypass text{ fill:#efad6b; }
+.ari-facepiece-object .ari-mask-skirt{ fill:url(#ari-metal-facepiece); }
+.ari-facepiece-object .ari-mask-visor{ fill:url(#ari-glass-facepiece); }
+.ari-mask-strap{ fill:none; stroke:#7b8da3; stroke-width:9; }
+.ari-visor-shine{ fill:none; stroke:#d0f6ff; stroke-width:3; opacity:.32; }
+.ari-mask-valves{ fill:#152333; stroke:#59cae9; stroke-width:2.5; }
+.ari-mask-port{ fill:#0a121e; stroke:#e99a48; stroke-width:3; }
+
+/* Incendie — grandes illustrations schématiques pour les 97 autres cartes. */
+.inc-illustrated-svg{ min-height:270px !important; overflow:hidden; }
+.ill-blueprint{ fill:rgba(6,13,22,.48); stroke:#273a50; stroke-width:1.2; }
+.inc-hero-object{ fill:none; stroke:#6bcde8; stroke-width:2.8; stroke-linecap:round; stroke-linejoin:round; }
+.inc-hero-object.inc-orange{ stroke:#e99a48; }
+.inc-hero-object.inc-green{ stroke:#5dce8f; }
+.inc-hero-object.inc-red{ stroke:#e97569; }
+.inc-hero-object.inc-grey{ stroke:#8a98aa; }
+.inc-hero-object .hero-shell,
+.inc-hero-object .hero-device,
+.inc-hero-object .hero-mech,
+.inc-hero-object .hero-mask,
+.inc-hero-object .hero-bag,
+.inc-hero-object .hero-vehicle{ fill:#132131; stroke:inherit; }
+.inc-hero-object .hero-panel{ fill:#1a2a3d; stroke:#8da0b6; }
+.inc-hero-object .hero-hot{ fill:rgba(225,82,66,.34); stroke:#ec796c; stroke-width:3; }
+.inc-hero-object .hero-flame-mid{ fill:rgba(235,145,52,.52); stroke:#f1a24f; }
+.inc-hero-object .hero-ground,.inc-hero-object .hero-stand,.inc-hero-object .hero-limb,
+.inc-hero-object .hero-boot,.inc-hero-object .hero-detail,.inc-hero-object .hero-highlight,
+.inc-hero-object .hero-rib,.inc-hero-object .hero-valve{ fill:none; stroke:#91a2b7; stroke-width:2.5; }
+.inc-hero-object .hero-smoke{ fill:rgba(119,132,150,.18); stroke:#a4b2c3; }
+.inc-hero-object .hero-flow,.inc-hero-object .hero-water{ fill:none; stroke:#61cdea; stroke-width:4; }
+.inc-hero-object .hero-helmet{ fill:#27394d; stroke:#e99a48; }
+.inc-hero-object .hero-visor,.inc-hero-object .hero-screen,.inc-hero-object .hero-window{ fill:rgba(76,184,214,.22); stroke:#75d4ec; }
+.inc-hero-object .hero-pack{ fill:#1a2a3c; stroke:#8ea0b5; }
+.inc-hero-object .hero-body{ fill:rgba(43,73,99,.52); stroke:#69cce7; }
+.inc-hero-object .hero-blade{ fill:rgba(81,188,218,.19); stroke:#71d4ed; }
+.inc-hero-object .hero-bolt,.inc-hero-object .hero-hub{ fill:#e99a48; stroke:#101a27; }
+.inc-hero-object .hero-rail{ fill:none; stroke:#e1a158; stroke-width:7; }
+.inc-hero-object .hero-rung,.inc-hero-object .hero-hook{ fill:none; stroke:#9eb0c3; stroke-width:4; }
+.inc-hero-object .hero-rope,.inc-hero-object .hero-knot{ fill:none; stroke:#e6a156; stroke-width:5; }
+.inc-hero-object .hero-wheel{ fill:#09111b; stroke:#7b8da3; stroke-width:5; }
+.inc-hero-object .hero-water-fill{ fill:rgba(51,177,218,.3); stroke:#68cce9; }
+.inc-hero-object .hero-mask-visor{ fill:rgba(66,174,210,.2); }
+.inc-hero-object .hero-port,.inc-hero-object .hero-dial{ fill:#0d1724; stroke:#e99a48; }
+.inc-hero-object .hero-needle{ stroke:#eb786b; stroke-width:4; }
+.inc-hero-object .hero-light{ fill:#5ccf90; stroke:#a7f0c5; }
+.inc-hero-object .hero-hose,.inc-hero-object .hero-nozzle{ fill:none; stroke:#68cde9; stroke-width:6; }
+.inc-hero-object .hero-buckle{ fill:#1b2b3e; stroke:#e99a48; }
+.inc-hero-object .hero-danger{ fill:none; stroke:#e66d62; stroke-width:5; opacity:.85; }
+.inc-hero-object .hero-label{ fill:#d4deea; stroke:none; font:700 8px var(--mono); text-anchor:middle; letter-spacing:.35px; }
+.ill-stage-shell,.ill-stage-window,.ill-stage-door,.ill-stage-opening,.ill-air-layer,
+.ill-stairs,.ill-tech-grid,.ill-bench,.ill-anchor-beam,.ill-cliff,.ill-void,
+.ill-facade,.ill-ground,.ill-garage,.ill-ramp,.ill-garage-bays,.ill-slope,.ill-trees{
+  fill:none; stroke:#4c5d72; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
+}
+.ill-stage-shell,.ill-facade,.ill-garage{ fill:rgba(24,37,53,.22); stroke:#5b6d83; }
+.ill-stage-window,.ill-garage-bays{ fill:rgba(74,163,192,.08); stroke:#5e8498; }
+.ill-stage-door{ fill:rgba(108,126,148,.08); }
+.ill-air-layer{ stroke:#5acbe9; stroke-dasharray:9 7; opacity:.32; }
+.ill-stairs{ stroke:#8c9db0; stroke-width:3; }
+.ill-tech-grid{ stroke:#34516a; stroke-width:1; opacity:.34; }
+.ill-bench,.ill-anchor-beam,.ill-ground{ stroke:#8393a7; stroke-width:3; }
+.ill-anchor{ fill:#17283a; stroke:#e99a48; stroke-width:3; }
+.ill-void{ fill:rgba(3,8,14,.35); stroke-dasharray:7 6; }
+.ill-ramp{ stroke:#e99a48; stroke-width:4; }
+.ill-trees{ fill:rgba(63,148,92,.08); stroke:#5bb67d; stroke-width:2.5; }
+.ill-fireline{ fill:rgba(218,75,58,.2); stroke:#e66d62; stroke-width:4; }
+.ill-callouts path,.ill-callout-line{ fill:none; stroke:#667a91; stroke-width:1.5; stroke-dasharray:5 4; }
+.ill-compare-side{ fill:rgba(16,27,41,.72); stroke:#49637b; stroke-width:1.5; }
+.ill-side-a{ stroke:#4f8499; }.ill-side-b{ stroke:#866244; }
+.ill-vs,.ill-flow-pipe,.ill-process-rail{ fill:none; stroke:#5dcbe8; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.ill-vs{ stroke:#e99a48; }
+.ill-flow-pipe{ stroke-width:5; }
+.ill-arrow-head{ fill:#5dcbe8; stroke:none; }
+.ill-process-rail{ stroke:#6d7f96; stroke-width:4; }
+.ill-process-dot{ fill:#152437; stroke:#e99a48; stroke-width:2; }
+.ill-process-number{ fill:#f3b06e; stroke:none; font:700 9px var(--mono); text-anchor:middle; }
+.kp-type-incident-course:hover .inc-baseline,
+.kp-type-incident-course:focus-within .inc-baseline,
+.kp-type-incident-course:hover .inc-system-flow,
+.kp-type-incident-course:focus-within .inc-system-flow{
+  stroke-dasharray:10 6; animation:incidentFlow 2s linear infinite;
+}
+@keyframes incidentFlow{ to{ stroke-dashoffset:-32; } }
+
 .kp-visual:hover .course-arrow.course-blue path:first-child,
 .kp-visual:focus-within .course-arrow.course-blue path:first-child,
 .kp-visual:hover .foam-water,
@@ -430,7 +644,11 @@
   .kp-visual:hover .course-arrow.course-blue path:first-child,
   .kp-visual:focus-within .course-arrow.course-blue path:first-child,
   .kp-visual:hover .foam-water,
-  .kp-visual:focus-within .foam-water{ animation:none; }
+  .kp-visual:focus-within .foam-water,
+  .kp-type-incident-course:hover .inc-baseline,
+  .kp-type-incident-course:focus-within .inc-baseline,
+  .kp-type-incident-course:hover .inc-system-flow,
+  .kp-type-incident-course:focus-within .inc-system-flow{ animation:none; }
 }
 .kp-path, .kp-cause-path{
   display:flex; align-items:center; justify-content:center; gap:7px; min-height:60px;
@@ -529,6 +747,9 @@
   .kp-layout-vehicle, .kp-layout-drivetrain, .kp-layout-dimensions,
   .kp-layout-tanks, .kp-layout-pump{ grid-column:1; }
   .kp-toggle{ padding:14px; }
+  .visual-keypoint-scene,
+  .visual-keypoint-scene > .kp-tech-diagram,
+  .visual-keypoint-scene svg{ min-height:0; }
   .kp-path, .kp-cause-path{ justify-content:flex-start; }
   .kp-arrow{ transform:rotate(90deg); }
   .kp-path, .kp-cause-path{ flex-direction:column; align-items:stretch; }
@@ -540,6 +761,10 @@
   .kp-pump-diagram{ grid-template-columns:1fr; }
   .kp-mech-labels{ font-size:7.5px; }
   .kp-hydraulic-svg{ min-height:0; }
+  .kp-type-incident-course .kp-course-svg{ min-height:0; max-height:210px; }
+  .kp-type-incident-course .ari-special-svg{ min-height:0 !important; max-height:none; }
+  .kp-type-incident-course .inc-illustrated-svg{ min-height:0 !important; max-height:none; }
+  .kp-type-incident-course .kp-toggle{ padding-inline:10px; }
   .hyd-step-legend{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 }
 
