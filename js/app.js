@@ -439,6 +439,179 @@ const App = (() => {
     }
   }
 
+  const keypointTypes = new Set([
+    'flow', 'cause-effect', 'loop', 'sequence',
+    'icons', 'comparison', 'threshold', 'concept'
+  ]);
+
+  function keypointWords(value, max = 7){
+    const text = String(value || '')
+      .replace(/\([^)]*p\.\s*\d+[^)]*\)/gi, '')
+      .replace(/\s+/g, ' ').replace(/^[\s:–—-]+|[\s:–—-]+$/g, '').trim();
+    const words = text.split(' ').filter(Boolean);
+    return words.length > max ? words.slice(0, max).join(' ') + '…' : text;
+  }
+
+  function keypointClauses(value, max = 7){
+    const labels = /^(?:définition|principe|fonction|rôle|but|signes?|réactions?|réponse|attention|procédure|usage|objectif|conséquence|exemple)\s*:\s*/i;
+    const parts = String(value || '')
+      .replace(/[•]/g, '·')
+      .replace(/[.!?]\s+/g, '|')
+      .split(/\s*(?:→|⇒|➜|·|;|\|)\s*/)
+      .map(part => keypointWords(part.replace(labels, ''), 7))
+      .filter(part => part && part.length > 1);
+    return [...new Set(parts)].slice(0, max);
+  }
+
+  function keypointMeasurements(value){
+    const unit = '(?:%|°\\s*C|bar|mbar|mm|cm|m(?:²|³)?|km|L(?:\\/min)?|l(?:\\/min)?|tr\\/min|s|min|h|kg|t|V|kV|A|dB|ppm|mg\\/m³)';
+    const re = new RegExp('(?:[<>≤≥±≈]?\\s*\\d+(?:[.,]\\d+)?(?:\\s*(?:à|–|-)\\s*\\d+(?:[.,]\\d+)?)?\\s*' + unit + ')(?![A-Za-zÀ-ÿ])', 'gi');
+    return String(value || '').match(re) || [];
+  }
+
+  function keypointActionTitle(title){
+    return /mise en|mise en œuvre|arrêt|usage|procédure|conduite|engagement|déclenchement|amorçage|purge|vidange|bascule|repli|consignation|évacuation|après utilisation|avant emploi/i.test(title);
+  }
+
+  function inferKeypointType(k){
+    const title = String(k.t || '');
+    const text = `${title} ${k.d || ''}`;
+    const clauses = keypointClauses(k.d, 9);
+    const measures = keypointMeasurements(k.d);
+
+    if (/→|⇒|➜/.test(k.d || '')) return keypointActionTitle(title) ? 'sequence' : 'flow';
+    if (/boucle|cycle|régulation|rétroaction|compare la .*consigne/i.test(text)) return 'loop';
+    if (/compar|différence|≠| versus |\btypes?\b|\bniveaux?\b|entrant\s*\/\s*sortant|do\s*\/\s*dos/i.test(title)) return 'comparison';
+    if (/danger|risque|cause|conséquence|incident|défaut|difficulté|carence|refus|erreur|mauvaise|phénomène|si le |si la |entraîne|provoque/i.test(text)) return 'cause-effect';
+    if (/précaution|sécurité|vérification|contrôle|entretien|réforme|reconditionnement|équipement|matériel|règle|mission|objectif|condition|protection|hygiène/i.test(title) || clauses.length >= 5) return 'icons';
+    if (measures.length >= 2 || (measures.length >= 1 && /seuil|valeur|distance|pression|débit|tension|température|poids|dimension|autonomie|périodicité|ordre de grandeur|dosage|taux/i.test(title))) return 'threshold';
+    if (keypointActionTitle(title) || /phases?|chaîne des|cheminement|parcours|itinéraire|transmission|alimentation/i.test(title)) return 'sequence';
+    if (/trajet|circuit|circulation|voie d|du .* vers|de .* à /i.test(title)) return 'flow';
+    return 'concept';
+  }
+
+  function keypointIcon(text){
+    if (/jamais|interdit|ne pas|hors mission|réforme/i.test(text)) return '×';
+    if (/eau|rinc|hydra|aspiration|débit/i.test(text)) return '≈';
+    if (/froid|gel/i.test(text)) return '❄';
+    if (/vérif|contrôl|surveill/i.test(text)) return '✓';
+    if (/sécur|protec|gants?|masque/i.test(text)) return '◇';
+    if (/message|radio|transmission/i.test(text)) return '◫';
+    if (/évac|sauvet|repli/i.test(text)) return '↗';
+    if (/feu|incendie|flamme/i.test(text)) return '△';
+    return '•';
+  }
+
+  function autoThresholdValues(text){
+    const chunks = String(text || '').replace(/[.!?]\s+/g, '|').split(/\s*(?:·|;|\|)\s*/);
+    const values = [];
+    chunks.forEach(chunk => {
+      keypointMeasurements(chunk).forEach(value => {
+        if (values.some(item => item.value.toLowerCase() === value.trim().toLowerCase())) return;
+        let label = chunk.replace(value, '').replace(/^[\s:–—,()]+|[\s:–—,()]+$/g, '');
+        label = keypointWords(label || 'Repère opérationnel', 5);
+        const tone = /rouge|danger|maximum|maximal|interdit|alerte|mortel/i.test(chunk)
+          ? 'bad' : /normal|retour|sécurité|minimum|minimal/i.test(chunk) ? 'ok' : 'info';
+        values.push({ value: value.trim(), label, tone });
+      });
+    });
+    return values.slice(0, 4);
+  }
+
+  function autoKeypointVisual(k, type, index){
+    let clauses = keypointClauses(k.d, 7);
+    if (clauses.length < 2){
+      clauses = String(k.d || '').split(/\s*,\s*/).map(part => keypointWords(part, 7)).filter(Boolean).slice(0, 7);
+    }
+    const measures = keypointMeasurements(k.d).map(value => value.trim()).slice(0, 4);
+    const layout = index === 0 ? 'hero'
+      : ['flow', 'sequence', 'icons', 'loop'].includes(type) ? 'wide'
+      : ['cause-effect', 'threshold'].includes(type) ? 'compact' : 'half';
+    const visual = { layout };
+
+    if (type === 'flow' || type === 'sequence' || type === 'cause-effect' || type === 'loop'){
+      visual.nodes = clauses.slice(0, type === 'cause-effect' ? 3 : 6);
+      visual.badges = measures;
+    } else if (type === 'icons'){
+      visual.items = clauses.slice(0, 6).map(label => ({ icon: keypointIcon(label), label }));
+      visual.badges = measures;
+    } else if (type === 'threshold'){
+      visual.values = autoThresholdValues(k.d);
+      visual.badges = clauses.filter(clause => !visual.values.some(value => clause.includes(value.value))).slice(0, 2);
+    } else if (type === 'comparison'){
+      const titleSides = String(k.t || '').split(/\s+(?:vs\.?|ou|⇄|≠)\s+|\s*\/\s*/i).filter(Boolean);
+      visual.sides = (clauses.length >= 2 ? clauses : titleSides).slice(0, 2).map((value, i) => ({
+        label: titleSides[i] ? keypointWords(titleSides[i], 4) : `Repère ${i + 1}`,
+        value: keypointWords(value, 6)
+      }));
+      visual.badges = measures;
+    } else {
+      visual.headline = keypointWords(clauses[0] || k.t, 7);
+      visual.nodes = clauses.slice(1, 4);
+      visual.badges = measures;
+    }
+    return visual;
+  }
+
+  function renderKeypointVisual(k, index){
+    const type = keypointTypes.has(k.type) ? k.type : inferKeypointType(k);
+    const visual = { ...autoKeypointVisual(k, type, index), ...(k.visual || {}) };
+    const layout = ['hero', 'wide', 'compact', 'half'].includes(visual.layout) ? visual.layout : 'half';
+    const icon = esc(visual.icon || ({
+      flow: '→', 'cause-effect': '!', loop: '↻', sequence: '1·2·3',
+      icons: '✦', comparison: '⇄', threshold: '°', concept: '◆'
+    }[type]));
+    const nodes = (visual.nodes || []).slice(0, 7);
+    const badges = (visual.badges || []).slice(0, 4);
+    const items = (visual.items || []).slice(0, 6);
+    const values = (visual.values || []).slice(0, 4);
+    const sides = (visual.sides || []).slice(0, 2);
+    const detailId = `kp-detail-${index}`;
+    let diagram = '';
+
+    if (type === 'flow' || type === 'sequence'){
+      diagram = `<div class="kp-path ${type === 'sequence' ? 'kp-path-sequence' : ''}">
+        ${nodes.map((node, i) => `<span class="kp-node">${type === 'sequence' ? `<i>${i + 1}</i>` : ''}${esc(node)}</span>${i < nodes.length - 1 ? '<span class="kp-arrow" aria-hidden="true">→</span>' : ''}`).join('')}
+      </div>`;
+    } else if (type === 'cause-effect'){
+      diagram = `<div class="kp-cause-path">${nodes.map((node, i) =>
+        `<span class="kp-cause kp-tone-${i === 0 ? 'warn' : i === nodes.length - 1 ? 'ok' : 'bad'}">${esc(node)}</span>${i < nodes.length - 1 ? '<span class="kp-arrow" aria-hidden="true">→</span>' : ''}`
+      ).join('')}</div>`;
+    } else if (type === 'loop'){
+      diagram = `<div class="kp-loop" aria-label="Boucle de régulation">
+        ${nodes.map((node, i) => `<span class="kp-loop-node"><i>${i + 1}</i>${esc(node)}</span>`).join('')}
+        <span class="kp-loop-return" aria-hidden="true">↺ retour mesure</span>
+      </div>`;
+    } else if (type === 'icons'){
+      diagram = `<div class="kp-icon-grid">${items.map(item =>
+        `<span class="kp-icon-item"><i aria-hidden="true">${esc(item.icon || '•')}</i><span>${esc(item.label || item)}</span></span>`
+      ).join('')}</div>`;
+    } else if (type === 'comparison'){
+      diagram = `<div class="kp-comparison">${sides.map((side, i) =>
+        `<span class="kp-side kp-side-${i ? 'b' : 'a'}"><i>${esc(side.label || '')}</i><strong>${esc(side.value || '')}</strong></span>`
+      ).join('<span class="kp-vs" aria-hidden="true">⇄</span>')}</div>`;
+    } else if (type === 'threshold'){
+      diagram = `<div class="kp-thresholds">${values.map(value =>
+        `<span class="kp-threshold kp-tone-${esc(value.tone || 'info')}"><strong>${esc(value.value || '')}</strong><i>${esc(value.label || '')}</i></span>`
+      ).join('')}</div>`;
+    } else {
+      diagram = `<div class="kp-concept">
+        <strong>${esc(visual.headline || (Object.keys(visual).length ? k.t : 'Explication complète au clic'))}</strong>
+        ${nodes.length ? `<div class="kp-concept-nodes">${nodes.map(node => `<span>${esc(node)}</span>`).join('<i aria-hidden="true">→</i>')}</div>` : ''}
+      </div>`;
+    }
+
+    return `<article class="kp-visual kp-type-${type} kp-layout-${layout}">
+      <button class="kp-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">
+        <span class="kp-top"><span class="kp-symbol" aria-hidden="true">${icon}</span><span class="kp-title">${esc(k.t)}</span></span>
+        ${diagram}
+        ${badges.length ? `<span class="kp-badges">${badges.map(b => `<span>${esc(b)}</span>`).join('')}</span>` : ''}
+        <span class="kp-open-label">Voir l’explication <i aria-hidden="true">＋</i></span>
+      </button>
+      <div class="kp-detail" id="${detailId}" hidden><p>${esc(k.d)}</p></div>
+    </article>`;
+  }
+
   /* corps de fiche : points clés + sections de faits + éléments */
   function renderModuleBody(mod){
     const body = $('#mod-body');
@@ -446,8 +619,7 @@ const App = (() => {
 
     if ((mod.keypoints || []).length){
       html += `<div class="section-block"><div class="section-title">Points clés</div>
-        <div class="keypoints">${mod.keypoints.map(k =>
-          `<div class="keypoint"><div class="keypoint-bar"></div><div><b>${esc(k.t)}</b><p>${esc(k.d)}</p></div></div>`).join('')}
+        <div class="keypoints-visual">${mod.keypoints.map((k, index) => renderKeypointVisual(k, index)).join('')}
         </div></div>`;
     }
 
@@ -459,6 +631,14 @@ const App = (() => {
     });
 
     body.innerHTML = html;
+    body.querySelectorAll('.kp-toggle').forEach(button => button.addEventListener('click', () => {
+      const detail = document.getElementById(button.getAttribute('aria-controls'));
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      if (detail) detail.hidden = open;
+      const mark = button.querySelector('.kp-open-label i');
+      if (mark) mark.textContent = open ? '＋' : '−';
+    }));
   }
 
   /* ============================================================

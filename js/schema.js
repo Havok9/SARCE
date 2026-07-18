@@ -2023,17 +2023,17 @@ const Schema = (() => {
     <!-- Valeurs ciblées : volontairement invisibles au repos pour laisser la photo intacte. -->
     <g id="gxe-live-overlays" visibility="hidden" pointer-events="none"
        font-family="IBM Plex Mono, monospace" text-anchor="middle">
-      <g class="gxe-live-value"><rect x="405" y="174" width="190" height="36" rx="7"/><text id="gxe-pressure" x="500" y="198">6,0 bar</text></g>
-      <g class="gxe-live-value"><rect x="410" y="396" width="180" height="34" rx="7"/><text id="gxe-vacuum" x="500" y="419">−0,1 bar</text></g>
-      <g class="gxe-live-value"><rect x="735" y="210" width="132" height="34" rx="7"/><text id="gxe-rpm" x="801" y="233">1 200 tr/min</text></g>
-      <g class="gxe-live-value"><rect x="412" y="294" width="176" height="40" rx="7"/><text id="gxe-regulation" x="500" y="319">RÉGUL. 6 bar</text></g>
+      <g class="gxe-live-value"><rect x="430" y="210" width="150" height="40" rx="7"/><text id="gxe-pressure" x="505" y="237">6,0 bar</text></g>
+      <g class="gxe-live-value"><rect x="430" y="357" width="150" height="40" rx="7"/><text id="gxe-vacuum" x="505" y="384">−0,1 bar</text></g>
+      <g class="gxe-live-value"><rect x="670" y="265" width="100" height="38" rx="7"/><text id="gxe-rpm" x="720" y="291">1 200 tr/min</text></g>
+      <g class="gxe-live-value"><rect x="445" y="252" width="116" height="35" rx="7"/><text id="gxe-regulation" x="503" y="277">RÉGUL. 6 bar</text></g>
       <g class="gxe-state-lamps" font-size="15" font-weight="700">
-        <circle id="gxe-park" cx="620" cy="398" r="15"/><text x="620" y="404">P</text>
-        <circle id="gxe-neutral" cx="665" cy="414" r="15"/><text x="665" y="420">N</text>
-        <circle id="gxe-pto" cx="710" cy="398" r="15"/><text x="710" y="404">M</text>
+        <circle id="gxe-park" cx="655" cy="409" r="15"/><text x="655" y="415">P</text>
+        <circle id="gxe-neutral" cx="704" cy="422" r="15"/><text x="704" y="428">N</text>
+        <circle id="gxe-pto" cx="753" cy="411" r="15"/><text x="753" y="417">M</text>
       </g>
-      <g class="gxe-live-value"><rect x="294" y="503" width="150" height="42" rx="7"/><text id="gxe-flow" x="369" y="530">250 L/min</text></g>
-      <g class="gxe-live-value"><rect x="460" y="503" width="150" height="42" rx="7"/><text id="gxe-dose" x="535" y="530">0,5 %</text></g>
+      <g class="gxe-live-value"><rect x="370" y="476" width="156" height="45" rx="7"/><text id="gxe-flow" x="448" y="504">250 L/min</text></g>
+      <g class="gxe-live-value"><rect x="526" y="475" width="90" height="38" rx="7"/><text id="gxe-dose" x="571" y="501">0,5 %</text></g>
     </g>
   </svg>`
   };

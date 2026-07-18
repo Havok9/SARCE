@@ -1014,32 +1014,91 @@
       ],
       "keypoints": [
         {
-          "t": "Définition",
-          "d": "Les pompes centrifuges créent et maintiennent une pression définie par le conducteur dans les établissements. Indice de pompe : capacité maximale en aspiration à 6 m (ex. 3000/15). Corps en bronze inoxydable."
+          "t": "Définition / principe",
+          "d": "Les pompes centrifuges créent et maintiennent une pression définie par le conducteur dans les établissements. Indice de pompe : capacité maximale en aspiration à 6 m (ex. 3000/15). Corps en bronze inoxydable.",
+          "type": "concept",
+          "visual": {
+            "layout": "hero",
+            "icon": "◉",
+            "headline": "La vitesse devient pression",
+            "nodes": ["Eau aspirée", "Roue accélère", "Diffuseurs convertissent", "Pression maintenue"],
+            "badges": ["Indice 3000/15", "Aspiration à 6 m", "Corps bronze inoxydable"]
+          }
         },
         {
           "t": "Trajet de l’eau",
-          "d": "½ raccord filtre → roue à aubes (vitesse) → diffuseurs (pression) → collecteur → refoulements."
+          "d": "½ raccord filtre → roue à aubes (vitesse) → diffuseurs (pression) → collecteur → refoulements.",
+          "type": "flow",
+          "visual": {
+            "layout": "wide",
+            "icon": "≈",
+            "nodes": ["Filtre", "Roue à aubes", "Diffuseurs", "Collecteur", "Refoulements"],
+            "badges": ["Vitesse dans la roue", "Pression aux diffuseurs"]
+          }
         },
         {
           "t": "Cavitation",
-          "d": "Débit de refoulement > débit d’alimentation. Signes : bruit de billes dans le corps de pompe, chute de pression. Réactions : rendre compte, fermer le retour cuve, jouer sur les refoulements, faire réduire le débit des LDV, ralentir le moteur."
+          "d": "Débit de refoulement > débit d’alimentation. Signes : bruit de billes dans le corps de pompe, chute de pression. Réactions : rendre compte, fermer le retour cuve, jouer sur les refoulements, faire réduire le débit des LDV, ralentir le moteur.",
+          "type": "cause-effect",
+          "visual": {
+            "layout": "compact",
+            "icon": "!",
+            "nodes": ["Refoulement supérieur à l’alimentation", "Bruit et chute de pression", "Réduire débit et régime"]
+          }
         },
         {
           "t": "Échauffement",
-          "d": "Pompe sans débit = échauffement. Voyant rouge à 54 °C (redevient gris à 35 °C), valve thermique à 50 °C refoulant au sol. En attente : ouvrir légèrement le retour cuve."
+          "d": "Pompe sans débit = échauffement. Voyant rouge à 54 °C (redevient gris à 35 °C), valve thermique à 50 °C refoulant au sol. En attente : ouvrir légèrement le retour cuve.",
+          "type": "threshold",
+          "visual": {
+            "layout": "compact",
+            "icon": "°C",
+            "values": [
+              {"value": "50 °C", "label": "Valve thermique", "tone": "warn"},
+              {"value": "54 °C", "label": "Voyant rouge", "tone": "bad"},
+              {"value": "35 °C", "label": "Voyant gris", "tone": "ok"}
+            ],
+            "badges": ["Débit nul = échauffement", "Entrouvrir le retour cuve"]
+          }
         },
         {
           "t": "Précautions d’emploi",
-          "d": "Rincer à l’eau propre après eaux chargées · vidanger par temps froid · retour cuve partiel si porte-lances pas à vue · graissage régulier · jamais à sec · jamais refoulements fermés longtemps."
+          "d": "Rincer à l’eau propre après eaux chargées · vidanger par temps froid · retour cuve partiel si porte-lances pas à vue · graissage régulier · jamais à sec · jamais refoulements fermés longtemps.",
+          "type": "icons",
+          "visual": {
+            "layout": "wide",
+            "icon": "✓",
+            "items": [
+              {"icon": "≈", "label": "Rincer à l’eau propre"},
+              {"icon": "❄", "label": "Vidanger par temps froid"},
+              {"icon": "↩", "label": "Garder un retour partiel"},
+              {"icon": "●", "label": "Graisser régulièrement"},
+              {"icon": "×", "label": "Jamais tourner à sec"},
+              {"icon": "×", "label": "Éviter les refoulements fermés"}
+            ]
+          }
         },
         {
           "t": "Régulation — principe",
-          "d": "Système proportionnel : compare la pression réelle à la consigne et agit sur l’alimentation du moteur. Boîtier calculateur + interrupteur + commandes de consigne + capteur de pression. Affichage sur l’écran arrière."
+          "d": "Système proportionnel : compare la pression réelle à la consigne et agit sur l’alimentation du moteur. Boîtier calculateur + interrupteur + commandes de consigne + capteur de pression. Affichage sur l’écran arrière.",
+          "type": "loop",
+          "visual": {
+            "layout": "wide",
+            "icon": "↻",
+            "nodes": ["Consigne", "Calculateur", "Moteur", "Pompe", "Pression", "Capteur"],
+            "badges": ["Comparaison continue", "Affichage écran arrière"]
+          }
         },
         {
           "t": "Régulation — usage",
-          "d": "Bouton REGULATION (voyant vert, clignote jusqu’à la pression demandée). Consigne d’attente 3 bar, ±1 bar par impulsion +/-. Amorçage de préférence en mode MANUEL. Bascule cuve/extérieur : COUPER la régulation."
+          "d": "Bouton REGULATION (voyant vert, clignote jusqu’à la pression demandée). Consigne d’attente 3 bar, ±1 bar par impulsion +/-. Amorçage de préférence en mode MANUEL. Bascule cuve/extérieur : COUPER la régulation.",
+          "type": "sequence",
+          "visual": {
+            "layout": "compact",
+            "icon": "1·2·3",
+            "nodes": ["Passer en manuel", "Amorcer la pompe", "Activer la régulation", "Régler la consigne", "Surveiller la pression"],
+            "badges": ["Voyant vert clignotant", "Attente : 3 bar", "Impulsion : ±1 bar", "Couper avant bascule source"]
+          }
         }
       ]
     },
@@ -1617,9 +1676,9 @@
             {
               "id": "tension-ecran",
               "n": 14,
-              "x": 90,
-              "y": 13,
-              "w": 14,
+              "x": 80,
+              "y": 16,
+              "w": 13,
               "h": 6,
               "label": "Tension batteries (14)",
               "role": "Indication de la tension du réseau 24 V."
@@ -1627,50 +1686,50 @@
             {
               "id": "niveau-eau",
               "n": 15,
-              "x": 17,
-              "y": 31,
-              "w": 22,
-              "h": 18,
+              "x": 28,
+              "y": 34,
+              "w": 25,
+              "h": 22,
               "label": "Niveau cuve eau (15)",
               "role": "Indicateur à diodes du niveau de la cuve eau."
             },
             {
               "id": "niveau-mouillant",
               "n": 16,
-              "x": 17,
-              "y": 47,
-              "w": 22,
-              "h": 18,
+              "x": 28,
+              "y": 50,
+              "w": 25,
+              "h": 22,
               "label": "Niveau cuve mouillant (16)",
               "role": "Indicateur à diodes du niveau de la cuve mouillant."
             },
             {
               "id": "temp-pompe",
               "n": 17,
-              "x": 40,
-              "y": 43,
-              "w": 9,
-              "h": 7,
+              "x": 45,
+              "y": 40.5,
+              "w": 8,
+              "h": 6,
               "label": "Température eau pompe (17)",
               "role": "Rouge à 54 °C ; la régulation reste bloquée tant que l’alerte est active."
             },
             {
               "id": "regulation-etat",
               "n": 18,
-              "x": 49,
-              "y": 43,
-              "w": 9,
-              "h": 7,
+              "x": 51.5,
+              "y": 40.5,
+              "w": 8,
+              "h": 6,
               "label": "Indicateur de régulation (18)",
               "role": "Indique l’état de la régulation de pression."
             },
             {
               "id": "regulation-consigne",
               "n": 19,
-              "x": 58,
-              "y": 43,
+              "x": 57,
+              "y": 40.5,
               "w": 8,
-              "h": 7,
+              "h": 6,
               "label": "Consigne de régulation (19)",
               "role": "Valeur de pression demandée au système de régulation."
             },
@@ -1678,9 +1737,9 @@
               "id": "regulation-message",
               "n": 20,
               "x": 50,
-              "y": 37,
-              "w": 22,
-              "h": 6,
+              "y": 36.5,
+              "w": 20,
+              "h": 5,
               "label": "Message de phase de régulation (20)",
               "role": "Affiche la phase ou l’état courant de la régulation."
             },
@@ -1688,9 +1747,9 @@
               "id": "mano",
               "n": 21,
               "x": 50,
-              "y": 27,
-              "w": 31,
-              "h": 24,
+              "y": 29,
+              "w": 30,
+              "h": 23,
               "label": "Manomètre refoulement (21)",
               "role": "Pression de refoulement pompe."
             },
@@ -1698,67 +1757,67 @@
               "id": "manovac",
               "n": 22,
               "x": 50,
-              "y": 52,
-              "w": 31,
-              "h": 22,
+              "y": 51,
+              "w": 30,
+              "h": 20,
               "label": "Manovacuomètre alimentation (22)",
               "role": "Pression / dépression à l’aspiration."
             },
             {
               "id": "alerte2",
               "n": 23,
-              "x": 66,
-              "y": 26,
-              "w": 6,
-              "h": 7,
+              "x": 71.8,
+              "y": 33.5,
+              "w": 7,
+              "h": 8,
               "label": "Alerte moteur/châssis (23)",
               "role": "Si allumé en utilisation : arrêter immédiatement le moteur."
             },
             {
               "id": "regime",
               "n": 24,
-              "x": 80,
-              "y": 30,
-              "w": 18,
-              "h": 19,
+              "x": 71.8,
+              "y": 38.2,
+              "w": 16,
+              "h": 10,
               "label": "Régime moteur (24)",
               "role": "Régime moteur exprimé en tr/min."
             },
             {
               "id": "hora2",
               "n": 25,
-              "x": 80,
-              "y": 42,
-              "w": 15,
-              "h": 6,
+              "x": 72,
+              "y": 42.2,
+              "w": 12,
+              "h": 5,
               "label": "Horamètre pompe (25)",
               "role": "Nombre d’heures de fonctionnement de la pompe."
             },
             {
               "id": "temp-moteur",
               "n": 26,
-              "x": 80,
-              "y": 47,
-              "w": 15,
-              "h": 6,
+              "x": 72,
+              "y": 46.2,
+              "w": 12,
+              "h": 5,
               "label": "Température eau moteur (26)",
               "role": "Température du liquide de refroidissement moteur."
             },
             {
               "id": "carburant",
               "n": 27,
-              "x": 80,
-              "y": 52,
-              "w": 15,
-              "h": 6,
+              "x": 72,
+              "y": 50.2,
+              "w": 12,
+              "h": 5,
               "label": "Niveau carburant (27)",
               "role": "Niveau du réservoir de carburant."
             },
             {
               "id": "frein",
               "n": 28,
-              "x": 62,
-              "y": 52,
+              "x": 65.5,
+              "y": 54.5,
               "w": 5,
               "h": 7,
               "label": "Frein de parc (28)",
@@ -1767,8 +1826,8 @@
             {
               "id": "neutre",
               "n": 29,
-              "x": 66.5,
-              "y": 54,
+              "x": 70.4,
+              "y": 56.5,
               "w": 5,
               "h": 7,
               "label": "Point mort (29)",
@@ -1777,8 +1836,8 @@
             {
               "id": "pdm-ecran",
               "n": 30,
-              "x": 71,
-              "y": 52,
+              "x": 75.3,
+              "y": 54.7,
               "w": 5,
               "h": 7,
               "label": "Prise de mouvement pompe (30)",
@@ -1787,9 +1846,9 @@
             {
               "id": "urgence-moteur",
               "n": 31,
-              "x": 10,
-              "y": 70,
-              "w": 5,
+              "x": 17.5,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Arrêt d’urgence moteur (31)",
               "role": "Voyant d’état de l’arrêt d’urgence moteur."
@@ -1797,9 +1856,9 @@
             {
               "id": "rideau-marchepieds",
               "n": 32,
-              "x": 16,
-              "y": 70,
-              "w": 5,
+              "x": 25.2,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Rideau / marchepieds (32)",
               "role": "Voyant d’état des rideaux et marchepieds."
@@ -1807,9 +1866,9 @@
             {
               "id": "devidoir-mobile",
               "n": 33,
-              "x": 22,
-              "y": 70,
-              "w": 5,
+              "x": 32.5,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Position dévidoir mobile (33)",
               "role": "Voyant de position du dévidoir mobile."
@@ -1817,9 +1876,9 @@
             {
               "id": "porte-echelles",
               "n": 34,
-              "x": 70,
-              "y": 70,
-              "w": 5,
+              "x": 67.4,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Position porte-échelles (34)",
               "role": "Voyant d’état du porte-échelles."
@@ -1827,9 +1886,9 @@
             {
               "id": "mat-eclairage",
               "n": 35,
-              "x": 76,
-              "y": 70,
-              "w": 5,
+              "x": 74.9,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Position mât d’éclairage (35)",
               "role": "Voyant d’état du mât d’éclairage."
@@ -1837,9 +1896,9 @@
             {
               "id": "haut-parleur",
               "n": 36,
-              "x": 82,
-              "y": 70,
-              "w": 5,
+              "x": 81.3,
+              "y": 68.5,
+              "w": 7,
               "h": 8,
               "label": "Haut-parleur (36)",
               "role": "Voyant de fonctionnement du haut-parleur."
@@ -1847,80 +1906,80 @@
             {
               "id": "diag",
               "n": 37,
-              "x": 9,
-              "y": 85,
-              "w": 7,
-              "h": 9,
+              "x": 15.5,
+              "y": 85.5,
+              "w": 8,
+              "h": 18,
               "label": "Diagnostic (37)",
               "role": "Accès à l’état des capteurs CHÂSSIS / CAN / ÉQUIPEMENT pour la recherche de panne."
             },
             {
               "id": "debit-mousse",
               "n": 38,
-              "x": 37,
-              "y": 70,
+              "x": 44.8,
+              "y": 66.3,
               "w": 16,
-              "h": 8,
+              "h": 7,
               "label": "Débit eau refoulements mousse (38)",
               "role": "Débit d’eau mesuré sur les refoulements mousse."
             },
             {
               "id": "dosage-reel",
               "n": 39,
-              "x": 54,
-              "y": 68,
-              "w": 12,
-              "h": 5,
+              "x": 56.8,
+              "y": 65.5,
+              "w": 10,
+              "h": 4,
               "label": "Pourcentage dosage réel (39)",
               "role": "Pourcentage réel d’émulseur injecté."
             },
             {
               "id": "pression-injection",
               "n": 40,
-              "x": 54,
-              "y": 73,
-              "w": 12,
-              "h": 5,
+              "x": 56.8,
+              "y": 68.8,
+              "w": 10,
+              "h": 4,
               "label": "Pression d’injection (40)",
               "role": "Pression d’injection du système de dosage."
             },
             {
               "id": "message-dosage",
               "n": 41,
-              "x": 46,
-              "y": 78,
-              "w": 34,
-              "h": 6,
+              "x": 49.8,
+              "y": 71.6,
+              "w": 26,
+              "h": 5,
               "label": "Messages système de dosage (41)",
               "role": "Messages d’état, de sélection ou d’anomalie du dosage CTD."
             },
             {
               "id": "remplissage-journal",
               "n": 42,
-              "x": 20,
-              "y": 85,
-              "w": 7,
-              "h": 9,
+              "x": 23.5,
+              "y": 85.5,
+              "w": 8,
+              "h": 18,
               "label": "Remplissages / journal (42)",
               "role": "Accès à l’écran des remplissages et au journal du système."
             },
             {
               "id": "touches-dosages",
               "n": 43,
-              "x": 50,
-              "y": 85,
-              "w": 48,
-              "h": 9,
+              "x": 51.5,
+              "y": 85.5,
+              "w": 49,
+              "h": 18,
               "label": "Touches d’accès aux dosages (43)",
               "role": "Sélection des dosages par type d’intervention."
             },
             {
               "id": "dosage-externe",
               "n": 44,
-              "x": 91,
-              "y": 85,
-              "w": 8,
-              "h": 9,
+              "x": 82.3,
+              "y": 85.5,
+              "w": 9,
+              "h": 18,
               "label": "Dosage externe (44)",
               "role": "Accès au dosage par une source extérieure via la fonction EXT."
             }
