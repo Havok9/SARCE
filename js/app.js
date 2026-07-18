@@ -942,7 +942,7 @@ const App = (() => {
 
   function mastDrawing(x, y, extended = true, lights = true){
     const mastTop = extended ? 8 : 92;
-    return `<g transform="translate(${x} ${y})" class="mast-object"><path class="mast-truck" d="M0 90h155v72H0zM155 110h76l35 52H155z"/><circle cx="52" cy="163" r="22"/><circle cx="204" cy="163" r="22"/><path class="mast-column" d="M42 92V${mastTop + 18}h14V92M45 92V${mastTop + 8}h8V92"/><path class="mast-head" d="M18 ${mastTop + 8}h62v18H18z"/>${lights ? `<path class="mast-beam" d="M25 ${mastTop + 27}-25 70M73 ${mastTop + 27}123 70"/>` : ''}</g>`;
+    return `<g transform="translate(${x} ${y})" class="mast-object"><path class="mast-truck" d="M0 90h155v72H0zM155 110h76l35 52H155z"/><circle cx="52" cy="163" r="22"/><circle cx="204" cy="163" r="22"/><path class="mast-column" d="M42 92V${mastTop + 18}h14V92M45 92V${mastTop + 8}h8V92"/><path class="mast-head" d="M18 ${mastTop + 8}h62v18H18z"/>${lights ? `<path class="mast-beam" d="M25 ${mastTop + 27} -25 70M73 ${mastTop + 27} 123 70"/>` : ''}</g>`;
   }
 
   function drawMastCourse(visual){
