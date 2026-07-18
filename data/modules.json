@@ -1059,12 +1059,49 @@
       "links": [
         "circuit-eau",
         "pompe",
-        "tableaux"
+        "tableaux",
+        "accessoires"
+      ],
+      "views": [
+        {
+          "label": "Quand utiliser la mousse",
+          "schema": "mousse-usage",
+          "elements": [
+            {
+              "id": "bas",
+              "n": 1,
+              "x": 20,
+              "y": 48,
+              "label": "Bas foisonnement — portée et résistance",
+              "role": "Taux inférieur à 20 : feux d’hydrocarbures ou liquides inflammables en extérieur, fort rayonnement et besoin de longue portée. Peu sensible aux conditions atmosphériques."
+            },
+            {
+              "id": "moyen",
+              "n": 2,
+              "x": 50,
+              "y": 48,
+              "label": "Moyen foisonnement — surface et prévention",
+              "role": "Taux de 20 à 200 : feux de VL ou poubelles, protection préventive d’un écoulement d’hydrocarbure et consolidation d’une extinction au bas foisonnement. Portée inférieure à 10 m."
+            },
+            {
+              "id": "haut",
+              "n": 3,
+              "x": 80,
+              "y": 48,
+              "label": "Haut foisonnement — remplissage volumique",
+              "role": "Taux supérieur à 200 : espaces clos et entrepôts. Déverser en sortie du générateur-ventilateur ; très sensible aux conditions atmosphériques."
+            }
+          ]
+        },
+        {
+          "label": "Circuit CTD GIMAEX",
+          "schema": "mousse-ctd"
+        }
       ],
       "keypoints": [
         {
           "t": "Principe (COD 1)",
-          "d": "Eau + émulseur = SOLUTION MOUSSANTE ; solution + air = MOUSSE. Actions : refroidissement, étouffement, isolement, écran. Pour feux d’hydrocarbures, de liquides inflammables, de solvants polaires."
+          "d": "Eau + émulseur = SOLUTION MOUSSANTE ; solution + air = MOUSSE. Actions : refroidissement, étouffement, isolement, écran. Pour feux d’hydrocarbures et de liquides inflammables ; un solvant polaire exige un émulseur explicitement compatible."
         },
         {
           "t": "Émulseurs",
@@ -1093,6 +1130,14 @@
         {
           "t": "Lance à mousse",
           "d": "Fermer la vanne RETOUR TONNE (sinon la solution moussante retourne dans la cuve)."
+        },
+        {
+          "t": "Choix opérationnel",
+          "d": "Choisir d’abord l’objectif : portée et résistance au vent → bas ; couverture de surface ou prévention → moyen ; remplissage d’un volume clos → haut."
+        },
+        {
+          "t": "Vérification avant emploi",
+          "d": "Identifier le combustible et vérifier la compatibilité de l’émulseur, le taux de concentration demandé, le moyen de production disponible et l’influence du vent."
         }
       ],
       "sections": [
@@ -1217,160 +1262,200 @@
             {
               "id": "av-son",
               "n": 1,
-              "x": 9,
-              "y": 19,
+              "x": 19.5,
+              "y": 29,
+              "w": 9,
+              "h": 12,
               "label": "Avertisseur sonore",
               "role": "Commande et voyant : avertisseur + gyrophare + feux de pénétration."
             },
             {
               "id": "gyro",
               "n": 2,
-              "x": 9,
-              "y": 34,
+              "x": 19.5,
+              "y": 41,
+              "w": 9,
+              "h": 12,
               "label": "Gyrophares et feux à éclat",
               "role": "Commande et voyant (gyrophare + feux pénétration)."
             },
             {
               "id": "pene",
               "n": 3,
-              "x": 9,
-              "y": 63,
+              "x": 19.5,
+              "y": 57.5,
+              "w": 9,
+              "h": 12,
               "label": "Arrêt feux de pénétration",
               "role": "Commande et voyant."
             },
             {
               "id": "cam",
               "n": 4,
-              "x": 9,
-              "y": 79,
+              "x": 19.5,
+              "y": 70,
+              "w": 9,
+              "h": 12,
               "label": "Caméra de vision arrière",
               "role": "Activation manuelle."
             },
             {
               "id": "proj-av",
               "n": 5,
-              "x": 91,
-              "y": 19,
+              "x": 79.3,
+              "y": 29,
+              "w": 9,
+              "h": 12,
               "label": "Projecteur avant",
               "role": "Commande du projecteur de recherche motorisé."
             },
             {
               "id": "proj-ar",
               "n": 6,
-              "x": 91,
-              "y": 34,
+              "x": 79.3,
+              "y": 41,
+              "w": 9,
+              "h": 12,
               "label": "Projecteur arrière",
               "role": "Commande."
             },
             {
               "id": "zone",
               "n": 7,
-              "x": 91,
-              "y": 63,
+              "x": 79.3,
+              "y": 57.5,
+              "w": 9,
+              "h": 12,
               "label": "Éclairage de zone",
               "role": "Feux LED de la zone de travail."
             },
             {
               "id": "hp",
               "n": 8,
-              "x": 91,
-              "y": 79,
+              "x": 79.3,
+              "y": 70,
+              "w": 9,
+              "h": 12,
               "label": "Haut-parleur radio",
               "role": "HP extérieur 12 W à l’arrière."
             },
             {
               "id": "eau",
               "n": 9,
-              "x": 50,
-              "y": 44,
+              "x": 49,
+              "y": 40,
+              "w": 31,
+              "h": 22,
               "label": "Jauge cuve eau",
               "role": "Niveau de la cuve 3 800 L."
             },
             {
               "id": "mouil",
               "n": 10,
-              "x": 50,
-              "y": 62,
+              "x": 49,
+              "y": 61,
+              "w": 31,
+              "h": 21,
               "label": "Jauge cuve mouillant",
               "role": "Niveau de la cuve 200 L."
             },
             {
               "id": "tension",
               "n": 11,
-              "x": 70,
-              "y": 13,
+              "x": 74.5,
+              "y": 20,
+              "w": 20,
+              "h": 7,
               "label": "Tension batteries",
               "role": "2 × 12 V en série (24 V)."
             },
             {
               "id": "alerte",
               "n": 12,
-              "x": 35,
-              "y": 26,
+              "x": 34.7,
+              "y": 32.5,
+              "w": 8,
+              "h": 10,
               "label": "Alerte équipement",
               "role": "Voyant et indication d’alerte."
             },
             {
               "id": "pmt-t",
               "n": 13,
-              "x": 35,
-              "y": 55,
+              "x": 30.1,
+              "y": 43,
+              "w": 8,
+              "h": 10,
               "label": "Témoin PDM pompe",
               "role": "État de la prise de mouvement."
             },
             {
               "id": "au-mot",
               "n": 14,
-              "x": 62,
-              "y": 22,
+              "x": 30.5,
+              "y": 63.5,
+              "w": 8,
+              "h": 10,
               "label": "Voyant arrêt d’urgence",
               "role": "État de l’arrêt d’urgence."
             },
             {
               "id": "balis",
               "n": 15,
-              "x": 47,
-              "y": 24,
+              "x": 35,
+              "y": 73.5,
+              "w": 8,
+              "h": 10,
               "label": "Feux de balisage arrière",
               "role": "Rampe de 8 feux à LED."
             },
             {
               "id": "hora",
               "n": 16,
-              "x": 50,
-              "y": 86,
+              "x": 49,
+              "y": 77,
+              "w": 22,
+              "h": 6,
               "label": "Horamètre pompe",
               "role": "Heures de fonctionnement."
             },
             {
               "id": "mat-v",
               "n": 17,
-              "x": 62,
-              "y": 75,
+              "x": 64,
+              "y": 72,
+              "w": 8,
+              "h": 10,
               "label": "Position mât",
               "role": "Voyant d’état."
             },
             {
               "id": "echel",
               "n": 18,
-              "x": 68,
-              "y": 64,
+              "x": 69,
+              "y": 63,
+              "w": 8,
+              "h": 10,
               "label": "Position porte-échelles",
               "role": "Voyant d’état."
             },
             {
               "id": "devid",
               "n": 19,
-              "x": 66,
-              "y": 36,
+              "x": 69,
+              "y": 44,
+              "w": 8,
+              "h": 10,
               "label": "Position dévidoirs",
               "role": "Voyant d’état des supports."
             },
             {
               "id": "coffre",
               "n": 20,
-              "x": 60,
-              "y": 16,
+              "x": 64,
+              "y": 34,
+              "w": 8,
+              "h": 10,
               "label": "Témoin coffre ouvert",
               "role": "+ témoin de porte ouverte, coupe-batteries, commande PDM (appui long), 2 tons, flash+buzzer asservi au frein de parc."
             }
@@ -1530,18 +1615,82 @@
           "schema": "gimaex-ecran",
           "elements": [
             {
-              "id": "niveaux",
+              "id": "tension-ecran",
+              "n": 14,
+              "x": 90,
+              "y": 13,
+              "w": 14,
+              "h": 6,
+              "label": "Tension batteries (14)",
+              "role": "Indication de la tension du réseau 24 V."
+            },
+            {
+              "id": "niveau-eau",
               "n": 15,
               "x": 17,
-              "y": 38,
-              "label": "Niveaux à diodes (15-16)",
-              "role": "Cuve eau et cuve mouillant."
+              "y": 31,
+              "w": 22,
+              "h": 18,
+              "label": "Niveau cuve eau (15)",
+              "role": "Indicateur à diodes du niveau de la cuve eau."
+            },
+            {
+              "id": "niveau-mouillant",
+              "n": 16,
+              "x": 17,
+              "y": 47,
+              "w": 22,
+              "h": 18,
+              "label": "Niveau cuve mouillant (16)",
+              "role": "Indicateur à diodes du niveau de la cuve mouillant."
+            },
+            {
+              "id": "temp-pompe",
+              "n": 17,
+              "x": 40,
+              "y": 43,
+              "w": 9,
+              "h": 7,
+              "label": "Température eau pompe (17)",
+              "role": "Rouge à 54 °C ; la régulation reste bloquée tant que l’alerte est active."
+            },
+            {
+              "id": "regulation-etat",
+              "n": 18,
+              "x": 49,
+              "y": 43,
+              "w": 9,
+              "h": 7,
+              "label": "Indicateur de régulation (18)",
+              "role": "Indique l’état de la régulation de pression."
+            },
+            {
+              "id": "regulation-consigne",
+              "n": 19,
+              "x": 58,
+              "y": 43,
+              "w": 8,
+              "h": 7,
+              "label": "Consigne de régulation (19)",
+              "role": "Valeur de pression demandée au système de régulation."
+            },
+            {
+              "id": "regulation-message",
+              "n": 20,
+              "x": 50,
+              "y": 37,
+              "w": 22,
+              "h": 6,
+              "label": "Message de phase de régulation (20)",
+              "role": "Affiche la phase ou l’état courant de la régulation."
             },
             {
               "id": "mano",
               "n": 21,
               "x": 50,
-              "y": 30,
+              "y": 27,
+              "w": 31,
+              "h": 24,
               "label": "Manomètre refoulement (21)",
               "role": "Pression de refoulement pompe."
             },
@@ -1549,89 +1698,231 @@
               "id": "manovac",
               "n": 22,
               "x": 50,
-              "y": 56,
+              "y": 52,
+              "w": 31,
+              "h": 22,
               "label": "Manovacuomètre alimentation (22)",
               "role": "Pression / dépression à l’aspiration."
-            },
-            {
-              "id": "temp",
-              "n": 17,
-              "x": 41,
-              "y": 43,
-              "label": "Température eau pompe (17)",
-              "role": "Rouge à 54 °C — régulation bloquée tant que rouge."
-            },
-            {
-              "id": "regind",
-              "n": 18,
-              "x": 50,
-              "y": 43,
-              "label": "Indicateur régulation (18-19-20)",
-              "role": "État, consigne et message de phase de régulation."
-            },
-            {
-              "id": "regime",
-              "n": 24,
-              "x": 79,
-              "y": 30,
-              "label": "Régime moteur (24)",
-              "role": "tr/min."
-            },
-            {
-              "id": "hora2",
-              "n": 25,
-              "x": 79,
-              "y": 43,
-              "label": "Horamètre · temp. moteur · carburant (25-27)",
-              "role": "Heures pompe, température d’eau moteur, niveau réservoir."
             },
             {
               "id": "alerte2",
               "n": 23,
               "x": 66,
               "y": 26,
+              "w": 6,
+              "h": 7,
               "label": "Alerte moteur/châssis (23)",
-              "role": "Si allumé en utilisation : ARRÊTER immédiatement le moteur."
+              "role": "Si allumé en utilisation : arrêter immédiatement le moteur."
+            },
+            {
+              "id": "regime",
+              "n": 24,
+              "x": 80,
+              "y": 30,
+              "w": 18,
+              "h": 19,
+              "label": "Régime moteur (24)",
+              "role": "Régime moteur exprimé en tr/min."
+            },
+            {
+              "id": "hora2",
+              "n": 25,
+              "x": 80,
+              "y": 42,
+              "w": 15,
+              "h": 6,
+              "label": "Horamètre pompe (25)",
+              "role": "Nombre d’heures de fonctionnement de la pompe."
+            },
+            {
+              "id": "temp-moteur",
+              "n": 26,
+              "x": 80,
+              "y": 47,
+              "w": 15,
+              "h": 6,
+              "label": "Température eau moteur (26)",
+              "role": "Température du liquide de refroidissement moteur."
+            },
+            {
+              "id": "carburant",
+              "n": 27,
+              "x": 80,
+              "y": 52,
+              "w": 15,
+              "h": 6,
+              "label": "Niveau carburant (27)",
+              "role": "Niveau du réservoir de carburant."
             },
             {
               "id": "frein",
               "n": 28,
-              "x": 66,
+              "x": 62,
               "y": 52,
-              "label": "Frein de parc (28) · point mort (29) · PDM (30)",
-              "role": "Conditions d’enclenchement de la PDM visibles ici."
+              "w": 5,
+              "h": 7,
+              "label": "Frein de parc (28)",
+              "role": "Voyant confirmant le serrage du frein de parc."
             },
             {
-              "id": "voyants",
+              "id": "neutre",
+              "n": 29,
+              "x": 66.5,
+              "y": 54,
+              "w": 5,
+              "h": 7,
+              "label": "Point mort (29)",
+              "role": "Voyant de position neutre de la boîte de vitesses."
+            },
+            {
+              "id": "pdm-ecran",
+              "n": 30,
+              "x": 71,
+              "y": 52,
+              "w": 5,
+              "h": 7,
+              "label": "Prise de mouvement pompe (30)",
+              "role": "Voyant d’état de la prise de mouvement de la pompe."
+            },
+            {
+              "id": "urgence-moteur",
               "n": 31,
+              "x": 10,
+              "y": 70,
+              "w": 5,
+              "h": 8,
+              "label": "Arrêt d’urgence moteur (31)",
+              "role": "Voyant d’état de l’arrêt d’urgence moteur."
+            },
+            {
+              "id": "rideau-marchepieds",
+              "n": 32,
               "x": 16,
               "y": 70,
-              "label": "Voyants état (31-36)",
-              "role": "Arrêt d’urgence, rideaux/marchepieds, dévidoirs, porte-échelles, mât, haut-parleur."
+              "w": 5,
+              "h": 8,
+              "label": "Rideau / marchepieds (32)",
+              "role": "Voyant d’état des rideaux et marchepieds."
             },
             {
-              "id": "ctd",
-              "n": 38,
-              "x": 44,
+              "id": "devidoir-mobile",
+              "n": 33,
+              "x": 22,
               "y": 70,
-              "label": "Bandeau dosage CTD (38-41)",
-              "role": "Débit refoulements mousse, % réel, pression d’injection, messages du système."
+              "w": 5,
+              "h": 8,
+              "label": "Position dévidoir mobile (33)",
+              "role": "Voyant de position du dévidoir mobile."
+            },
+            {
+              "id": "porte-echelles",
+              "n": 34,
+              "x": 70,
+              "y": 70,
+              "w": 5,
+              "h": 8,
+              "label": "Position porte-échelles (34)",
+              "role": "Voyant d’état du porte-échelles."
+            },
+            {
+              "id": "mat-eclairage",
+              "n": 35,
+              "x": 76,
+              "y": 70,
+              "w": 5,
+              "h": 8,
+              "label": "Position mât d’éclairage (35)",
+              "role": "Voyant d’état du mât d’éclairage."
+            },
+            {
+              "id": "haut-parleur",
+              "n": 36,
+              "x": 82,
+              "y": 70,
+              "w": 5,
+              "h": 8,
+              "label": "Haut-parleur (36)",
+              "role": "Voyant de fonctionnement du haut-parleur."
             },
             {
               "id": "diag",
               "n": 37,
               "x": 9,
-              "y": 82,
+              "y": 85,
+              "w": 7,
+              "h": 9,
               "label": "Diagnostic (37)",
-              "role": "Touche gauche : état des capteurs CHÂSSIS / CAN / ÉQUIPEMENT pour la recherche de panne."
+              "role": "Accès à l’état des capteurs CHÂSSIS / CAN / ÉQUIPEMENT pour la recherche de panne."
             },
             {
-              "id": "touches",
+              "id": "debit-mousse",
+              "n": 38,
+              "x": 37,
+              "y": 70,
+              "w": 16,
+              "h": 8,
+              "label": "Débit eau refoulements mousse (38)",
+              "role": "Débit d’eau mesuré sur les refoulements mousse."
+            },
+            {
+              "id": "dosage-reel",
+              "n": 39,
+              "x": 54,
+              "y": 68,
+              "w": 12,
+              "h": 5,
+              "label": "Pourcentage dosage réel (39)",
+              "role": "Pourcentage réel d’émulseur injecté."
+            },
+            {
+              "id": "pression-injection",
+              "n": 40,
+              "x": 54,
+              "y": 73,
+              "w": 12,
+              "h": 5,
+              "label": "Pression d’injection (40)",
+              "role": "Pression d’injection du système de dosage."
+            },
+            {
+              "id": "message-dosage",
+              "n": 41,
+              "x": 46,
+              "y": 78,
+              "w": 34,
+              "h": 6,
+              "label": "Messages système de dosage (41)",
+              "role": "Messages d’état, de sélection ou d’anomalie du dosage CTD."
+            },
+            {
+              "id": "remplissage-journal",
               "n": 42,
-              "x": 60,
-              "y": 88,
-              "label": "Touches dosages (42-44)",
-              "role": "Accès remplissages/journal, dosages par type de feu, dosage par l’extérieur (EXT)."
+              "x": 20,
+              "y": 85,
+              "w": 7,
+              "h": 9,
+              "label": "Remplissages / journal (42)",
+              "role": "Accès à l’écran des remplissages et au journal du système."
+            },
+            {
+              "id": "touches-dosages",
+              "n": 43,
+              "x": 50,
+              "y": 85,
+              "w": 48,
+              "h": 9,
+              "label": "Touches d’accès aux dosages (43)",
+              "role": "Sélection des dosages par type d’intervention."
+            },
+            {
+              "id": "dosage-externe",
+              "n": 44,
+              "x": 91,
+              "y": 85,
+              "w": 8,
+              "h": 9,
+              "label": "Dosage externe (44)",
+              "role": "Accès au dosage par une source extérieure via la fonction EXT."
             }
           ]
         },
@@ -1708,7 +1999,52 @@
       ],
       "links": [
         "circuit-eau",
-        "pompe"
+        "pompe",
+        "accessoires"
+      ],
+      "views": [
+        {
+          "label": "Calcul de refoulement",
+          "schema": "hydro"
+        },
+        {
+          "label": "Capacité d’un hydrant",
+          "schema": "hydro-hydrant",
+          "elements": [
+            {
+              "id": "hydrant",
+              "n": 1,
+              "x": 22,
+              "y": 50,
+              "label": "Hydrant et réseau",
+              "role": "La capacité dépend du réseau. Mesurer d’abord la pression statique, puis la pression dynamique avec un débit réel connu."
+            },
+            {
+              "id": "pstat",
+              "n": 2,
+              "x": 50,
+              "y": 35,
+              "label": "Pression statique",
+              "role": "Pression de l’eau au repos : alimentation ouverte, tous les refoulements fermés."
+            },
+            {
+              "id": "pdyn",
+              "n": 3,
+              "x": 77,
+              "y": 35,
+              "label": "Pression dynamique",
+              "role": "Pression mesurée lorsque l’eau circule et que la pompe délivre un débit connu."
+            },
+            {
+              "id": "qmax",
+              "n": 4,
+              "x": 65,
+              "y": 74,
+              "label": "Débit maximal estimé",
+              "role": "Qmax = Q utilisé × √(Pstat ÷ (Pstat − Pdyn)). Cette estimation aide à décider si des lances supplémentaires peuvent être alimentées."
+            }
+          ]
+        }
       ],
       "elements": [
         {
@@ -1792,6 +2128,14 @@
         {
           "t": "Réaction à la lance",
           "d": "Plus la pression et le débit sont élevés, plus la réaction au porte-lance est forte — adapter la pression aux porteurs."
+        },
+        {
+          "t": "Débit maximal d’un hydrant",
+          "d": "Mesurer Pstat, Pdyn et le débit réel. Qmax = Q utilisé × √(Pstat ÷ (Pstat − Pdyn)) ; conserver une marge et surveiller la chute de pression lors de l’ajout de lances."
+        },
+        {
+          "t": "Pressions usuelles des lances du cours",
+          "d": "40/14 : 250 L/min à 3,5 bar · 65/18 : 500 L/min à 5,7 bar · 100/25 : 1 000 L/min à 6,1 bar · LDV 45 : jusqu’à 500 L/min, 6 à 8 bar."
         }
       ]
     },
@@ -1948,7 +2292,62 @@
       "links": [
         "chaine",
         "tableaux",
-        "circuit-eau"
+        "circuit-eau",
+        "accessoires"
+      ],
+      "views": [
+        {
+          "label": "Transmission & ralentisseur",
+          "schema": "annexes-transmission",
+          "elements": [
+            {
+              "id": "transfert",
+              "n": 1,
+              "x": 19,
+              "y": 48,
+              "label": "Boîte de transfert",
+              "role": "Sur un 4×4 : distribue le mouvement à plusieurs ponts, fournit les petites vitesses et peut entraîner treuil ou pompe. Passage en réduction : véhicule arrêté, débrayé, pont avant déjà craboté."
+            },
+            {
+              "id": "differentiel",
+              "n": 2,
+              "x": 50,
+              "y": 48,
+              "label": "Différentiel et pont",
+              "role": "Autorise des vitesses de roues différentes en virage. Le blocage impose la même vitesse : engager avant l’obstacle, à l’arrêt ou à très faible vitesse, trajectoire droite, jamais en patinage."
+            },
+            {
+              "id": "ralentisseur",
+              "n": 3,
+              "x": 81,
+              "y": 48,
+              "label": "Ralentisseur hydrodynamique",
+              "role": "Deux roues à aubes face à face : le rotor accélère l’huile, le stator la freine. Ralentissement sans frottement mécanique, chaleur évacuée par le refroidissement."
+            }
+          ]
+        },
+        {
+          "label": "Turbo & pneumatique",
+          "schema": "annexes-service",
+          "elements": [
+            {
+              "id": "turbo",
+              "n": 1,
+              "x": 27,
+              "y": 48,
+              "label": "Turbo-compresseur",
+              "role": "La turbine d’échappement entraîne un compresseur centrifuge d’admission. L’axe tourne sur un film d’huile : laisser le moteur au ralenti avant l’arrêt et éviter toute accélération brutale à froid."
+            },
+            {
+              "id": "pneu",
+              "n": 2,
+              "x": 74,
+              "y": 48,
+              "label": "Pneumatique tubeless",
+              "role": "Carcasse, bande de roulement, flanc et bourrelet. La pression d’air porte environ 90 % de la charge : respecter la valeur constructeur et contrôler à froid."
+            }
+          ]
+        }
       ],
       "keypoints": [
         {
@@ -1962,6 +2361,14 @@
         {
           "t": "Boîte de transfert",
           "d": "→ encadré comparatif FPT 4x2 / CCF 4x4 du module Chaîne cinématique."
+        },
+        {
+          "t": "Ordre 4×4",
+          "d": "1 enclencher le pont avant · 2 passer de GV à PV à l’arrêt · 3 bloquer les différentiels si nécessaire. Retirer les blocages dès le franchissement terminé."
+        },
+        {
+          "t": "Ralentisseur",
+          "d": "Complément du frein moteur et de la retenue moteur : il limite l’échauffement des freins de service lors d’un ralentissement prolongé."
         }
       ],
       "sections": [
@@ -1971,11 +2378,19 @@
           "facts": [
             {
               "t": "Vérifications",
-              "d": "Pression (à froid), usure et témoins, flancs (coupures, hernies), corps étrangers, serrage des écrous de roues."
+              "d": "Pression à froid selon le constructeur, usure et témoins, flancs (déchirure, hernie), crampons, corps étrangers, valve et bouchon. Un sous-gonflage de 20 à 30 % peut réduire de moitié la durée de vie."
             },
             {
               "t": "En intervention",
               "d": "Adapter la conduite à la charge du FPT (16 t) : distances de freinage accrues, ripage en virage."
+            },
+            {
+              "t": "Tout-terrain",
+              "d": "Une baisse de pression n’est admise que dans des cas exceptionnels, sans descendre sous la valeur minimale constructeur et seulement si le regonflage est possible. Faire passer l’obstacle sur la bande de roulement, jamais sur le flanc."
+            },
+            {
+              "t": "Crevaison",
+              "d": "Perte lente : regonfler si nécessaire pour rejoindre une zone sûre. Perte rapide : se dégager sans insister, puis caler et amarrer ; demander assistance si le terrain ne permet pas un remplacement sûr."
             }
           ]
         },
@@ -1990,6 +2405,14 @@
             {
               "t": "Usage",
               "d": "À utiliser par crans, chaussée adhérente — prudence sur sol glissant (risque de blocage des roues motrices)."
+            },
+            {
+              "t": "Familles",
+              "d": "Primaires : agissent sur le moteur (volet d’échappement, TurboBrake, JakeBrake). Secondaires : agissent sur la transmission (électrique Telma ou hydraulique Retarder/Intarder)."
+            },
+            {
+              "t": "Ralentisseur hydraulique",
+              "d": "L’huile accélérée par le rotor est freinée par le stator ; la chaleur produite est évacuée par le système de refroidissement du véhicule."
             }
           ]
         },
@@ -2025,16 +2448,237 @@
       "id": "accessoires",
       "domain": "engins",
       "icon": "▦",
-      "title": "Accessoires",
-      "tag": "Structure modulaire : chaque accessoire ajouté aura sa fiche complète (photo, emplacement, fonction, mise en œuvre, révision).",
+      "schema": "accessoires-hydro",
+      "title": "Accessoires & équipements COD 1",
+      "tag": "Reconnaître les raccords hydrauliques, l’aspiration et les équipements de mise en œuvre générale du COD 1.",
       "tags": [
-        "accessoires"
+        "accessoires",
+        "alimentation",
+        "aspiration",
+        "raccords",
+        "équipements",
+        "COD 1"
       ],
       "links": [
-        "fpt-vue"
+        "fpt-vue",
+        "circuit-eau",
+        "hydro",
+        "mousse"
       ],
-      "status": "squelette",
-      "source": "Fiches accessoires à fournir (elles seront ajoutées progressivement) : nom, photographie, emplacement dans le véhicule, fonction, caractéristiques, mise en œuvre, précautions, entretien."
+      "views": [
+        {
+          "label": "Accessoires hydrauliques",
+          "schema": "accessoires-hydro"
+        },
+        {
+          "label": "Équipements COD 1",
+          "schema": "accessoires-operation",
+          "elements": [
+            {
+              "id": "calage",
+              "n": 1,
+              "x": 15,
+              "y": 34,
+              "label": "Calage du véhicule",
+              "role": "Immobilise l’engin en complément du frein de parc. Poser les cales selon la pente et vérifier leur appui avant toute mise en œuvre de la pompe ou du parc-échelles."
+            },
+            {
+              "id": "balisage",
+              "n": 2,
+              "x": 38,
+              "y": 34,
+              "label": "Balisage, gyrophares et feux",
+              "role": "Rend l’engin et la zone de travail visibles. Adapter le balisage au trafic, à la visibilité et au risque, sans exposer le personnel lors de sa pose."
+            },
+            {
+              "id": "manometre",
+              "n": 3,
+              "x": 62,
+              "y": 34,
+              "label": "Contrôle de pression hydrant",
+              "role": "Permet de comparer pression statique et dynamique avec un débit connu afin d’évaluer la capacité du réseau et d’anticiper une alimentation insuffisante."
+            },
+            {
+              "id": "forcement",
+              "n": 4,
+              "x": 85.5,
+              "y": 34,
+              "label": "Outils de forcement",
+              "role": "Regrouper, contrôler et rendre accessibles les outils désignés par le chef d’agrès. Transport protecteur et emploi uniquement dans la zone sécurisée."
+            },
+            {
+              "id": "echelles",
+              "n": 5,
+              "x": 28,
+              "y": 77,
+              "label": "Parc-échelles et verrouillage",
+              "role": "Contrôler les verrous et le rangement avant déplacement. Personne ne reste sous le porte-échelles pendant sa manœuvre."
+            },
+            {
+              "id": "reconditionnement",
+              "n": 6,
+              "x": 74.5,
+              "y": 77,
+              "label": "Reconditionnement du matériel",
+              "role": "Dépressuriser, rincer, vidanger, contrôler et ranger chaque matériel. Signaler immédiatement toute perte, fuite, joint absent ou détérioration."
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "division",
+          "n": 1,
+          "x": 15,
+          "y": 33,
+          "label": "Division",
+          "role": "Répartit une conduite d’alimentation ou de refoulement vers plusieurs établissements. Les sorties inutilisées restent fermées et obturées."
+        },
+        {
+          "id": "coude",
+          "n": 2,
+          "x": 40,
+          "y": 33,
+          "label": "Coude d’alimentation",
+          "role": "Oriente le tuyau à la sortie du point d’eau et limite les contraintes sur le raccord. Le placer sans torsion ni coude serré dans le tuyau."
+        },
+        {
+          "id": "retenue",
+          "n": 3,
+          "x": 65,
+          "y": 33,
+          "label": "Retenue de bouche d’incendie",
+          "role": "Pièce de raccordement prévue pour l’alimentation sur bouche d’incendie. Elle est posée et contrôlée avant la mise en eau selon l’armement local."
+        },
+        {
+          "id": "bouchon",
+          "n": 4,
+          "x": 87.5,
+          "y": 33,
+          "label": "Bouchon obturateur Ø70",
+          "role": "Ferme une sortie inutilisée. En cas de bouchon manquant, appliquer le montage de dépannage en circuit fermé prévu au COD 1, sans improviser sous pression."
+        },
+        {
+          "id": "crepine",
+          "n": 5,
+          "x": 17,
+          "y": 76,
+          "label": "Crépine d’aspiration",
+          "role": "Filtre les corps étrangers à l’entrée de la ligne d’aspiration. Elle doit rester immergée, dégagée du fond et amarrée."
+        },
+        {
+          "id": "aspiral",
+          "n": 6,
+          "x": 47,
+          "y": 76,
+          "label": "Aspiral Ø110",
+          "role": "Tuyau semi-rigide résistant à la dépression. Aligner les raccords, serrer la ligne et éviter toute prise d’air ou point haut."
+        },
+        {
+          "id": "gfr",
+          "n": 7,
+          "x": 78,
+          "y": 76,
+          "label": "Canne plongeuse GFR",
+          "role": "Prélève l’émulseur dans le bidon pour le générateur de mousse. Vérifier la concentration, l’immersion de la canne et l’absence de prise d’air."
+        }
+      ],
+      "keypoints": [
+        {
+          "t": "Choisir avant de raccorder",
+          "d": "Identifier la source d’eau, le diamètre, le sens de circulation et la fonction de la pièce. Contrôler joints, demi-raccords, verrouillage et propreté avant la mise en pression."
+        },
+        {
+          "t": "Alimentation sur hydrant",
+          "d": "Établir sans torsion, ouvrir progressivement et surveiller la pression dynamique. Une chute importante entre pression statique et dynamique signale une capacité réseau limitée."
+        },
+        {
+          "t": "Aspiration sur point d’eau naturel",
+          "d": "Ligne étanche et aussi courte que possible : crépine immergée et amarrée, sans contact avec le fond. Toute prise d’air dégrade ou empêche l’amorçage."
+        },
+        {
+          "t": "Après utilisation",
+          "d": "Dépressuriser avant tout désaccouplement, rincer si nécessaire, vidanger, contrôler joints et filets, puis remettre bouchons et accessoires à leur emplacement."
+        },
+        {
+          "t": "MGO — équipements",
+          "d": "Avant l’action hydraulique : positionnement, signaux lumineux, éclairage, calage et balisage. Après l’action : parc-échelles, outils et matériel sont contrôlés puis reconditionnés."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Alimenter depuis un PI ou une BI",
+          "color": "#2aa9d6",
+          "facts": [
+            {
+              "t": "Avant ouverture",
+              "d": "Identifier le point d’eau, purger si la procédure locale le prévoit, monter la retenue ou le coude, raccorder l’alimentation et annoncer la mise en eau."
+            },
+            {
+              "t": "Pendant l’alimentation",
+              "d": "Ouvrir progressivement. Surveiller la pression dynamique et éviter les coups de bélier, les coudes brusques et le passage d’engins sur les tuyaux."
+            },
+            {
+              "t": "Sortie inutilisée",
+              "d": "La maintenir fermée et obturée. Ne jamais déposer un bouchon ni un raccord tant que la ligne est sous pression."
+            }
+          ]
+        },
+        {
+          "title": "Aspirer sur un point d’eau naturel",
+          "color": "#3fcf8e",
+          "facts": [
+            {
+              "t": "Montage",
+              "d": "Assembler les aspiraux Ø110 en contrôlant chaque joint. Poser la crépine, l’amarrer et maintenir l’ensemble immergé sans aspirer vase, sable ou débris."
+            },
+            {
+              "t": "Étanchéité",
+              "d": "Une ligne d’aspiration travaille en dépression : un joint absent, un raccord mal serré ou une fissure fait entrer de l’air sans forcément laisser sortir d’eau."
+            },
+            {
+              "t": "Amorçage",
+              "d": "Fermer les vannes parasites, lancer l’amorceur et surveiller la montée de pression. À 3 bars, l’amorceur du GIMAEX débraye automatiquement."
+            }
+          ]
+        },
+        {
+          "title": "Produire de la mousse avec un GFR",
+          "color": "#b68cff",
+          "facts": [
+            {
+              "t": "Canne plongeuse",
+              "d": "La plonger dans l’émulseur adapté au combustible. Le bidon reste stable, accessible et suffisamment ventilé pour ne pas se mettre en dépression."
+            },
+            {
+              "t": "Dosage",
+              "d": "Régler le proportionnement prescrit par l’émulseur et conserver le débit nominal de la lance. Un mauvais débit ou une prise d’air dégrade le dosage et la qualité de mousse."
+            },
+            {
+              "t": "Fin d’emploi",
+              "d": "Fermer l’émulseur, rincer le circuit à l’eau claire selon la procédure, vidanger puis remettre la canne et les raccords propres dans leur logement."
+            }
+          ]
+        },
+        {
+          "title": "Équipements et fin de mission COD 1",
+          "color": "#e6a43a",
+          "facts": [
+            {
+              "t": "Avant la pompe",
+              "d": "Positionner l’engin, porter les EPI prescrits, activer la signalisation utile, éclairer, caler puis baliser avant d’exposer le personnel autour de l’engin."
+            },
+            {
+              "t": "Contrôles avant départ",
+              "d": "Vérifier la fermeture des vannes, la remise en place des bouchons, le verrouillage des dévidoirs et du parc-échelles, ainsi que le rangement des outils."
+            },
+            {
+              "t": "Anomalie",
+              "d": "Tout matériel détérioré, manquant ou douteux est isolé et signalé. Ne pas remettre en service un accessoire dont l’étanchéité ou le verrouillage n’est pas garanti."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "systeme-feu",
@@ -2699,7 +3343,11 @@
       "keypoints": [
         {
           "t": "La bouteille",
-          "d": "7 L d'eau, 300 bars (fond plat + sabot) ou 200 bars (fond rond). Jaune pour la visibilité. Pression mini avant engagement : nominale − 10 % (270 b pour une 300 b, 180 b pour une 200 b)."
+          "d": "7 L d'eau, 300 bars (fond plat + sabot) ou 200 bars (fond rond). Jaune pour la visibilité en air opaque. Remplie d'air comprimé : 78 % N₂, 21 % O₂, 1 % gaz rares. Pression mini avant engagement : nominale − 10 % (270 b pour une 300 b, 180 b pour une 200 b)."
+        },
+        {
+          "t": "Harnais / dossard — 4 flexibles",
+          "d": "De la jonction de sortie du robinet, l'air se divise vers 4 flexibles. 2 en direct HP (sans détendeur) : sifflet de fin de charge et manomètre/bodyguard. 2 en MP via le détendeur HP : SAD et prise auxiliaire."
         },
         {
           "t": "Sifflet de fin de charge",
@@ -2707,19 +3355,27 @@
         },
         {
           "t": "Détendeur HP → MP",
-          "d": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars vers la SAD et la prise auxiliaire."
+          "d": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars vers la SAD et la prise auxiliaire, avec un débit continu et régulier. Un ressort réglé à une certaine force retient l'air via un piston pour délivrer cette pression constante."
         },
         {
           "t": "SAD (soupape à la demande)",
           "d": "Abaisse à une pression légèrement supérieure à 1 bar : légère surpression dans le masque qui empêche les fumées d'entrer. By-pass : 300 L/min minimum en cas d'effort violent. Bouton rouge : stop débit au retrait du masque."
         },
         {
+          "t": "Pièce faciale",
+          "d": "5 éléments : logement de la SAD (soupapes d'inspiration/expiration) · demi-masque large avec membrane phonique · jupe d'étanchéité en caoutchouc à doubles lèvres · fixation rapide (griffes sur casque F1, araignée sous cagoule) · visière panoramique offrant 96 % de champ de vision."
+        },
+        {
           "t": "Bodyguard / balise de détresse",
-          "d": "21 secondes d'immobilité → pré-alarme ; +8 secondes → alarme « homme mort » (29 s au total). Alarme sonore et lumineuse à l'ouverture de la bouteille."
+          "d": "21 secondes d'immobilité → pré-alarme ; +8 secondes → alarme « homme mort » (29 s au total). Alarme sonore et lumineuse à l'ouverture de la bouteille. La clé de désactivation n'est plus obligatoirement remise au contrôleur avant engagement."
+        },
+        {
+          "t": "Prise auxiliaire (narguilé)",
+          "d": "Prise femelle reliée à un flexible MP : permet de brancher, par une prise mâle, une deuxième SAD ou la cagoule d'évacuation."
         },
         {
           "t": "Cagoule d'évacuation",
-          "d": "Branchée sur la prise auxiliaire (flexible MP), débit continu de 40 L/min. Son utilisation impose un retour immédiat : deux personnes consomment la même bouteille."
+          "d": "Reliée par un tuyau MP de 1,5 m à la prise auxiliaire, cordelette de serrage autour du cou, débit continu de 40 L/min. Son utilisation impose un retour immédiat : deux personnes consomment la même bouteille."
         },
         {
           "t": "Liaison personnelle",
@@ -2730,79 +3386,138 @@
           "d": "50 m, Ø 6 à 8 mm, repères de progression (olives) : 13 « olives » vers le feu, « être sur son 31 » pour sortir. Ligne guide sur tuyau : max 40 m dans le feu (2 tuyaux de 45)."
         },
         {
+          "t": "Ligne de vie",
+          "d": "Ligne de vie = liaison personnelle + ligne guide. C'est l'association des deux qui garantit le lien physique constant entre le binôme et la sortie."
+        },
+        {
           "t": "Calcul d'autonomie",
           "d": "Capacité (L) = P × V ÷ Z. Ex. 7 L à 300 b : (300×7)/1,1 ≈ 1909 L. À 100 L/min (lutte incendie) : ≈ 19 minutes."
         },
         {
           "t": "Espace mort & réinspiration",
-          "d": "Une partie du CO₂ expiré est réinhalée → hyperventilation réflexe → surconsommation d'air."
+          "d": "Espace mort ≈ 150 ml chez l'adulte. Une partie du CO₂ expiré est réinhalée (réinspiration) → hyperventilation réflexe → surconsommation d'air."
+        },
+        {
+          "t": "Réforme & reconditionnement",
+          "d": "Réforme immédiate : flexibles/textiles brûlés, déchirés ou souillés ; bouteille déformée et/ou robinet altéré. Reconditionnement après usage : changer la bouteille, vérifier les composants, remettre un nouveau masque."
         }
       ],
-      "schema": "arico",
-      "elements": [
+      "views": [
         {
-          "id": "robinet",
-          "n": 1,
-          "x": 53,
-          "y": 21,
-          "label": "Robinet de bouteille",
-          "role": "Ouverture complète avant engagement ; déclenche l'auto-test de la balise."
+          "label": "Vue d'ensemble",
+          "schema": "arico",
+          "elements": [
+            {
+              "id": "robinet",
+              "n": 1,
+              "x": 53,
+              "y": 21,
+              "label": "Robinet de bouteille",
+              "role": "Ouverture complète avant engagement ; déclenche l'auto-test de la balise."
+            },
+            {
+              "id": "bouteille",
+              "n": 2,
+              "x": 52,
+              "y": 50,
+              "label": "Bouteille",
+              "role": "7 L, 300 bars (fond plat) ou 200 bars (fond rond), jaune, 78 % N₂ / 21 % O₂ / 1 % gaz rares. Mini avant engagement : nominale − 10 %."
+            },
+            {
+              "id": "dossard",
+              "n": 3,
+              "x": 45,
+              "y": 50,
+              "label": "Dossard",
+              "role": "Support dorsal : plaque, bretelles et ceinture. Jonction de répartition des 4 flexibles."
+            },
+            {
+              "id": "bodyguard",
+              "n": 4,
+              "x": 39,
+              "y": 50,
+              "label": "Bodyguard (balise)",
+              "role": "21 s d'immobilité → pré-alarme ; +8 s → alarme « homme mort ». Clé non obligatoirement remise au contrôleur avant engagement."
+            },
+            {
+              "id": "mano",
+              "n": 5,
+              "x": 35,
+              "y": 66,
+              "label": "Manomètre + sifflet",
+              "role": "Circuit HP sans détendeur (1 des 4 flexibles). Sifflet de fin de charge : 50 bars ± 5."
+            },
+            {
+              "id": "detendeur",
+              "n": 6,
+              "x": 52,
+              "y": 79,
+              "label": "Détendeur HP → MP",
+              "role": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars, via un piston retenu par un ressort."
+            },
+            {
+              "id": "sad",
+              "n": 7,
+              "x": 73,
+              "y": 49,
+              "label": "SAD",
+              "role": "Surpression légère (> 1 bar) dans le masque : les fumées ne peuvent pas entrer. By-pass ≥ 300 L/min."
+            },
+            {
+              "id": "masque",
+              "n": 8,
+              "x": 82,
+              "y": 42,
+              "label": "Pièce faciale",
+              "role": "5 éléments : logement SAD, demi-masque, jupe d'étanchéité, fixation rapide, visière panoramique (96 %). Bouton rouge de la SAD : stop débit au retrait du masque."
+            }
+          ]
         },
         {
-          "id": "bouteille",
-          "n": 2,
-          "x": 52,
-          "y": 50,
-          "label": "Bouteille",
-          "role": "7 L, 300 bars (fond plat) ou 200 bars (fond rond), jaune. Mini avant engagement : nominale − 10 %."
-        },
-        {
-          "id": "dossard",
-          "n": 3,
-          "x": 45,
-          "y": 50,
-          "label": "Dossard",
-          "role": "Support dorsal : plaque, bretelles et ceinture."
-        },
-        {
-          "id": "bodyguard",
-          "n": 4,
-          "x": 39,
-          "y": 50,
-          "label": "Bodyguard (balise)",
-          "role": "21 s d'immobilité → pré-alarme ; +8 s → alarme « homme mort ». À armer avant engagement."
-        },
-        {
-          "id": "mano",
-          "n": 5,
-          "x": 35,
-          "y": 66,
-          "label": "Manomètre + sifflet",
-          "role": "Circuit HP sans détendeur. Sifflet de fin de charge : 50 bars ± 5."
-        },
-        {
-          "id": "detendeur",
-          "n": 6,
-          "x": 52,
-          "y": 79,
-          "label": "Détendeur HP → MP",
-          "role": "Abaisse 200/300 bars à une moyenne pression constante de 6 à 7 bars."
-        },
-        {
-          "id": "sad",
-          "n": 7,
-          "x": 73,
-          "y": 49,
-          "label": "SAD",
-          "role": "Surpression légère (> 1 bar) dans le masque : les fumées ne peuvent pas entrer. By-pass ≥ 300 L/min."
-        },
-        {
-          "id": "masque",
-          "n": 8,
-          "x": 82,
-          "y": 42,
-          "label": "Pièce faciale",
-          "role": "Masque complet. Bouton rouge de la SAD : stop débit au retrait du masque."
+          "label": "Matériel périphérique",
+          "schema": "arico-peripheriques",
+          "elements": [
+            {
+              "id": "ligneguide",
+              "n": 1,
+              "x": 18,
+              "y": 30,
+              "label": "Ligne guide",
+              "role": "50 m, Ø 6 à 8 mm, enroulée sur tambour ou lovée en sac. Olives de repère : 13 vers le feu, sur son 31 pour sortir."
+            },
+            {
+              "id": "liaisonperso",
+              "n": 2,
+              "x": 42,
+              "y": 30,
+              "label": "Liaison personnelle",
+              "role": "6 m, Ø 4 mm : portion courte 1,25 m ou longue 6 m. Jamais chef ET équipier en liaison longue en même temps (12 m = trop long)."
+            },
+            {
+              "id": "lignedevie",
+              "n": 3,
+              "x": 63,
+              "y": 30,
+              "label": "Ligne de vie",
+              "role": "Liaison personnelle + ligne guide : l'association garantit le lien physique constant du binôme jusqu'à la sortie."
+            },
+            {
+              "id": "cagoule",
+              "n": 4,
+              "x": 84,
+              "y": 30,
+              "label": "Cagoule d'évacuation",
+              "role": "Tuyau MP de 1,5 m, cordelette de serrage au cou, débit continu 40 L/min. Retour immédiat obligatoire après branchement."
+            },
+            {
+              "id": "priseaux",
+              "n": 5,
+              "x": 30,
+              "y": 74,
+              "label": "Prise auxiliaire (narguilé)",
+              "role": "Prise femelle sur flexible MP : reçoit une prise mâle (2ᵉ SAD ou cagoule d'évacuation)."
+            }
+          ]
         }
       ]
     },
@@ -2829,8 +3544,16 @@
           "d": "Sauvetage/mise en sécurité par l'extérieur · reconnaissance d'appartement · sauvetage dans les puits, fosses ou excavations · abordage et sécurisation d'une victime en péril · déplacement d'une victime inconsciente ou invalide · évolution avec risque de chute."
         },
         {
+          "t": "Limites d'utilisation",
+          "d": "Matériel insuffisant et/ou situation opérationnelle nécessitant le recours à une équipe spécialisée · état de la victime nécessitant une prise en charge spécifique."
+        },
+        {
           "t": "Localisation",
           "d": "Deux lots dans le FPTGP, un dans le VTU. Sac jaune citron = lot engin, bleu = lot échelle."
+        },
+        {
+          "t": "Sac & bâche",
+          "d": "Sac destiné au rangement du matériel — exceptionnellement utilisable comme protection de corde en situation dégradée. La bâche, présente selon les sacs, isole et protège les agrès des souillures."
         },
         {
           "t": "La corde",
@@ -2841,6 +3564,10 @@
           "d": "30 m, Ø 7 mm, résistance NULLE. Écarte la victime de la façade, monte/descend du matériel, peut estimer une hauteur."
         },
         {
+          "t": "Cordelette à nœud français",
+          "d": "En option : réalise des poignées de préhension sur la corde au moyen d'un nœud autobloquant (nœud français). Diamètre inférieur à celui de la corde, longueur 50 à 60 cm."
+        },
+        {
           "t": "Pièces métalliques",
           "d": "Frein de charge : 2 t, EXCLUSIVEMENT en point fixe. Mousquetons : 2 t grand axe / 750 kg petit axe — travail uniquement dans le grand axe, vis fermée sans forcer, jamais en appui sur un angle. Poulie : 2 t, divise le poids par deux (mouflage)."
         },
@@ -2849,12 +3576,20 @@
           "d": "Harnais cuissard (victime ou sauveteur, connecteur demi-lune irremplaçable) · triangle d'évacuation (mousqueton automatique ou anti-panique, attaches symétriques deux mêmes couleurs sous les aisselles) · 3 anneaux cousus de 80 cm + 3 de 150 cm."
         },
         {
+          "t": "Protection de corde (option)",
+          "d": "Évite le frottement de la corde sur des angles vifs ou des matériaux coupants — à poser systématiquement sur les rebords saillants (règle n°6)."
+        },
+        {
           "t": "6 règles de sécurité avant engagement",
           "d": "1. Toujours doubler les amarrages. 2. Frein de charge toujours sur point fixe. 3. Connecteurs vissés à fond, sens de la gravité, moins ¼ de tour. 4. Nœuds de huit doubles aux extrémités. 5. Le sauveteur progresse toujours en dessous du point fixe. 6. Protections de corde sur les rebords saillants."
         },
         {
           "t": "Réforme immédiate",
           "d": "Après l'amortissement d'une chute (quelle que soit la hauteur), exposition/souillure corrosive, brûlure, coupure laissant voir l'âme, réduction de diamètre ou hernie. Lavage possible : eau douce ≤ 30 °C sans détergent, séchage à plat à l'ombre."
+        },
+        {
+          "t": "Reconditionnement",
+          "d": "Après intervention : vérifications tactiles et visuelles. Lors de la remise dans le sac, il est utile de retourner la corde. Nettoyer et reconditionner proprement."
         }
       ],
       "schema": "lspcc",
@@ -2930,6 +3665,30 @@
           "y": 51,
           "label": "Anneaux cousus",
           "role": "3 × 80 cm + 3 × 150 cm : amarrages (toujours doublés — règle n°1)."
+        },
+        {
+          "id": "bache",
+          "n": 10,
+          "x": 12,
+          "y": 30,
+          "label": "Bâche",
+          "role": "Isole et protège les agrès des souillures. Le sac peut exceptionnellement servir de protection de corde."
+        },
+        {
+          "id": "protectioncorde",
+          "n": 11,
+          "x": 30,
+          "y": 34,
+          "label": "Protection de corde",
+          "role": "Option — évite le frottement sur les angles vifs ou matériaux coupants (règle n°6)."
+        },
+        {
+          "id": "noeudfrancais",
+          "n": 12,
+          "x": 44,
+          "y": 80,
+          "label": "Cordelette à nœud français",
+          "role": "Nœud autobloquant formant une poignée de préhension sur la corde. Ø inférieur à la corde, 50 à 60 cm."
         }
       ]
     },
@@ -2951,15 +3710,27 @@
       "keypoints": [
         {
           "t": "Échelle à crochets",
-          "d": "4,25 m, 8 kg. Progression en façade d'étage en étage quand les communications sont impraticables ou que les autres échelles sont à leurs limites. S'utilise en binôme mais se manipule seul, suspendue par ses crochets ou en appui sur les pointes. 1 SP (2 exceptionnellement en sauvetage). À tester avant engagement."
+          "d": "4,25 m, 8 kg, manœuvre individuelle. Progression en façade d'étage en étage quand les communications sont impraticables, quand l'emploi d'une autre échelle est impossible (cour intérieure, impasse, passage étroit), ou quand les limites d'emploi d'une autre échelle sont atteintes (prolongement). S'utilise en binôme mais se manipule seul, suspendue par ses crochets ou en appui sur les pointes. Supporte 1 SP (2 exceptionnellement en sauvetage). À tester avant engagement."
+        },
+        {
+          "t": "Nomenclature — échelle à crochets",
+          "d": "Deux montants reliés par des échelons · deux crochets (griffes ou pointes en acier vissées) en prolongement des montants · une entretoise · deux sabots."
+        },
+        {
+          "t": "Localisation",
+          "d": "Échelle à crochets : sur le FPTGP. Échelles 2 plans (petit et grand modèle) : sur le FPTGP et sur le VTU."
         },
         {
           "t": "Échelle 2 plans grand modèle",
-          "d": "Déployée 9 m, repliée 5 m, 33 kg, largeur mini 30 cm. Atteint le 1er et le 2e étage."
+          "d": "Déployée 9 m, repliée 5 m, 33 kg, largeur mini 30 cm. Atteint le 1er et le 2e étage. Manœuvre à une équipe."
         },
         {
           "t": "Échelle 2 plans petit modèle",
-          "d": "Déployée 5,6 m, repliée 3,6 m, 20 kg."
+          "d": "Déployée 5,6 m, repliée 3,6 m, 20 kg, largeur mini 30 cm. Manœuvre à une équipe."
+        },
+        {
+          "t": "Nomenclature — échelle 2 plans",
+          "d": "Deux plans qui coulissent l'un sur l'autre par l'intermédiaire de deux montants reliés par des échelons, avec guides et poulie en tête · une cordelette (le trait) qui développe et replie l'échelle · des parachutes (basculeur monobloc) qui maintiennent l'échelle développée · deux sabots assurant la stabilité au sol · une ligature."
         },
         {
           "t": "Précautions",
@@ -2975,11 +3746,50 @@
         },
         {
           "t": "Trait",
-          "d": "Lors de sauvetages multiples, ne pas attacher le trait — le placer judicieusement pour ne pas gêner."
+          "d": "Lors de sauvetages multiples, ne pas attacher le trait — le placer judicieusement pour ne pas gêner. S'il doit être attaché, tirer sur le brin libre suffit pour le libérer rapidement."
+        },
+        {
+          "t": "Conditions de réforme",
+          "d": "L'amortissement de la chute d'un binôme en itinéraire de secours, quelle que soit la hauteur, ainsi que les souillures et les coups, peuvent entraîner après contrôle la réforme de l'échelle."
+        },
+        {
+          "t": "Reconditionnement",
+          "d": "Après l'intervention : vérifications tactiles et visuelles. Nettoyer et reconditionner proprement."
         }
       ],
-      "schema": "echelles",
-      "elements": [
+      "sections": [
+        {
+          "title": "Tableau récapitulatif",
+          "color": "#8a6a1a",
+          "facts": [
+            {
+              "t": "Crochets",
+              "d": "Longueur déployée 4,25 m (pas de repliement) · poids 8 kg · manœuvre individuelle · reconnaissances, sauvetages."
+            },
+            {
+              "t": "Crochets pliables",
+              "d": "Repliée 2,40 m / déployée 4,25 m · poids 9 kg · manœuvre individuelle · reconnaissances, sauvetages."
+            },
+            {
+              "t": "Coulisse petit modèle",
+              "d": "Repliée 3,60 m / déployée 5,60 m · poids 20 kg · manœuvre à une équipe · reconnaissances, sauvetages, établissements."
+            },
+            {
+              "t": "Coulisse grand modèle",
+              "d": "Repliée 5 m / déployée 9 m · poids 33 kg · manœuvre à une équipe · reconnaissances, sauvetages, établissements."
+            },
+            {
+              "t": "Coulisses 3 plans",
+              "d": "Repliée 5,60 m / déployée 14,30 m · poids 75 kg · manœuvre à deux équipes · reconnaissances, sauvetages, établissements."
+            }
+          ]
+        }
+      ],
+      "views": [
+        {
+          "label": "Vue d'ensemble",
+          "schema": "echelles",
+          "elements": [
         {
           "id": "planinf",
           "n": 1,
@@ -3019,6 +3829,118 @@
           "y": 30,
           "label": "Échelle à crochets",
           "role": "4,25 m, 8 kg. D'étage en étage, suspendue par ses crochets. Se manipule seul, s'utilise en binôme. À tester avant."
+        }
+          ]
+        },
+        {
+          "label": "Nomenclature",
+          "schema": "echelles-nomenclature",
+          "elements": [
+            {
+              "id": "crochets_griffes",
+              "n": 1,
+              "x": 19,
+              "y": 10,
+              "label": "Crochets (griffes)",
+              "role": "Griffes ou pointes en acier vissées, en prolongement des montants."
+            },
+            {
+              "id": "montants_crochets",
+              "n": 2,
+              "x": 13,
+              "y": 53,
+              "label": "Montants",
+              "role": "Deux montants reliés par des échelons, prolongés par les crochets."
+            },
+            {
+              "id": "echelons_crochets",
+              "n": 3,
+              "x": 25,
+              "y": 37,
+              "label": "Échelons",
+              "role": "Relient les deux montants de l'échelle à crochets."
+            },
+            {
+              "id": "entretoise",
+              "n": 4,
+              "x": 19,
+              "y": 53,
+              "label": "Entretoise",
+              "role": "Renfort transversal de l'échelle à crochets."
+            },
+            {
+              "id": "sabots_crochets",
+              "n": 5,
+              "x": 19,
+              "y": 93,
+              "label": "Sabots",
+              "role": "Deux sabots en pied d'échelle à crochets."
+            },
+            {
+              "id": "poulie_echelle",
+              "n": 6,
+              "x": 75,
+              "y": 15,
+              "label": "Poulie",
+              "role": "En tête du plan inférieur : guide la cordelette (le trait)."
+            },
+            {
+              "id": "guides",
+              "n": 7,
+              "x": 68,
+              "y": 34,
+              "label": "Guides",
+              "role": "Assurent le coulissement du plan supérieur le long du plan inférieur."
+            },
+            {
+              "id": "montants_2p",
+              "n": 8,
+              "x": 70,
+              "y": 45,
+              "label": "Montants",
+              "role": "Deux plans qui coulissent l'un sur l'autre, chacun formé de deux montants reliés par des échelons."
+            },
+            {
+              "id": "echelons_2p",
+              "n": 9,
+              "x": 80,
+              "y": 45,
+              "label": "Échelons",
+              "role": "Relient les montants de chaque plan de l'échelle à coulisse."
+            },
+            {
+              "id": "trait",
+              "n": 10,
+              "x": 69,
+              "y": 58,
+              "label": "Cordelette (trait)",
+              "role": "Permet de développer et de replier l'échelle."
+            },
+            {
+              "id": "parachutes",
+              "n": 11,
+              "x": 75,
+              "y": 65,
+              "label": "Parachutes",
+              "role": "Basculeur monobloc : maintient l'échelle développée. À vérifier correctement positionné avant de monter."
+            },
+            {
+              "id": "ligature",
+              "n": 12,
+              "x": 70,
+              "y": 77,
+              "label": "Ligature",
+              "role": "Fixation qui solidarise les éléments de l'échelle à coulisse."
+            },
+            {
+              "id": "sabots_2p",
+              "n": 13,
+              "x": 75,
+              "y": 92,
+              "label": "Sabots",
+              "role": "Deux sabots assurant la stabilité au sol."
+            }
+          ]
         }
       ]
     },

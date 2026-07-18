@@ -385,29 +385,58 @@ const Schema = (() => {
     </g>
   </svg>` };
 
-  S.hydro = { aspect: '1000 / 620', svg: `
+  S.hydro = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
-    <text x="500" y="150" text-anchor="middle" fill="#8a94b8" font-family="Chakra Petch" font-weight="700" font-size="34">Pr = Po + J45 + J70 + J110 + Z</text>
-    <!-- établissement au sol qui monte vers la lance -->
-    <line x1="60" y1="420" x2="940" y2="420" stroke="#2a2a4c" stroke-width="3"/>
-    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M140 380 H700 L830 300" stroke="#101020" stroke-width="20"/>
-      <path d="M140 380 H700 L830 300" stroke="#41416a" stroke-width="11"/>
+    <defs>
+      <linearGradient id="hy-pipe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdd5d9"/><stop offset=".22" stop-color="#556168"/><stop offset=".55" stop-color="#172027"/><stop offset="1" stop-color="#88949a"/></linearGradient>
+      <linearGradient id="hy-red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff533f"/><stop offset=".48" stop-color="#c3261b"/><stop offset="1" stop-color="#690d09"/></linearGradient>
+      <filter id="hy-shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#000" flood-opacity=".55"/></filter>
+    </defs>
+    <text x="500" y="55" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-weight="700" font-size="31">Pr = Po + J45 + J70 + J110 + Z</text>
+    <text x="500" y="82" text-anchor="middle" fill="#72818b" font-family="IBM Plex Mono" font-size="13">PRESSION POMPE = LANCE + PERTES DE CHARGE + DÉNIVELLATION</text>
+
+    <!-- engin-pompe en volume -->
+    <g transform="translate(38 252)" filter="url(#hy-shadow)">
+      <path d="M0 38Q0 8 30 8H158Q180 10 186 35L196 80V156H0Z" fill="url(#hy-red)" stroke="#5c100c" stroke-width="5"/>
+      <path d="M108 22H158Q170 24 176 48H108Z" fill="#172b38" stroke="#62717a" stroke-width="3"/>
+      <rect x="16" y="34" width="76" height="86" rx="7" fill="#171e23" stroke="#6d787e" stroke-width="3"/>
+      <circle cx="46" cy="154" r="30" fill="#090c0e" stroke="#616d74" stroke-width="6"/><circle cx="150" cy="154" r="30" fill="#090c0e" stroke="#616d74" stroke-width="6"/>
+      <circle cx="46" cy="154" r="12" fill="url(#valG)"/><circle cx="150" cy="154" r="12" fill="url(#valG)"/>
+      <circle cx="53" cy="77" r="25" fill="url(#pumpG)" stroke="#9aa7ae" stroke-width="4"/>
     </g>
-    <!-- engin -->
-    <ellipse cx="140" cy="414" rx="90" ry="11" fill="#000" opacity="0.32"/>
-    <rect x="62" y="300" width="156" height="104" rx="11" fill="url(#engG)" stroke="#68689a" stroke-width="3" filter="url(#soft)"/>
-    <g fill="url(#valG)" stroke="#68689a" stroke-width="3"><circle cx="100" cy="406" r="19"/><circle cx="180" cy="406" r="19"/></g>
-    <!-- lance en hauteur -->
-    <path d="M830 300 L888 268" stroke="#8a94b8" stroke-width="9" stroke-linecap="round"/>
-    <path d="M888 268 L940 236" stroke="#4B8FE0" stroke-width="5" stroke-linecap="round" stroke-dasharray="3 9" opacity=".8"/>
-    <!-- cote de dénivellation -->
-    <g stroke="#e67e22" stroke-width="2.5" opacity=".85">
-      <line x1="905" y1="420" x2="905" y2="290"/><line x1="897" y1="420" x2="913" y2="420"/><line x1="897" y1="290" x2="913" y2="290"/>
+
+    <!-- établissement : trois diamètres matérialisés par des flexibles cylindriques -->
+    <g fill="none" stroke-linecap="round" filter="url(#hy-shadow)">
+      <path d="M205 372H388" stroke="#101519" stroke-width="34"/><path d="M205 366H388" stroke="url(#hy-pipe)" stroke-width="22"/>
+      <path d="M388 372H590" stroke="#101519" stroke-width="29"/><path d="M388 366H590" stroke="url(#hy-pipe)" stroke-width="17"/>
+      <path d="M590 372H745L846 276" stroke="#101519" stroke-width="24"/><path d="M590 366H745L846 270" stroke="url(#hy-pipe)" stroke-width="13"/>
     </g>
-    <text x="928" y="362" fill="#e67e22" font-family="IBM Plex Mono" font-size="19">Z</text>
-    <text x="500" y="500" text-anchor="middle" fill="#62628a" font-family="IBM Plex Mono" font-size="18">touchez un terme de la formule</text>
+    <g font-family="IBM Plex Mono" font-size="15" text-anchor="middle"><text x="296" y="418" fill="#87c8e5">Ø110 · J110</text><text x="490" y="418" fill="#7ed59f">Ø70 · J70</text><text x="671" y="418" fill="#f3bd72">Ø45 · J45</text></g>
+
+    <!-- lance et jet -->
+    <g transform="translate(846 270) rotate(-35)" filter="url(#hy-shadow)"><path d="M0 0H78" stroke="url(#hy-pipe)" stroke-width="20" stroke-linecap="round"/><path d="M54-14H88V14H54Z" fill="#242c31" stroke="#adb7bc" stroke-width="4"/></g>
+    <path d="M912 224Q950 196 982 184" stroke="#45bce5" stroke-width="7" stroke-linecap="round" stroke-dasharray="5 12"/>
+    <text x="862" y="188" text-anchor="middle" fill="#e8e9f3" font-family="IBM Plex Mono" font-size="15">Po · LANCE DÉFAVORISÉE</text>
+
+    <!-- dénivellation -->
+    <g stroke="#e67e22" stroke-width="3"><path d="M930 370V250"/><path d="M920 370H940M920 250H940"/></g><text x="950" y="318" fill="#f3a45d" font-family="IBM Plex Mono" font-size="21">Z</text>
+    <g transform="translate(250 500)"><rect width="500" height="76" rx="12" fill="#101923" stroke="#2d3e4e" stroke-width="2"/><text x="250" y="31" text-anchor="middle" fill="#cbd6dc" font-family="IBM Plex Mono" font-size="15">5 LOIS : Q² · LONGUEUR · RUGOSITÉ · 1/DIAMÈTRE · INDÉPENDANT DE P</text><text id="hy-result" x="250" y="57" text-anchor="middle" fill="#e67e22" font-family="IBM Plex Mono" font-size="14">Choisissez un exemple de calcul au-dessus du schéma.</text></g>
+  </svg>` };
+
+  /* Hydrant : pression statique/dynamique et débit maximal disponible. */
+  S['hydro-hydrant'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="hh-red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6653"/><stop offset=".45" stop-color="#c42a1e"/><stop offset="1" stop-color="#650c08"/></linearGradient><filter id="hh-shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".55"/></filter></defs>
+    <text x="500" y="52" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">CAPACITÉ D’UN HYDRANT</text>
+    <!-- poteau incendie en volume -->
+    <g transform="translate(92 156)" filter="url(#hh-shadow)"><path d="M65 40Q65 0 105 0H155Q195 0 195 40V304H65Z" fill="url(#hh-red)" stroke="#5f100b" stroke-width="7"/><ellipse cx="130" cy="40" rx="65" ry="34" fill="#e34a39" stroke="#68120d" stroke-width="7"/><ellipse cx="130" cy="33" rx="34" ry="17" fill="#ad2117"/><path d="M48 120H0V202H48M212 120H260V202H212" fill="url(#hh-red)" stroke="#5f100b" stroke-width="7"/><circle cy="161" r="29" fill="#30383d" stroke="#b9c2c6" stroke-width="6"/><circle cx="260" cy="161" r="29" fill="#30383d" stroke="#b9c2c6" stroke-width="6"/><path d="M36 304H224L246 352H14Z" fill="#8d1710" stroke="#5f100b" stroke-width="7"/></g>
+    <!-- manomètres -->
+    <g transform="translate(500 220)" filter="url(#hh-shadow)"><circle r="112" fill="url(#valG)" stroke="#919da3" stroke-width="7"/><circle r="88" fill="#0a1117" stroke="#33434f" stroke-width="4"/><g stroke="#758792" stroke-width="3">${Array.from({length:11},(_,i)=>{const a=(-210+i*24)*Math.PI/180;return `<path d="M${Math.cos(a)*72} ${Math.sin(a)*72}L${Math.cos(a)*84} ${Math.sin(a)*84}"/>`;}).join('')}</g><line id="hh-static-needle" y2="-68" stroke="#4cd68a" stroke-width="6" stroke-linecap="round" style="transform:rotate(-70deg);transition:transform .5s;"/><circle r="11" fill="#d2d9dc"/><text y="52" text-anchor="middle" fill="#8ceab5" font-family="IBM Plex Mono" font-size="14">STATIQUE</text></g>
+    <g transform="translate(770 220)" filter="url(#hh-shadow)"><circle r="112" fill="url(#valG)" stroke="#919da3" stroke-width="7"/><circle r="88" fill="#0a1117" stroke="#33434f" stroke-width="4"/><g stroke="#758792" stroke-width="3">${Array.from({length:11},(_,i)=>{const a=(-210+i*24)*Math.PI/180;return `<path d="M${Math.cos(a)*72} ${Math.sin(a)*72}L${Math.cos(a)*84} ${Math.sin(a)*84}"/>`;}).join('')}</g><line id="hh-dynamic-needle" y2="-68" stroke="#46bfe8" stroke-width="6" stroke-linecap="round" style="transform:rotate(-100deg);transition:transform .5s;"/><circle r="11" fill="#d2d9dc"/><text y="52" text-anchor="middle" fill="#73d6f8" font-family="IBM Plex Mono" font-size="14">DYNAMIQUE</text></g>
+    <g transform="translate(400 394)"><rect width="500" height="154" rx="15" fill="#101923" stroke="#2d3e4e" stroke-width="3"/><text id="hh-pressures" x="250" y="42" text-anchor="middle" fill="#d8e2e7" font-family="IBM Plex Mono" font-size="20">Pstat 7,5 bar · Pdyn 5,0 bar</text><text id="hh-flow" x="250" y="82" text-anchor="middle" fill="#73d6f8" font-family="Chakra Petch" font-size="27" font-weight="700">Débit utilisé : 500 L/min</text><text id="hh-qmax" x="250" y="122" text-anchor="middle" fill="#8ceab5" font-family="IBM Plex Mono" font-size="18">Qmax ≈ 612 L/min</text></g>
+    <text x="650" y="584" text-anchor="middle" fill="#71808a" font-family="IBM Plex Mono" font-size="14">Qmax = Q utilisé × √(Pstat ÷ (Pstat − Pdyn))</text>
   </svg>` };
 
   /* --- FPT GIMAEX : tableau de commande arrière --- */
@@ -658,7 +687,7 @@ const Schema = (() => {
   };
 
   /* --- FPT GIMAEX : écran cabine --- */
-  S['gimaex-cabine'] = { aspect: '1000 / 620', svg: `
+  S['gimaex-cabine-legacy'] = { aspect: '1000 / 620', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
     <rect x="30" y="26" width="940" height="568" rx="16" fill="#15151f" stroke="#3a3a4c" stroke-width="3" filter="url(#soft)"/>
@@ -694,6 +723,23 @@ const Schema = (() => {
     </g>
     <text x="500" y="538" text-anchor="middle" fill="#c8d0e8" font-family="IBM Plex Mono" font-size="18">⊙ 0 Bar</text>
   </svg>` };
+
+  /* Vue active : photographie réelle de l'écran du poste de conduite.
+     Le dessin précédent reste disponible sous la clé -legacy uniquement
+     comme sauvegarde logique ; aucun module ne l'affiche. */
+  S['gimaex-cabine'] = {
+    aspect: '1000 / 620',
+    className: 'schema-photo schema-gimaex-screen schema-gimaex-cabin-photo',
+    svg: `
+  <svg viewBox="0 0 1000 620" data-photo-base-height="620" role="img" aria-labelledby="gxc-photo-title" preserveAspectRatio="xMidYMid meet">
+    <title id="gxc-photo-title">Écran GIMAEX du poste de conduite</title>
+    <rect data-photo-background width="1000" height="620" fill="#05090d"/>
+    <text x="500" y="300" text-anchor="middle" fill="#6f7d87" font-family="IBM Plex Mono" font-size="18">Image attendue :</text>
+    <text x="500" y="330" text-anchor="middle" fill="#9ba9b2" font-family="IBM Plex Mono" font-size="17">assets/gimaex/ecran-cabine-gimaex.png</text>
+    <image class="gimaex-screen-photo" href="assets/gimaex/ecran-cabine-gimaex.png"
+      x="0" y="0" width="1000" height="620" preserveAspectRatio="xMidYMid meet"/>
+  </svg>`
+  };
 
   /* --- Système feu : coupe d'un local --- */
   S['systeme-feu'] = { aspect: '1000 / 620', svg: `
@@ -890,6 +936,61 @@ const Schema = (() => {
     <rect x="375" y="296" width="24" height="18" rx="3" fill="#2a5a3a"/>
   </svg>` };
 
+  /* --- ARI : matériel périphérique (ligne guide, liaison personnelle, ligne de vie, cagoule, prise auxiliaire) --- */
+  S['arico-peripheriques'] = { aspect: '1000 / 620', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <line x1="40" y1="560" x2="960" y2="560" stroke="#2a2a4c" stroke-width="3"/>
+    <!-- Ligne guide : tambour + olives -->
+    <g transform="translate(180 186)">
+      <circle r="70" fill="url(#valG)" stroke="#8a94b8" stroke-width="4" filter="url(#soft)"/>
+      <circle r="52" fill="none" stroke="#c8d0e8" stroke-width="6"/>
+      <circle r="36" fill="none" stroke="#c8d0e8" stroke-width="6"/>
+      <circle r="20" fill="none" stroke="#c8d0e8" stroke-width="6"/>
+      <circle r="9" fill="#12122a" stroke="#8a94b8" stroke-width="3"/>
+      <path d="M64 46 C 100 56 120 60 140 66" fill="none" stroke="#9a9ab8" stroke-width="5"/>
+      <g fill="#e67e22"><circle cx="100" cy="56" r="7"/><circle cx="122" cy="62" r="7"/><circle cx="140" cy="66" r="7"/></g>
+    </g>
+    <text x="180" y="300" text-anchor="middle" fill="#8a94b8" font-family="IBM Plex Mono" font-size="15">50 m · Ø 6-8 mm</text>
+    <!-- Liaison personnelle : cordelette lovée + 2 mousquetons (chef / équipier) -->
+    <g transform="translate(420 186)">
+      <ellipse rx="66" ry="52" fill="none" stroke="#b0b0cc" stroke-width="8"/>
+      <ellipse rx="48" ry="38" fill="none" stroke="#9a9ab8" stroke-width="8"/>
+      <ellipse rx="30" ry="24" fill="none" stroke="#b0b0cc" stroke-width="8"/>
+      <rect x="-92" y="-18" width="24" height="36" rx="11" fill="none" stroke="#8a94b8" stroke-width="6" transform="rotate(-16 -80 0)"/>
+      <rect x="68" y="-18" width="24" height="36" rx="11" fill="none" stroke="#8a94b8" stroke-width="6" transform="rotate(16 80 0)"/>
+    </g>
+    <text x="420" y="300" text-anchor="middle" fill="#8a94b8" font-family="IBM Plex Mono" font-size="15">6 m · Ø 4 mm</text>
+    <!-- Ligne de vie = liaison personnelle + ligne guide -->
+    <g transform="translate(630 186)">
+      <rect x="-92" y="-66" width="184" height="132" rx="16" fill="none" stroke="#3aa8c9" stroke-width="3" stroke-dasharray="6 8"/>
+      <circle cx="-46" cy="0" r="30" fill="none" stroke="#9a9ab8" stroke-width="7"/>
+      <circle cx="-46" cy="0" r="16" fill="none" stroke="#b0b0cc" stroke-width="6"/>
+      <text x="4" y="11" text-anchor="middle" fill="#3aa8c9" font-family="Chakra Petch" font-weight="700" font-size="30">+</text>
+      <circle cx="52" cy="0" r="30" fill="url(#valG)" stroke="#8a94b8" stroke-width="4"/>
+      <circle cx="52" cy="0" r="12" fill="#12122a" stroke="#8a94b8" stroke-width="3"/>
+    </g>
+    <text x="630" y="300" text-anchor="middle" fill="#3aa8c9" font-family="IBM Plex Mono" font-size="14">liaison perso + ligne guide</text>
+    <!-- Cagoule d'évacuation -->
+    <g transform="translate(840 186)">
+      <path d="M-64 36 Q-74 -54 0 -64 Q74 -54 64 36 Q0 56 -64 36 Z" fill="#c76a1e" stroke="#7a3f10" stroke-width="4" filter="url(#soft)"/>
+      <ellipse cx="0" cy="-6" rx="32" ry="34" fill="#1a1a2e" opacity=".72" stroke="#7a3f10" stroke-width="3"/>
+      <path d="M-52 40 Q0 60 52 40" fill="none" stroke="#e8c33a" stroke-width="5" stroke-dasharray="7 6"/>
+      <path d="M54 26 C 96 30 112 40 128 52" fill="none" stroke="#41416a" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <text x="840" y="300" text-anchor="middle" fill="#8a94b8" font-family="IBM Plex Mono" font-size="15">1,5 m · 40 L/min</text>
+    <!-- Prise auxiliaire (narguilé) : femelle / mâle -->
+    <g transform="translate(300 459)">
+      <rect x="-68" y="-20" width="54" height="40" rx="8" fill="url(#valG)" stroke="#8a94b8" stroke-width="3" filter="url(#soft)"/>
+      <circle cx="-41" cy="0" r="11" fill="#12122a" stroke="#8a94b8" stroke-width="3"/>
+      <path d="M-14 0 H26" stroke="#41416a" stroke-width="10" stroke-linecap="round"/>
+      <rect x="26" y="-16" width="48" height="32" rx="7" fill="url(#engG)" stroke="#e67e22" stroke-width="3" filter="url(#soft)"/>
+      <circle cx="64" cy="0" r="9" fill="#20203a" stroke="#e67e22" stroke-width="3"/>
+    </g>
+    <text x="300" y="512" text-anchor="middle" fill="#8a94b8" font-family="IBM Plex Mono" font-size="15">femelle ← → mâle</text>
+    <text x="500" y="588" text-anchor="middle" fill="#62628a" font-family="IBM Plex Mono" font-size="17">touchez un repère numéroté</text>
+  </svg>` };
+
   /* --- LSPCC : le lot déployé --- */
   S['lspcc'] = { aspect: '1000 / 620', svg: `
   <svg viewBox="0 0 1000 620">
@@ -930,6 +1031,24 @@ const Schema = (() => {
     <!-- anneaux cousus -->
     <ellipse cx="916" cy="300" rx="34" ry="14" fill="none" stroke="#27ae60" stroke-width="7" transform="rotate(-24 916 300)"/>
     <ellipse cx="930" cy="336" rx="26" ry="11" fill="none" stroke="#3aa8c9" stroke-width="6" transform="rotate(-24 930 336)"/>
+    <!-- bâche de protection -->
+    <g transform="translate(120 186)">
+      <path d="M-70 40 L-50 -40 L50 -40 L70 40 Q0 62 -70 40 Z" fill="#3a4a3a" opacity=".85" stroke="#22301f" stroke-width="4" filter="url(#soft)"/>
+      <path d="M-50 -40 L-30 30 M-10 -40 L0 34 M30 -40 L40 32" stroke="#22301f" stroke-width="2" opacity=".6"/>
+    </g>
+    <!-- protection de corde sur angle vif -->
+    <g transform="translate(300 211)">
+      <path d="M-40 30 L40 -30" stroke="#101020" stroke-width="12" stroke-linecap="round"/>
+      <path d="M-40 30 L40 -30" stroke="#b0b0cc" stroke-width="6" stroke-linecap="round"/>
+      <rect x="-22" y="-16" width="44" height="24" rx="10" fill="#8a6a1a" stroke="#6a5210" stroke-width="3" transform="rotate(-37 0 -4)"/>
+    </g>
+    <!-- cordelette à nœud français (autobloquant) -->
+    <g transform="translate(440 496)">
+      <path d="M-40 0 H40" stroke="#101020" stroke-width="10" stroke-linecap="round"/>
+      <path d="M-40 0 H40" stroke="#9a9ab8" stroke-width="5" stroke-linecap="round"/>
+      <circle r="20" fill="none" stroke="#c0392b" stroke-width="6"/>
+      <circle r="20" fill="none" stroke="#7e2418" stroke-width="2" stroke-dasharray="3 4"/>
+    </g>
   </svg>` };
 
   /* --- Échelles à mains : façade + piétage --- */
@@ -961,6 +1080,51 @@ const Schema = (() => {
     <g stroke="#8a94b8" stroke-width="6" stroke-linecap="round"><line x1="820" y1="186" x2="820" y2="330"/><line x1="852" y1="186" x2="852" y2="330"/></g>
     <g stroke="#a8b4d8" stroke-width="4" stroke-linecap="round"><line x1="820" y1="216" x2="852" y2="216"/><line x1="820" y1="250" x2="852" y2="250"/><line x1="820" y1="284" x2="852" y2="284"/><line x1="820" y1="318" x2="852" y2="318"/></g>
     <path d="M820 186 q0 -22 20 -22 q16 0 16 14" fill="none" stroke="#a8b4d8" stroke-width="6" stroke-linecap="round"/>
+  </svg>` };
+
+  /* --- Échelles à mains : nomenclature détaillée (crochets + 2 plans grand modèle) --- */
+  S['echelles-nomenclature'] = { aspect: '1000 / 620', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <line x1="40" y1="580" x2="960" y2="580" stroke="#2a2a4c" stroke-width="3"/>
+    <line x1="500" y1="60" x2="500" y2="580" stroke="#22223c" stroke-width="2" stroke-dasharray="4 10"/>
+    <text x="190" y="606" text-anchor="middle" fill="#62628a" font-family="IBM Plex Mono" font-size="16">échelle à crochets</text>
+    <text x="770" y="606" text-anchor="middle" fill="#62628a" font-family="IBM Plex Mono" font-size="16">échelle 2 plans — grand modèle</text>
+
+    <!-- ============ ÉCHELLE À CROCHETS ============ -->
+    <g stroke="#b8922a" stroke-width="9" stroke-linecap="round">
+      <line x1="150" y1="100" x2="150" y2="560"/>
+      <line x1="230" y1="100" x2="230" y2="560"/>
+    </g>
+    <g stroke="#d4ac2b" stroke-width="6" stroke-linecap="round">
+      <line x1="150" y1="140" x2="230" y2="140"/><line x1="150" y1="186" x2="230" y2="186"/><line x1="150" y1="232" x2="230" y2="232"/><line x1="150" y1="278" x2="230" y2="278"/><line x1="150" y1="370" x2="230" y2="370"/><line x1="150" y1="416" x2="230" y2="416"/><line x1="150" y1="462" x2="230" y2="462"/><line x1="150" y1="508" x2="230" y2="508"/>
+    </g>
+    <rect x="146" y="316" width="88" height="16" rx="4" fill="#8a6a1a" stroke="#6a5210" stroke-width="2"/>
+    <path d="M150 100 q0 -46 34 -46 q30 0 30 26" fill="none" stroke="#a8b4d8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M230 100 q0 -46 -34 -46 q-30 0 -30 26" fill="none" stroke="#a8b4d8" stroke-width="8" stroke-linecap="round"/>
+    <g fill="#c8d0e8"><circle cx="184" cy="60" r="5"/><circle cx="196" cy="60" r="5"/></g>
+    <g fill="#20203a" stroke="#8a94b8" stroke-width="3"><rect x="138" y="558" width="24" height="16" rx="4"/><rect x="218" y="558" width="24" height="16" rx="4"/></g>
+
+    <!-- ============ ÉCHELLE 2 PLANS GRAND MODÈLE ============ -->
+    <g stroke="#8a6a1a" stroke-width="9" stroke-linecap="round">
+      <line x1="700" y1="220" x2="700" y2="560"/>
+      <line x1="800" y1="220" x2="800" y2="560"/>
+    </g>
+    <g stroke="#b8922a" stroke-width="8" stroke-linecap="round">
+      <line x1="712" y1="80" x2="712" y2="400"/>
+      <line x1="788" y1="80" x2="788" y2="400"/>
+    </g>
+    <g stroke="#d4ac2b" stroke-width="5" stroke-linecap="round">
+      <line x1="712" y1="112" x2="788" y2="112"/><line x1="712" y1="154" x2="788" y2="154"/><line x1="712" y1="196" x2="788" y2="196"/><line x1="712" y1="238" x2="788" y2="238"/><line x1="712" y1="280" x2="788" y2="280"/><line x1="712" y1="322" x2="788" y2="322"/><line x1="712" y1="364" x2="788" y2="364"/>
+      <line x1="700" y1="440" x2="800" y2="440"/><line x1="700" y1="482" x2="800" y2="482"/><line x1="700" y1="524" x2="800" y2="524"/>
+    </g>
+    <g fill="url(#valG)" stroke="#8a94b8" stroke-width="3"><rect x="686" y="204" width="28" height="20" rx="5"/><rect x="786" y="204" width="28" height="20" rx="5"/></g>
+    <circle cx="750" cy="96" r="16" fill="#12122a" stroke="#8a94b8" stroke-width="4"/>
+    <circle cx="750" cy="96" r="6" fill="#8a94b8"/>
+    <path d="M750 112 Q690 200 690 400" fill="none" stroke="#e8e9f3" stroke-width="3" stroke-dasharray="6 6"/>
+    <rect x="686" y="392" width="128" height="22" rx="8" fill="#c0392b" stroke="#7e2418" stroke-width="3"/>
+    <g stroke="#9a9ab8" stroke-width="4"><line x1="694" y1="470" x2="716" y2="470"/><line x1="694" y1="478" x2="716" y2="478"/><line x1="694" y1="486" x2="716" y2="486"/></g>
+    <g fill="#20203a" stroke="#8a94b8" stroke-width="3"><rect x="686" y="558" width="30" height="18" rx="4"/><rect x="784" y="558" width="30" height="18" rx="4"/></g>
   </svg>` };
 
   /* --- Parc de stationnement couvert : coupe --- */
@@ -1735,7 +1899,21 @@ const Schema = (() => {
   </svg>` };
 
   /* --- Production de mousse : circuit CTD --- */
-  S['mousse-ctd'] = { aspect: '1000 / 620', svg: `
+  S['mousse-usage'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="mu-foam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffde0"/><stop offset="1" stop-color="#b8d7d2"/></linearGradient><linearGradient id="mu-red" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fa5542"/><stop offset="1" stop-color="#72100b"/></linearGradient><filter id="mu-shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#000" flood-opacity=".5"/></filter></defs>
+    <text x="500" y="49" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">QUEL FOISONNEMENT POUR QUEL SINISTRE ?</text>
+    <!-- bas foisonnement : nappe hydrocarbure extérieure -->
+    <g id="mu-low" transform="translate(55 110)" filter="url(#mu-shadow)"><ellipse cx="145" cy="300" rx="132" ry="34" fill="#13191d" stroke="#4b5a62" stroke-width="4"/><ellipse cx="145" cy="286" rx="115" ry="25" fill="#6f321c"/><g fill="url(#mu-foam)" stroke="#8ca7a4" stroke-width="2">${[[58,274,32],[104,265,38],[151,270,43],[198,264,36],[236,278,29],[82,292,34],[132,290,38],[184,290,39],[218,294,30]].map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g><path d="M18 210H82" stroke="#aeb9be" stroke-width="18" stroke-linecap="round"/><path d="M78 210Q154 172 252 216" stroke="#e9f5ef" stroke-width="15" stroke-linecap="round" stroke-dasharray="12 10"/><text x="145" y="390" text-anchor="middle" fill="#8ceab5" font-family="Chakra Petch" font-size="23" font-weight="700">BAS &lt; 20</text><text x="145" y="416" text-anchor="middle" fill="#9dacb4" font-family="IBM Plex Mono" font-size="13">hydrocarbures · extérieur · longue portée</text></g>
+    <!-- moyen : VL / écoulement -->
+    <g id="mu-medium" transform="translate(355 110)" filter="url(#mu-shadow)"><path d="M26 270L62 190H226L264 270V316H26Z" fill="url(#mu-red)" stroke="#65100b" stroke-width="6"/><path d="M82 202H202L224 251H62Z" fill="#17303d" stroke="#6c7c84" stroke-width="4"/><circle cx="78" cy="314" r="31" fill="#090c0e" stroke="#5f6b72" stroke-width="6"/><circle cx="216" cy="314" r="31" fill="#090c0e" stroke="#5f6b72" stroke-width="6"/><g fill="url(#mu-foam)" stroke="#8ca7a4" stroke-width="2">${[[45,342,24],[80,346,29],[120,340,31],[160,346,32],[202,341,29],[242,346,23]].map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g><text x="145" y="390" text-anchor="middle" fill="#f3bd72" font-family="Chakra Petch" font-size="23" font-weight="700">MOYEN 20–200</text><text x="145" y="416" text-anchor="middle" fill="#9dacb4" font-family="IBM Plex Mono" font-size="13">VL · poubelle · écoulement préventif</text></g>
+    <!-- haut : volume clos -->
+    <g id="mu-high" transform="translate(655 110)" filter="url(#mu-shadow)"><path d="M22 112L145 50L268 112V326H22Z" fill="#20282e" stroke="#75838b" stroke-width="6"/><path d="M145 50V326M22 112H268" stroke="#56636a" stroke-width="4"/><rect x="80" y="148" width="130" height="178" fill="#0b1014" stroke="#65727a" stroke-width="5"/><g fill="url(#mu-foam)" stroke="#8ca7a4" stroke-width="2">${Array.from({length:30},(_,i)=>`<circle cx="${92+(i%5)*28}" cy="${304-Math.floor(i/5)*27}" r="${17+(i%3)*2}"/>`).join('')}</g><text x="145" y="390" text-anchor="middle" fill="#73d6f8" font-family="Chakra Petch" font-size="23" font-weight="700">HAUT &gt; 200</text><text x="145" y="416" text-anchor="middle" fill="#9dacb4" font-family="IBM Plex Mono" font-size="13">espace clos · entrepôt · remplissage volumique</text></g>
+    <g transform="translate(120 548)"><rect width="760" height="48" rx="10" fill="#101923" stroke="#2b3b49" stroke-width="2"/><text id="mu-choice" x="380" y="30" text-anchor="middle" fill="#cbd6dc" font-family="IBM Plex Mono" font-size="14">Sélectionnez un foisonnement pour isoler son cas d’emploi.</text></g>
+  </svg>` };
+
+  S['mousse-ctd'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
   <svg viewBox="0 0 1000 620">
     ${ENV_DEFS}
     <!-- ligne eau -->
@@ -1776,7 +1954,7 @@ const Schema = (() => {
   </svg>` };
 
   /* --- Écran principal GIMAEX (p. 15) --- */
-  S['gimaex-ecran'] = { aspect: '1000 / 760', svg: `
+  S['gimaex-ecran-legacy'] = { aspect: '1000 / 760', svg: `
   <svg viewBox="0 0 1000 760">
     ${ENV_DEFS}
     <rect x="20" y="20" width="960" height="720" rx="14" fill="#22262c" stroke="#3a3a4c" stroke-width="4" filter="url(#soft)"/>
@@ -1827,6 +2005,39 @@ const Schema = (() => {
     <g fill="#8a94b8" font-family="IBM Plex Mono" font-size="15" text-anchor="middle"><text x="92" y="644">🔧</text><text x="206" y="644">CTD</text><text x="915" y="644">EXT</text></g>
   </svg>` };
 
+  /* Vue active : photographie réelle de l'écran principal arrière.
+     Les overlays restent masqués tant qu'aucune simulation n'est lancée. */
+  S['gimaex-ecran'] = {
+    aspect: '1000 / 760',
+    className: 'schema-photo schema-gimaex-screen schema-gimaex-main-photo',
+    svg: `
+  <svg viewBox="0 0 1000 760" data-photo-base-height="760" role="img" aria-labelledby="gxe-photo-title" preserveAspectRatio="xMidYMid meet">
+    <title id="gxe-photo-title">Écran principal GIMAEX FT du tableau arrière</title>
+    <rect data-photo-background width="1000" height="760" fill="#05090d"/>
+    <text x="500" y="370" text-anchor="middle" fill="#6f7d87" font-family="IBM Plex Mono" font-size="18">Image attendue :</text>
+    <text x="500" y="402" text-anchor="middle" fill="#9ba9b2" font-family="IBM Plex Mono" font-size="17">assets/gimaex/ecran-principal-gimaex.png</text>
+    <image id="gxe-photo" class="gimaex-screen-photo" href="assets/gimaex/ecran-principal-gimaex.png"
+      x="0" y="0" width="1000" height="760" preserveAspectRatio="xMidYMid meet"/>
+    <rect id="gxe-night-overlay" data-photo-background width="1000" height="760" fill="#020810" opacity="0" pointer-events="none"/>
+
+    <!-- Valeurs ciblées : volontairement invisibles au repos pour laisser la photo intacte. -->
+    <g id="gxe-live-overlays" visibility="hidden" pointer-events="none"
+       font-family="IBM Plex Mono, monospace" text-anchor="middle">
+      <g class="gxe-live-value"><rect x="405" y="174" width="190" height="36" rx="7"/><text id="gxe-pressure" x="500" y="198">6,0 bar</text></g>
+      <g class="gxe-live-value"><rect x="410" y="396" width="180" height="34" rx="7"/><text id="gxe-vacuum" x="500" y="419">−0,1 bar</text></g>
+      <g class="gxe-live-value"><rect x="735" y="210" width="132" height="34" rx="7"/><text id="gxe-rpm" x="801" y="233">1 200 tr/min</text></g>
+      <g class="gxe-live-value"><rect x="412" y="294" width="176" height="40" rx="7"/><text id="gxe-regulation" x="500" y="319">RÉGUL. 6 bar</text></g>
+      <g class="gxe-state-lamps" font-size="15" font-weight="700">
+        <circle id="gxe-park" cx="620" cy="398" r="15"/><text x="620" y="404">P</text>
+        <circle id="gxe-neutral" cx="665" cy="414" r="15"/><text x="665" y="420">N</text>
+        <circle id="gxe-pto" cx="710" cy="398" r="15"/><text x="710" y="404">M</text>
+      </g>
+      <g class="gxe-live-value"><rect x="294" y="503" width="150" height="42" rx="7"/><text id="gxe-flow" x="369" y="530">250 L/min</text></g>
+      <g class="gxe-live-value"><rect x="460" y="503" width="150" height="42" rx="7"/><text id="gxe-dose" x="535" y="530">0,5 %</text></g>
+    </g>
+  </svg>`
+  };
+
   /* --- Coffre arrière gauche (p. 16) --- */
   S['gimaex-coffre'] = { aspect: '1000 / 620', svg: `
   <svg viewBox="0 0 1000 620">
@@ -1856,6 +2067,76 @@ const Schema = (() => {
     <!-- purge -->
     <rect x="800" y="330" width="110" height="60" rx="9" fill="url(#valG)" stroke="#8a94b8" stroke-width="3"/>
     <text x="855" y="410" text-anchor="middle" fill="#62628a" font-family="IBM Plex Mono" font-size="12">PURGE (coffre AV droit)</text>
+  </svg>` };
+
+  /* --- Annexes mécaniques : transmission, différentiel et ralentisseur --- */
+  S['annexes-transmission'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="at-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4e9eb"/><stop offset=".2" stop-color="#68747b"/><stop offset=".48" stop-color="#c8d0d4"/><stop offset=".75" stop-color="#313a40"/><stop offset="1" stop-color="#89949a"/></linearGradient><radialGradient id="at-gear"><stop offset="0" stop-color="#b9c3c8"/><stop offset=".35" stop-color="#58656c"/><stop offset="1" stop-color="#11171b"/></radialGradient><filter id="at-shadow" x="-35%" y="-35%" width="170%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#000" flood-opacity=".55"/></filter></defs>
+    <text x="500" y="50" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">TRANSMISSION ET FREINAGE D’ENDURANCE</text>
+    <!-- boîte de transfert -->
+    <g transform="translate(190 300)" filter="url(#at-shadow)"><path d="M-122-105H82L124-62V80L78 112H-120Z" fill="url(#at-steel)" stroke="#20282d" stroke-width="7"/><circle cx="-78" cy="-12" r="50" fill="url(#at-gear)" stroke="#c0c8cc" stroke-width="6"/><circle cx="54" cy="-40" r="37" fill="url(#at-gear)" stroke="#c0c8cc" stroke-width="6"/><circle cx="53" cy="60" r="43" fill="url(#at-gear)" stroke="#c0c8cc" stroke-width="6"/><path d="M-25-18L22-38M-22 7L18 50" stroke="#c28b42" stroke-width="16"/><circle cx="-78" cy="-12" r="15" fill="#151b1f"/><circle cx="54" cy="-40" r="12" fill="#151b1f"/><circle cx="53" cy="60" r="12" fill="#151b1f"/></g><text x="190" y="468" text-anchor="middle" fill="#f3bd72" font-family="Chakra Petch" font-size="21" font-weight="700">BOÎTE DE TRANSFERT</text><text x="190" y="492" text-anchor="middle" fill="#8d9ca5" font-family="IBM Plex Mono" font-size="13">4×4 · GV/PV · renvoi accessoires</text>
+    <!-- différentiel -->
+    <g transform="translate(500 300)" filter="url(#at-shadow)"><circle r="128" fill="url(#at-steel)" stroke="#20282d" stroke-width="8"/><circle r="94" fill="none" stroke="#303b42" stroke-width="25" stroke-dasharray="26 9"/><circle r="54" fill="url(#at-gear)" stroke="#b7c0c4" stroke-width="6"/><g fill="url(#at-gear)" stroke="#c1c9cd" stroke-width="4"><circle cx="-30" r="27"/><circle cx="30" r="27"/><circle cy="-30" r="23"/><circle cy="30" r="23"/></g><path d="M-160 0H-112M112 0H160" stroke="url(#at-steel)" stroke-width="24" stroke-linecap="round"/></g><text x="500" y="468" text-anchor="middle" fill="#c99ce1" font-family="Chakra Petch" font-size="21" font-weight="700">DIFFÉRENTIEL / PONT</text><text x="500" y="492" text-anchor="middle" fill="#8d9ca5" font-family="IBM Plex Mono" font-size="13">satellites · planétaires · blocage</text>
+    <!-- ralentisseur hydrodynamique -->
+    <g transform="translate(810 300)" filter="url(#at-shadow)"><circle r="128" fill="url(#at-steel)" stroke="#20282d" stroke-width="8"/><circle r="100" fill="#172129" stroke="#65747c" stroke-width="5"/><g id="at-retarder" style="transform-box:fill-box;transform-origin:center;animation:spin 5s linear infinite;">${Array.from({length:10},(_,i)=>`<path d="M0 0Q42-15 75-62" transform="rotate(${i*36})" stroke="#4aaed1" stroke-width="15" stroke-linecap="round" fill="none"/>`).join('')}<circle r="25" fill="url(#at-steel)"/></g><path d="M-164 0H-125M125 0H164" stroke="url(#at-steel)" stroke-width="24" stroke-linecap="round"/></g><text x="810" y="468" text-anchor="middle" fill="#73d6f8" font-family="Chakra Petch" font-size="21" font-weight="700">RALENTISSEUR</text><text x="810" y="492" text-anchor="middle" fill="#8d9ca5" font-family="IBM Plex Mono" font-size="13">hydraulique · sans frottement</text>
+    <text x="500" y="574" text-anchor="middle" fill="#6e7e88" font-family="IBM Plex Mono" font-size="14">Mise en œuvre des crabots : à l’arrêt ou à très faible vitesse · jamais en patinage.</text>
+  </svg>` };
+
+  /* --- Annexes d'entretien : turbo et pneumatique en coupe --- */
+  S['annexes-service'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="as-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8edef"/><stop offset=".2" stop-color="#68747b"/><stop offset=".5" stop-color="#cbd2d5"/><stop offset=".76" stop-color="#313a40"/><stop offset="1" stop-color="#89949a"/></linearGradient><filter id="as-shadow" x="-35%" y="-35%" width="170%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#000" flood-opacity=".55"/></filter></defs>
+    <text x="500" y="50" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">TURBO-COMPRESSEUR ET PNEUMATIQUE</text>
+    <!-- turbo double volute -->
+    <g transform="translate(270 300)" filter="url(#as-shadow)"><path d="M-190 0Q-188-142-52-151Q57-158 93-76Q126-6 67 55Q15 108-76 66L-41 22Q-2 45 28 16Q58-18 36-54Q12-94-55-88Q-116-83-121-20Q-126 42-75 73L-110 126Q-194 84-190 0Z" fill="url(#as-steel)" stroke="#20282d" stroke-width="8"/><circle cx="-56" cy="-12" r="65" fill="#172129" stroke="#6b7981" stroke-width="5"/><g id="as-compressor" style="transform-box:fill-box;transform-origin:center;animation:spin 3s linear infinite;">${Array.from({length:9},(_,i)=>`<path d="M-56-12Q-20-26 3-59" transform="rotate(${i*40} -56 -12)" stroke="#46bfe8" stroke-width="11" stroke-linecap="round" fill="none"/>`).join('')}<circle cx="-56" cy="-12" r="18" fill="url(#as-steel)"/></g><path d="M10-12H142" stroke="#8f5b2d" stroke-width="20"/><path d="M16-18H142" stroke="#d09a58" stroke-width="6"/><circle cx="144" cy="-12" r="75" fill="#3b2119" stroke="#8b4c2e" stroke-width="8"/><g id="as-turbine" style="transform-box:fill-box;transform-origin:center;animation:spin 3s linear infinite;">${Array.from({length:9},(_,i)=>`<path d="M144-12Q174-28 191-58" transform="rotate(${i*40} 144 -12)" stroke="#e47645" stroke-width="11" stroke-linecap="round" fill="none"/>`).join('')}<circle cx="144" cy="-12" r="18" fill="url(#as-steel)"/></g></g><text x="270" y="493" text-anchor="middle" fill="#73d6f8" font-family="Chakra Petch" font-size="21" font-weight="700">TURBO-COMPRESSEUR</text><text x="270" y="518" text-anchor="middle" fill="#8d9ca5" font-family="IBM Plex Mono" font-size="13">air comprimé ← axe lubrifié → échappement</text>
+    <!-- pneu en coupe -->
+    <g transform="translate(740 300)" filter="url(#as-shadow)"><circle r="175" fill="#090b0d" stroke="#505b61" stroke-width="8"/><circle r="118" fill="#171d21" stroke="#89949a" stroke-width="8"/><circle r="69" fill="url(#as-steel)" stroke="#343d42" stroke-width="7"/><circle r="25" fill="#14191c"/><path d="M-130-112Q0-165 130-112M-154-68Q0-120 154-68" fill="none" stroke="#343d42" stroke-width="17" stroke-dasharray="33 13"/><path d="M-168 0Q-170 95-115 140M168 0Q170 95 115 140" fill="none" stroke="#30383d" stroke-width="20"/><path d="M-102-72Q0-108 102-72" fill="none" stroke="#bac3c7" stroke-width="5" stroke-dasharray="5 8"/><path d="M-119 95Q0 138 119 95" fill="none" stroke="#bac3c7" stroke-width="5" stroke-dasharray="5 8"/></g><text x="740" y="493" text-anchor="middle" fill="#8ceab5" font-family="Chakra Petch" font-size="21" font-weight="700">PNEUMATIQUE TUBELESS</text><text x="740" y="518" text-anchor="middle" fill="#8d9ca5" font-family="IBM Plex Mono" font-size="13">bande · carcasse · flanc · bourrelet</text>
+    <text x="500" y="574" text-anchor="middle" fill="#6e7e88" font-family="IBM Plex Mono" font-size="14">À froid : pression constructeur · contrôler flancs, usure, valves et fuites.</text>
+  </svg>` };
+
+  /* --- Accessoires hydrauliques issus de la mise en œuvre COD 1 --- */
+  S['accessoires-hydro'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="ac-steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edf1f2"/><stop offset=".2" stop-color="#69757b"/><stop offset=".48" stop-color="#d0d7da"/><stop offset=".75" stop-color="#323b40"/><stop offset="1" stop-color="#8d979c"/></linearGradient><linearGradient id="ac-brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2ca73"/><stop offset=".45" stop-color="#a76b25"/><stop offset="1" stop-color="#593214"/></linearGradient><filter id="ac-shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#000" flood-opacity=".55"/></filter></defs>
+    <text x="500" y="48" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">ACCESSOIRES HYDRAULIQUES ET D’ALIMENTATION</text>
+    <!-- division -->
+    <g transform="translate(150 205)" filter="url(#ac-shadow)"><path d="M-80 0H40M35 0L95-55M35 0L95 55" stroke="url(#ac-steel)" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/><g fill="#1f272c" stroke="#c2c9cc" stroke-width="5"><circle cx="-80" r="29"/><circle cx="95" cy="-55" r="29"/><circle cx="95" cy="55" r="29"/></g><path d="M22-20V20" stroke="#db3d2d" stroke-width="12"/></g><text x="150" y="318" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">DIVISION</text>
+    <!-- coude d'alimentation -->
+    <g transform="translate(400 200)" filter="url(#ac-shadow)"><path d="M-78 65V-20Q-78-76-22-76H70" fill="none" stroke="#171d21" stroke-width="64" stroke-linecap="round"/><path d="M-78 65V-20Q-78-76-22-76H70" fill="none" stroke="url(#ac-steel)" stroke-width="48" stroke-linecap="round"/><circle cx="-78" cy="65" r="31" fill="#20282d" stroke="#c2c9cc" stroke-width="6"/><circle cx="70" cy="-76" r="31" fill="#20282d" stroke="#c2c9cc" stroke-width="6"/></g><text x="400" y="318" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">COUDE D’ALIMENTATION</text>
+    <!-- retenue BI -->
+    <g transform="translate(650 200)" filter="url(#ac-shadow)"><path d="M-80 0H80" stroke="url(#ac-brass)" stroke-width="54" stroke-linecap="round"/><circle cx="-80" r="33" fill="#2c2518" stroke="#e1b35d" stroke-width="6"/><circle cx="80" r="33" fill="#2c2518" stroke="#e1b35d" stroke-width="6"/><path d="M0-70V0" stroke="#d74231" stroke-width="15"/><path d="M-44-70H44" stroke="#d74231" stroke-width="13" stroke-linecap="round"/><circle r="14" fill="#171b1d"/></g><text x="650" y="318" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">RETENUE DE BI</text>
+    <!-- bouchon obturateur -->
+    <g transform="translate(875 200)" filter="url(#ac-shadow)"><circle r="72" fill="url(#ac-steel)" stroke="#1c2327" stroke-width="8"/><circle r="43" fill="#252d32" stroke="#c2c9cc" stroke-width="6"/><path d="M-25-52L25 52M25-52L-25 52" stroke="#59656b" stroke-width="9"/></g><text x="875" y="318" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">BOUCHON Ø70</text>
+    <!-- crépine -->
+    <g transform="translate(170 470)" filter="url(#ac-shadow)"><path d="M-75-58H52Q82-58 82-28V28Q82 58 52 58H-75Z" fill="url(#ac-steel)" stroke="#1c2327" stroke-width="7"/><g stroke="#354047" stroke-width="5">${[-50,-25,0,25,50].map(x=>`<path d="M${x}-48V48"/>`).join('')}<path d="M-66-24H70M-66 0H70M-66 24H70"/></g><circle cx="83" r="29" fill="#252d32" stroke="#c2c9cc" stroke-width="6"/></g><text x="170" y="575" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">CRÉPINE D’ASPIRATION</text>
+    <!-- aspiral -->
+    <g transform="translate(470 470)" filter="url(#ac-shadow)"><path d="M-120 0Q-75-95 0 0Q75 95 120 0" fill="none" stroke="#11171a" stroke-width="54" stroke-linecap="round"/><path d="M-120 0Q-75-95 0 0Q75 95 120 0" fill="none" stroke="#46525a" stroke-width="40" stroke-linecap="round"/><path d="M-120 0Q-75-95 0 0Q75 95 120 0" fill="none" stroke="#89959b" stroke-width="5" stroke-dasharray="7 10"/><circle cx="-120" r="28" fill="#20282d" stroke="#c2c9cc" stroke-width="6"/><circle cx="120" r="28" fill="#20282d" stroke="#c2c9cc" stroke-width="6"/></g><text x="470" y="575" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">ASPIRAL Ø110</text>
+    <!-- canne plongeuse GFR -->
+    <g transform="translate(775 470)" filter="url(#ac-shadow)"><path d="M-92-70H66V70H-92Z" fill="#37454d" stroke="#8b989e" stroke-width="6"/><path d="M-72-48H46V48H-72Z" fill="#1c2a30"/><path d="M70-100V40Q70 66 44 66H20" fill="none" stroke="url(#ac-steel)" stroke-width="22" stroke-linecap="round"/><path d="M70-100H116" stroke="url(#ac-steel)" stroke-width="22" stroke-linecap="round"/><circle cx="116" cy="-100" r="22" fill="#252d32" stroke="#c2c9cc" stroke-width="5"/></g><text x="775" y="575" text-anchor="middle" fill="#d7e0e4" font-family="IBM Plex Mono" font-size="15">CANNE GFR / BIDON</text>
+  </svg>` };
+
+  /* --- Équipements de mise en œuvre générale du COD 1 --- */
+  S['accessoires-operation'] = { aspect: '1000 / 620', className: 'schema-realistic', svg: `
+  <svg viewBox="0 0 1000 620">
+    ${ENV_DEFS}
+    <defs><linearGradient id="ao-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef2f3"/><stop offset=".25" stop-color="#68757c"/><stop offset=".5" stop-color="#d1d8db"/><stop offset=".78" stop-color="#333d42"/><stop offset="1" stop-color="#8e999e"/></linearGradient><linearGradient id="ao-yellow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe77a"/><stop offset=".48" stop-color="#e5a526"/><stop offset="1" stop-color="#7d4b0a"/></linearGradient><filter id="ao-shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#000" flood-opacity=".58"/></filter></defs>
+    <text x="500" y="48" text-anchor="middle" fill="#e8e9f3" font-family="Chakra Petch" font-size="28" font-weight="700">ÉQUIPEMENTS DE MISE EN ŒUVRE — COD 1</text>
+    <!-- cale de roue -->
+    <g transform="translate(150 210)" filter="url(#ao-shadow)"><path d="M-100 58H98V24H54V-10H10V-44H-36V-78H-100Z" fill="url(#ao-yellow)" stroke="#6d440e" stroke-width="7"/><path d="M-83 40H80M-34-58V38M12-25V38M56 8V38" stroke="#fff0a0" stroke-width="5" opacity=".55"/></g><text x="150" y="330" text-anchor="middle" fill="#f3bd72" font-family="IBM Plex Mono" font-size="15">CALAGE</text>
+    <!-- balisage -->
+    <g transform="translate(380 210)" filter="url(#ao-shadow)"><path d="M-72 80H72L56 46H-56Z" fill="#313940" stroke="#929da3" stroke-width="5"/><path d="M-42 46L-17-86H17L42 46Z" fill="#ef5a2c" stroke="#89230f" stroke-width="6"/><path d="M-28-22H28L37 20H-37Z" fill="#f4e5c0"/><rect x="-48" y="-122" width="96" height="34" rx="17" fill="#1966a6" stroke="#69bff0" stroke-width="5"/><path d="M-33-105H33" stroke="#bdeaff" stroke-width="5"/></g><text x="380" y="330" text-anchor="middle" fill="#f0a36a" font-family="IBM Plex Mono" font-size="15">BALISAGE / GYRO</text>
+    <!-- kit pression hydrant -->
+    <g transform="translate(620 210)" filter="url(#ao-shadow)"><path d="M0 68V18" stroke="url(#ao-metal)" stroke-width="31"/><path d="M0 64H95" stroke="url(#ao-metal)" stroke-width="27" stroke-linecap="round"/><circle r="82" fill="url(#valG)" stroke="#9aa6ac" stroke-width="7"/><circle r="62" fill="#0b1218" stroke="#344650" stroke-width="4"/><g stroke="#7b8c95" stroke-width="3">${Array.from({length:9},(_,i)=>{const a=(-140+i*35)*Math.PI/180;return `<path d="M${Math.cos(a)*48} ${Math.sin(a)*48}L${Math.cos(a)*57} ${Math.sin(a)*57}"/>`;}).join('')}</g><line y2="-48" stroke="#48c58a" stroke-width="6" stroke-linecap="round" transform="rotate(42)"/><circle r="9" fill="#d8dfe2"/><circle cx="95" cy="64" r="25" fill="#20292e" stroke="#bcc5c9" stroke-width="5"/></g><text x="620" y="330" text-anchor="middle" fill="#86e1b0" font-family="IBM Plex Mono" font-size="15">CONTRÔLE HYDRANT</text>
+    <!-- outils de forcement -->
+    <g transform="translate(855 210)" filter="url(#ao-shadow)"><path d="M-86 90L70-88" stroke="#c53c2d" stroke-width="19" stroke-linecap="round"/><path d="M53-98L96-52L77-32L34-78Z" fill="url(#ao-metal)" stroke="#252d31" stroke-width="5"/><path d="M-84-86L78 92" stroke="#77502e" stroke-width="18" stroke-linecap="round"/><path d="M-110-106Q-64-137-23-102L-45-72Q-76-89-98-62Z" fill="url(#ao-metal)" stroke="#252d31" stroke-width="5"/></g><text x="855" y="330" text-anchor="middle" fill="#e7a08f" font-family="IBM Plex Mono" font-size="15">OUTILS DE FORCEMENT</text>
+    <!-- parc-échelles -->
+    <g transform="translate(280 480)" filter="url(#ao-shadow)"><g stroke="url(#ao-metal)" stroke-width="16" stroke-linecap="round"><path d="M-180-52H180"/><path d="M-180 52H180"/></g><g stroke="#8f9ba1" stroke-width="9">${[-135,-90,-45,0,45,90,135].map(x=>`<path d="M${x}-48V48"/>`).join('')}</g><path d="M-24-80V80M24-80V80" stroke="#e1ae3b" stroke-width="13"/><rect x="-46" y="-100" width="92" height="36" rx="9" fill="#b72a1e" stroke="#67100b" stroke-width="5"/></g><text x="280" y="585" text-anchor="middle" fill="#c9d3d8" font-family="IBM Plex Mono" font-size="15">PARC-ÉCHELLES · VERROUILLAGE</text>
+    <!-- reconditionnement -->
+    <g transform="translate(745 480)" filter="url(#ao-shadow)"><path d="M-154-42Q-75-110 0-42T154-42" fill="none" stroke="#33434c" stroke-width="48" stroke-linecap="round"/><path d="M-154-42Q-75-110 0-42T154-42" fill="none" stroke="#74838b" stroke-width="6" stroke-dasharray="8 11"/><g transform="translate(0 30)"><rect x="-95" y="-32" width="190" height="78" rx="10" fill="#172129" stroke="#596872" stroke-width="5"/><path d="M-95-4H95" stroke="#596872" stroke-width="4"/><path d="M0-32V46" stroke="#596872" stroke-width="4"/><path d="M-54 12h18M36 12h18" stroke="#d9e0e3" stroke-width="5" stroke-linecap="round"/></g></g><text x="745" y="585" text-anchor="middle" fill="#7ed6ed" font-family="IBM Plex Mono" font-size="15">RECONDITIONNEMENT</text>
   </svg>` };
 
   /* --- Mât & porte-échelles : arrière du véhicule --- */
@@ -1937,7 +2218,7 @@ const Schema = (() => {
     m.hidden = true;
     m.setAttribute('role', 'status');
     m.setAttribute('aria-live', 'polite');
-    if (stage.classList.contains('schema-gimaex-rear') && stage.parentElement){
+    if ((stage.classList.contains('schema-photo') || stage.classList.contains('schema-realistic')) && stage.parentElement){
       m.classList.add('sch-msg-flow');
       stage.insertAdjacentElement('afterend', m);
     } else {
@@ -1952,6 +2233,151 @@ const Schema = (() => {
     g.style.transform = open ? 'rotate(0deg)' : 'rotate(45deg)';
     g.querySelectorAll('circle').forEach(c => c.setAttribute('stroke', open ? (partial ? '#f39c4a' : '#4cd68a') : '#e8695c'));
   }
+
+  /* Écran principal : la photographie reste intacte au repos. Les seules
+     modifications sont un filtre jour/nuit et quelques valeurs superposées
+     lorsque l'utilisateur lance volontairement la simulation. */
+  INTERACT['gimaex-ecran'] = (stage) => {
+    const say = schMsg(stage), bar = schControls(stage);
+    const overlay = stage.querySelector('#gxe-live-overlays');
+    const state = { night:false, live:false, regulation:false, setpoint:6, pto:true, foam:false };
+    const get = id => stage.querySelector(id);
+    const buttons = {};
+
+    function setLamp(id, on){
+      const lamp = get(id);
+      if (!lamp) return;
+      lamp.style.fill = on ? '#17472b' : '#231b1b';
+      lamp.style.stroke = on ? '#62ec9e' : '#8b4a43';
+    }
+    function apply(announce = true){
+      stage.classList.toggle('schema-night', state.night);
+      overlay?.setAttribute('visibility', state.live ? 'visible' : 'hidden');
+      const pressure = state.regulation ? state.setpoint : (state.pto ? 3 : 0);
+      if (get('#gxe-pressure')) get('#gxe-pressure').textContent = pressure.toFixed(1).replace('.', ',') + ' bar';
+      if (get('#gxe-vacuum')) get('#gxe-vacuum').textContent = state.pto ? '−0,1 bar' : '0,0 bar';
+      if (get('#gxe-rpm')) get('#gxe-rpm').textContent = (state.pto ? '1 200' : '800') + ' tr/min';
+      if (get('#gxe-regulation')) get('#gxe-regulation').textContent = state.regulation ? 'RÉGUL. ' + state.setpoint + ' bar' : 'ARRÊT RÉGULATION';
+      if (get('#gxe-flow')) get('#gxe-flow').textContent = state.foam ? '250 L/min' : '0 L/min';
+      if (get('#gxe-dose')) get('#gxe-dose').textContent = state.foam ? '0,5 %' : '0,0 %';
+      setLamp('#gxe-park', state.live);
+      setLamp('#gxe-neutral', state.live);
+      setLamp('#gxe-pto', state.live && state.pto);
+      buttons.day?.classList.toggle('active', !state.night);
+      buttons.night?.classList.toggle('active', state.night);
+      buttons.live?.classList.toggle('active', state.live);
+      buttons.regulation?.classList.toggle('active', state.live && state.regulation);
+      buttons.foam?.classList.toggle('active', state.live && state.foam);
+      Object.values(buttons).forEach(button => button?.setAttribute('aria-pressed', String(button.classList.contains('active'))));
+      if (!announce) return;
+      if (!state.live) say('Image réelle affichée sans superposition. Activez la simulation pour faire apparaître les valeurs dynamiques.', 'var(--mut)');
+      else if (state.regulation) say(`Régulation active : consigne <b>${state.setpoint} bar</b>. Les overlays restent limités aux valeurs variables.`, 'var(--ok)');
+      else say('Simulation active : PDM engagée, frein de parc serré et boîte au neutre.', 'var(--cyan)');
+    }
+
+    buttons.day = schChip(bar, '☀ Mode jour', true, () => { state.night = false; apply(false); say('Mode jour : photographie originale.', 'var(--cyan)'); });
+    buttons.night = schChip(bar, '☾ Mode nuit', false, () => { state.night = true; apply(false); say('Mode nuit : luminosité et contraste réduits sans inversion des couleurs.', 'var(--cyan)'); });
+    buttons.live = schChip(bar, 'Afficher la simulation', false, button => {
+      state.live = !state.live;
+      button.innerHTML = '<span class="dot"></span>' + (state.live ? 'Masquer la simulation' : 'Afficher la simulation');
+      apply();
+    });
+    buttons.regulation = schChip(bar, 'Régulation', false, () => { state.live = true; state.regulation = !state.regulation; apply(); });
+    buttons.plus = schChip(bar, 'Consigne +', false, () => {
+      state.live = true; state.regulation = true; state.setpoint = Math.min(15, state.setpoint + 1); apply();
+    });
+    buttons.foam = schChip(bar, 'Débit mousse', false, () => { state.live = true; state.foam = !state.foam; apply(); });
+    apply(false);
+  };
+
+  /* Hydraulique : trois calculs COD 1 pour matérialiser l'effet du débit et de Z. */
+  INTERACT.hydro = (stage) => {
+    const say = schMsg(stage), bar = schControls(stage);
+    const result = stage.querySelector('#hy-result');
+    const examples = [
+      { label:'250 L/min · 100 m', po:6, j:1.5, z:0, text:'Ø45 à 250 L/min sur 100 m : J = 1,5 bar.' },
+      { label:'Même ligne · +25 m', po:6, j:1.5, z:2.5, text:'La lance est 25 m plus haut : Z = +2,5 bar.' },
+      { label:'500 L/min · 100 m', po:6, j:6, z:0, text:'Débit doublé : les pertes sont multipliées par quatre, J = 6 bar.' }
+    ];
+    const buttons = [];
+    function apply(index){
+      const current = examples[index];
+      const pr = current.po + current.j + current.z;
+      result.textContent = `Pr = ${current.po.toFixed(1).replace('.',',')} + ${current.j.toFixed(1).replace('.',',')} + ${current.z.toFixed(1).replace('.',',')} = ${pr.toFixed(1).replace('.',',')} bar`;
+      say(`<b>${current.text}</b><br>Po ${current.po.toFixed(1).replace('.',',')} + J ${current.j.toFixed(1).replace('.',',')} + Z ${current.z.toFixed(1).replace('.',',')} = <b>${pr.toFixed(1).replace('.',',')} bar à la pompe</b>.`, index === 2 ? 'var(--orange)' : 'var(--cyan)');
+      buttons.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+        button.setAttribute('aria-pressed', String(i === index));
+      });
+    }
+    examples.forEach((example, index) => buttons.push(schChip(bar, example.label, index === 0, () => apply(index))));
+    apply(0);
+  };
+
+  /* Hydrant : comparaison pression statique / dynamique et estimation Qmax. */
+  INTERACT['hydro-hydrant'] = (stage) => {
+    const say = schMsg(stage), bar = schControls(stage);
+    const states = [
+      { label:'Au repos', q:0, ps:7.5, pd:7.5 },
+      { label:'Essai 500 L/min', q:500, ps:7.5, pd:5 },
+      { label:'Essai 750 L/min', q:750, ps:7.5, pd:3.5 },
+      { label:'Limite réseau', q:900, ps:7.5, pd:2 }
+    ];
+    const needles = [stage.querySelector('#hh-static-needle'), stage.querySelector('#hh-dynamic-needle')];
+    const pressureText = stage.querySelector('#hh-pressures');
+    const flowText = stage.querySelector('#hh-flow');
+    const qmaxText = stage.querySelector('#hh-qmax');
+    const angle = value => -130 + Math.max(0, Math.min(10, value)) / 10 * 260;
+    const buttons = [];
+    function apply(index){
+      const current = states[index];
+      if (needles[0]) needles[0].style.transform = `rotate(${angle(current.ps)}deg)`;
+      if (needles[1]) needles[1].style.transform = `rotate(${angle(current.pd)}deg)`;
+      pressureText.textContent = `Pstat ${current.ps.toFixed(1).replace('.',',')} bar · Pdyn ${current.pd.toFixed(1).replace('.',',')} bar`;
+      flowText.textContent = current.q ? `Débit utilisé : ${current.q} L/min` : 'Hydrant au repos · débit nul';
+      if (!current.q){
+        qmaxText.textContent = 'Ouvrez un débit connu pour estimer Qmax';
+        say('La pression statique se mesure eau au repos, refoulements fermés.', 'var(--cyan)');
+      } else {
+        const drop = current.ps - current.pd;
+        const qmax = Math.round(current.q * Math.sqrt(current.ps / drop));
+        qmaxText.textContent = `Qmax estimé ≈ ${qmax} L/min`;
+        say(`Chute de pression : <b>${drop.toFixed(1).replace('.',',')} bar</b>. Plus Pdyn chute, plus le réseau approche de sa limite.`, drop >= 4 ? 'var(--orange)' : 'var(--ok)');
+      }
+      buttons.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+        button.setAttribute('aria-pressed', String(i === index));
+      });
+    }
+    states.forEach((state, index) => buttons.push(schChip(bar, state.label, index === 0, () => apply(index))));
+    apply(0);
+  };
+
+  /* Choix opérationnel du foisonnement selon le volume et la portée. */
+  INTERACT['mousse-usage'] = (stage) => {
+    const say = schMsg(stage), bar = schControls(stage);
+    const choice = stage.querySelector('#mu-choice');
+    const configs = [
+      { id:'mu-low', label:'Bas foisonnement', text:'Hydrocarbures ou liquides inflammables en extérieur, fort rayonnement, besoin de portée.', color:'var(--ok)' },
+      { id:'mu-medium', label:'Moyen foisonnement', text:'Feu de VL ou poubelle, écoulement d’hydrocarbure en préventif, consolidation d’un tapis.', color:'var(--orange)' },
+      { id:'mu-high', label:'Haut foisonnement', text:'Remplissage d’un espace clos ou d’un entrepôt. Très sensible au vent : usage protégé.', color:'var(--cyan)' }
+    ];
+    const buttons = [];
+    function apply(index){
+      configs.forEach((config, i) => {
+        const group = stage.querySelector('#' + config.id);
+        if (group){ group.style.opacity = i === index ? '1' : '.18'; group.style.filter = i === index ? 'none' : 'grayscale(.8)'; }
+      });
+      choice.textContent = configs[index].text;
+      say(`<b>${configs[index].label}</b> — ${configs[index].text}`, configs[index].color);
+      buttons.forEach((button, i) => {
+        button.classList.toggle('active', i === index);
+        button.setAttribute('aria-pressed', String(i === index));
+      });
+    }
+    configs.forEach((config, index) => buttons.push(schChip(bar, config.label, index === 0, () => apply(index))));
+    apply(0);
+  };
 
   /* Environnement de la pompe : moteur + 3 vannes manipulables */
   INTERACT.env = (stage) => {
@@ -2757,6 +3183,32 @@ const Schema = (() => {
     stage.style.aspectRatio = def.aspect;
     stage.innerHTML = def.svg;
     container.appendChild(stage);
+
+    /* Les vues photographiques GIMAEX adoptent automatiquement le ratio
+       intrinsèque du PNG dès qu'il est disponible. Les coordonnées des
+       hotspots restent en pourcentages ; les rares overlays SVG sont remis à
+       l'échelle verticalement sans déformer la photographie. */
+    const screenPhoto = stage.querySelector('.gimaex-screen-photo');
+    if (screenPhoto && stage.classList.contains('schema-gimaex-screen')){
+      const source = screenPhoto.getAttribute('href');
+      const probe = new Image();
+      probe.decoding = 'async';
+      probe.onerror = () => screenPhoto.setAttribute('visibility', 'hidden');
+      probe.onload = () => {
+        if (!probe.naturalWidth || !probe.naturalHeight) return;
+        screenPhoto.setAttribute('visibility', 'visible');
+        const svg = stage.querySelector('svg');
+        const baseHeight = Number(svg?.dataset.photoBaseHeight) || 620;
+        const photoHeight = 1000 * probe.naturalHeight / probe.naturalWidth;
+        stage.style.aspectRatio = `${probe.naturalWidth} / ${probe.naturalHeight}`;
+        svg?.setAttribute('viewBox', `0 0 1000 ${photoHeight}`);
+        screenPhoto.setAttribute('height', String(photoHeight));
+        stage.querySelectorAll('[data-photo-background]').forEach(node => node.setAttribute('height', String(photoHeight)));
+        const overlays = stage.querySelector('#gxe-live-overlays');
+        if (overlays) overlays.setAttribute('transform', `scale(1 ${photoHeight / baseHeight})`);
+      };
+      probe.src = source;
+    }
 
     const hotspots = {};
     elements.forEach(el => {

@@ -63,7 +63,7 @@ const AriConsole = (() => {
     <rect x="872" y="308" width="16" height="180" rx="8" fill="#ffffff" opacity=".25"/>
     <rect x="855" y="452" width="100" height="53" rx="18" fill="#1a1a1a" opacity=".85"/>
     <rect x="868" y="330" width="74" height="52" rx="4" fill="#f5f2e8"/>
-    <text x="905" y="352" text-anchor="middle" font-family="Chakra Petch" font-weight="700" font-size="20" fill="#111">6 L</text>
+    <text x="905" y="352" text-anchor="middle" font-family="Chakra Petch" font-weight="700" font-size="20" fill="#111">7 L</text>
     <text x="905" y="373" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#333">300 BAR</text>
     <rect x="893" y="252" width="24" height="42" rx="6" fill="url(#axG)" stroke="#8a94b8" stroke-width="3"/>
     <circle cx="935" cy="262" r="15" fill="none" stroke="#8a94b8" stroke-width="6"/>
@@ -173,7 +173,7 @@ const AriConsole = (() => {
   /* ---------- vue circuit (diagramme de flux animé) ---------- */
   function circuitSVG(){
     const N = {
-      bouteille: { x:60, y:270, w:135, h:100, l:'BOUTEILLE', s:'6 L · 300 bar', n:'01' },
+      bouteille: { x:60, y:270, w:135, h:100, l:'BOUTEILLE', s:'7 L · 300 bar', n:'01' },
       robinet:   { x:235, y:295, w:95, h:52, l:'ROBINET', s:'volant HP', n:'02' },
       junction:  { x:370, y:290, w:85, h:62, l:'JONCTION', s:'4 flexibles', n:'', a:1 },
       manometre: { x:545, y:360, w:135, h:70, l:'BODYGUARD', s:'mano + DSU', n:'07' },
@@ -252,7 +252,7 @@ const AriConsole = (() => {
         <h3 class="ari-auto-title">Calcul d'autonomie</h3>
         <p class="ari-auto-lede">Boyle-Mariotte : le volume d'air disponible = <b>Pression × Volume ÷ 1,1</b>. L'autonomie = volume ÷ consommation. Ajustez les curseurs pour voir l'effet de l'effort sur votre temps d'air.</p>
         <div class="ari-field"><label>Pression bouteille</label><div><input type="range" id="au-p" min="50" max="300" step="10" value="300"><span id="au-pv">300 bar</span></div></div>
-        <div class="ari-field"><label>Volume bouteille</label><div><input type="range" id="au-v" min="4" max="9" step="0.5" value="6"><span id="au-vv">6 L</span></div></div>
+        <div class="ari-field"><label>Volume bouteille</label><div><input type="range" id="au-v" min="4" max="9" step="0.5" value="7"><span id="au-vv">7 L</span></div></div>
         <div class="ari-field"><label>Consommation (effort)</label><div><input type="range" id="au-q" min="30" max="120" step="10" value="100"><span id="au-qv">100 L/min</span></div></div>
         <div class="ari-conso-hints">30 L/min repos · 50 marche · 100 lutte incendie · 120 effort violent</div>
       </div>

@@ -12,16 +12,16 @@ window.ARI_DATA = [
     id: "bouteille",
     num: "01",
     name: "Bouteille d'air",
-    short: "Réserve d'air comprimé — 6 L / 300 bar",
+    short: "Réserve d'air comprimé — 7 L / 300 bar",
     family: "Source d'air",
     photo: "photos/bouteille.png",
     photoBox: { x: 820, y: 270, w: 170, h: 220 },
     point: { x: 905, y: 460 },
     label: { x: 1050, y: 460 },
-    description: "Réservoir cylindrique de couleur jaune (pour la visibilité en intervention et en progression dans un air opaque). Contenance 6 L d'eau, capacité 300 bar pour les bouteilles à fond plat avec sabot de protection, ou 200 bar pour celles à fond rond. Remplie d'air respirable : 78% diazote (N₂), 21% dioxygène (O₂), 1% gaz rares.",
+    description: "Réservoir cylindrique de couleur jaune (pour la visibilité en intervention et en progression dans un air opaque). Contenance 7 L d'eau, capacité 300 bar pour les bouteilles à fond plat avec sabot de protection, ou 200 bar pour celles à fond rond. Remplie d'air respirable : 78% diazote (N₂), 21% dioxygène (O₂), 1% gaz rares.",
     fonction: "Constituer la réserve d'air disponible pour l'exploration et le travail en atmosphère irrespirable. Elle est surmontée d'un robinet qui permet de la fixer de manière étanche au bâti-dossard.",
     verifications: [
-      "Pression avant engagement ≥ pression nominale – 10% (≥ 270 bar pour une 300 bar, ≥ 170 bar pour une 200 bar)",
+      "Pression avant engagement ≥ pression nominale – 10% (≥ 270 bar pour une 300 bar, ≥ 180 bar pour une 200 bar)",
       "Couleur jaune visible, marquages de collerette lisibles",
       "Sabot de protection présent (fond plat) ou intégrité du fond rond",
       "Date de ré-épreuve périodique valide",
@@ -179,7 +179,7 @@ window.ARI_DATA = [
       "Pile faible : remplacement avant engagement",
       "Capteur d'immobilité défaillant : retrait"
     ],
-    procedure: "S'allume à l'ouverture de la bouteille. AVANT engagement : remettre la clé de désactivation au contrôleur (au tableau de contrôle). En cas de détresse : déclenchement manuel possible. Repli au sifflet."
+    procedure: "S'allume à l'ouverture de la bouteille. La clé n'est plus obligatoirement remise au contrôleur avant engagement. En cas de détresse : déclenchement manuel possible. Repli au sifflet."
   },
   {
     id: "sifflet",
@@ -332,23 +332,23 @@ window.ARI_DATA = [
     id: "tableau",
     num: "14",
     name: "Tableau de contrôle",
-    short: "Regroupement des clés DSU — suivi des engagements",
+    short: "Regroupement des plaques — suivi des engagements",
     family: "Commandement",
     photo: "photos/tableau.png",
     photoBox: { x: 1115, y: 620, w: 200, h: 270 },
     point: { x: 1215, y: 780 },
     label: { x: 1075, y: 870 },
-    description: "Tableau tenu par le contrôleur ARI à la base arrière. Regroupe les plaques (et clés de désactivation DSU) de chaque porteur engagé. Permet la surveillance du nombre de personnes en zone dangereuse et le suivi du temps d'engagement.",
-    fonction: "Centraliser le contrôle des binômes engagés. Le porteur qui s'engage laisse sa clé de désactivation au contrôleur — qui ne peut plus désactiver son DSU à distance. Le contrôleur chronométre l'engagement et déclenche le repli avant le sifflet.",
+    description: "Tableau tenu par le contrôleur ARI à la base arrière. Regroupe les plaques de contrôle de chaque binôme engagé (nom du contrôleur, secteur concerné, chefs d'équipe et équipiers, horaire de sortie prévu, commentaires) ainsi que le binôme de sécurité. Permet la surveillance du nombre de personnes engagées en zone dangereuse et le suivi du temps d'engagement des porteurs.",
+    fonction: "Centraliser le contrôle des binômes engagés. Le contrôleur chronomètre l'engagement (limite 45 min) et déclenche le repli avant le sifflet ou en cas de dépassement du temps prévu.",
     verifications: [
       "Tableau et chronomètre disponibles avant tout engagement",
-      "Plaques d'identification de chaque porteur",
-      "Clés de désactivation correspondant à chaque ARI"
+      "Plaques d'identification de chaque binôme et du binôme de sécurité",
+      "Horaire de sortie prévu renseigné"
     ],
     pannes: [
-      "Clé absente ou non identifiée : engagement refusé"
+      "Plaque absente ou non identifiée : engagement refusé"
     ],
-    procedure: "À l'engagement : porteur remet sa clé et sa plaque au contrôleur. Contrôleur démarre chronomètre, note pression de départ. Au repli : retour de la clé au porteur après désengagement."
+    procedure: "À l'engagement : le binôme s'enregistre auprès du chef d'agrès ou du contrôleur, qui place la plaque sur le tableau, démarre le chronomètre et note l'horaire de sortie prévu (limite 45 min). Note n°6 : la clé de désactivation du bodyguard n'est plus obligatoirement remise au contrôleur avant engagement."
   },
   {
     id: "tph",

@@ -474,13 +474,12 @@ const App = (() => {
       viewIdx = preferred >= 0 ? preferred : 0;
     }
     const view = views[viewIdx] || views[0];
-    const els = view.elements || [];
+    const els = view.elements || mod.elements || [];
     const scenarios = view.scenarios || mod.scenarios;
     const isEx = mode === 'drill' || mode === 'ident';
     const isGimaexRear = view.schema === 'gimaex-tableau';
     const isFreeTest = mode === 'test';
     const viewName = (v, i) => {
-      if (v.schema === 'gimaex-cabine') return 'Écran cabine';
       return String(v.label || 'Vue ' + (i + 1)).replace(/\s*\(p\.\s*\d+\)\s*$/i, '');
     };
     const toolbar = document.createElement('div');
@@ -494,9 +493,9 @@ const App = (() => {
       tabs.setAttribute('aria-label', 'Vues du module');
       const orderedViewIndexes = views.some(candidate => candidate.schema === 'gimaex-tableau')
         ? [
+            views.findIndex(candidate => candidate.schema === 'gimaex-cabine'),
             views.findIndex(candidate => candidate.schema === 'gimaex-tableau'),
             views.findIndex(candidate => candidate.schema === 'gimaex-ecran'),
-            views.findIndex(candidate => candidate.schema === 'gimaex-cabine'),
             ...views.map((_, index) => index)
           ].filter((index, position, all) => index >= 0 && all.indexOf(index) === position)
         : views.map((_, index) => index);
@@ -508,9 +507,12 @@ const App = (() => {
       tabs.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => {
         const nextIdx = +b.dataset.v;
         const nextView = views[nextIdx] || views[0];
-        const nextMode = (mode === 'operate' || mode === 'test') && nextView.schema !== 'gimaex-tableau'
+        const isGimaexScreen = nextView.schema === 'gimaex-ecran' || nextView.schema === 'gimaex-cabine';
+        const nextMode = mode === 'operate' && nextView.schema !== 'gimaex-tableau'
           ? 'fiche'
-          : mode;
+          : mode === 'test' && nextView.schema !== 'gimaex-tableau' && !isGimaexScreen
+            ? 'fiche'
+            : mode;
         mountSchema(mod, nextMode, nextIdx);
       }));
     }

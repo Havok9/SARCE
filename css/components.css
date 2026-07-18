@@ -216,6 +216,34 @@
   width:100%; max-width:680px;
   margin:14px auto 0;
 }
+.schema-stage.schema-gimaex-screen{
+  width:100%; max-width:840px;
+  margin:14px auto 0;
+  background:#05090d;
+}
+.schema-gimaex-screen .gimaex-screen-photo{
+  transition:filter .25s ease, opacity .25s ease;
+}
+.schema-gimaex-screen.schema-night .gimaex-screen-photo{
+  filter:brightness(.56) contrast(1.12) saturate(.82);
+}
+.schema-gimaex-screen #gxe-night-overlay{
+  transition:opacity .25s ease;
+}
+.schema-gimaex-screen.schema-night #gxe-night-overlay{ opacity:.14; }
+.schema-gimaex-screen .gxe-live-value rect{
+  fill:rgba(3,10,14,.86); stroke:rgba(112,152,174,.72); stroke-width:2;
+}
+.schema-gimaex-screen .gxe-live-value text{
+  fill:#e7f0f2; font-size:16px; font-weight:700;
+  paint-order:stroke; stroke:#03080c; stroke-width:3px;
+}
+.schema-gimaex-screen .gxe-state-lamps circle{
+  fill:#16321f; stroke:#5fe398; stroke-width:3;
+}
+.schema-gimaex-screen .gxe-state-lamps text{
+  fill:#eafff2; paint-order:stroke; stroke:#07110b; stroke-width:2px;
+}
 .schema-stage[data-schema-id="env"]{ max-width:680px; }
 .schema-stage[data-schema-id="fpt-profil"]{ max-width:840px; }
 
@@ -320,7 +348,23 @@
 .schema-gimaex-rear.schema-mode-operate .hotspot-area:not(:hover):not(.sel):not(.control-active) .hotspot-badge{
   opacity:.42;
 }
-.schema-gimaex-rear .hotspot-area .hs-label{
+.schema-gimaex-screen .hotspot-badge{
+  width:22px; height:22px; top:-10px; left:-10px;
+  font-size:9px; opacity:.58;
+}
+.schema-gimaex-screen .hotspot-area:hover .hotspot-badge,
+.schema-gimaex-screen .hotspot-area.sel .hotspot-badge,
+.schema-gimaex-screen .hotspot-area:focus-visible .hotspot-badge{ opacity:1; }
+.schema-gimaex-screen.schema-mode-drill .hotspot-badge,
+.schema-gimaex-screen.schema-mode-ident .hotspot-badge,
+.schema-gimaex-screen.schema-mode-test .hotspot-badge,
+.schema-mode-drill .schema-gimaex-screen .hotspot-badge,
+.schema-mode-ident .schema-gimaex-screen .hotspot-badge,
+.schema-mode-test .schema-gimaex-screen .hotspot-badge{
+  opacity:0; visibility:hidden;
+}
+.schema-gimaex-rear .hotspot-area .hs-label,
+.schema-gimaex-screen .hotspot-area .hs-label{
   top:calc(100% + 6px); bottom:auto;
   max-width:min(260px, 80vw);
   overflow:hidden; text-overflow:ellipsis;
@@ -334,10 +378,12 @@
 /* 40 px offre une cible tactile confortable sans dilater les zones sur tous
    les appareils ni rapprocher les commandes voisines sur desktop. */
 @media (pointer:coarse){
-  .schema-gimaex-rear .hotspot-area{
+  .schema-gimaex-rear .hotspot-area,
+  .schema-gimaex-screen .hotspot-area{
     min-width:40px; min-height:40px;
   }
-  .schema-gimaex-rear .hotspot-badge{
+  .schema-gimaex-rear .hotspot-badge,
+  .schema-gimaex-screen .hotspot-badge{
     width:28px; height:28px;
   }
 }
